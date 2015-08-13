@@ -1,6 +1,6 @@
 <template>
   <h1>Kiosk</h1>
-  <component is="nav"></component>
+  <component is="navigation"></component>
   <component is="{{ route }}" transition-mode="out-in"></div>
 </template>
 
@@ -18,7 +18,7 @@
     components: {
       "home": require('./components/home.vue'),
       "about": require('./components/about.vue'),
-      "nav": require('./components/nav.vue')
+      "navigation": require('./components/navigation.vue')
     }
   }
 </script>
