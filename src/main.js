@@ -1,20 +1,35 @@
 var Vue = require('vue');
 
-Vue.options.replace = true;
+var VueRouter = require('vue-router');
+Vue.use(VueRouter);
 
-var app = new Vue(require('./app.vue')).$mount('#app');
+var router = new VueRouter({
+  history: false
+});
 
-var director = require('director');
-var router = director.Router();
+var App = require('./components/app.vue');
 
-router.configure({
-  notfound: function () {
-    router.setRoute('/');
+router.map({
+  '/': {
+    component: require('./components/home.vue'),
+    name: 'home'
+  },
+  'about': {
+    component: require('./components/about.vue'),
+    name: 'about'
+  },
+  'archives': {
+    component: require('./components/archives.vue'),
+    name: 'archives'
+  },
+  'article/:id': {
+    component: require('./components/article.vue'),
+    name: 'article'
+  },
+  'search': {
+    component: require('./components/search.vue'),
+    name: 'search'
   }
 });
 
-router.on(['/', '/:page'], function (page) {
- app.route = page || 'home';
-});
-
-router.init('/');
+router.start(App, '#app');

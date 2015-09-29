@@ -3,20 +3,21 @@
   "version": "0.0.1",
   "description": "My initial setup for vue projects...",
   "scripts": {
-    "watch": "watchify -v -t vueify -e src/main.js -o build/build.js"
+    "watch": "watchify -v -t vueify -e src/main.js -o public/js/build.js",
+    "browsersync": "browser-sync start --server public --files public/js/build.js --reload-debounce 500"
   },
   "author": "Bill Criswell",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer-core": "^5.1.11",
-    "director": "^1.2.8",
+    "autoprefixer": "^6.0.3",
     "insert-css": "^0.2.0",
-    "node-sass": "^3.0.0",
-    "postcss": "^4.1.11",
+    "node-sass": "^3.3.3",
+    "postcss": "^5.0.8",
+    "vue-router": "^0.6.1",
     "vueify": "^1.1.5",
     "watchify": "^1.0.6"
   },
   "dependencies": {
-    "vue": "^0.12.1"
+    "vue": "^0.12.16"
   }
 }

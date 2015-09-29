@@ -1,0 +1,27 @@
+[v-cloak] {
+  display: none;
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $font--sans;
+  background-color: $color--white;
+  color: $color--black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+table {
+  th, td {
+    padding: 5px;
+  }
+  th {
+    font-weight: bold;
+    text-align: left;
+  }
+}

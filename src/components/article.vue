@@ -3,18 +3,17 @@
 </style>
 
 <template>
-  <div class="page--about">
-    <h1>About</h1>
+  <div class="page--search">
+    <input class="search" v-model="search" placeholder="Search...">
   </div>
 </template>
 
 <script>
   module.exports = {
     data: function () {
-      return {}
-    },
-    ready: function () {
-
+      return {
+        search: ''
+      }
     }
   }
 </script>

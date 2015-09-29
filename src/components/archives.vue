@@ -3,8 +3,8 @@
 </style>
 
 <template>
-  <div class="page--about">
-    <h1>About</h1>
+  <div class="page--search">
+    <h1>Archives</h1>
   </div>
 </template>
 
@@ -12,9 +12,6 @@
   module.exports = {
     data: function () {
       return {}
-    },
-    ready: function () {
-
     }
   }
 </script>

@@ -1,21 +1,20 @@
-<style lang="scss">
-  @import "src/styles/variables.scss";
+<style lang="scss-ap">
+  @import "src/sass/shared/shared";
 </style>
 
 <template>
-  <div class="page page--home" v-transition="page">
-    <h2>Home</h2>
-    <p>{{ msg }}</p>
+  <div class="page--home">
+    <h1>Home</h1>
   </div>
 </template>
 
 <script>
   module.exports = {
     data: function () {
-      return {
-        msg: 'Hello from `./components/home.vue`.',
-        items: []
-      }
+      return {}
+    },
+    ready: function () {
+
     }
   }
 </script>
