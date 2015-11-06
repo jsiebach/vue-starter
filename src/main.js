@@ -1,5 +1,7 @@
 var Vue = require('vue');
 
+Vue.config.debug = true;
+
 var VueRouter = require('vue-router');
 Vue.use(VueRouter);
 

@@ -1,49 +1,55 @@
-<style lang="scss-ap">
+<style lang="scss">
   @import "src/sass/shared/shared";
 
   @import "src/sass/normalize";
   @import "src/sass/transitions";
 
-  @import "src/sass/base";
+  [v-cloak] {
+    display: none;
+  }
 
-  @import "src/sass/header";
-  @import "src/sass/footer";
+  :root {
+    box-sizing: border-box;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
 
-  .app--scrolling {
-    pointer-events: none;
+  *, ::before, ::after {
+    box-sizing: inherit;
+    position: relative;
   }
 </style>
 
 <template>
   <div class="app">
-    <header class="header">
-      <h1>
-        <a v-link="{ name: 'home' }">App</a>
-      </h1>
-      <ul>
-        <li><a v-link="{ name: 'about' }">About</a></li>
-        <li><a v-link="{ name: 'search' }">Search</a></li>
-        <li><a v-link="{ name: 'archives' }">Archives</a></li>
-      </ul>
-    </header>
+    <app-header></app-header>
     <main class="main">
-      <router-view class="page" v-transition="fade" v-if="!loading" transition-mode="out-in"></router-view>
+      <router-view class="page" transition="fade" transition-mode="out-in"></router-view>
     </main>
-    <footer class="footer"></footer>
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
+  var throttle = require('lodash.throttle');
+
   module.exports = {
-    data: function () {
-      return {}
+    components: {
+      appHeader: require('./app-header.vue'),
+      appFooter: require('./app-footer.vue')
     },
-    beforeCompile: function () {},
-    ready: function () {},
-    components: {},
-    directives: {},
-    filters: {},
-    transitions: {},
-    methods: {}
+    ready: function () {
+      var body = document.body;
+      var scrollingTimeout = undefined;
+
+      window.addEventListener('scroll', throttle(function () {
+        clearTimeout(scrollingTimeout);
+
+        body.classList.add('scrolling');
+
+        scrollingTimeout = setTimeout(function () {
+          body.classList.remove('scrolling');
+        }, 50);
+      }, 40));
+    }
   }
 </script>

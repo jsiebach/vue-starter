@@ -1,36 +1,883 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/bill/Sites/vue-starter/node_modules/insert-css/index.js":[function(require,module,exports){
-var inserted = {};
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/core-js/object/create.js":[function(require,module,exports){
+module.exports = { "default": require("core-js/library/fn/object/create"), __esModule: true };
+},{"core-js/library/fn/object/create":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/fn/object/create.js"}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/core-js/object/freeze.js":[function(require,module,exports){
+module.exports = { "default": require("core-js/library/fn/object/freeze"), __esModule: true };
+},{"core-js/library/fn/object/freeze":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/fn/object/freeze.js"}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/core-js/object/keys.js":[function(require,module,exports){
+module.exports = { "default": require("core-js/library/fn/object/keys"), __esModule: true };
+},{"core-js/library/fn/object/keys":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/fn/object/keys.js"}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/helpers/class-call-check.js":[function(require,module,exports){
+"use strict";
 
-module.exports = function (css, options) {
-    if (inserted[css]) return;
-    inserted[css] = true;
-    
-    var elem = document.createElement('style');
-    elem.setAttribute('type', 'text/css');
-
-    if ('textContent' in elem) {
-      elem.textContent = css;
-    } else {
-      elem.styleSheet.cssText = css;
-    }
-    
-    var head = document.getElementsByTagName('head')[0];
-    if (options && options.prepend) {
-        head.insertBefore(elem, head.childNodes[0]);
-    } else {
-        head.appendChild(elem);
-    }
+exports["default"] = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
 };
+
+exports.__esModule = true;
+},{}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/helpers/interop-require-default.js":[function(require,module,exports){
+"use strict";
+
+exports["default"] = function (obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+};
+
+exports.__esModule = true;
+},{}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/fn/object/create.js":[function(require,module,exports){
+var $ = require('../../modules/$');
+module.exports = function create(P, D){
+  return $.create(P, D);
+};
+},{"../../modules/$":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.js"}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/fn/object/freeze.js":[function(require,module,exports){
+require('../../modules/es6.object.freeze');
+module.exports = require('../../modules/$.core').Object.freeze;
+},{"../../modules/$.core":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.core.js","../../modules/es6.object.freeze":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/es6.object.freeze.js"}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/fn/object/keys.js":[function(require,module,exports){
+require('../../modules/es6.object.keys');
+module.exports = require('../../modules/$.core').Object.keys;
+},{"../../modules/$.core":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.core.js","../../modules/es6.object.keys":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/es6.object.keys.js"}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.core.js":[function(require,module,exports){
+var core = module.exports = {version: '1.2.4'};
+if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+},{}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.def.js":[function(require,module,exports){
+var global    = require('./$.global')
+  , core      = require('./$.core')
+  , PROTOTYPE = 'prototype';
+var ctx = function(fn, that){
+  return function(){
+    return fn.apply(that, arguments);
+  };
+};
+var $def = function(type, name, source){
+  var key, own, out, exp
+    , isGlobal = type & $def.G
+    , isProto  = type & $def.P
+    , target   = isGlobal ? global : type & $def.S
+        ? global[name] : (global[name] || {})[PROTOTYPE]
+    , exports  = isGlobal ? core : core[name] || (core[name] = {});
+  if(isGlobal)source = name;
+  for(key in source){
+    // contains in native
+    own = !(type & $def.F) && target && key in target;
+    if(own && key in exports)continue;
+    // export native or passed
+    out = own ? target[key] : source[key];
+    // prevent global pollution for namespaces
+    if(isGlobal && typeof target[key] != 'function')exp = source[key];
+    // bind timers to global for call from export context
+    else if(type & $def.B && own)exp = ctx(out, global);
+    // wrap global constructors for prevent change them in library
+    else if(type & $def.W && target[key] == out)!function(C){
+      exp = function(param){
+        return this instanceof C ? new C(param) : C(param);
+      };
+      exp[PROTOTYPE] = C[PROTOTYPE];
+    }(out);
+    else exp = isProto && typeof out == 'function' ? ctx(Function.call, out) : out;
+    // export
+    exports[key] = exp;
+    if(isProto)(exports[PROTOTYPE] || (exports[PROTOTYPE] = {}))[key] = out;
+  }
+};
+// type bitmap
+$def.F = 1;  // forced
+$def.G = 2;  // global
+$def.S = 4;  // static
+$def.P = 8;  // proto
+$def.B = 16; // bind
+$def.W = 32; // wrap
+module.exports = $def;
+},{"./$.core":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.core.js","./$.global":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.global.js"}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.defined.js":[function(require,module,exports){
+// 7.2.1 RequireObjectCoercible(argument)
+module.exports = function(it){
+  if(it == undefined)throw TypeError("Can't call method on  " + it);
+  return it;
+};
+},{}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.fails.js":[function(require,module,exports){
+module.exports = function(exec){
+  try {
+    return !!exec();
+  } catch(e){
+    return true;
+  }
+};
+},{}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.global.js":[function(require,module,exports){
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
+if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
+},{}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.is-object.js":[function(require,module,exports){
+module.exports = function(it){
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+},{}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.js":[function(require,module,exports){
+var $Object = Object;
+module.exports = {
+  create:     $Object.create,
+  getProto:   $Object.getPrototypeOf,
+  isEnum:     {}.propertyIsEnumerable,
+  getDesc:    $Object.getOwnPropertyDescriptor,
+  setDesc:    $Object.defineProperty,
+  setDescs:   $Object.defineProperties,
+  getKeys:    $Object.keys,
+  getNames:   $Object.getOwnPropertyNames,
+  getSymbols: $Object.getOwnPropertySymbols,
+  each:       [].forEach
+};
+},{}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.object-sap.js":[function(require,module,exports){
+// most Object methods by ES6 should accept primitives
+var $def  = require('./$.def')
+  , core  = require('./$.core')
+  , fails = require('./$.fails');
+module.exports = function(KEY, exec){
+  var $def = require('./$.def')
+    , fn   = (core.Object || {})[KEY] || Object[KEY]
+    , exp  = {};
+  exp[KEY] = exec(fn);
+  $def($def.S + $def.F * fails(function(){ fn(1); }), 'Object', exp);
+};
+},{"./$.core":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.core.js","./$.def":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.def.js","./$.fails":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.fails.js"}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.to-object.js":[function(require,module,exports){
+// 7.1.13 ToObject(argument)
+var defined = require('./$.defined');
+module.exports = function(it){
+  return Object(defined(it));
+};
+},{"./$.defined":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.defined.js"}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/es6.object.freeze.js":[function(require,module,exports){
+// 19.1.2.5 Object.freeze(O)
+var isObject = require('./$.is-object');
+
+require('./$.object-sap')('freeze', function($freeze){
+  return function freeze(it){
+    return $freeze && isObject(it) ? $freeze(it) : it;
+  };
+});
+},{"./$.is-object":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.is-object.js","./$.object-sap":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.object-sap.js"}],"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/es6.object.keys.js":[function(require,module,exports){
+// 19.1.2.14 Object.keys(O)
+var toObject = require('./$.to-object');
+
+require('./$.object-sap')('keys', function($keys){
+  return function keys(it){
+    return $keys(toObject(it));
+  };
+});
+},{"./$.object-sap":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.object-sap.js","./$.to-object":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/node_modules/core-js/library/modules/$.to-object.js"}],"/Users/bill/Sites/vue-starter/node_modules/lodash.debounce/index.js":[function(require,module,exports){
+/**
+ * lodash 3.1.1 (Custom Build) <https://lodash.com/>
+ * Build: `lodash modern modularize exports="npm" -o ./`
+ * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Available under MIT license <https://lodash.com/license>
+ */
+var getNative = require('lodash._getnative');
+
+/** Used as the `TypeError` message for "Functions" methods. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/* Native method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max,
+    nativeNow = getNative(Date, 'now');
+
+/**
+ * Gets the number of milliseconds that have elapsed since the Unix epoch
+ * (1 January 1970 00:00:00 UTC).
+ *
+ * @static
+ * @memberOf _
+ * @category Date
+ * @example
+ *
+ * _.defer(function(stamp) {
+ *   console.log(_.now() - stamp);
+ * }, _.now());
+ * // => logs the number of milliseconds it took for the deferred function to be invoked
+ */
+var now = nativeNow || function() {
+  return new Date().getTime();
+};
+
+/**
+ * Creates a debounced function that delays invoking `func` until after `wait`
+ * milliseconds have elapsed since the last time the debounced function was
+ * invoked. The debounced function comes with a `cancel` method to cancel
+ * delayed invocations. Provide an options object to indicate that `func`
+ * should be invoked on the leading and/or trailing edge of the `wait` timeout.
+ * Subsequent calls to the debounced function return the result of the last
+ * `func` invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is invoked
+ * on the trailing edge of the timeout only if the the debounced function is
+ * invoked more than once during the `wait` timeout.
+ *
+ * See [David Corbacho's article](http://drupalmotion.com/article/debounce-and-throttle-visual-explanation)
+ * for details over the differences between `_.debounce` and `_.throttle`.
+ *
+ * @static
+ * @memberOf _
+ * @category Function
+ * @param {Function} func The function to debounce.
+ * @param {number} [wait=0] The number of milliseconds to delay.
+ * @param {Object} [options] The options object.
+ * @param {boolean} [options.leading=false] Specify invoking on the leading
+ *  edge of the timeout.
+ * @param {number} [options.maxWait] The maximum time `func` is allowed to be
+ *  delayed before it is invoked.
+ * @param {boolean} [options.trailing=true] Specify invoking on the trailing
+ *  edge of the timeout.
+ * @returns {Function} Returns the new debounced function.
+ * @example
+ *
+ * // avoid costly calculations while the window size is in flux
+ * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+ *
+ * // invoke `sendMail` when the click event is fired, debouncing subsequent calls
+ * jQuery('#postbox').on('click', _.debounce(sendMail, 300, {
+ *   'leading': true,
+ *   'trailing': false
+ * }));
+ *
+ * // ensure `batchLog` is invoked once after 1 second of debounced calls
+ * var source = new EventSource('/stream');
+ * jQuery(source).on('message', _.debounce(batchLog, 250, {
+ *   'maxWait': 1000
+ * }));
+ *
+ * // cancel a debounced call
+ * var todoChanges = _.debounce(batchLog, 1000);
+ * Object.observe(models.todo, todoChanges);
+ *
+ * Object.observe(models, function(changes) {
+ *   if (_.find(changes, { 'user': 'todo', 'type': 'delete'})) {
+ *     todoChanges.cancel();
+ *   }
+ * }, ['delete']);
+ *
+ * // ...at some point `models.todo` is changed
+ * models.todo.completed = true;
+ *
+ * // ...before 1 second has passed `models.todo` is deleted
+ * // which cancels the debounced `todoChanges` call
+ * delete models.todo;
+ */
+function debounce(func, wait, options) {
+  var args,
+      maxTimeoutId,
+      result,
+      stamp,
+      thisArg,
+      timeoutId,
+      trailingCall,
+      lastCalled = 0,
+      maxWait = false,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  wait = wait < 0 ? 0 : (+wait || 0);
+  if (options === true) {
+    var leading = true;
+    trailing = false;
+  } else if (isObject(options)) {
+    leading = !!options.leading;
+    maxWait = 'maxWait' in options && nativeMax(+options.maxWait || 0, wait);
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+
+  function cancel() {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    if (maxTimeoutId) {
+      clearTimeout(maxTimeoutId);
+    }
+    lastCalled = 0;
+    maxTimeoutId = timeoutId = trailingCall = undefined;
+  }
+
+  function complete(isCalled, id) {
+    if (id) {
+      clearTimeout(id);
+    }
+    maxTimeoutId = timeoutId = trailingCall = undefined;
+    if (isCalled) {
+      lastCalled = now();
+      result = func.apply(thisArg, args);
+      if (!timeoutId && !maxTimeoutId) {
+        args = thisArg = undefined;
+      }
+    }
+  }
+
+  function delayed() {
+    var remaining = wait - (now() - stamp);
+    if (remaining <= 0 || remaining > wait) {
+      complete(trailingCall, maxTimeoutId);
+    } else {
+      timeoutId = setTimeout(delayed, remaining);
+    }
+  }
+
+  function maxDelayed() {
+    complete(trailing, timeoutId);
+  }
+
+  function debounced() {
+    args = arguments;
+    stamp = now();
+    thisArg = this;
+    trailingCall = trailing && (timeoutId || !leading);
+
+    if (maxWait === false) {
+      var leadingCall = leading && !timeoutId;
+    } else {
+      if (!maxTimeoutId && !leading) {
+        lastCalled = stamp;
+      }
+      var remaining = maxWait - (stamp - lastCalled),
+          isCalled = remaining <= 0 || remaining > maxWait;
+
+      if (isCalled) {
+        if (maxTimeoutId) {
+          maxTimeoutId = clearTimeout(maxTimeoutId);
+        }
+        lastCalled = stamp;
+        result = func.apply(thisArg, args);
+      }
+      else if (!maxTimeoutId) {
+        maxTimeoutId = setTimeout(maxDelayed, remaining);
+      }
+    }
+    if (isCalled && timeoutId) {
+      timeoutId = clearTimeout(timeoutId);
+    }
+    else if (!timeoutId && wait !== maxWait) {
+      timeoutId = setTimeout(delayed, wait);
+    }
+    if (leadingCall) {
+      isCalled = true;
+      result = func.apply(thisArg, args);
+    }
+    if (isCalled && !timeoutId && !maxTimeoutId) {
+      args = thisArg = undefined;
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  return debounced;
+}
+
+/**
+ * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
+ * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(1);
+ * // => false
+ */
+function isObject(value) {
+  // Avoid a V8 JIT bug in Chrome 19-20.
+  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+module.exports = debounce;
+
+},{"lodash._getnative":"/Users/bill/Sites/vue-starter/node_modules/lodash.debounce/node_modules/lodash._getnative/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/lodash.debounce/node_modules/lodash._getnative/index.js":[function(require,module,exports){
+/**
+ * lodash 3.9.1 (Custom Build) <https://lodash.com/>
+ * Build: `lodash modern modularize exports="npm" -o ./`
+ * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Available under MIT license <https://lodash.com/license>
+ */
+
+/** `Object#toString` result references. */
+var funcTag = '[object Function]';
+
+/** Used to detect host constructors (Safari > 5). */
+var reIsHostCtor = /^\[object .+?Constructor\]$/;
+
+/**
+ * Checks if `value` is object-like.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ */
+function isObjectLike(value) {
+  return !!value && typeof value == 'object';
+}
+
+/** Used for native method references. */
+var objectProto = Object.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var fnToString = Function.prototype.toString;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objToString = objectProto.toString;
+
+/** Used to detect if a method is native. */
+var reIsNative = RegExp('^' +
+  fnToString.call(hasOwnProperty).replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
+  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+);
+
+/**
+ * Gets the native function at `key` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the method to get.
+ * @returns {*} Returns the function if it's native, else `undefined`.
+ */
+function getNative(object, key) {
+  var value = object == null ? undefined : object[key];
+  return isNative(value) ? value : undefined;
+}
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction(value) {
+  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // in older versions of Chrome and Safari which return 'function' for regexes
+  // and Safari 8 equivalents which return 'object' for typed array constructors.
+  return isObject(value) && objToString.call(value) == funcTag;
+}
+
+/**
+ * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
+ * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(1);
+ * // => false
+ */
+function isObject(value) {
+  // Avoid a V8 JIT bug in Chrome 19-20.
+  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+/**
+ * Checks if `value` is a native function.
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a native function, else `false`.
+ * @example
+ *
+ * _.isNative(Array.prototype.push);
+ * // => true
+ *
+ * _.isNative(_);
+ * // => false
+ */
+function isNative(value) {
+  if (value == null) {
+    return false;
+  }
+  if (isFunction(value)) {
+    return reIsNative.test(fnToString.call(value));
+  }
+  return isObjectLike(value) && reIsHostCtor.test(value);
+}
+
+module.exports = getNative;
+
+},{}],"/Users/bill/Sites/vue-starter/node_modules/lodash.throttle/index.js":[function(require,module,exports){
+/**
+ * lodash 3.0.4 (Custom Build) <https://lodash.com/>
+ * Build: `lodash modern modularize exports="npm" -o ./`
+ * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Available under MIT license <https://lodash.com/license>
+ */
+var debounce = require('lodash.debounce');
+
+/** Used as the `TypeError` message for "Functions" methods. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/**
+ * Creates a throttled function that only invokes `func` at most once per
+ * every `wait` milliseconds. The throttled function comes with a `cancel`
+ * method to cancel delayed invocations. Provide an options object to indicate
+ * that `func` should be invoked on the leading and/or trailing edge of the
+ * `wait` timeout. Subsequent calls to the throttled function return the
+ * result of the last `func` call.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is invoked
+ * on the trailing edge of the timeout only if the the throttled function is
+ * invoked more than once during the `wait` timeout.
+ *
+ * See [David Corbacho's article](http://drupalmotion.com/article/debounce-and-throttle-visual-explanation)
+ * for details over the differences between `_.throttle` and `_.debounce`.
+ *
+ * @static
+ * @memberOf _
+ * @category Function
+ * @param {Function} func The function to throttle.
+ * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
+ * @param {Object} [options] The options object.
+ * @param {boolean} [options.leading=true] Specify invoking on the leading
+ *  edge of the timeout.
+ * @param {boolean} [options.trailing=true] Specify invoking on the trailing
+ *  edge of the timeout.
+ * @returns {Function} Returns the new throttled function.
+ * @example
+ *
+ * // avoid excessively updating the position while scrolling
+ * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
+ *
+ * // invoke `renewToken` when the click event is fired, but not more than once every 5 minutes
+ * jQuery('.interactive').on('click', _.throttle(renewToken, 300000, {
+ *   'trailing': false
+ * }));
+ *
+ * // cancel a trailing throttled call
+ * jQuery(window).on('popstate', throttled.cancel);
+ */
+function throttle(func, wait, options) {
+  var leading = true,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  if (options === false) {
+    leading = false;
+  } else if (isObject(options)) {
+    leading = 'leading' in options ? !!options.leading : leading;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+  return debounce(func, wait, { 'leading': leading, 'maxWait': +wait, 'trailing': trailing });
+}
+
+/**
+ * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
+ * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(1);
+ * // => false
+ */
+function isObject(value) {
+  // Avoid a V8 JIT bug in Chrome 19-20.
+  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+module.exports = throttle;
+
+},{"lodash.debounce":"/Users/bill/Sites/vue-starter/node_modules/lodash.debounce/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-hot-reload-api/index.js":[function(require,module,exports){
+var Vue // late bind
+var map = Object.create(null)
+var shimmed = false
+var isBrowserify = false
+
+/**
+ * Determine compatibility and apply patch.
+ *
+ * @param {Function} vue
+ * @param {Boolean} browserify
+ */
+
+exports.install = function (vue, browserify) {
+  if (shimmed) return
+  shimmed = true
+
+  Vue = vue
+  isBrowserify = browserify
+
+  exports.compatible = !!Vue.internalDirectives
+  if (!exports.compatible) {
+    console.warn(
+      '[HMR] vue-loader hot reload is only compatible with ' +
+      'Vue.js 1.0.0+.'
+    )
+    return
+  }
+
+  // patch view directive
+  patchView(Vue.internalDirectives.component)
+  console.log('[HMR] Vue component hot reload shim applied.')
+  // shim router-view if present
+  var routerView = Vue.elementDirective('router-view')
+  if (routerView) {
+    patchView(routerView)
+    console.log('[HMR] vue-router <router-view> hot reload shim applied.')
+  }
+}
+
+/**
+ * Shim the view directive (component or router-view).
+ *
+ * @param {Object} View
+ */
+
+function patchView (View) {
+  var unbuild = View.unbuild
+  View.unbuild = function (defer) {
+    if (!this.hotUpdating) {
+      var prevComponent = this.childVM && this.childVM.constructor
+      removeView(prevComponent, this)
+      // defer = true means we are transitioning to a new
+      // Component. Register this new component to the list.
+      if (defer) {
+        addView(this.Component, this)
+      }
+    }
+    // call original
+    return unbuild.call(this, defer)
+  }
+}
+
+/**
+ * Add a component view to a Component's hot list
+ *
+ * @param {Function} Component
+ * @param {Directive} view - view directive instance
+ */
+
+function addView (Component, view) {
+  var id = Component && Component.options.hotID
+  if (id) {
+    if (!map[id]) {
+      map[id] = {
+        Component: Component,
+        views: [],
+        instances: []
+      }
+    }
+    map[id].views.push(view)
+  }
+}
+
+/**
+ * Remove a component view from a Component's hot list
+ *
+ * @param {Function} Component
+ * @param {Directive} view - view directive instance
+ */
+
+function removeView (Component, view) {
+  var id = Component && Component.options.hotID
+  if (id) {
+    map[id].views.$remove(view)
+  }
+}
+
+/**
+ * Create a record for a hot module, which keeps track of its construcotr,
+ * instnaces and views (component directives or router-views).
+ *
+ * @param {String} id
+ * @param {Object} options
+ */
+
+exports.createRecord = function (id, options) {
+  var Component = typeof options === 'function'
+    ? options
+    : Vue.extend(options)
+  options = Component.options
+  if (typeof options.el !== 'string' && typeof options.data !== 'object') {
+    makeOptionsHot(id, options)
+    map[id] = {
+      Component: Component,
+      views: [],
+      instances: []
+    }
+  }
+}
+
+/**
+ * Make a Component options object hot.
+ *
+ * @param {String} id
+ * @param {Object} options
+ */
+
+function makeOptionsHot (id, options) {
+  options.hotID = id
+  injectHook(options, 'created', function () {
+    map[id].instances.push(this)
+  })
+  injectHook(options, 'beforeDestroy', function () {
+    map[id].instances.$remove(this)
+  })
+}
+
+/**
+ * Inject a hook to a hot reloadable component so that
+ * we can keep track of it.
+ *
+ * @param {Object} options
+ * @param {String} name
+ * @param {Function} hook
+ */
+
+function injectHook (options, name, hook) {
+  var existing = options[name]
+  options[name] = existing
+    ? Array.isArray(existing)
+      ? existing.concat(hook)
+      : [existing, hook]
+    : [hook]
+}
+
+/**
+ * Update a hot component.
+ *
+ * @param {String} id
+ * @param {Object|null} newOptions
+ * @param {String|null} newTemplate
+ */
+
+exports.update = function (id, newOptions, newTemplate) {
+  var record = map[id]
+  // force full-reload if an instance of the component is active but is not
+  // managed by a view
+  if (!record || (record.instances.length && !record.views.length)) {
+    console.log('[HMR] Root or manually-mounted instance modified. Full reload may be required.')
+    if (!isBrowserify) {
+      window.location.reload()
+    } else {
+      // browserify-hmr somehow sends incomplete bundle if we reload here
+      return
+    }
+  }
+  if (!isBrowserify) {
+    // browserify-hmr already logs this
+    console.log('[HMR] Updating component: ' + format(id))
+  }
+  var Component = record.Component
+  // update constructor
+  if (newOptions) {
+    // in case the user exports a constructor
+    Component = record.Component = typeof newOptions === 'function'
+      ? newOptions
+      : Vue.extend(newOptions)
+    makeOptionsHot(id, Component.options)
+  }
+  if (newTemplate) {
+    Component.options.template = newTemplate
+  }
+  // handle recursive lookup
+  if (Component.options.name) {
+    Component.options.components[Component.options.name] = Component
+  }
+  // reset constructor cached linker
+  Component.linker = null
+  // reload all views
+  record.views.forEach(function (view) {
+    updateView(view, Component)
+  })
+}
+
+/**
+ * Update a component view instance
+ *
+ * @param {Directive} view
+ * @param {Function} Component
+ */
+
+function updateView (view, Component) {
+  if (!view._bound) {
+    return
+  }
+  view.Component = Component
+  view.hotUpdating = true
+  // disable transitions
+  view.vm._isCompiled = false
+  // save state
+  var state = view.childVM.$data
+  // remount, make sure to disable keep-alive
+  var keepAlive = view.keepAlive
+  view.keepAlive = false
+  view.mountComponent()
+  view.keepAlive = keepAlive
+  // restore state
+  view.childVM.$data = state
+  // re-eanble transitions
+  view.vm._isCompiled = true
+  view.hotUpdating = false
+}
+
+function format (id) {
+  return id.match(/[^\/]+\.vue$/)[0]
+}
 
 },{}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/directives/link.js":[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
 var _util = require('../util');
 
+var trailingSlashRE = /\/$/;
 var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g;
 
 // install v-link, which provides navigation support for
@@ -48,7 +895,7 @@ exports['default'] = function (Vue) {
       var vm = this.vm;
       /* istanbul ignore if */
       if (!vm.$route) {
-        (0, _util.warn)('v-link can only be used inside a ' + 'router-enabled app.');
+        _util.warn('v-link can only be used inside a ' + 'router-enabled app.');
         return;
       }
       var router = vm.$route.router;
@@ -60,22 +907,33 @@ exports['default'] = function (Vue) {
         // don't redirect on right click
         if (e.button !== 0) return;
 
-        if (_this.el.tagName === 'A') {
-          // v-link on <a v-link="'path'">
+        var target = _this.target;
+        var go = function go(target) {
           e.preventDefault();
-          if (_this.destination != null) {
-            router.go(_this.destination);
+          if (target != null) {
+            router.go(target);
           }
+        };
+
+        if (_this.el.tagName === 'A' || e.target === _this.el) {
+          // v-link on <a v-link="'path'">
+          go(target);
         } else {
           // v-link delegate on <div v-link>
           var el = e.target;
           while (el && el.tagName !== 'A' && el !== _this.el) {
             el = el.parentNode;
           }
-          if (!el || el.tagName !== 'A' || !el.href) return;
-          if (sameOrigin(el)) {
-            e.preventDefault();
-            router.go(el.pathname);
+          if (!el) return;
+          if (el.tagName !== 'A' || !el.href) {
+            // allow not anchor
+            go(target);
+          } else if (sameOrigin(el)) {
+            go({
+              path: el.pathname,
+              replace: target && target.replace,
+              append: target && target.append
+            });
           }
         }
       };
@@ -86,13 +944,20 @@ exports['default'] = function (Vue) {
 
     update: function update(path) {
       var router = this.vm.$route.router;
-      path = router._normalizePath(path);
-      this.destination = path;
-      this.activeRE = path ? new RegExp('^' + path.replace(regexEscapeRE, '\\$&') + '\\b') : null;
+      var append = undefined;
+      this.target = path;
+      if (_.isObject(path)) {
+        append = path.append;
+        this.exact = path.exact;
+        this.prevActiveClass = this.activeClass;
+        this.activeClass = path.activeClass;
+      }
+      path = this.path = router._stringifyPath(path);
+      this.activeRE = path && !this.exact ? new RegExp('^' + path.replace(/\/$/, '').replace(regexEscapeRE, '\\$&') + '(\\/|$)') : null;
       this.updateClasses(this.vm.$route.path);
       var isAbsolute = path.charAt(0) === '/';
       // do not format non-hash relative paths
-      var href = router.mode === 'hash' || isAbsolute ? router.history.formatPath(path) : path;
+      var href = path && (router.mode === 'hash' || isAbsolute) ? router.history.formatPath(path, append) : path;
       if (this.el.tagName === 'A') {
         if (href) {
           this.el.href = href;
@@ -104,19 +969,28 @@ exports['default'] = function (Vue) {
 
     updateClasses: function updateClasses(path) {
       var el = this.el;
-      var dest = this.destination;
+      var dest = this.path;
       var router = this.vm.$route.router;
-      var activeClass = router._linkActiveClass;
-      var exactClass = activeClass + '-exact';
-      if (this.activeRE && this.activeRE.test(path) && path !== '/') {
-        _.addClass(el, activeClass);
-      } else {
-        _.removeClass(el, activeClass);
+      var activeClass = this.activeClass || router._linkActiveClass;
+      // clear old class
+      if (this.prevActiveClass !== activeClass) {
+        _.removeClass(el, this.prevActiveClass);
       }
-      if (path === dest) {
-        _.addClass(el, exactClass);
+      // add new class
+      if (this.exact) {
+        if (dest === path ||
+        // also allow additional trailing slash
+        dest.charAt(dest.length - 1) !== '/' && dest === path.replace(trailingSlashRE, '')) {
+          _.addClass(el, activeClass);
+        } else {
+          _.removeClass(el, activeClass);
+        }
       } else {
-        _.removeClass(el, exactClass);
+        if (this.activeRE && this.activeRE.test(path)) {
+          _.addClass(el, activeClass);
+        } else {
+          _.removeClass(el, activeClass);
+        }
       }
     },
 
@@ -135,9 +1009,7 @@ module.exports = exports['default'];
 },{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/directives/view.js":[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
 var _util = require('../util');
 
@@ -163,7 +1035,7 @@ exports['default'] = function (Vue) {
       var route = this.vm.$route;
       /* istanbul ignore if */
       if (!route) {
-        (0, _util.warn)('<router-view> can only be used inside a ' + 'router-enabled app.');
+        _util.warn('<router-view> can only be used inside a ' + 'router-enabled app.');
         return;
       }
       // force dynamic directive so v-component doesn't
@@ -171,18 +1043,6 @@ exports['default'] = function (Vue) {
       this._isDynamicLiteral = true;
       // finally, init by delegating to v-component
       componentDef.bind.call(this);
-
-      // does not support keep-alive.
-      /* istanbul ignore if */
-      if (this.keepAlive) {
-        this.keepAlive = false;
-        (0, _util.warn)('<router-view> does not support keep-alive.');
-      }
-      /* istanbul ignore if */
-      if (this.waitForEvent) {
-        this.waitForEvent = null;
-        (0, _util.warn)('<router-view> does not support wait-for. Use ' + 'the acitvate route hook instead.');
-      }
 
       // all we need to do here is registering this view
       // in the router. actual component switching will be
@@ -209,7 +1069,7 @@ exports['default'] = function (Vue) {
       var transition = route.router._currentTransition;
       if (!parentView && transition.done || parentView && parentView.activated) {
         var depth = parentView ? parentView.depth + 1 : 0;
-        (0, _pipeline.activate)(this, transition, depth);
+        _pipeline.activate(this, transition, depth);
       }
     },
 
@@ -226,13 +1086,9 @@ module.exports = exports['default'];
 },{"../pipeline":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/pipeline.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/history/abstract.js":[function(require,module,exports){
 'use strict';
 
-var _createClass = require('babel-runtime/helpers/create-class')['default'];
-
 var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
 var _util = require('../util');
 
@@ -246,44 +1102,34 @@ var AbstractHistory = (function () {
     this.currentPath = '/';
   }
 
-  _createClass(AbstractHistory, [{
-    key: 'start',
-    value: function start() {
-      this.onChange('/');
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      // noop
-    }
-  }, {
-    key: 'go',
-    value: function go(path) {
-      path = this.currentPath = this.formatPath(path);
-      this.onChange(path);
-    }
-  }, {
-    key: 'formatPath',
-    value: function formatPath(path) {
-      return path.charAt(0) === '/' ? path : (0, _util.resolvePath)(this.currentPath, path);
-    }
-  }]);
+  AbstractHistory.prototype.start = function start() {
+    this.onChange('/');
+  };
+
+  AbstractHistory.prototype.stop = function stop() {
+    // noop
+  };
+
+  AbstractHistory.prototype.go = function go(path, replace, append) {
+    path = this.currentPath = this.formatPath(path, append);
+    this.onChange(path);
+  };
+
+  AbstractHistory.prototype.formatPath = function formatPath(path, append) {
+    return path.charAt(0) === '/' ? path : _util.resolvePath(this.currentPath, path, append);
+  };
 
   return AbstractHistory;
 })();
 
 exports['default'] = AbstractHistory;
 module.exports = exports['default'];
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js","babel-runtime/helpers/class-call-check":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/class-call-check.js","babel-runtime/helpers/create-class":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/create-class.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/history/hash.js":[function(require,module,exports){
+},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js","babel-runtime/helpers/class-call-check":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/helpers/class-call-check.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/history/hash.js":[function(require,module,exports){
 'use strict';
-
-var _createClass = require('babel-runtime/helpers/create-class')['default'];
 
 var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
 var _util = require('../util');
 
@@ -298,66 +1144,57 @@ var HashHistory = (function () {
     this.onChange = onChange;
   }
 
-  _createClass(HashHistory, [{
-    key: 'start',
-    value: function start() {
-      var self = this;
-      this.listener = function () {
-        var path = location.hash;
-        var formattedPath = self.formatPath(path, true);
-        if (formattedPath !== path) {
-          location.replace(formattedPath);
-          return;
-        }
-        var pathToMatch = decodeURI(path.replace(/^#!?/, '') + location.search);
-        self.onChange(pathToMatch);
-      };
-      window.addEventListener('hashchange', this.listener);
-      this.listener();
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      window.removeEventListener('hashchange', this.listener);
-    }
-  }, {
-    key: 'go',
-    value: function go(path, replace) {
-      path = this.formatPath(path);
-      if (replace) {
-        location.replace(path);
-      } else {
-        location.hash = path;
+  HashHistory.prototype.start = function start() {
+    var self = this;
+    this.listener = function () {
+      var path = location.hash;
+      var raw = path.replace(/^#!?/, '');
+      // always
+      if (raw.charAt(0) !== '/') {
+        raw = '/' + raw;
       }
-    }
-  }, {
-    key: 'formatPath',
-    value: function formatPath(path, expectAbsolute) {
-      path = path.replace(/^#!?/, '');
-      var isAbsoloute = path.charAt(0) === '/';
-      if (expectAbsolute && !isAbsoloute) {
-        path = '/' + path;
+      var formattedPath = self.formatPath(raw);
+      if (formattedPath !== path) {
+        location.replace(formattedPath);
+        return;
       }
-      var prefix = '#' + (this.hashbang ? '!' : '');
-      return isAbsoloute || expectAbsolute ? prefix + path : prefix + (0, _util.resolvePath)(location.hash.replace(/^#!?/, ''), path);
+      var pathToMatch = decodeURI(path.replace(/^#!?/, '') + location.search);
+      self.onChange(pathToMatch);
+    };
+    window.addEventListener('hashchange', this.listener);
+    this.listener();
+  };
+
+  HashHistory.prototype.stop = function stop() {
+    window.removeEventListener('hashchange', this.listener);
+  };
+
+  HashHistory.prototype.go = function go(path, replace, append) {
+    path = this.formatPath(path, append);
+    if (replace) {
+      location.replace(path);
+    } else {
+      location.hash = path;
     }
-  }]);
+  };
+
+  HashHistory.prototype.formatPath = function formatPath(path, append) {
+    var isAbsoloute = path.charAt(0) === '/';
+    var prefix = '#' + (this.hashbang ? '!' : '');
+    return isAbsoloute ? prefix + path : prefix + _util.resolvePath(location.hash.replace(/^#!?/, ''), path, append);
+  };
 
   return HashHistory;
 })();
 
 exports['default'] = HashHistory;
 module.exports = exports['default'];
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js","babel-runtime/helpers/class-call-check":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/class-call-check.js","babel-runtime/helpers/create-class":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/create-class.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/history/html5.js":[function(require,module,exports){
+},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js","babel-runtime/helpers/class-call-check":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/helpers/class-call-check.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/history/html5.js":[function(require,module,exports){
 'use strict';
-
-var _createClass = require('babel-runtime/helpers/create-class')['default'];
 
 var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
 var _util = require('../util');
 
@@ -387,93 +1224,88 @@ var HTML5History = (function () {
     this.base = baseEl && baseEl.getAttribute('href');
   }
 
-  _createClass(HTML5History, [{
-    key: 'start',
-    value: function start() {
-      var _this = this;
+  HTML5History.prototype.start = function start() {
+    var _this = this;
 
-      this.listener = function (e) {
-        var url = decodeURI(location.pathname + location.search);
-        if (_this.root) {
-          url = url.replace(_this.rootRE, '');
-        }
-        _this.onChange(url, e && e.state, location.hash);
-      };
-      window.addEventListener('popstate', this.listener);
-      this.listener();
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      window.removeEventListener('popstate', this.listener);
-    }
-  }, {
-    key: 'go',
-    value: function go(path, replace) {
-      var root = this.root;
-      var url = this.formatPath(path, root);
-      if (replace) {
-        history.replaceState({}, '', url);
-      } else {
-        // record scroll position by replacing current state
-        history.replaceState({
-          pos: {
-            x: window.pageXOffset,
-            y: window.pageYOffset
-          }
-        }, '');
-        // then push new state
-        history.pushState({}, '', url);
+    this.listener = function (e) {
+      var url = decodeURI(location.pathname + location.search);
+      if (_this.root) {
+        url = url.replace(_this.rootRE, '');
       }
-      var hashMatch = path.match(hashRE);
-      var hash = hashMatch && hashMatch[0];
-      path = url
-      // strip hash so it doesn't mess up params
-      .replace(hashRE, '')
-      // remove root before matching
-      .replace(this.rootRE, '');
-      this.onChange(path, null, hash);
+      _this.onChange(url, e && e.state, location.hash);
+    };
+    window.addEventListener('popstate', this.listener);
+    this.listener();
+  };
+
+  HTML5History.prototype.stop = function stop() {
+    window.removeEventListener('popstate', this.listener);
+  };
+
+  HTML5History.prototype.go = function go(path, replace, append) {
+    var url = this.formatPath(path, append);
+    if (replace) {
+      history.replaceState({}, '', url);
+    } else {
+      // record scroll position by replacing current state
+      history.replaceState({
+        pos: {
+          x: window.pageXOffset,
+          y: window.pageYOffset
+        }
+      }, '');
+      // then push new state
+      history.pushState({}, '', url);
     }
-  }, {
-    key: 'formatPath',
-    value: function formatPath(path) {
-      return path.charAt(0) === '/'
-      // absolute path
-      ? this.root ? this.root + '/' + path.replace(/^\//, '') : path : (0, _util.resolvePath)(this.base || location.pathname, path);
-    }
-  }]);
+    var hashMatch = path.match(hashRE);
+    var hash = hashMatch && hashMatch[0];
+    path = url
+    // strip hash so it doesn't mess up params
+    .replace(hashRE, '')
+    // remove root before matching
+    .replace(this.rootRE, '');
+    this.onChange(path, null, hash);
+  };
+
+  HTML5History.prototype.formatPath = function formatPath(path, append) {
+    return path.charAt(0) === '/'
+    // absolute path
+    ? this.root ? this.root + '/' + path.replace(/^\//, '') : path : _util.resolvePath(this.base || location.pathname, path, append);
+  };
 
   return HTML5History;
 })();
 
 exports['default'] = HTML5History;
 module.exports = exports['default'];
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js","babel-runtime/helpers/class-call-check":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/class-call-check.js","babel-runtime/helpers/create-class":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/create-class.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/index.js":[function(require,module,exports){
+},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js","babel-runtime/helpers/class-call-check":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/helpers/class-call-check.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/index.js":[function(require,module,exports){
 'use strict';
 
 var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
 
 var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
 var _util = require('./util');
 
 var _util2 = _interopRequireDefault(_util);
 
+var _override = require('./override');
+
+var _override2 = _interopRequireDefault(_override);
+
 var _routeRecognizer = require('route-recognizer');
 
 var _routeRecognizer2 = _interopRequireDefault(_routeRecognizer);
 
-var _routerApi = require('./router/api');
+var _route = require('./route');
 
-var _routerApi2 = _interopRequireDefault(_routerApi);
+var _route2 = _interopRequireDefault(_route);
 
-var _routerInternal = require('./router/internal');
+var _transition = require('./transition');
 
-var _routerInternal2 = _interopRequireDefault(_routerInternal);
+var _transition2 = _interopRequireDefault(_transition);
 
 var _directivesView = require('./directives/view');
 
@@ -482,10 +1314,6 @@ var _directivesView2 = _interopRequireDefault(_directivesView);
 var _directivesLink = require('./directives/link');
 
 var _directivesLink2 = _interopRequireDefault(_directivesLink);
-
-var _override = require('./override');
-
-var _override2 = _interopRequireDefault(_override);
 
 var _historyAbstract = require('./history/abstract');
 
@@ -505,90 +1333,554 @@ var historyBackends = {
   html5: _historyHtml52['default']
 };
 
+// late bind during install
+var Vue = undefined;
+
 /**
  * Router constructor
  *
  * @param {Object} [options]
  */
 
-var Router = function Router() {
-  var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+var Router = (function () {
+  function Router() {
+    var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-  var _ref$hashbang = _ref.hashbang;
-  var hashbang = _ref$hashbang === undefined ? true : _ref$hashbang;
-  var _ref$abstract = _ref.abstract;
-  var abstract = _ref$abstract === undefined ? false : _ref$abstract;
-  var _ref$history = _ref.history;
-  var history = _ref$history === undefined ? false : _ref$history;
-  var _ref$saveScrollPosition = _ref.saveScrollPosition;
-  var saveScrollPosition = _ref$saveScrollPosition === undefined ? false : _ref$saveScrollPosition;
-  var _ref$transitionOnLoad = _ref.transitionOnLoad;
-  var transitionOnLoad = _ref$transitionOnLoad === undefined ? false : _ref$transitionOnLoad;
-  var _ref$suppressTransitionError = _ref.suppressTransitionError;
-  var suppressTransitionError = _ref$suppressTransitionError === undefined ? false : _ref$suppressTransitionError;
-  var _ref$root = _ref.root;
-  var root = _ref$root === undefined ? null : _ref$root;
-  var _ref$linkActiveClass = _ref.linkActiveClass;
-  var linkActiveClass = _ref$linkActiveClass === undefined ? 'v-link-active' : _ref$linkActiveClass;
+    var _ref$hashbang = _ref.hashbang;
+    var hashbang = _ref$hashbang === undefined ? true : _ref$hashbang;
+    var _ref$abstract = _ref.abstract;
+    var abstract = _ref$abstract === undefined ? false : _ref$abstract;
+    var _ref$history = _ref.history;
+    var history = _ref$history === undefined ? false : _ref$history;
+    var _ref$saveScrollPosition = _ref.saveScrollPosition;
+    var saveScrollPosition = _ref$saveScrollPosition === undefined ? false : _ref$saveScrollPosition;
+    var _ref$transitionOnLoad = _ref.transitionOnLoad;
+    var transitionOnLoad = _ref$transitionOnLoad === undefined ? false : _ref$transitionOnLoad;
+    var _ref$suppressTransitionError = _ref.suppressTransitionError;
+    var suppressTransitionError = _ref$suppressTransitionError === undefined ? false : _ref$suppressTransitionError;
+    var _ref$root = _ref.root;
+    var root = _ref$root === undefined ? null : _ref$root;
+    var _ref$linkActiveClass = _ref.linkActiveClass;
+    var linkActiveClass = _ref$linkActiveClass === undefined ? 'v-link-active' : _ref$linkActiveClass;
 
-  _classCallCheck(this, Router);
+    _classCallCheck(this, Router);
 
-  /* istanbul ignore if */
-  if (!Router.installed) {
-    throw new Error('Please install the Router with Vue.use() before ' + 'creating an instance.');
+    /* istanbul ignore if */
+    if (!Router.installed) {
+      throw new Error('Please install the Router with Vue.use() before ' + 'creating an instance.');
+    }
+
+    // Vue instances
+    this.app = null;
+    this._views = [];
+    this._children = [];
+
+    // route recognizer
+    this._recognizer = new _routeRecognizer2['default']();
+    this._guardRecognizer = new _routeRecognizer2['default']();
+
+    // state
+    this._started = false;
+    this._startCb = null;
+    this._currentRoute = {};
+    this._currentTransition = null;
+    this._previousTransition = null;
+    this._notFoundHandler = null;
+    this._notFoundRedirect = null;
+    this._beforeEachHooks = [];
+    this._afterEachHooks = [];
+
+    // feature detection
+    this._hasPushState = typeof window !== 'undefined' && window.history && window.history.pushState;
+
+    // trigger transition on initial render?
+    this._rendered = false;
+    this._transitionOnLoad = transitionOnLoad;
+
+    // history mode
+    this._abstract = abstract;
+    this._hashbang = hashbang;
+    this._history = this._hasPushState && history;
+
+    // other options
+    this._saveScrollPosition = saveScrollPosition;
+    this._linkActiveClass = linkActiveClass;
+    this._suppress = suppressTransitionError;
+
+    // create history object
+    var inBrowser = Vue.util.inBrowser;
+    this.mode = !inBrowser || this._abstract ? 'abstract' : this._history ? 'html5' : 'hash';
+
+    var History = historyBackends[this.mode];
+    var self = this;
+    this.history = new History({
+      root: root,
+      hashbang: this._hashbang,
+      onChange: function onChange(path, state, anchor) {
+        self._match(path, state, anchor);
+      }
+    });
   }
 
-  // Vue instances
-  this.app = null;
-  this._views = [];
-  this._children = [];
+  /**
+   * Allow directly passing components to a route
+   * definition.
+   *
+   * @param {String} path
+   * @param {Object} handler
+   */
 
-  // route recognizer
-  this._recognizer = new _routeRecognizer2['default']();
-  this._guardRecognizer = new _routeRecognizer2['default']();
+  // API ===================================================
 
-  // state
-  this._started = false;
-  this._currentRoute = {};
-  this._currentTransition = null;
-  this._previousTransition = null;
-  this._notFoundHandler = null;
-  this._beforeEachHooks = [];
-  this._afterEachHooks = [];
+  /**
+  * Register a map of top-level paths.
+  *
+  * @param {Object} map
+  */
 
-  // feature detection
-  this._hasPushState = typeof window !== 'undefined' && window.history && window.history.pushState;
-
-  // trigger transition on initial render?
-  this._rendered = false;
-  this._transitionOnLoad = transitionOnLoad;
-
-  // history mode
-  this._abstract = abstract;
-  this._hashbang = hashbang;
-  this._history = this._hasPushState && history;
-
-  // other options
-  this._saveScrollPosition = saveScrollPosition;
-  this._linkActiveClass = linkActiveClass;
-  this._suppress = suppressTransitionError;
-
-  // create history object
-  var inBrowser = _util2['default'].Vue.util.inBrowser;
-  this.mode = !inBrowser || this._abstract ? 'abstract' : this._history ? 'html5' : 'hash';
-
-  var History = historyBackends[this.mode];
-  var self = this;
-  this.history = new History({
-    root: root,
-    hashbang: this._hashbang,
-    onChange: function onChange(path, state, anchor) {
-      self._match(path, state, anchor);
+  Router.prototype.map = function map(_map) {
+    for (var route in _map) {
+      this.on(route, _map[route]);
     }
-  });
-};
+  };
 
-exports['default'] = Router;
+  /**
+   * Register a single root-level path
+   *
+   * @param {String} rootPath
+   * @param {Object} handler
+   *                 - {String} component
+   *                 - {Object} [subRoutes]
+   *                 - {Boolean} [forceRefresh]
+   *                 - {Function} [before]
+   *                 - {Function} [after]
+   */
+
+  Router.prototype.on = function on(rootPath, handler) {
+    if (rootPath === '*') {
+      this._notFound(handler);
+    } else {
+      this._addRoute(rootPath, handler, []);
+    }
+  };
+
+  /**
+   * Set redirects.
+   *
+   * @param {Object} map
+   */
+
+  Router.prototype.redirect = function redirect(map) {
+    for (var path in map) {
+      this._addRedirect(path, map[path]);
+    }
+  };
+
+  /**
+   * Set aliases.
+   *
+   * @param {Object} map
+   */
+
+  Router.prototype.alias = function alias(map) {
+    for (var path in map) {
+      this._addAlias(path, map[path]);
+    }
+  };
+
+  /**
+   * Set global before hook.
+   *
+   * @param {Function} fn
+   */
+
+  Router.prototype.beforeEach = function beforeEach(fn) {
+    this._beforeEachHooks.push(fn);
+  };
+
+  /**
+   * Set global after hook.
+   *
+   * @param {Function} fn
+   */
+
+  Router.prototype.afterEach = function afterEach(fn) {
+    this._afterEachHooks.push(fn);
+  };
+
+  /**
+   * Navigate to a given path.
+   * The path can be an object describing a named path in
+   * the format of { name: '...', params: {}, query: {}}
+   * The path is assumed to be already decoded, and will
+   * be resolved against root (if provided)
+   *
+   * @param {String|Object} path
+   * @param {Boolean} [replace]
+   */
+
+  Router.prototype.go = function go(path) {
+    var replace = false;
+    var append = false;
+    if (Vue.util.isObject(path)) {
+      replace = path.replace;
+      append = path.append;
+    }
+    path = this._stringifyPath(path);
+    if (path) {
+      this.history.go(path, replace, append);
+    }
+  };
+
+  /**
+   * Short hand for replacing current path
+   *
+   * @param {String} path
+   */
+
+  Router.prototype.replace = function replace(path) {
+    this.go({ path: path, replace: true });
+  };
+
+  /**
+   * Start the router.
+   *
+   * @param {VueConstructor} App
+   * @param {String|Element} container
+   * @param {Function} [cb]
+   */
+
+  Router.prototype.start = function start(App, container, cb) {
+    /* istanbul ignore if */
+    if (this._started) {
+      _util.warn('already started.');
+      return;
+    }
+    this._started = true;
+    this._startCb = cb;
+    if (!this.app) {
+      /* istanbul ignore if */
+      if (!App || !container) {
+        throw new Error('Must start vue-router with a component and a ' + 'root container.');
+      }
+      this._appContainer = container;
+      var Ctor = this._appConstructor = typeof App === 'function' ? App : Vue.extend(App);
+      // give it a name for better debugging
+      Ctor.options.name = Ctor.options.name || 'RouterApp';
+    }
+    this.history.start();
+  };
+
+  /**
+   * Stop listening to route changes.
+   */
+
+  Router.prototype.stop = function stop() {
+    this.history.stop();
+    this._started = false;
+  };
+
+  // Internal methods ======================================
+
+  /**
+  * Add a route containing a list of segments to the internal
+  * route recognizer. Will be called recursively to add all
+  * possible sub-routes.
+  *
+  * @param {String} path
+  * @param {Object} handler
+  * @param {Array} segments
+  */
+
+  Router.prototype._addRoute = function _addRoute(path, handler, segments) {
+    guardComponent(path, handler);
+    handler.path = path;
+    handler.fullPath = (segments.reduce(function (path, segment) {
+      return path + segment.path;
+    }, '') + path).replace('//', '/');
+    segments.push({
+      path: path,
+      handler: handler
+    });
+    this._recognizer.add(segments, {
+      as: handler.name
+    });
+    // add sub routes
+    if (handler.subRoutes) {
+      for (var subPath in handler.subRoutes) {
+        // recursively walk all sub routes
+        this._addRoute(subPath, handler.subRoutes[subPath],
+        // pass a copy in recursion to avoid mutating
+        // across branches
+        segments.slice());
+      }
+    }
+  };
+
+  /**
+   * Set the notFound route handler.
+   *
+   * @param {Object} handler
+   */
+
+  Router.prototype._notFound = function _notFound(handler) {
+    guardComponent('*', handler);
+    this._notFoundHandler = [{ handler: handler }];
+  };
+
+  /**
+   * Add a redirect record.
+   *
+   * @param {String} path
+   * @param {String} redirectPath
+   */
+
+  Router.prototype._addRedirect = function _addRedirect(path, redirectPath) {
+    if (path === '*') {
+      this._notFoundRedirect = redirectPath;
+    } else {
+      this._addGuard(path, redirectPath, this.replace);
+    }
+  };
+
+  /**
+   * Add an alias record.
+   *
+   * @param {String} path
+   * @param {String} aliasPath
+   */
+
+  Router.prototype._addAlias = function _addAlias(path, aliasPath) {
+    this._addGuard(path, aliasPath, this._match);
+  };
+
+  /**
+   * Add a path guard.
+   *
+   * @param {String} path
+   * @param {String} mappedPath
+   * @param {Function} handler
+   */
+
+  Router.prototype._addGuard = function _addGuard(path, mappedPath, _handler) {
+    var _this = this;
+
+    this._guardRecognizer.add([{
+      path: path,
+      handler: function handler(match, query) {
+        var realPath = _util.mapParams(mappedPath, match.params, query);
+        _handler.call(_this, realPath);
+      }
+    }]);
+  };
+
+  /**
+   * Check if a path matches any redirect records.
+   *
+   * @param {String} path
+   * @return {Boolean} - if true, will skip normal match.
+   */
+
+  Router.prototype._checkGuard = function _checkGuard(path) {
+    var matched = this._guardRecognizer.recognize(path);
+    if (matched) {
+      matched[0].handler(matched[0], matched.queryParams);
+      return true;
+    } else if (this._notFoundRedirect) {
+      matched = this._recognizer.recognize(path);
+      if (!matched) {
+        this.replace(this._notFoundRedirect);
+        return true;
+      }
+    }
+  };
+
+  /**
+   * Match a URL path and set the route context on vm,
+   * triggering view updates.
+   *
+   * @param {String} path
+   * @param {Object} [state]
+   * @param {String} [anchor]
+   */
+
+  Router.prototype._match = function _match(path, state, anchor) {
+    var _this2 = this;
+
+    if (this._checkGuard(path)) {
+      return;
+    }
+
+    var currentRoute = this._currentRoute;
+    var currentTransition = this._currentTransition;
+
+    if (currentTransition) {
+      if (currentTransition.to.path === path) {
+        // do nothing if we have an active transition going to the same path
+        return;
+      } else if (currentRoute.path === path) {
+        // We are going to the same path, but we also have an ongoing but
+        // not-yet-validated transition. Abort that transition and reset to
+        // prev transition.
+        currentTransition.aborted = true;
+        this._currentTransition = this._prevTransition;
+        return;
+      } else {
+        // going to a totally different path. abort ongoing transition.
+        currentTransition.aborted = true;
+      }
+    }
+
+    // construct new route and transition context
+    var route = new _route2['default'](path, this);
+    var transition = new _transition2['default'](this, route, currentRoute);
+
+    // current transition is updated right now.
+    // however, current route will only be updated after the transition has
+    // been validated.
+    this._prevTransition = currentTransition;
+    this._currentTransition = transition;
+
+    if (!this.app) {
+      // initial render
+      this.app = new this._appConstructor({
+        el: this._appContainer,
+        _meta: {
+          $route: route
+        }
+      });
+    }
+
+    // check global before hook
+    var beforeHooks = this._beforeEachHooks;
+    var startTransition = function startTransition() {
+      transition.start(function () {
+        _this2._postTransition(route, state, anchor);
+      });
+    };
+
+    if (beforeHooks.length) {
+      transition.runQueue(beforeHooks, function (hook, _, next) {
+        if (transition === _this2._currentTransition) {
+          transition.callHook(hook, null, next, {
+            expectBoolean: true
+          });
+        }
+      }, startTransition);
+    } else {
+      startTransition();
+    }
+
+    if (!this._rendered && this._startCb) {
+      this._startCb.call(null);
+    }
+
+    // HACK:
+    // set rendered to true after the transition start, so
+    // that components that are acitvated synchronously know
+    // whether it is the initial render.
+    this._rendered = true;
+  };
+
+  /**
+   * Set current to the new transition.
+   * This is called by the transition object when the
+   * validation of a route has succeeded.
+   *
+   * @param {Transition} transition
+   */
+
+  Router.prototype._onTransitionValidated = function _onTransitionValidated(transition) {
+    // set current route
+    var route = this._currentRoute = transition.to;
+    // update route context for all children
+    if (this.app.$route !== route) {
+      this.app.$route = route;
+      this._children.forEach(function (child) {
+        child.$route = route;
+      });
+    }
+    // call global after hook
+    if (this._afterEachHooks.length) {
+      this._afterEachHooks.forEach(function (hook) {
+        return hook.call(null, {
+          to: transition.to,
+          from: transition.from
+        });
+      });
+    }
+    this._currentTransition.done = true;
+  };
+
+  /**
+   * Handle stuff after the transition.
+   *
+   * @param {Route} route
+   * @param {Object} [state]
+   * @param {String} [anchor]
+   */
+
+  Router.prototype._postTransition = function _postTransition(route, state, anchor) {
+    // handle scroll positions
+    // saved scroll positions take priority
+    // then we check if the path has an anchor
+    var pos = state && state.pos;
+    if (pos && this._saveScrollPosition) {
+      Vue.nextTick(function () {
+        window.scrollTo(pos.x, pos.y);
+      });
+    } else if (anchor) {
+      Vue.nextTick(function () {
+        var el = document.getElementById(anchor.slice(1));
+        if (el) {
+          window.scrollTo(window.scrollX, el.offsetTop);
+        }
+      });
+    }
+  };
+
+  /**
+   * Normalize named route object / string paths into
+   * a string.
+   *
+   * @param {Object|String|Number} path
+   * @return {String}
+   */
+
+  Router.prototype._stringifyPath = function _stringifyPath(path) {
+    if (path && typeof path === 'object') {
+      if (path.name) {
+        var params = path.params || {};
+        if (path.query) {
+          params.queryParams = path.query;
+        }
+        return this._recognizer.generate(path.name, params);
+      } else if (path.path) {
+        return path.path;
+      } else {
+        return '';
+      }
+    } else {
+      return path ? path + '' : '';
+    }
+  };
+
+  return Router;
+})();
+
+function guardComponent(path, handler) {
+  var comp = handler.component;
+  if (Vue.util.isPlainObject(comp)) {
+    comp = handler.component = Vue.extend(comp);
+  }
+  /* istanbul ignore if */
+  if (typeof comp !== 'function') {
+    handler.component = null;
+    _util.warn('invalid component for route "' + path + '".');
+  }
+}
+
+/* Installation */
 
 Router.installed = false;
 
@@ -597,24 +1889,17 @@ Router.installed = false;
  * Install the necessary directives.
  */
 
-Router.install = function (Vue) {
+Router.install = function (externalVue) {
   /* istanbul ignore if */
   if (Router.installed) {
-    (0, _util.warn)('already installed.');
+    _util.warn('already installed.');
     return;
   }
-  (0, _routerApi2['default'])(Vue, Router);
-  (0, _routerInternal2['default'])(Vue, Router);
-  (0, _directivesView2['default'])(Vue);
-  (0, _directivesLink2['default'])(Vue);
-  (0, _override2['default'])(Vue);
+  Vue = externalVue;
+  _override2['default'](Vue);
+  _directivesView2['default'](Vue);
+  _directivesLink2['default'](Vue);
   _util2['default'].Vue = Vue;
-  // 1.0 only: enable route mixins
-  var strats = Vue.config.optionMergeStrategies;
-  if (strats) {
-    // use the same merge strategy as methods (object hash)
-    strats.route = strats.methods;
-  }
   Router.installed = true;
 };
 
@@ -623,59 +1908,85 @@ Router.install = function (Vue) {
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(Router);
 }
+
+exports['default'] = Router;
 module.exports = exports['default'];
-},{"./directives/link":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/directives/link.js","./directives/view":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/directives/view.js","./history/abstract":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/history/abstract.js","./history/hash":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/history/hash.js","./history/html5":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/history/html5.js","./override":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/override.js","./router/api":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/router/api.js","./router/internal":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/router/internal.js","./util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js","babel-runtime/helpers/class-call-check":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/class-call-check.js","babel-runtime/helpers/interop-require-default":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/interop-require-default.js","route-recognizer":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/route-recognizer/dist/route-recognizer.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/override.js":[function(require,module,exports){
-// overriding Vue's $addChild method, so that every child
+},{"./directives/link":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/directives/link.js","./directives/view":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/directives/view.js","./history/abstract":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/history/abstract.js","./history/hash":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/history/hash.js","./history/html5":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/history/html5.js","./override":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/override.js","./route":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/route.js","./transition":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/transition.js","./util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js","babel-runtime/helpers/class-call-check":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/helpers/class-call-check.js","babel-runtime/helpers/interop-require-default":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/helpers/interop-require-default.js","route-recognizer":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/route-recognizer/dist/route-recognizer.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/override.js":[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
 exports['default'] = function (Vue) {
 
-  var addChild = Vue.prototype.$addChild;
+  var _ = Vue.util;
 
-  Vue.prototype.$addChild = function (opts, Ctor) {
-
-    var route = this.$route;
-    var router = route && route.router;
-
-    // inject meta
-    if (router) {
-      opts = opts || {};
-      var meta = opts._meta = opts._meta || {};
-      meta.$route = route;
-      if (opts._isRouterView) {
-        meta.$loadingRouteData = meta.$loadingRouteData || false;
+  // override Vue's init and destroy process to keep track of router instances
+  var init = Vue.prototype._init;
+  Vue.prototype._init = function (options) {
+    var root = options._parent || options.parent || this;
+    var route = root.$route;
+    if (route) {
+      route.router._children.push(this);
+      if (!this.$route) {
+        /* istanbul ignore if */
+        if (this._defineMeta) {
+          // 0.12
+          this._defineMeta('$route', route);
+        } else {
+          // 1.0
+          _.defineReactive(this, '$route', route);
+        }
       }
     }
-
-    var child = addChild.call(this, opts, Ctor);
-
-    if (router) {
-      // keep track of all children created so we can
-      // update the routes
-      router._children.push(child);
-      child.$on('hook:beforeDestroy', function () {
-        router._children.$remove(child);
-      });
-    }
-
-    return child;
+    init.call(this, options);
   };
+
+  var destroy = Vue.prototype._destroy;
+  Vue.prototype._destroy = function () {
+    if (!this._isBeingDestroyed) {
+      var route = this.$root.$route;
+      if (route) {
+        route.router._children.$remove(this);
+      }
+      destroy.apply(this, arguments);
+    }
+  };
+
+  // 1.0 only: enable route mixins
+  var strats = Vue.config.optionMergeStrategies;
+  var hooksToMergeRE = /^(data|activate|deactivate)$/;
+
+  if (strats) {
+    strats.route = function (parentVal, childVal) {
+      if (!childVal) return parentVal;
+      if (!parentVal) return childVal;
+      var ret = {};
+      _.extend(ret, parentVal);
+      for (var key in childVal) {
+        var a = ret[key];
+        var b = childVal[key];
+        // for data, activate and deactivate, we need to merge them into
+        // arrays similar to lifecycle hooks.
+        if (a && hooksToMergeRE.test(key)) {
+          ret[key] = (_.isArray(a) ? a : [a]).concat(b);
+        } else {
+          ret[key] = b;
+        }
+      }
+      return ret;
+    };
+  }
 };
 
 module.exports = exports['default'];
-// instance inherits the route data
 },{}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/pipeline.js":[function(require,module,exports){
 'use strict';
 
 var _Object$keys = require('babel-runtime/core-js/object/keys')['default'];
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+var _Object$create = require('babel-runtime/core-js/object/create')['default'];
+
+exports.__esModule = true;
 exports.canReuse = canReuse;
 exports.canDeactivate = canDeactivate;
 exports.canActivate = canActivate;
@@ -703,7 +2014,7 @@ function canReuse(view, handler, transition) {
   if (view.Component !== handler.component) {
     return false;
   }
-  var canReuseFn = (0, _util.getRouteConfig)(component, 'canReuse');
+  var canReuseFn = _util.getRouteConfig(component, 'canReuse');
   return typeof canReuseFn === 'boolean' ? canReuseFn : canReuseFn ? canReuseFn.call(component, {
     to: transition.to,
     from: transition.from
@@ -720,7 +2031,7 @@ function canReuse(view, handler, transition) {
 
 function canDeactivate(view, transition, next) {
   var fromComponent = view.childVM;
-  var hook = (0, _util.getRouteConfig)(fromComponent, 'canDeactivate');
+  var hook = _util.getRouteConfig(fromComponent, 'canDeactivate');
   if (!hook) {
     next();
   } else {
@@ -739,13 +2050,13 @@ function canDeactivate(view, transition, next) {
  */
 
 function canActivate(handler, transition, next) {
-  (0, _util.resolveAsyncComponent)(handler, function (Component) {
+  _util.resolveAsyncComponent(handler, function (Component) {
     // have to check due to async-ness
     if (transition.aborted) {
       return;
     }
     // determine if this component can be activated
-    var hook = (0, _util.getRouteConfig)(Component, 'canActivate');
+    var hook = _util.getRouteConfig(Component, 'canActivate');
     if (!hook) {
       next();
     } else {
@@ -766,11 +2077,11 @@ function canActivate(handler, transition, next) {
 
 function deactivate(view, transition, next) {
   var component = view.childVM;
-  var hook = (0, _util.getRouteConfig)(component, 'deactivate');
+  var hook = _util.getRouteConfig(component, 'deactivate');
   if (!hook) {
     next();
   } else {
-    transition.callHook(hook, component, next);
+    transition.callHooks(hook, component, next);
   }
 }
 
@@ -783,7 +2094,7 @@ function deactivate(view, transition, next) {
  * @param {Function} [cb]
  */
 
-function activate(view, transition, depth, cb) {
+function activate(view, transition, depth, cb, reuse) {
   var handler = transition.activateQueue[depth];
   if (!handler) {
     // fix 1.0.0-alpha.3 compat
@@ -795,24 +2106,68 @@ function activate(view, transition, depth, cb) {
   }
 
   var Component = view.Component = handler.component;
-  var activateHook = (0, _util.getRouteConfig)(Component, 'activate');
-  var dataHook = (0, _util.getRouteConfig)(Component, 'data');
-  var waitForData = (0, _util.getRouteConfig)(Component, 'waitForData');
+  var activateHook = _util.getRouteConfig(Component, 'activate');
+  var dataHook = _util.getRouteConfig(Component, 'data');
+  var waitForData = _util.getRouteConfig(Component, 'waitForData');
 
   view.depth = depth;
   view.activated = false;
 
-  // unbuild current component. this step also destroys
-  // and removes all nested child views.
-  view.unbuild(true);
-  // build the new component. this will also create the
-  // direct child view of the current one. it will register
-  // itself as view.childView.
-  var component = view.build({
-    _meta: {
-      $loadingRouteData: !!(dataHook && !waitForData)
+  var component = undefined;
+  var loading = !!(dataHook && !waitForData);
+
+  // "reuse" is a flag passed down when the parent view is
+  // either reused via keep-alive or as a child of a kept-alive view.
+  // of course we can only reuse if the current kept-alive instance
+  // is of the correct type.
+  reuse = reuse && view.childVM && view.childVM.constructor === Component;
+
+  if (reuse) {
+    // just reuse
+    component = view.childVM;
+    component.$loadingRouteData = loading;
+  } else {
+    // unbuild current component. this step also destroys
+    // and removes all nested child views.
+    view.unbuild(true);
+    // handle keep-alive.
+    // if the view has keep-alive, the child vm is not actually
+    // destroyed - its nested views will still be in router's
+    // view list. We need to removed these child views and
+    // cache them on the child vm.
+    if (view.keepAlive) {
+      var views = transition.router._views;
+      var i = views.indexOf(view);
+      if (i > 0) {
+        transition.router._views = views.slice(i);
+        if (view.childVM) {
+          view.childVM._routerViews = views.slice(0, i);
+        }
+      }
     }
-  });
+
+    // build the new component. this will also create the
+    // direct child view of the current one. it will register
+    // itself as view.childView.
+    component = view.build({
+      _meta: {
+        $loadingRouteData: loading
+      }
+    });
+    // handle keep-alive.
+    // when a kept-alive child vm is restored, we need to
+    // add its cached child views into the router's view list,
+    // and also properly update current view's child view.
+    if (view.keepAlive) {
+      component.$loadingRouteData = loading;
+      var cachedViews = component._routerViews;
+      if (cachedViews) {
+        transition.router._views = cachedViews.concat(transition.router._views);
+        view.childView = cachedViews[cachedViews.length - 1];
+        component._routerViews = null;
+      }
+    }
+  }
 
   // cleanup the component in case the transition is aborted
   // before the component is ever inserted.
@@ -822,11 +2177,16 @@ function activate(view, transition, depth, cb) {
 
   // actually insert the component and trigger transition
   var insert = function insert() {
+    if (reuse) {
+      cb && cb();
+      return;
+    }
     var router = transition.router;
     if (router._rendered || router._transitionOnLoad) {
       view.transition(component);
     } else {
       // no transition on first render, manual transition
+      /* istanbul ignore if */
       if (view.setCurrent) {
         // 0.12 compat
         view.setCurrent(component);
@@ -844,7 +2204,7 @@ function activate(view, transition, depth, cb) {
     view.activated = true;
     // activate the child view
     if (view.childView) {
-      exports.activate(view.childView, transition, depth + 1);
+      activate(view.childView, transition, depth + 1, null, reuse || view.keepAlive);
     }
     if (dataHook && waitForData) {
       // wait until data loaded to insert
@@ -859,7 +2219,7 @@ function activate(view, transition, depth, cb) {
   };
 
   if (activateHook) {
-    transition.callHook(activateHook, component, afterActivate, {
+    transition.callHooks(activateHook, component, afterActivate, {
       cleanup: cleanup
     });
   } else {
@@ -876,7 +2236,7 @@ function activate(view, transition, depth, cb) {
 
 function reuse(view, transition) {
   var component = view.childVM;
-  var dataHook = (0, _util.getRouteConfig)(component, 'data');
+  var dataHook = _util.getRouteConfig(component, 'data');
   if (dataHook) {
     loadData(component, transition, dataHook);
   }
@@ -894,40 +2254,59 @@ function reuse(view, transition) {
 
 function loadData(component, transition, hook, cb, cleanup) {
   component.$loadingRouteData = true;
-  transition.callHook(hook, component, function (data, onError) {
+  transition.callHooks(hook, component, function (data, onError) {
+    // merge data from multiple data hooks
+    if (Array.isArray(data) && data._needMerge) {
+      data = data.reduce(function (res, obj) {
+        if (isPlainObject(obj)) {
+          _Object$keys(obj).forEach(function (key) {
+            res[key] = obj[key];
+          });
+        }
+        return res;
+      }, _Object$create(null));
+    }
+    // handle promise sugar syntax
     var promises = [];
-    _Object$keys(data).forEach(function (key) {
-      var val = data[key];
-      if ((0, _util.isPromise)(val)) {
-        promises.push(val.then(function (resolvedVal) {
-          component.$set(key, resolvedVal);
-        }));
-      } else {
-        component.$set(key, val);
-      }
-    });
+    if (isPlainObject(data)) {
+      _Object$keys(data).forEach(function (key) {
+        var val = data[key];
+        if (_util.isPromise(val)) {
+          promises.push(val.then(function (resolvedVal) {
+            component.$set(key, resolvedVal);
+          }));
+        } else {
+          component.$set(key, val);
+        }
+      });
+    }
     if (!promises.length) {
       component.$loadingRouteData = false;
+      cb && cb();
     } else {
       promises[0].constructor.all(promises).then(function (_) {
         component.$loadingRouteData = false;
+        cb && cb();
       }, onError);
     }
-    cb && cb(data);
   }, {
     cleanup: cleanup,
     expectData: true
   });
 }
-},{"./util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js","babel-runtime/core-js/object/keys":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/core-js/object/keys.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/route.js":[function(require,module,exports){
+
+function isPlainObject(obj) {
+  return Object.prototype.toString.call(obj) === '[object Object]';
+}
+},{"./util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js","babel-runtime/core-js/object/create":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/core-js/object/create.js","babel-runtime/core-js/object/keys":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/core-js/object/keys.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/route.js":[function(require,module,exports){
 "use strict";
 
 var _classCallCheck = require("babel-runtime/helpers/class-call-check")["default"];
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var internalKeysRE = /^(component|subRoutes|name)$/;
+var _Object$freeze = require("babel-runtime/core-js/object/freeze")["default"];
+
+exports.__esModule = true;
+var internalKeysRE = /^(component|subRoutes)$/;
 
 /**
  * Route Context Object
@@ -966,471 +2345,19 @@ var Route = function Route(path, router) {
   this.path = path;
   this.router = router;
   // for internal use
-  this._matched = matched || router._notFoundHandler;
+  this.matched = matched || router._notFoundHandler;
+  // Important: freeze self to prevent observation
+  _Object$freeze(this);
 };
 
 exports["default"] = Route;
 module.exports = exports["default"];
-},{"babel-runtime/helpers/class-call-check":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/class-call-check.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/router/api.js":[function(require,module,exports){
+},{"babel-runtime/core-js/object/freeze":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/core-js/object/freeze.js","babel-runtime/helpers/class-call-check":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/helpers/class-call-check.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/transition.js":[function(require,module,exports){
 'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-
-var _util = require('../util');
-
-exports['default'] = function (Vue, Router) {
-
-  /**
-   * Register a map of top-level paths.
-   *
-   * @param {Object} map
-   */
-
-  Router.prototype.map = function (map) {
-    for (var route in map) {
-      this.on(route, map[route]);
-    }
-  };
-
-  /**
-   * Register a single root-level path
-   *
-   * @param {String} rootPath
-   * @param {Object} handler
-   *                 - {String} component
-   *                 - {Object} [subRoutes]
-   *                 - {Boolean} [forceRefresh]
-   *                 - {Function} [before]
-   *                 - {Function} [after]
-   */
-
-  Router.prototype.on = function (rootPath, handler) {
-    if (rootPath === '*') {
-      this._notFound(handler);
-    } else {
-      this._addRoute(rootPath, handler, []);
-    }
-  };
-
-  /**
-   * Set redirects.
-   *
-   * @param {Object} map
-   */
-
-  Router.prototype.redirect = function (map) {
-    for (var path in map) {
-      this._addRedirect(path, map[path]);
-    }
-  };
-
-  /**
-   * Set aliases.
-   *
-   * @param {Object} map
-   */
-
-  Router.prototype.alias = function (map) {
-    for (var path in map) {
-      this._addAlias(path, map[path]);
-    }
-  };
-
-  /**
-   * Set global before hook.
-   *
-   * @param {Function} fn
-   */
-
-  Router.prototype.beforeEach = function (fn) {
-    this._beforeEachHooks.push(fn);
-  };
-
-  /**
-   * Set global after hook.
-   *
-   * @param {Function} fn
-   */
-
-  Router.prototype.afterEach = function (fn) {
-    this._afterEachHooks.push(fn);
-  };
-
-  /**
-   * Navigate to a given path.
-   * The path can be an object describing a named path in
-   * the format of { name: '...', params: {}, query: {}}
-   * The path is assumed to be already decoded, and will
-   * be resolved against root (if provided)
-   *
-   * @param {String|Object} path
-   * @param {Boolean} [replace]
-   */
-
-  Router.prototype.go = function (path, replace) {
-    path = this._normalizePath(path);
-    this.history.go(path, replace);
-  };
-
-  /**
-   * Short hand for replacing current path
-   *
-   * @param {String} path
-   */
-
-  Router.prototype.replace = function (path) {
-    this.go(path, true);
-  };
-
-  /**
-   * Start the router.
-   *
-   * @param {VueConstructor} App
-   * @param {String|Element} container
-   */
-
-  Router.prototype.start = function (App, container) {
-    /* istanbul ignore if */
-    if (this._started) {
-      (0, _util.warn)('already started.');
-      return;
-    }
-    this._started = true;
-    if (!this.app) {
-      /* istanbul ignore if */
-      if (!App || !container) {
-        throw new Error('Must start vue-router with a component and a ' + 'root container.');
-      }
-      this._appContainer = container;
-      this._appConstructor = typeof App === 'function' ? App : Vue.extend(App);
-    }
-    this.history.start();
-  };
-
-  /**
-   * Stop listening to route changes.
-   */
-
-  Router.prototype.stop = function () {
-    this.history.stop();
-    this._started = false;
-  };
-};
-
-module.exports = exports['default'];
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/router/internal.js":[function(require,module,exports){
-'use strict';
-
-var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-
-var _util = require('../util');
-
-var _route = require('../route');
-
-var _route2 = _interopRequireDefault(_route);
-
-var _transition = require('../transition');
-
-var _transition2 = _interopRequireDefault(_transition);
-
-exports['default'] = function (Vue, Router) {
-
-  var _ = Vue.util;
-
-  /**
-   * Add a route containing a list of segments to the internal
-   * route recognizer. Will be called recursively to add all
-   * possible sub-routes.
-   *
-   * @param {String} path
-   * @param {Object} handler
-   * @param {Array} segments
-   */
-
-  Router.prototype._addRoute = function (path, handler, segments) {
-    guardComponent(handler);
-    segments.push({
-      path: path,
-      handler: handler
-    });
-    this._recognizer.add(segments, {
-      as: handler.name
-    });
-    // add sub routes
-    if (handler.subRoutes) {
-      for (var subPath in handler.subRoutes) {
-        // recursively walk all sub routes
-        this._addRoute(subPath, handler.subRoutes[subPath],
-        // pass a copy in recursion to avoid mutating
-        // across branches
-        segments.slice());
-      }
-    }
-  };
-
-  /**
-   * Set the notFound route handler.
-   *
-   * @param {Object} handler
-   */
-
-  Router.prototype._notFound = function (handler) {
-    guardComponent(handler);
-    this._notFoundHandler = [{ handler: handler }];
-  };
-
-  /**
-   * Add a redirect record.
-   *
-   * @param {String} path
-   * @param {String} redirectPath
-   */
-
-  Router.prototype._addRedirect = function (path, redirectPath) {
-    this._addGuard(path, redirectPath, this.replace);
-  };
-
-  /**
-   * Add an alias record.
-   *
-   * @param {String} path
-   * @param {String} aliasPath
-   */
-
-  Router.prototype._addAlias = function (path, aliasPath) {
-    this._addGuard(path, aliasPath, this._match);
-  };
-
-  /**
-   * Add a path guard.
-   *
-   * @param {String} path
-   * @param {String} mappedPath
-   * @param {Function} handler
-   */
-
-  Router.prototype._addGuard = function (path, mappedPath, _handler) {
-    var _this = this;
-
-    this._guardRecognizer.add([{
-      path: path,
-      handler: function handler(match, query) {
-        var realPath = (0, _util.mapParams)(mappedPath, match.params, query);
-        _handler.call(_this, realPath);
-      }
-    }]);
-  };
-
-  /**
-   * Check if a path matches any redirect records.
-   *
-   * @param {String} path
-   * @return {Boolean} - if true, will skip normal match.
-   */
-
-  Router.prototype._checkGuard = function (path) {
-    var matched = this._guardRecognizer.recognize(path);
-    if (matched) {
-      matched[0].handler(matched[0], matched.queryParams);
-      return true;
-    }
-  };
-
-  /**
-   * Match a URL path and set the route context on vm,
-   * triggering view updates.
-   *
-   * @param {String} path
-   * @param {Object} [state]
-   * @param {String} [anchor]
-   */
-
-  Router.prototype._match = function (path, state, anchor) {
-    var _this2 = this;
-
-    if (this._checkGuard(path)) {
-      return;
-    }
-
-    var prevRoute = this._currentRoute;
-    var prevTransition = this._currentTransition;
-
-    // do nothing if going to the same route.
-    // the route only changes when a transition successfully
-    // reaches activation; we don't need to do anything
-    // if an ongoing transition is aborted during validation
-    // phase.
-    if (prevTransition && path === prevRoute.path) {
-      return;
-    }
-
-    // construct new route and transition context
-    var route = new _route2['default'](path, this);
-    var transition = new _transition2['default'](this, route, prevRoute);
-    this._prevTransition = prevTransition;
-    this._currentTransition = transition;
-
-    if (!this.app) {
-      // initial render
-      this.app = new this._appConstructor({
-        el: this._appContainer,
-        _meta: {
-          $route: route
-        }
-      });
-    }
-
-    // check global before hook
-    var beforeHooks = this._beforeEachHooks;
-    var startTransition = function startTransition() {
-      transition.start(function () {
-        _this2._postTransition(route, state, anchor);
-      });
-    };
-
-    if (beforeHooks.length) {
-      transition.runQueue(beforeHooks, function (hook, _, next) {
-        if (transition === _this2._currentTransition) {
-          transition.callHook(hook, null, next, true);
-        }
-      }, startTransition);
-    } else {
-      startTransition();
-    }
-
-    // HACK:
-    // set rendered to true after the transition start, so
-    // that components that are acitvated synchronously know
-    // whether it is the initial render.
-    this._rendered = true;
-  };
-
-  /**
-   * Set current to the new transition.
-   * This is called by the transition object when the
-   * validation of a route has succeeded.
-   *
-   * @param {RouteTransition} transition
-   */
-
-  Router.prototype._onTransitionValidated = function (transition) {
-    // now that this one is validated, we can abort
-    // the previous transition.
-    var prevTransition = this._prevTransition;
-    if (prevTransition) {
-      prevTransition.aborted = true;
-    }
-    // set current route
-    var route = this._currentRoute = transition.to;
-    // update route context for all children
-    if (this.app.$route !== route) {
-      this.app.$route = route;
-      this._children.forEach(function (child) {
-        child.$route = route;
-      });
-    }
-    // call global after hook
-    if (this._afterEachHooks.length) {
-      this._afterEachHooks.forEach(function (hook) {
-        return hook.call(null, {
-          to: transition.to,
-          from: transition.from
-        });
-      });
-    }
-    this._currentTransition.done = true;
-  };
-
-  /**
-   * Handle stuff after the transition.
-   *
-   * @param {Route} route
-   * @param {Object} [state]
-   * @param {String} [anchor]
-   */
-
-  Router.prototype._postTransition = function (route, state, anchor) {
-    // handle scroll positions
-    // saved scroll positions take priority
-    // then we check if the path has an anchor
-    var pos = state && state.pos;
-    if (pos && this._saveScrollPosition) {
-      Vue.nextTick(function () {
-        window.scrollTo(pos.x, pos.y);
-      });
-    } else if (anchor) {
-      Vue.nextTick(function () {
-        var el = document.getElementById(anchor.slice(1));
-        if (el) {
-          window.scrollTo(window.scrollX, el.offsetTop);
-        }
-      });
-    }
-  };
-
-  /**
-   * Normalize named route object / string paths into
-   * a string.
-   *
-   * @param {Object|String|Number} path
-   * @return {String}
-   */
-
-  Router.prototype._normalizePath = function (path) {
-    if (typeof path === 'object') {
-      if (path.name) {
-        var params = path.params || {};
-        if (path.query) {
-          params.queryParams = path.query;
-        }
-        return this._recognizer.generate(path.name, params);
-      } else if (path.path) {
-        return path.path;
-      } else {
-        return '';
-      }
-    } else {
-      return path + '';
-    }
-  };
-
-  /**
-   * Allow directly passing components to a route
-   * definition.
-   *
-   * @param {Object} handler
-   */
-
-  function guardComponent(handler) {
-    var comp = handler.component;
-    if (_.isPlainObject(comp)) {
-      comp = handler.component = Vue.extend(comp);
-    }
-    /* istanbul ignore if */
-    if (typeof comp !== 'function') {
-      handler.component = null;
-      (0, _util.warn)('invalid component for route "' + handler.path + '"');
-    }
-  }
-};
-
-module.exports = exports['default'];
-},{"../route":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/route.js","../transition":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/transition.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js","babel-runtime/helpers/interop-require-default":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/interop-require-default.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/transition.js":[function(require,module,exports){
-'use strict';
-
-var _createClass = require('babel-runtime/helpers/create-class')['default'];
 
 var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
 var _util = require('./util');
 
@@ -1465,7 +2392,7 @@ var RouteTransition = (function () {
     this.deactivateQueue = router._views;
 
     // check the default handler of the deepest match
-    var matched = to._matched ? Array.prototype.slice.call(to._matched) : [];
+    var matched = to.matched ? Array.prototype.slice.call(to.matched) : [];
 
     // the activate queue is an array of route handlers
     // that need to be activated
@@ -1478,243 +2405,272 @@ var RouteTransition = (function () {
    * Abort current transition and return to previous location.
    */
 
-  _createClass(RouteTransition, [{
-    key: 'abort',
-    value: function abort() {
-      if (!this.aborted) {
-        this.aborted = true;
-        // if the root path throws an error during validation
-        // on initial load, it gets caught in an infinite loop.
-        var abortingOnLoad = !this.from.path && this.to.path === '/';
-        if (!abortingOnLoad) {
-          this.router.replace(this.from.path || '/');
-        }
+  RouteTransition.prototype.abort = function abort() {
+    if (!this.aborted) {
+      this.aborted = true;
+      // if the root path throws an error during validation
+      // on initial load, it gets caught in an infinite loop.
+      var abortingOnLoad = !this.from.path && this.to.path === '/';
+      if (!abortingOnLoad) {
+        this.router.replace(this.from.path || '/');
       }
     }
+  };
 
-    /**
-     * Abort current transition and redirect to a new location.
-     *
-     * @param {String} path
-     */
+  /**
+   * Abort current transition and redirect to a new location.
+   *
+   * @param {String} path
+   */
 
-  }, {
-    key: 'redirect',
-    value: function redirect(path) {
-      if (!this.aborted) {
-        this.aborted = true;
-        if (typeof path === 'string') {
-          path = (0, _util.mapParams)(path, this.to.params, this.to.query);
-        } else {
-          path.params = this.to.params;
-          path.query = this.to.query;
-        }
-        this.router.replace(path);
+  RouteTransition.prototype.redirect = function redirect(path) {
+    if (!this.aborted) {
+      this.aborted = true;
+      if (typeof path === 'string') {
+        path = _util.mapParams(path, this.to.params, this.to.query);
+      } else {
+        path.params = this.to.params;
+        path.query = this.to.query;
+      }
+      this.router.replace(path);
+    }
+  };
+
+  /**
+   * A router view transition's pipeline can be described as
+   * follows, assuming we are transitioning from an existing
+   * <router-view> chain [Component A, Component B] to a new
+   * chain [Component A, Component C]:
+   *
+   *  A    A
+   *  | => |
+   *  B    C
+   *
+   * 1. Reusablity phase:
+   *   -> canReuse(A, A)
+   *   -> canReuse(B, C)
+   *   -> determine new queues:
+   *      - deactivation: [B]
+   *      - activation: [C]
+   *
+   * 2. Validation phase:
+   *   -> canDeactivate(B)
+   *   -> canActivate(C)
+   *
+   * 3. Activation phase:
+   *   -> deactivate(B)
+   *   -> activate(C)
+   *
+   * Each of these steps can be asynchronous, and any
+   * step can potentially abort the transition.
+   *
+   * @param {Function} cb
+   */
+
+  RouteTransition.prototype.start = function start(cb) {
+    var transition = this;
+    var daq = this.deactivateQueue;
+    var aq = this.activateQueue;
+    var rdaq = daq.slice().reverse();
+    var reuseQueue = undefined;
+
+    // 1. Reusability phase
+    var i = undefined;
+    for (i = 0; i < rdaq.length; i++) {
+      if (!_pipeline.canReuse(rdaq[i], aq[i], transition)) {
+        break;
       }
     }
+    if (i > 0) {
+      reuseQueue = rdaq.slice(0, i);
+      daq = rdaq.slice(i).reverse();
+      aq = aq.slice(i);
+    }
 
-    /**
-     * A router view transition's pipeline can be described as
-     * follows, assuming we are transitioning from an existing
-     * <router-view> chain [Component A, Component B] to a new
-     * chain [Component A, Component C]:
-     *
-     *  A    A
-     *  | => |
-     *  B    C
-     *
-     * 1. Reusablity phase:
-     *   -> canReuse(A, A)
-     *   -> canReuse(B, C)
-     *   -> determine new queues:
-     *      - deactivation: [B]
-     *      - activation: [C]
-     *
-     * 2. Validation phase:
-     *   -> canDeactivate(B)
-     *   -> canActivate(C)
-     *
-     * 3. Activation phase:
-     *   -> deactivate(B)
-     *   -> activate(C)
-     *
-     * Each of these steps can be asynchronous, and any
-     * step can potentially abort the transition.
-     *
-     * @param {Function} cb
-     */
+    // 2. Validation phase
+    transition.runQueue(daq, _pipeline.canDeactivate, function () {
+      transition.runQueue(aq, _pipeline.canActivate, function () {
+        transition.runQueue(daq, _pipeline.deactivate, function () {
+          // 3. Activation phase
 
-  }, {
-    key: 'start',
-    value: function start(cb) {
-      var transition = this;
-      var daq = this.deactivateQueue;
-      var aq = this.activateQueue;
-      var rdaq = daq.slice().reverse();
-      var reuseQueue = undefined;
+          // Update router current route
+          transition.router._onTransitionValidated(transition);
 
-      // 1. Reusability phase
-      var i = undefined;
-      for (i = 0; i < rdaq.length; i++) {
-        if (!(0, _pipeline.canReuse)(rdaq[i], aq[i], transition)) {
-          break;
-        }
-      }
-      if (i > 0) {
-        reuseQueue = rdaq.slice(0, i);
-        daq = rdaq.slice(i).reverse();
-        aq = aq.slice(i);
-      }
-
-      // 2. Validation phase
-      transition.runQueue(daq, _pipeline.canDeactivate, function () {
-        transition.runQueue(aq, _pipeline.canActivate, function () {
-          transition.runQueue(daq, _pipeline.deactivate, function () {
-            // 3. Activation phase
-
-            // Update router current route
-            transition.router._onTransitionValidated(transition);
-
-            // trigger reuse for all reused views
-            reuseQueue && reuseQueue.forEach(function (view) {
-              (0, _pipeline.reuse)(view, transition);
-            });
-
-            // the root of the chain that needs to be replaced
-            // is the top-most non-reusable view.
-            if (daq.length) {
-              var view = daq[daq.length - 1];
-              var depth = reuseQueue ? reuseQueue.length : 0;
-              (0, _pipeline.activate)(view, transition, depth, cb);
-            } else {
-              cb();
-            }
+          // trigger reuse for all reused views
+          reuseQueue && reuseQueue.forEach(function (view) {
+            _pipeline.reuse(view, transition);
           });
+
+          // the root of the chain that needs to be replaced
+          // is the top-most non-reusable view.
+          if (daq.length) {
+            var view = daq[daq.length - 1];
+            var depth = reuseQueue ? reuseQueue.length : 0;
+            _pipeline.activate(view, transition, depth, cb);
+          } else {
+            cb();
+          }
         });
       });
-    }
+    });
+  };
 
-    /**
-     * Asynchronously and sequentially apply a function to a
-     * queue.
-     *
-     * @param {Array} queue
-     * @param {Function} fn
-     * @param {Function} cb
-     */
+  /**
+   * Asynchronously and sequentially apply a function to a
+   * queue.
+   *
+   * @param {Array} queue
+   * @param {Function} fn
+   * @param {Function} cb
+   */
 
-  }, {
-    key: 'runQueue',
-    value: function runQueue(queue, fn, cb) {
-      var transition = this;
-      step(0);
-      function step(index) {
-        if (index >= queue.length) {
-          cb();
-        } else {
-          fn(queue[index], transition, function () {
-            step(index + 1);
-          });
-        }
+  RouteTransition.prototype.runQueue = function runQueue(queue, fn, cb) {
+    var transition = this;
+    step(0);
+    function step(index) {
+      if (index >= queue.length) {
+        cb();
+      } else {
+        fn(queue[index], transition, function () {
+          step(index + 1);
+        });
       }
     }
+  };
 
-    /**
-     * Call a user provided route transition hook and handle
-     * the response (e.g. if the user returns a promise).
-     *
-     * @param {Function} hook
-     * @param {*} [context]
-     * @param {Function} [cb]
-     * @param {Object} [options]
-     *                 - {Boolean} expectBoolean
-     *                 - {Boolean} expectData
-     *                 - {Function} cleanup
-     */
+  /**
+   * Call a user provided route transition hook and handle
+   * the response (e.g. if the user returns a promise).
+   *
+   * If the user neither expects an argument nor returns a
+   * promise, the hook is assumed to be synchronous.
+   *
+   * @param {Function} hook
+   * @param {*} [context]
+   * @param {Function} [cb]
+   * @param {Object} [options]
+   *                 - {Boolean} expectBoolean
+   *                 - {Boolean} expectData
+   *                 - {Function} cleanup
+   */
 
-  }, {
-    key: 'callHook',
-    value: function callHook(hook, context, cb) {
-      var _ref = arguments.length <= 3 || arguments[3] === undefined ? {} : arguments[3];
+  RouteTransition.prototype.callHook = function callHook(hook, context, cb) {
+    var _ref = arguments.length <= 3 || arguments[3] === undefined ? {} : arguments[3];
 
-      var _ref$expectBoolean = _ref.expectBoolean;
-      var expectBoolean = _ref$expectBoolean === undefined ? false : _ref$expectBoolean;
-      var _ref$expectData = _ref.expectData;
-      var expectData = _ref$expectData === undefined ? false : _ref$expectData;
-      var cleanup = _ref.cleanup;
+    var _ref$expectBoolean = _ref.expectBoolean;
+    var expectBoolean = _ref$expectBoolean === undefined ? false : _ref$expectBoolean;
+    var _ref$expectData = _ref.expectData;
+    var expectData = _ref$expectData === undefined ? false : _ref$expectData;
+    var cleanup = _ref.cleanup;
 
-      var transition = this;
-      var nextCalled = false;
+    var transition = this;
+    var nextCalled = false;
 
-      // abort the transition
-      var abort = function abort(back) {
+    // abort the transition
+    var abort = function abort() {
+      cleanup && cleanup();
+      transition.abort();
+    };
+
+    // handle errors
+    var onError = function onError(err) {
+      // cleanup indicates an after-activation hook,
+      // so instead of aborting we just let the transition
+      // finish.
+      cleanup ? next() : abort();
+      if (err && !transition.router._suppress) {
+        _util.warn('Uncaught error during transition: ');
+        throw err instanceof Error ? err : new Error(err);
+      }
+    };
+
+    // advance the transition to the next step
+    var next = function next(data) {
+      if (nextCalled) {
+        _util.warn('transition.next() should be called only once.');
+        return;
+      }
+      nextCalled = true;
+      if (transition.aborted) {
         cleanup && cleanup();
-        transition.abort(back);
-      };
-
-      // handle errors
-      var onError = function onError(err) {
-        // cleanup indicates an after-activation hook,
-        // so instead of aborting we just let the transition
-        // finish.
-        cleanup ? next() : abort();
-        if (err && !transition.router._suppress) {
-          (0, _util.warn)('Uncaught error during transition: ');
-          throw err instanceof Error ? err : new Error(err);
-        }
-      };
-
-      // advance the transition to the next step
-      var next = function next(data) {
-        if (nextCalled) {
-          (0, _util.warn)('transition.next() should be called only once.');
-          return;
-        }
-        nextCalled = true;
-        if (!cb || transition.aborted) {
-          return;
-        }
-        cb(data, onError);
-      };
-
-      // expose a clone of the transition object, so that each
-      // hook gets a clean copy and prevent the user from
-      // messing with the internals.
-      var exposed = {
-        to: transition.to,
-        from: transition.from,
-        abort: abort,
-        next: next,
-        redirect: function redirect() {
-          transition.redirect.apply(transition, arguments);
-        }
-      };
-
-      // actually call the hook
-      var res = undefined;
-      try {
-        res = hook.call(context, exposed);
-      } catch (err) {
-        return onError(err);
+        return;
       }
+      cb && cb(data, onError);
+    };
 
-      // handle boolean/promise return values
-      var resIsPromise = (0, _util.isPromise)(res);
-      if (expectBoolean) {
-        if (typeof res === 'boolean') {
-          res ? next() : abort();
-        } else if (resIsPromise) {
-          res.then(function (ok) {
-            ok ? next() : abort();
-          }, onError);
-        }
+    // expose a clone of the transition object, so that each
+    // hook gets a clean copy and prevent the user from
+    // messing with the internals.
+    var exposed = {
+      to: transition.to,
+      from: transition.from,
+      abort: abort,
+      next: next,
+      redirect: function redirect() {
+        transition.redirect.apply(transition, arguments);
+      }
+    };
+
+    // actually call the hook
+    var res = undefined;
+    try {
+      res = hook.call(context, exposed);
+    } catch (err) {
+      return onError(err);
+    }
+
+    // handle boolean/promise return values
+    var resIsPromise = _util.isPromise(res);
+    if (expectBoolean) {
+      if (typeof res === 'boolean') {
+        res ? next() : abort();
       } else if (resIsPromise) {
-        res.then(next, onError);
-      } else if (expectData && isPlainOjbect(res)) {
+        res.then(function (ok) {
+          ok ? next() : abort();
+        }, onError);
+      } else if (!hook.length) {
         next(res);
       }
+    } else if (resIsPromise) {
+      res.then(next, onError);
+    } else if (expectData && isPlainOjbect(res) || !hook.length) {
+      next(res);
     }
-  }]);
+  };
+
+  /**
+   * Call a single hook or an array of async hooks in series.
+   *
+   * @param {Array} hooks
+   * @param {*} context
+   * @param {Function} cb
+   * @param {Object} [options]
+   */
+
+  RouteTransition.prototype.callHooks = function callHooks(hooks, context, cb, options) {
+    var _this = this;
+
+    if (Array.isArray(hooks)) {
+      (function () {
+        var res = [];
+        res._needMerge = true;
+        var onError = undefined;
+        _this.runQueue(hooks, function (hook, _, next) {
+          if (!_this.aborted) {
+            _this.callHook(hook, context, function (r, onError) {
+              if (r) res.push(r);
+              onError = onError;
+              next();
+            }, options);
+          }
+        }, function () {
+          cb(res, onError);
+        });
+      })();
+    } else {
+      this.callHook(hooks, context, cb, options);
+    }
+  };
 
   return RouteTransition;
 })();
@@ -1725,14 +2681,12 @@ function isPlainOjbect(val) {
   return Object.prototype.toString.call(val) === '[object Object]';
 }
 module.exports = exports['default'];
-},{"./pipeline":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/pipeline.js","./util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js","babel-runtime/helpers/class-call-check":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/class-call-check.js","babel-runtime/helpers/create-class":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/create-class.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js":[function(require,module,exports){
+},{"./pipeline":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/pipeline.js","./util":"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js","babel-runtime/helpers/class-call-check":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/helpers/class-call-check.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/lib/util.js":[function(require,module,exports){
 'use strict';
 
 var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 exports.warn = warn;
 exports.resolvePath = resolvePath;
 exports.isPromise = isPromise;
@@ -1754,15 +2708,15 @@ exports['default'] = _exports;
  * Warn stuff.
  *
  * @param {String} msg
- * @param {Error} [err]
  */
 
-function warn(msg, err) {
+function warn(msg) {
   /* istanbul ignore next */
   if (window.console) {
     console.warn('[vue-router] ' + msg);
-    if (err) {
-      console.warn(err.stack);
+    /* istanbul ignore if */
+    if (!_exports.Vue || _exports.Vue.config.debug) {
+      console.warn(new Error('warning stack trace:').stack);
     }
   }
 }
@@ -1772,10 +2726,11 @@ function warn(msg, err) {
  *
  * @param {String} base
  * @param {String} relative
+ * @param {Boolean} append
  * @return {String}
  */
 
-function resolvePath(base, relative) {
+function resolvePath(base, relative, append) {
   var query = base.match(/(\?.*)$/);
   if (query) {
     query = query[1];
@@ -1786,10 +2741,14 @@ function resolvePath(base, relative) {
     return base + relative;
   }
   var stack = base.split('/');
-  // remove trailing segment
-  stack.pop();
+  // remove trailing segment if:
+  // - not appending
+  // - appending to trailing slash (last segment is empty)
+  if (!append || !stack[stack.length - 1]) {
+    stack.pop();
+  }
   // resolve relative path
-  var segments = relative.split('/');
+  var segments = relative.replace(/^\//, '').split('/');
   for (var i = 0; i < segments.length; i++) {
     var segment = segments[i];
     if (segment === '.') {
@@ -1871,199 +2830,21 @@ function resolveAsyncComponent(handler, cb) {
  */
 
 function mapParams(path, params, query) {
-  for (var key in params) {
-    path = replaceParam(path, params, key);
-  }
+  if (params === undefined) params = {};
+
+  path = path.replace(/:([^\/]+)/g, function (_, key) {
+    var val = params[key];
+    if (!val) {
+      warn('param "' + key + '" not found when generating ' + 'path for "' + path + '" with params ' + JSON.stringify(params));
+    }
+    return val || '';
+  });
   if (query) {
     path += genQuery(query);
   }
   return path;
 }
-
-/**
- * Replace a param segment with real value in a matched
- * path.
- *
- * @param {String} path
- * @param {Object} params
- * @param {String} key
- * @return {String}
- */
-
-function replaceParam(path, params, key) {
-  var regex = new RegExp(':' + key + '(\\/|$)');
-  var value = params[key];
-  return path.replace(regex, function (m) {
-    return m.charAt(m.length - 1) === '/' ? value + '/' : value;
-  });
-}
-},{"babel-runtime/helpers/interop-require-default":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/interop-require-default.js","route-recognizer":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/route-recognizer/dist/route-recognizer.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/core-js/object/define-property.js":[function(require,module,exports){
-module.exports = { "default": require("core-js/library/fn/object/define-property"), __esModule: true };
-},{"core-js/library/fn/object/define-property":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/fn/object/define-property.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/core-js/object/keys.js":[function(require,module,exports){
-module.exports = { "default": require("core-js/library/fn/object/keys"), __esModule: true };
-},{"core-js/library/fn/object/keys":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/fn/object/keys.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/class-call-check.js":[function(require,module,exports){
-"use strict";
-
-exports["default"] = function (instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-};
-
-exports.__esModule = true;
-},{}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/create-class.js":[function(require,module,exports){
-"use strict";
-
-var _Object$defineProperty = require("babel-runtime/core-js/object/define-property")["default"];
-
-exports["default"] = (function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-
-      _Object$defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) defineProperties(Constructor, staticProps);
-    return Constructor;
-  };
-})();
-
-exports.__esModule = true;
-},{"babel-runtime/core-js/object/define-property":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/core-js/object/define-property.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/helpers/interop-require-default.js":[function(require,module,exports){
-"use strict";
-
-exports["default"] = function (obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-};
-
-exports.__esModule = true;
-},{}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/fn/object/define-property.js":[function(require,module,exports){
-var $ = require('../../modules/$');
-module.exports = function defineProperty(it, key, desc){
-  return $.setDesc(it, key, desc);
-};
-},{"../../modules/$":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/fn/object/keys.js":[function(require,module,exports){
-require('../../modules/es6.object.keys');
-module.exports = require('../../modules/$.core').Object.keys;
-},{"../../modules/$.core":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.core.js","../../modules/es6.object.keys":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/es6.object.keys.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.core.js":[function(require,module,exports){
-var core = module.exports = {version: '1.2.0'};
-if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-},{}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.def.js":[function(require,module,exports){
-var global    = require('./$.global')
-  , core      = require('./$.core')
-  , PROTOTYPE = 'prototype';
-var ctx = function(fn, that){
-  return function(){
-    return fn.apply(that, arguments);
-  };
-};
-var $def = function(type, name, source){
-  var key, own, out, exp
-    , isGlobal = type & $def.G
-    , isProto  = type & $def.P
-    , target   = isGlobal ? global : type & $def.S
-        ? global[name] : (global[name] || {})[PROTOTYPE]
-    , exports  = isGlobal ? core : core[name] || (core[name] = {});
-  if(isGlobal)source = name;
-  for(key in source){
-    // contains in native
-    own = !(type & $def.F) && target && key in target;
-    if(own && key in exports)continue;
-    // export native or passed
-    out = own ? target[key] : source[key];
-    // prevent global pollution for namespaces
-    if(isGlobal && typeof target[key] != 'function')exp = source[key];
-    // bind timers to global for call from export context
-    else if(type & $def.B && own)exp = ctx(out, global);
-    // wrap global constructors for prevent change them in library
-    else if(type & $def.W && target[key] == out)!function(C){
-      exp = function(param){
-        return this instanceof C ? new C(param) : C(param);
-      };
-      exp[PROTOTYPE] = C[PROTOTYPE];
-    }(out);
-    else exp = isProto && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // export
-    exports[key] = exp;
-    if(isProto)(exports[PROTOTYPE] || (exports[PROTOTYPE] = {}))[key] = out;
-  }
-};
-// type bitmap
-$def.F = 1;  // forced
-$def.G = 2;  // global
-$def.S = 4;  // static
-$def.P = 8;  // proto
-$def.B = 16; // bind
-$def.W = 32; // wrap
-module.exports = $def;
-},{"./$.core":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.core.js","./$.global":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.global.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.defined.js":[function(require,module,exports){
-// 7.2.1 RequireObjectCoercible(argument)
-module.exports = function(it){
-  if(it == undefined)throw TypeError("Can't call method on  " + it);
-  return it;
-};
-},{}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.fails.js":[function(require,module,exports){
-module.exports = function(exec){
-  try {
-    return !!exec();
-  } catch(e){
-    return true;
-  }
-};
-},{}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.global.js":[function(require,module,exports){
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var UNDEFINED = 'undefined';
-var global = module.exports = typeof window != UNDEFINED && window.Math == Math
-  ? window : typeof self != UNDEFINED && self.Math == Math ? self : Function('return this')();
-if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-},{}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.js":[function(require,module,exports){
-var $Object = Object;
-module.exports = {
-  create:     $Object.create,
-  getProto:   $Object.getPrototypeOf,
-  isEnum:     {}.propertyIsEnumerable,
-  getDesc:    $Object.getOwnPropertyDescriptor,
-  setDesc:    $Object.defineProperty,
-  setDescs:   $Object.defineProperties,
-  getKeys:    $Object.keys,
-  getNames:   $Object.getOwnPropertyNames,
-  getSymbols: $Object.getOwnPropertySymbols,
-  each:       [].forEach
-};
-},{}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.object-sap.js":[function(require,module,exports){
-// most Object methods by ES6 should accept primitives
-module.exports = function(KEY, exec){
-  var $def = require('./$.def')
-    , fn   = (require('./$.core').Object || {})[KEY] || Object[KEY]
-    , exp  = {};
-  exp[KEY] = exec(fn);
-  $def($def.S + $def.F * require('./$.fails')(function(){ fn(1); }), 'Object', exp);
-};
-},{"./$.core":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.core.js","./$.def":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.def.js","./$.fails":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.fails.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.to-object.js":[function(require,module,exports){
-// 7.1.13 ToObject(argument)
-var defined = require('./$.defined');
-module.exports = function(it){
-  return Object(defined(it));
-};
-},{"./$.defined":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.defined.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/es6.object.keys.js":[function(require,module,exports){
-// 19.1.2.14 Object.keys(O)
-var toObject = require('./$.to-object');
-
-require('./$.object-sap')('keys', function($keys){
-  return function keys(it){
-    return $keys(toObject(it));
-  };
-});
-},{"./$.object-sap":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.object-sap.js","./$.to-object":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/babel-runtime/node_modules/core-js/library/modules/$.to-object.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/route-recognizer/dist/route-recognizer.js":[function(require,module,exports){
+},{"babel-runtime/helpers/interop-require-default":"/Users/bill/Sites/vue-starter/node_modules/babel-runtime/helpers/interop-require-default.js","route-recognizer":"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/route-recognizer/dist/route-recognizer.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue-router/node_modules/route-recognizer/dist/route-recognizer.js":[function(require,module,exports){
 (function() {
     "use strict";
     function $$route$recognizer$dsl$$Target(path, matcher, delegate) {
@@ -2717,58 +3498,8 @@ require('./$.object-sap')('keys', function($keys){
 }).call(this);
 
 //# sourceMappingURL=route-recognizer.js.map
-},{}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/child.js":[function(require,module,exports){
+},{}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/data.js":[function(require,module,exports){
 var _ = require('../util')
-
-/**
- * Create a child instance that prototypally inherits
- * data on parent. To achieve that we create an intermediate
- * constructor with its prototype pointing to parent.
- *
- * @param {Object} opts
- * @param {Function} [BaseCtor]
- * @return {Vue}
- * @public
- */
-
-exports.$addChild = function (opts, BaseCtor) {
-  BaseCtor = BaseCtor || _.Vue
-  opts = opts || {}
-  var ChildVue
-  var parent = this
-  // transclusion context
-  var context = opts._context || parent
-  var inherit = opts.inherit !== undefined
-    ? opts.inherit
-    : BaseCtor.options.inherit
-  if (inherit) {
-    var ctors = context._childCtors
-    ChildVue = ctors[BaseCtor.cid]
-    if (!ChildVue) {
-      var optionName = BaseCtor.options.name
-      var className = optionName
-        ? _.classify(optionName)
-        : 'VueComponent'
-      ChildVue = new Function(
-        'return function ' + className + ' (options) {' +
-        'this.constructor = ' + className + ';' +
-        'this._init(options) }'
-      )()
-      ChildVue.options = BaseCtor.options
-      ChildVue.linker = BaseCtor.linker
-      ChildVue.prototype = context
-      ctors[BaseCtor.cid] = ChildVue
-    }
-  } else {
-    ChildVue = BaseCtor
-  }
-  opts._parent = parent
-  opts._root = parent.$root
-  var child = new ChildVue(opts)
-  return child
-}
-
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/data.js":[function(require,module,exports){
 var Watcher = require('../watcher')
 var Path = require('../parsers/path')
 var textParser = require('../parsers/text')
@@ -2780,15 +3511,23 @@ var filterRE = /[^|]\|[^|]/
  * Get the value from an expression on this vm.
  *
  * @param {String} exp
+ * @param {Boolean} [asStatement]
  * @return {*}
  */
 
-exports.$get = function (exp) {
+exports.$get = function (exp, asStatement) {
   var res = expParser.parse(exp)
   if (res) {
-    try {
-      return res.get.call(this, this)
-    } catch (e) {}
+    if (asStatement && !expParser.isSimplePath(exp)) {
+      var self = this
+      return function statementHandler () {
+        res.get.call(self, self)
+      }
+    } else {
+      try {
+        return res.get.call(this, this)
+      } catch (e) {}
+    }
   }
 }
 
@@ -2809,24 +3548,13 @@ exports.$set = function (exp, val) {
 }
 
 /**
- * Add a property on the VM
- *
- * @param {String} key
- * @param {*} val
- */
-
-exports.$add = function (key, val) {
-  this._data.$add(key, val)
-}
-
-/**
  * Delete a property on the VM
  *
  * @param {String} key
  */
 
 exports.$delete = function (key) {
-  this._data.$delete(key)
+  _.delete(this._data, key)
 }
 
 /**
@@ -2838,7 +3566,6 @@ exports.$delete = function (key) {
  * @param {Object} [options]
  *                 - {Boolean} deep
  *                 - {Boolean} immediate
- *                 - {Boolean} user
  * @return {Function} - unwatchFn
  */
 
@@ -2846,12 +3573,11 @@ exports.$watch = function (expOrFn, cb, options) {
   var vm = this
   var parsed
   if (typeof expOrFn === 'string') {
-    parsed = dirParser.parse(expOrFn)[0]
+    parsed = dirParser.parse(expOrFn)
     expOrFn = parsed.expression
   }
   var watcher = new Watcher(vm, expOrFn, cb, {
     deep: options && options.deep,
-    user: !options || options.user !== false,
     filters: parsed && parsed.filters
   })
   if (options && options.immediate) {
@@ -2866,23 +3592,24 @@ exports.$watch = function (expOrFn, cb, options) {
  * Evaluate a text directive, including filters.
  *
  * @param {String} text
+ * @param {Boolean} [asStatement]
  * @return {String}
  */
 
-exports.$eval = function (text) {
+exports.$eval = function (text, asStatement) {
   // check for filters.
   if (filterRE.test(text)) {
-    var dir = dirParser.parse(text)[0]
+    var dir = dirParser.parse(text)
     // the filter regex check might give false positive
     // for pipes inside strings, so it's possible that
     // we don't get any filters here
-    var val = this.$get(dir.expression)
+    var val = this.$get(dir.expression, asStatement)
     return dir.filters
       ? this._applyFilters(val, null, dir.filters)
       : val
   } else {
     // no filter
-    return this.$get(text)
+    return this.$get(text, asStatement)
   }
 }
 
@@ -2924,12 +3651,30 @@ exports.$log = function (path) {
     ? Path.get(this._data, path)
     : this._data
   if (data) {
-    data = JSON.parse(JSON.stringify(data))
+    data = clean(data)
+  }
+  // include computed fields
+  if (!path) {
+    for (var key in this.$options.computed) {
+      data[key] = clean(this[key])
+    }
   }
   console.log(data)
 }
 
-},{"../parsers/directive":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/directive.js","../parsers/expression":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/expression.js","../parsers/path":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/path.js","../parsers/text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/text.js","../watcher":"/Users/bill/Sites/vue-starter/node_modules/vue/src/watcher.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/dom.js":[function(require,module,exports){
+/**
+ * "clean" a getter/setter converted object into a plain
+ * object copy.
+ *
+ * @param {Object} - obj
+ * @return {Object}
+ */
+
+function clean (obj) {
+  return JSON.parse(JSON.stringify(obj))
+}
+
+},{"../parsers/directive":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/directive.js","../parsers/expression":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/expression.js","../parsers/path":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/path.js","../parsers/text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/text.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","../watcher":"/Users/bill/Sites/vue-starter/node_modules/vue/src/watcher.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/dom.js":[function(require,module,exports){
 var _ = require('../util')
 var transition = require('../transition')
 
@@ -3026,22 +3771,19 @@ exports.$remove = function (cb, withTransition) {
   // if we are not in document, no need to check
   // for transitions
   if (!inDoc) withTransition = false
-  var op
   var self = this
   var realCb = function () {
     if (inDoc) self._callHook('detached')
     if (cb) cb()
   }
-  if (
-    this._isFragment &&
-    !this._blockFragment.hasChildNodes()
-  ) {
-    op = withTransition === false
-      ? append
-      : transition.removeThenAppend
-    blockOp(this, this._blockFragment, op, realCb)
+  if (this._isFragment) {
+    _.removeNodeRange(
+      this._fragmentStart,
+      this._fragmentEnd,
+      this, this._fragment, realCb
+    )
   } else {
-    op = withTransition === false
+    var op = withTransition === false
       ? remove
       : transition.remove
     op(this.$el, this, realCb)
@@ -3065,14 +3807,17 @@ function insert (vm, target, cb, withTransition, op1, op2) {
   target = query(target)
   var targetIsDetached = !_.inDoc(target)
   var op = withTransition === false || targetIsDetached
-    ? op1
-    : op2
+      ? op1
+      : op2
   var shouldCallHook =
     !targetIsDetached &&
     !vm._isAttached &&
     !_.inDoc(vm.$el)
   if (vm._isFragment) {
-    blockOp(vm, target, op, cb)
+    _.mapNodeRange(vm._fragmentStart, vm._fragmentEnd, function (node) {
+      op(node, target, vm)
+    })
+    cb && cb()
   } else {
     op(vm.$el, target, vm, cb)
   }
@@ -3080,28 +3825,6 @@ function insert (vm, target, cb, withTransition, op1, op2) {
     vm._callHook('attached')
   }
   return vm
-}
-
-/**
- * Execute a transition operation on a fragment instance,
- * iterating through all its block nodes.
- *
- * @param {Vue} vm
- * @param {Node} target
- * @param {Function} op
- * @param {Function} cb
- */
-
-function blockOp (vm, target, op, cb) {
-  var current = vm._fragmentStart
-  var end = vm._fragmentEnd
-  var next
-  while (next !== end) {
-    next = current.nextSibling
-    op(current, target, vm)
-    current = next
-  }
-  op(end, target, vm, cb)
 }
 
 /**
@@ -3247,23 +3970,17 @@ exports.$off = function (event, fn) {
  */
 
 exports.$emit = function (event) {
-  this._eventCancelled = false
   var cbs = this._events[event]
+  this._shouldPropagate = !cbs
   if (cbs) {
-    // avoid leaking arguments:
-    // http://jsperf.com/closure-with-arguments
-    var i = arguments.length - 1
-    var args = new Array(i)
-    while (i--) {
-      args[i] = arguments[i + 1]
-    }
-    i = 0
     cbs = cbs.length > 1
       ? _.toArray(cbs)
       : cbs
-    for (var l = cbs.length; i < l; i++) {
-      if (cbs[i].apply(this, args) === false) {
-        this._eventCancelled = true
+    var args = _.toArray(arguments, 1)
+    for (var i = 0, l = cbs.length; i < l; i++) {
+      var res = cbs[i].apply(this, args)
+      if (res === true) {
+        this._shouldPropagate = true
       }
     }
   }
@@ -3285,7 +4002,7 @@ exports.$broadcast = function (event) {
   for (var i = 0, l = children.length; i < l; i++) {
     var child = children[i]
     child.$emit.apply(child, arguments)
-    if (!child._eventCancelled) {
+    if (child._shouldPropagate) {
       child.$broadcast.apply(child, arguments)
     }
   }
@@ -3300,12 +4017,13 @@ exports.$broadcast = function (event) {
  */
 
 exports.$dispatch = function () {
+  this.$emit.apply(this, arguments)
   var parent = this.$parent
   while (parent) {
     parent.$emit.apply(parent, arguments)
-    parent = parent._eventCancelled
-      ? null
-      : parent.$parent
+    parent = parent._shouldPropagate
+      ? parent.$parent
+      : null
   }
   return this
 }
@@ -3334,6 +4052,7 @@ function modifyListenerCount (vm, event, count) {
 }
 
 },{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/global.js":[function(require,module,exports){
+(function (process){
 var _ = require('../util')
 var config = require('../config')
 
@@ -3343,9 +4062,17 @@ var config = require('../config')
 
 exports.util = _
 exports.config = config
+exports.set = _.set
+exports.delete = _.delete
 exports.nextTick = _.nextTick
-exports.compiler = require('../compiler')
 
+/**
+ * The following are exposed for advanced usage / plugins
+ */
+
+exports.compiler = require('../compiler')
+exports.FragmentFactory = require('../fragment/factory')
+exports.internalDirectives = require('../directives/internal')
 exports.parsers = {
   path: require('../parsers/path'),
   text: require('../parsers/text'),
@@ -3372,11 +4099,12 @@ var cid = 1
 exports.extend = function (extendOptions) {
   extendOptions = extendOptions || {}
   var Super = this
-  var Sub = createClass(
-    extendOptions.name ||
-    Super.options.name ||
-    'VueComponent'
-  )
+  var isFirstExtend = Super.cid === 0
+  if (isFirstExtend && extendOptions._Ctor) {
+    return extendOptions._Ctor
+  }
+  var name = extendOptions.name || Super.options.name
+  var Sub = createClass(name || 'VueComponent')
   Sub.prototype = Object.create(Super.prototype)
   Sub.prototype.constructor = Sub
   Sub.cid = cid++
@@ -3392,6 +4120,14 @@ exports.extend = function (extendOptions) {
   config._assetTypes.forEach(function (type) {
     Sub[type] = Super[type]
   })
+  // enable recursive self-lookup
+  if (name) {
+    Sub.options.components[name] = Sub
+  }
+  // cache constructor
+  if (isFirstExtend) {
+    extendOptions._Ctor = Sub
+  }
   return Sub
 }
 
@@ -3418,6 +4154,10 @@ function createClass (name) {
  */
 
 exports.use = function (plugin) {
+  /* istanbul ignore if */
+  if (plugin.installed) {
+    return
+  }
   // additional parameters
   var args = _.toArray(arguments, 1)
   args.unshift(this)
@@ -3426,6 +4166,7 @@ exports.use = function (plugin) {
   } else {
     plugin.apply(null, args)
   }
+  plugin.installed = true
   return this
 }
 
@@ -3452,6 +4193,15 @@ config._assetTypes.forEach(function (type) {
     if (!definition) {
       return this.options[type + 's'][id]
     } else {
+      /* istanbul ignore if */
+      if (process.env.NODE_ENV !== 'production') {
+        if (type === 'component' && _.commonTagRE.test(id)) {
+          _.warn(
+            'Do not use built-in HTML elements as component ' +
+            'id: ' + id
+          )
+        }
+      }
       if (
         type === 'component' &&
         _.isPlainObject(definition)
@@ -3460,11 +4210,13 @@ config._assetTypes.forEach(function (type) {
         definition = _.Vue.extend(definition)
       }
       this.options[type + 's'][id] = definition
+      return definition
     }
   }
 })
 
-},{"../compiler":"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/index.js","../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","../parsers/directive":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/directive.js","../parsers/expression":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/expression.js","../parsers/path":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/path.js","../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../parsers/text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/text.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/lifecycle.js":[function(require,module,exports){
+}).call(this,require('_process'))
+},{"../compiler":"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/index.js","../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","../directives/internal":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/index.js","../fragment/factory":"/Users/bill/Sites/vue-starter/node_modules/vue/src/fragment/factory.js","../parsers/directive":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/directive.js","../parsers/expression":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/expression.js","../parsers/path":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/path.js","../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../parsers/text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/text.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/lifecycle.js":[function(require,module,exports){
 (function (process){
 var _ = require('../util')
 var compiler = require('../compiler')
@@ -3491,8 +4243,6 @@ exports.$mount = function (el) {
     el = document.createElement('div')
   }
   this._compile(el)
-  this._isCompiled = true
-  this._callHook('compiled')
   this._initDOMHooks()
   if (_.inDoc(this.$el)) {
     this._callHook('attached')
@@ -3531,8 +4281,10 @@ exports.$destroy = function (remove, deferCleanup) {
  * @return {Function}
  */
 
-exports.$compile = function (el, host) {
-  return compiler.compile(el, this.$options, true)(this, el, host)
+exports.$compile = function (el, host, scope, frag) {
+  return compiler.compile(el, this.$options, true)(
+    this, el, host, scope, frag
+  )
 }
 
 }).call(this,require('_process'))
@@ -3574,6 +4326,13 @@ function flushBatcherQueue () {
   runBatcherQueue(queue)
   internalQueueDepleted = true
   runBatcherQueue(userQueue)
+  // dev tool hook
+  /* istanbul ignore if */
+  if (process.env.NODE_ENV !== 'production') {
+    if (_.inBrowser && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
+      window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit('flush')
+    }
+  }
   resetBatcherState()
 }
 
@@ -3755,18 +4514,17 @@ module.exports = Cache
 },{}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/compile-props.js":[function(require,module,exports){
 (function (process){
 var _ = require('../util')
-var textParser = require('../parsers/text')
-var propDef = require('../directives/prop')
+var dirParser = require('../parsers/directive')
+var propDef = require('../directives/internal/prop')
 var propBindingModes = require('../config')._propBindingModes
+var empty = {}
 
 // regexes
 var identRE = require('../parsers/path').identRE
-var dataAttrRE = /^data-/
 var settablePathRE = /^[A-Za-z_$][\w$]*(\.[A-Za-z_$][\w$]*|\[[^\[\]]+\])*$/
-var literalValueRE = /^(true|false)$|^\d.*/
 
 /**
- * Compile param attributes on a root element and return
+ * Compile props on a root element and return
  * a props link function.
  *
  * @param {Element|DocumentFragment} el
@@ -3776,15 +4534,22 @@ var literalValueRE = /^(true|false)$|^\d.*/
 
 module.exports = function compileProps (el, propOptions) {
   var props = []
-  var i = propOptions.length
-  var options, name, attr, value, path, prop, literal, single
+  var names = Object.keys(propOptions)
+  var i = names.length
+  var options, name, attr, value, path, parsed, prop
   while (i--) {
-    options = propOptions[i]
-    name = options.name
+    name = names[i]
+    options = propOptions[name] || empty
+
+    if (process.env.NODE_ENV !== 'production' && name === '$data') {
+      _.warn('Do not use $data as prop.')
+      continue
+    }
+
     // props could contain dashes, which will be
     // interpreted as minus calculations by the parser
     // so we need to camelize the path here
-    path = _.camelize(name.replace(dataAttrRE, ''))
+    path = _.camelize(name)
     if (!identRE.test(path)) {
       process.env.NODE_ENV !== 'production' && _.warn(
         'Invalid prop key: "' + name + '". Prop keys ' +
@@ -3792,62 +4557,73 @@ module.exports = function compileProps (el, propOptions) {
       )
       continue
     }
-    attr = _.hyphenate(name)
-    value = el.getAttribute(attr)
-    if (value === null) {
-      attr = 'data-' + attr
-      value = el.getAttribute(attr)
-    }
-    // create a prop descriptor
+
     prop = {
       name: name,
-      raw: value,
       path: path,
       options: options,
-      mode: propBindingModes.ONE_WAY
+      mode: propBindingModes.ONE_WAY,
+      raw: null
+    }
+
+    attr = _.hyphenate(name)
+    // first check dynamic version
+    if ((value = _.getBindAttr(el, attr)) === null) {
+      if ((value = _.getBindAttr(el, attr + '.sync')) !== null) {
+        prop.mode = propBindingModes.TWO_WAY
+      } else if ((value = _.getBindAttr(el, attr + '.once')) !== null) {
+        prop.mode = propBindingModes.ONE_TIME
+      }
     }
     if (value !== null) {
-      // important so that this doesn't get compiled
-      // again as a normal attribute binding
-      el.removeAttribute(attr)
-      var tokens = textParser.parse(value)
-      if (tokens) {
+      // has dynamic binding!
+      prop.raw = value
+      parsed = dirParser.parse(value)
+      value = parsed.expression
+      prop.filters = parsed.filters
+      // check binding type
+      if (_.isLiteral(value)) {
+        // for expressions containing literal numbers and
+        // booleans, there's no need to setup a prop binding,
+        // so we can optimize them as a one-time set.
+        prop.optimizedLiteral = true
+      } else {
         prop.dynamic = true
-        prop.parentPath = textParser.tokensToExp(tokens)
-        // check prop binding type.
-        single = tokens.length === 1
-        literal = literalValueRE.test(prop.parentPath)
-        // one time: {{* prop}}
-        if (literal || (single && tokens[0].oneTime)) {
-          prop.mode = propBindingModes.ONE_TIME
-        } else if (
-          !literal &&
-          (single && tokens[0].twoWay)
-        ) {
-          if (settablePathRE.test(prop.parentPath)) {
-            prop.mode = propBindingModes.TWO_WAY
-          } else {
-            process.env.NODE_ENV !== 'production' && _.warn(
-              'Cannot bind two-way prop with non-settable ' +
-              'parent path: ' + prop.parentPath
-            )
-          }
-        }
-        if (
-          process.env.NODE_ENV !== 'production' &&
-          options.twoWay &&
-          prop.mode !== propBindingModes.TWO_WAY
-        ) {
+        // check non-settable path for two-way bindings
+        if (process.env.NODE_ENV !== 'production' &&
+            prop.mode === propBindingModes.TWO_WAY &&
+            !settablePathRE.test(value)) {
+          prop.mode = propBindingModes.ONE_WAY
           _.warn(
-            'Prop "' + name + '" expects a two-way binding type.'
+            'Cannot bind two-way prop with non-settable ' +
+            'parent path: ' + value
           )
         }
       }
-    } else if (options && options.required) {
+      prop.parentPath = value
+
+      // warn required two-way
+      if (
+        process.env.NODE_ENV !== 'production' &&
+        options.twoWay &&
+        prop.mode !== propBindingModes.TWO_WAY
+      ) {
+        _.warn(
+          'Prop "' + name + '" expects a two-way binding type.'
+        )
+      }
+    /* eslint-disable no-cond-assign */
+    } else if (value = _.attr(el, attr)) {
+    /* eslint-enable no-cond-assign */
+      // has literal binding!
+      prop.raw = value
+    } else if (options.required) {
+      // warn missing required
       process.env.NODE_ENV !== 'production' && _.warn(
         'Missing required prop: ' + name
       )
     }
+    // push prop
     props.push(prop)
   }
   return makePropsLinkFn(props)
@@ -3861,47 +4637,55 @@ module.exports = function compileProps (el, propOptions) {
  */
 
 function makePropsLinkFn (props) {
-  return function propsLinkFn (vm, el) {
+  return function propsLinkFn (vm, scope) {
     // store resolved props info
     vm._props = {}
     var i = props.length
-    var prop, path, options, value
+    var prop, path, options, value, raw
     while (i--) {
       prop = props[i]
+      raw = prop.raw
       path = prop.path
-      vm._props[path] = prop
       options = prop.options
-      if (prop.raw === null) {
+      vm._props[path] = prop
+      if (raw === null) {
         // initialize absent prop
-        _.initProp(vm, prop, getDefault(options))
+        _.initProp(vm, prop, getDefault(vm, options))
       } else if (prop.dynamic) {
         // dynamic prop
         if (vm._context) {
           if (prop.mode === propBindingModes.ONE_TIME) {
             // one time binding
-            value = vm._context.$get(prop.parentPath)
+            value = (scope || vm._context).$get(prop.parentPath)
             _.initProp(vm, prop, value)
           } else {
             // dynamic binding
-            vm._bindDir('prop', el, prop, propDef)
+            vm._bindDir({
+              name: 'prop',
+              def: propDef,
+              prop: prop
+            }, null, null, scope) // el, host, scope
           }
         } else {
           process.env.NODE_ENV !== 'production' && _.warn(
             'Cannot bind dynamic prop on a root instance' +
             ' with no parent: ' + prop.name + '="' +
-            prop.raw + '"'
+            raw + '"'
           )
         }
+      } else if (prop.optimizedLiteral) {
+        // optimized literal, cast it and just set once
+        var stripped = _.stripQuotes(raw)
+        value = stripped === raw
+          ? _.toBoolean(_.toNumber(raw))
+          : stripped
+        _.initProp(vm, prop, value)
       } else {
-        // literal, cast it and just set once
-        var raw = prop.raw
+        // string literal, but we need to cater for
+        // Boolean props with no value
         value = options.type === Boolean && raw === ''
           ? true
-          // do not cast emptry string.
-          // _.toNumber casts empty string to 0.
-          : raw.trim()
-            ? _.toBoolean(_.toNumber(raw))
-            : raw
+          : raw
         _.initProp(vm, prop, value)
       }
     }
@@ -3911,11 +4695,12 @@ function makePropsLinkFn (props) {
 /**
  * Get the default value of a prop.
  *
+ * @param {Vue} vm
  * @param {Object} options
  * @return {*}
  */
 
-function getDefault (options) {
+function getDefault (vm, options) {
   // no default, return undefined
   if (!options.hasOwnProperty('default')) {
     // absent boolean value defaults to false
@@ -3934,27 +4719,37 @@ function getDefault (options) {
   }
   // call factory function for non-Function types
   return typeof def === 'function' && options.type !== Function
-    ? def()
+    ? def.call(vm)
     : def
 }
 
 }).call(this,require('_process'))
-},{"../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","../directives/prop":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/prop.js","../parsers/path":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/path.js","../parsers/text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/text.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/compile.js":[function(require,module,exports){
+},{"../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","../directives/internal/prop":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/prop.js","../parsers/directive":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/directive.js","../parsers/path":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/path.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/compile.js":[function(require,module,exports){
 (function (process){
 var _ = require('../util')
+var publicDirectives = require('../directives/public')
+var internalDirectives = require('../directives/internal')
 var compileProps = require('./compile-props')
-var config = require('../config')
 var textParser = require('../parsers/text')
 var dirParser = require('../parsers/directive')
 var templateParser = require('../parsers/template')
 var resolveAsset = _.resolveAsset
-var componentDef = require('../directives/component')
+
+// special binding prefixes
+var bindRE = /^v-bind:|^:/
+var onRE = /^v-on:|^@/
+var argRE = /:(.*)$/
+var modifierRE = /\.[^\.]+/g
+var transitionRE = /^(v-bind:|:)?transition$/
 
 // terminal directives
 var terminalDirectives = [
-  'repeat',
+  'for',
   'if'
 ]
+
+// default directive priority
+var DEFAULT_PRIORITY = 1000
 
 /**
  * Compile a template and return a reusable composite link
@@ -3994,16 +4789,18 @@ exports.compile = function (el, options, partial) {
    * @param {Vue} vm
    * @param {Element|DocumentFragment} el
    * @param {Vue} [host] - host vm of transcluded content
+   * @param {Object} [scope] - v-for scope
+   * @param {Fragment} [frag] - link context fragment
    * @return {Function|undefined}
    */
 
-  return function compositeLinkFn (vm, el, host) {
+  return function compositeLinkFn (vm, el, host, scope, frag) {
     // cache childNodes before linking parent, fix #657
     var childNodes = _.toArray(el.childNodes)
     // link
-    var dirs = linkAndCapture(function () {
-      if (nodeLinkFn) nodeLinkFn(vm, el, host)
-      if (childLinkFn) childLinkFn(vm, childNodes, host)
+    var dirs = linkAndCapture(function compositeLinkCapturer () {
+      if (nodeLinkFn) nodeLinkFn(vm, el, host, scope, frag)
+      if (childLinkFn) childLinkFn(vm, childNodes, host, scope, frag)
     }, vm)
     return makeUnlinkFn(vm, dirs)
   }
@@ -4020,7 +4817,25 @@ exports.compile = function (el, options, partial) {
 function linkAndCapture (linker, vm) {
   var originalDirCount = vm._directives.length
   linker()
-  return vm._directives.slice(originalDirCount)
+  var dirs = vm._directives.slice(originalDirCount)
+  dirs.sort(directiveComparator)
+  for (var i = 0, l = dirs.length; i < l; i++) {
+    dirs[i]._bind()
+  }
+  return dirs
+}
+
+/**
+ * Directive priority sort comparator
+ *
+ * @param {Object} a
+ * @param {Object} b
+ */
+
+function directiveComparator (a, b) {
+  a = a.descriptor.def.priority || DEFAULT_PRIORITY
+  b = b.descriptor.def.priority || DEFAULT_PRIORITY
+  return a > b ? -1 : a === b ? 0 : 1
 }
 
 /**
@@ -4070,14 +4885,15 @@ function teardownDirs (vm, dirs, destroying) {
  *
  * @param {Vue} vm
  * @param {Element} el
- * @param {Object} options
+ * @param {Object} props
+ * @param {Object} [scope]
  * @return {Function}
  */
 
-exports.compileAndLinkProps = function (vm, el, props) {
+exports.compileAndLinkProps = function (vm, el, props, scope) {
   var propsLinkFn = compileProps(el, props)
   var propDirs = linkAndCapture(function () {
-    propsLinkFn(vm, null)
+    propsLinkFn(vm, scope)
   }, vm)
   return makeUnlinkFn(vm, propDirs)
 }
@@ -4094,10 +4910,11 @@ exports.compileAndLinkProps = function (vm, el, props) {
  * @param {Vue} vm
  * @param {Element} el
  * @param {Object} options
+ * @param {Object} contextOptions
  * @return {Function}
  */
 
-exports.compileRoot = function (el, options) {
+exports.compileRoot = function (el, options, contextOptions) {
   var containerAttrs = options._containerAttrs
   var replacerAttrs = options._replacerAttrs
   var contextLinkFn, replacerLinkFn
@@ -4109,8 +4926,8 @@ exports.compileRoot = function (el, options) {
     // compiled separately and linked in different scopes.
     if (options._asComponent) {
       // 2. container attributes
-      if (containerAttrs) {
-        contextLinkFn = compileDirectives(containerAttrs, options)
+      if (containerAttrs && contextOptions) {
+        contextLinkFn = compileDirectives(containerAttrs, contextOptions)
       }
       if (replacerAttrs) {
         // 3. replacer attributes
@@ -4120,15 +4937,39 @@ exports.compileRoot = function (el, options) {
       // non-component, just compile as a normal element.
       replacerLinkFn = compileDirectives(el.attributes, options)
     }
+  } else if (process.env.NODE_ENV !== 'production' && containerAttrs) {
+    // warn container directives for fragment instances
+    var names = containerAttrs
+      .filter(function (attr) {
+        // allow vue-loader/vueify scoped css attributes
+        return attr.name.indexOf('_v-') < 0 &&
+          // allow event listeners
+          !onRE.test(attr.name) &&
+          // allow slots
+          attr.name !== 'slot'
+      })
+      .map(function (attr) {
+        return '"' + attr.name + '"'
+      })
+    if (names.length) {
+      var plural = names.length > 1
+      _.warn(
+        'Attribute' + (plural ? 's ' : ' ') + names.join(', ') +
+        (plural ? ' are' : ' is') + ' ignored on component ' +
+        '<' + options.el.tagName.toLowerCase() + '> because ' +
+        'the component is a fragment instance: ' +
+        'http://vuejs.org/guide/components.html#Fragment_Instance'
+      )
+    }
   }
 
-  return function rootLinkFn (vm, el) {
+  return function rootLinkFn (vm, el, scope) {
     // link context scope dirs
     var context = vm._context
     var contextDirs
     if (context && contextLinkFn) {
       contextDirs = linkAndCapture(function () {
-        contextLinkFn(context, el)
+        contextLinkFn(context, el, null, scope)
       }, context)
     }
 
@@ -4156,7 +4997,7 @@ function compileNode (node, options) {
   var type = node.nodeType
   if (type === 1 && node.tagName !== 'SCRIPT') {
     return compileElement(node, options)
-  } else if (type === 3 && config.interpolate && node.data.trim()) {
+  } else if (type === 3 && node.data.trim()) {
     return compileTextNode(node, options)
   } else {
     return null
@@ -4174,15 +5015,17 @@ function compileNode (node, options) {
 function compileElement (el, options) {
   // preprocess textareas.
   // textarea treats its text content as the initial value.
-  // just bind it as a v-attr directive for value.
+  // just bind it as an attr directive for value.
   if (el.tagName === 'TEXTAREA') {
-    if (textParser.parse(el.value)) {
-      el.setAttribute('value', el.value)
+    var tokens = textParser.parse(el.value)
+    if (tokens) {
+      el.setAttribute(':value', textParser.tokensToExp(tokens))
+      el.value = ''
     }
   }
   var linkFn
   var hasAttrs = el.hasAttributes()
-  // check terminal directives (repeat & if)
+  // check terminal directives (for & if)
   if (hasAttrs) {
     linkFn = checkTerminalDirectives(el, options)
   }
@@ -4251,9 +5094,14 @@ function processTextToken (token, options) {
     }
   }
   function setTokenType (type) {
-    token.type = type
-    token.def = resolveAsset(options, 'directives', type)
-    token.descriptor = dirParser.parse(token.value)[0]
+    if (token.descriptor) return
+    var parsed = dirParser.parse(token.value)
+    token.descriptor = {
+      name: type,
+      def: publicDirectives[type],
+      expression: parsed.expression,
+      filters: parsed.filters
+    }
   }
   return el
 }
@@ -4266,7 +5114,7 @@ function processTextToken (token, options) {
  */
 
 function makeTextNodeLinkFn (tokens, frag) {
-  return function textNodeLinkFn (vm, el) {
+  return function textNodeLinkFn (vm, el, host, scope) {
     var fragClone = frag.cloneNode(true)
     var childNodes = _.toArray(fragClone.childNodes)
     var token, value, node
@@ -4276,15 +5124,14 @@ function makeTextNodeLinkFn (tokens, frag) {
       if (token.tag) {
         node = childNodes[i]
         if (token.oneTime) {
-          value = vm.$eval(value)
+          value = (scope || vm).$eval(value)
           if (token.html) {
             _.replace(node, templateParser.parse(value, true))
           } else {
             node.data = value
           }
         } else {
-          vm._bindDir(token.type, node,
-                      token.descriptor, token.def)
+          vm._bindDir(token.descriptor, node, host, scope)
         }
       }
     }
@@ -4327,7 +5174,7 @@ function compileNodeList (nodeList, options) {
  */
 
 function makeChildLinkFn (linkFns) {
-  return function childLinkFn (vm, nodes, host) {
+  return function childLinkFn (vm, nodes, host, scope, frag) {
     var node, nodeLinkFn, childrenLinkFn
     for (var i = 0, n = 0, l = linkFns.length; i < l; n++) {
       node = nodes[n]
@@ -4336,10 +5183,10 @@ function makeChildLinkFn (linkFns) {
       // cache childNodes before linking parent, fix #657
       var childNodes = _.toArray(node.childNodes)
       if (nodeLinkFn) {
-        nodeLinkFn(vm, node, host)
+        nodeLinkFn(vm, node, host, scope, frag)
       }
       if (childrenLinkFn) {
-        childrenLinkFn(vm, childNodes, host)
+        childrenLinkFn(vm, childNodes, host, scope, frag)
       }
     }
   }
@@ -4368,17 +5215,27 @@ function checkElementDirectives (el, options) {
  *
  * @param {Element} el
  * @param {Object} options
- * @param {Boolean} hasAttrs
  * @return {Function|undefined}
  */
 
-function checkComponent (el, options, hasAttrs) {
-  var componentId = _.checkComponent(el, options, hasAttrs)
-  if (componentId) {
-    var componentLinkFn = function (vm, el, host) {
-      vm._bindDir('component', el, {
-        expression: componentId
-      }, componentDef, host)
+function checkComponent (el, options) {
+  var component = _.checkComponent(el, options)
+  if (component) {
+    var ref = _.findRef(el)
+    var descriptor = {
+      name: 'component',
+      ref: ref,
+      expression: component.id,
+      def: internalDirectives.component,
+      modifiers: {
+        literal: !component.dynamic
+      }
+    }
+    var componentLinkFn = function (vm, el, host, scope, frag) {
+      if (ref) {
+        _.defineReactive((scope || vm).$refs, ref, null)
+      }
+      vm._bindDir(descriptor, el, host, scope, frag)
     }
     componentLinkFn.terminal = true
     return componentLinkFn
@@ -4395,15 +5252,25 @@ function checkComponent (el, options, hasAttrs) {
  */
 
 function checkTerminalDirectives (el, options) {
-  if (_.attr(el, 'pre') !== null) {
+  // skip v-pre
+  if (_.attr(el, 'v-pre') !== null) {
     return skip
+  }
+  // skip v-else block, but only if following v-if
+  if (el.hasAttribute('v-else')) {
+    var prev = el.previousElementSibling
+    if (prev && prev.hasAttribute('v-if')) {
+      return skip
+    }
   }
   var value, dirName
   for (var i = 0, l = terminalDirectives.length; i < l; i++) {
     dirName = terminalDirectives[i]
-    if ((value = _.attr(el, dirName)) !== null) {
+    /* eslint-disable no-cond-assign */
+    if (value = el.getAttribute('v-' + dirName)) {
       return makeTerminalNodeLinkFn(el, dirName, value, options)
     }
+    /* eslint-enable no-cond-assign */
   }
 }
 
@@ -4425,12 +5292,24 @@ skip.terminal = true
  */
 
 function makeTerminalNodeLinkFn (el, dirName, value, options, def) {
-  var descriptor = dirParser.parse(value)[0]
-  // no need to call resolveAsset since terminal directives
-  // are always internal
-  def = def || options.directives[dirName]
-  var fn = function terminalNodeLinkFn (vm, el, host) {
-    vm._bindDir(dirName, el, descriptor, def, host)
+  var parsed = dirParser.parse(value)
+  var descriptor = {
+    name: dirName,
+    expression: parsed.expression,
+    filters: parsed.filters,
+    raw: value,
+    // either an element directive, or if/for
+    def: def || publicDirectives[dirName]
+  }
+  // check ref for v-for
+  if (dirName === 'for') {
+    descriptor.ref = _.findRef(el)
+  }
+  var fn = function terminalNodeLinkFn (vm, el, host, scope, frag) {
+    if (descriptor.ref) {
+      _.defineReactive((scope || vm).$refs, descriptor.ref, null)
+    }
+    vm._bindDir(descriptor, el, host, scope, frag)
   }
   fn.terminal = true
   return fn
@@ -4447,36 +5326,131 @@ function makeTerminalNodeLinkFn (el, dirName, value, options, def) {
 function compileDirectives (attrs, options) {
   var i = attrs.length
   var dirs = []
-  var attr, name, value, dir, dirName, dirDef
+  var attr, name, value, rawName, rawValue, dirName, arg, modifiers, dirDef, tokens
   while (i--) {
     attr = attrs[i]
-    name = attr.name
-    value = attr.value
-    if (name.indexOf(config.prefix) === 0) {
-      dirName = name.slice(config.prefix.length)
+    name = rawName = attr.name
+    value = rawValue = attr.value
+    tokens = textParser.parse(value)
+    // reset arg
+    arg = null
+    // check modifiers
+    modifiers = parseModifiers(name)
+    name = name.replace(modifierRE, '')
+
+    // attribute interpolations
+    if (tokens) {
+      value = textParser.tokensToExp(tokens)
+      arg = name
+      pushDir('bind', publicDirectives.bind, true)
+      // warn against mixing mustaches with v-bind
+      if (process.env.NODE_ENV !== 'production') {
+        if (name === 'class' && Array.prototype.some.call(attrs, function (attr) {
+          return attr.name === ':class' || attr.name === 'v-bind:class'
+        })) {
+          _.warn(
+            'class="' + rawValue + '": Do not mix mustache interpolation ' +
+            'and v-bind for "class" on the same element. Use one or the other.'
+          )
+        }
+      }
+    } else
+
+    // special attribute: transition
+    if (transitionRE.test(name)) {
+      modifiers.literal = !bindRE.test(name)
+      pushDir('transition', internalDirectives.transition)
+    } else
+
+    // event handlers
+    if (onRE.test(name)) {
+      arg = name.replace(onRE, '')
+      pushDir('on', publicDirectives.on)
+    } else
+
+    // attribute bindings
+    if (bindRE.test(name)) {
+      dirName = name.replace(bindRE, '')
+      if (dirName === 'style' || dirName === 'class') {
+        pushDir(dirName, internalDirectives[dirName])
+      } else {
+        arg = dirName
+        pushDir('bind', publicDirectives.bind)
+      }
+    } else
+
+    // normal directives
+    if (name.indexOf('v-') === 0) {
+      // check arg
+      arg = (arg = name.match(argRE)) && arg[1]
+      if (arg) {
+        name = name.replace(argRE, '')
+      }
+      // extract directive name
+      dirName = name.slice(2)
+
+      // skip v-else (when used with v-show)
+      if (dirName === 'else') {
+        continue
+      }
+
       dirDef = resolveAsset(options, 'directives', dirName)
+
       if (process.env.NODE_ENV !== 'production') {
         _.assertAsset(dirDef, 'directive', dirName)
       }
+
       if (dirDef) {
-        dirs.push({
-          name: dirName,
-          descriptors: dirParser.parse(value),
-          def: dirDef
-        })
-      }
-    } else if (config.interpolate) {
-      dir = collectAttrDirective(name, value, options)
-      if (dir) {
-        dirs.push(dir)
+        pushDir(dirName, dirDef)
       }
     }
   }
-  // sort by priority, LOW to HIGH
+
+  /**
+   * Push a directive.
+   *
+   * @param {String} dirName
+   * @param {Object|Function} def
+   * @param {Boolean} [interp]
+   */
+
+  function pushDir (dirName, def, interp) {
+    var parsed = dirParser.parse(value)
+    dirs.push({
+      name: dirName,
+      attr: rawName,
+      raw: rawValue,
+      def: def,
+      arg: arg,
+      modifiers: modifiers,
+      expression: parsed.expression,
+      filters: parsed.filters,
+      interp: interp
+    })
+  }
+
   if (dirs.length) {
-    dirs.sort(directiveComparator)
     return makeNodeLinkFn(dirs)
   }
+}
+
+/**
+ * Parse modifiers from directive attribute name.
+ *
+ * @param {String} name
+ * @return {Object}
+ */
+
+function parseModifiers (name) {
+  var res = Object.create(null)
+  var match = name.match(modifierRE)
+  if (match) {
+    var i = match.length
+    while (i--) {
+      res[match[i].slice(1)] = true
+    }
+  }
+  return res
 }
 
 /**
@@ -4487,93 +5461,17 @@ function compileDirectives (attrs, options) {
  */
 
 function makeNodeLinkFn (directives) {
-  return function nodeLinkFn (vm, el, host) {
+  return function nodeLinkFn (vm, el, host, scope, frag) {
     // reverse apply because it's sorted low to high
     var i = directives.length
-    var dir, j, k
     while (i--) {
-      dir = directives[i]
-      if (dir._link) {
-        // custom link fn
-        dir._link(vm, el)
-      } else {
-        k = dir.descriptors.length
-        for (j = 0; j < k; j++) {
-          vm._bindDir(dir.name, el,
-            dir.descriptors[j], dir.def, host)
-        }
-      }
+      vm._bindDir(directives[i], el, host, scope, frag)
     }
   }
-}
-
-/**
- * Check an attribute for potential dynamic bindings,
- * and return a directive object.
- *
- * Special case: class interpolations are translated into
- * v-class instead v-attr, so that it can work with user
- * provided v-class bindings.
- *
- * @param {String} name
- * @param {String} value
- * @param {Object} options
- * @return {Object}
- */
-
-function collectAttrDirective (name, value, options) {
-  var tokens = textParser.parse(value)
-  var isClass = name === 'class'
-  if (tokens) {
-    var dirName = isClass ? 'class' : 'attr'
-    var def = options.directives[dirName]
-    var i = tokens.length
-    var allOneTime = true
-    while (i--) {
-      var token = tokens[i]
-      if (token.tag && !token.oneTime) {
-        allOneTime = false
-      }
-    }
-    var linker
-    if (allOneTime) {
-      linker = function (vm, el) {
-        el.setAttribute(name, vm.$interpolate(value))
-      }
-    } else {
-      linker = function (vm, el) {
-        var exp = textParser.tokensToExp(tokens, vm)
-        var desc = isClass
-          ? dirParser.parse(exp)[0]
-          : dirParser.parse(name + ':' + exp)[0]
-        if (isClass) {
-          desc._rawClass = value
-        }
-        vm._bindDir(dirName, el, desc, def)
-      }
-    }
-    return {
-      def: def,
-      _link: linker
-    }
-  }
-}
-
-/**
- * Directive priority sort comparator
- *
- * @param {Object} a
- * @param {Object} b
- */
-
-function directiveComparator (a, b) {
-  a = a.def.priority || 0
-  b = b.def.priority || 0
-  return a > b ? 1 : -1
 }
 
 }).call(this,require('_process'))
-},{"../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","../directives/component":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/component.js","../parsers/directive":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/directive.js","../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../parsers/text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/text.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","./compile-props":"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/compile-props.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/index.js":[function(require,module,exports){
+},{"../directives/internal":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/index.js","../directives/public":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/index.js","../parsers/directive":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/directive.js","../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../parsers/text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/text.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","./compile-props":"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/compile-props.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/index.js":[function(require,module,exports){
 var _ = require('../util')
 
 _.extend(exports, require('./compile'))
@@ -4582,15 +5480,15 @@ _.extend(exports, require('./transclude'))
 },{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","./compile":"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/compile.js","./transclude":"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/transclude.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/transclude.js":[function(require,module,exports){
 (function (process){
 var _ = require('../util')
-var config = require('../config')
 var templateParser = require('../parsers/template')
+var specialCharRE = /[^\w\-:\.]/
 
 /**
  * Process an element or a DocumentFragment based on a
  * instance option object. This allows us to transclude
  * a template node/fragment before the instance is created,
  * so the processed fragment can then be cloned and reused
- * in v-repeat.
+ * in v-for.
  *
  * @param {Element} el
  * @param {Object} options
@@ -4613,7 +5511,7 @@ exports.transclude = function (el, options) {
   }
   if (options) {
     if (options._asComponent && !options.template) {
-      options.template = '<content></content>'
+      options.template = '<slot></slot>'
     }
     if (options.template) {
       options._content = _.extractContent(el)
@@ -4665,11 +5563,15 @@ function transcludeTemplate (el, options) {
         // single nested component
         tag === 'component' ||
         _.resolveAsset(options, 'components', tag) ||
-        replacer.hasAttribute(config.prefix + 'component') ||
+        replacer.hasAttribute('is') ||
+        replacer.hasAttribute(':is') ||
+        replacer.hasAttribute('v-bind:is') ||
         // element directive
         _.resolveAsset(options, 'elementDirectives', tag) ||
-        // repeat block
-        replacer.hasAttribute(config.prefix + 'repeat')
+        // for block
+        replacer.hasAttribute('v-for') ||
+        // if block
+        replacer.hasAttribute('v-if')
       ) {
         return frag
       } else {
@@ -4717,7 +5619,7 @@ function mergeAttrs (from, to) {
   while (i--) {
     name = attrs[i].name
     value = attrs[i].value
-    if (!to.hasAttribute(name)) {
+    if (!to.hasAttribute(name) && !specialCharRE.test(name)) {
       to.setAttribute(name, value)
     } else if (name === 'class') {
       value = to.getAttribute(name) + ' ' + value
@@ -4727,16 +5629,8 @@ function mergeAttrs (from, to) {
 }
 
 }).call(this,require('_process'))
-},{"../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js":[function(require,module,exports){
+},{"../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js":[function(require,module,exports){
 module.exports = {
-
-  /**
-   * The prefix to look for when parsing directives.
-   *
-   * @type {String}
-   */
-
-  prefix: 'v-',
 
   /**
    * Whether to print debug messages.
@@ -4748,36 +5642,12 @@ module.exports = {
   debug: false,
 
   /**
-   * Strict mode.
-   * Disables asset lookup in the view parent chain.
-   */
-
-  strict: false,
-
-  /**
    * Whether to suppress warnings.
    *
    * @type {Boolean}
    */
 
   silent: false,
-
-  /**
-   * Whether allow observer to alter data objects'
-   * __proto__.
-   *
-   * @type {Boolean}
-   */
-
-  proto: true,
-
-  /**
-   * Whether to parse mustache tags in templates.
-   *
-   * @type {Boolean}
-   */
-
-  interpolate: true,
 
   /**
    * Whether to use async rendering.
@@ -4835,30 +5705,40 @@ module.exports = {
 }
 
 /**
- * Interpolation delimiters.
- * We need to mark the changed flag so that the text parser
- * knows it needs to recompile the regex.
+ * Interpolation delimiters. Changing these would trigger
+ * the text parser to re-compile the regular expressions.
  *
  * @type {Array<String>}
  */
 
 var delimiters = ['{{', '}}']
+var unsafeDelimiters = ['{{{', '}}}']
+var textParser = require('./parsers/text')
+
 Object.defineProperty(module.exports, 'delimiters', {
   get: function () {
     return delimiters
   },
   set: function (val) {
     delimiters = val
-    this._delimitersChanged = true
+    textParser.compileRegex()
   }
 })
 
-},{}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directive.js":[function(require,module,exports){
+Object.defineProperty(module.exports, 'unsafeDelimiters', {
+  get: function () {
+    return unsafeDelimiters
+  },
+  set: function (val) {
+    unsafeDelimiters = val
+    textParser.compileRegex()
+  }
+})
+
+},{"./parsers/text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/text.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directive.js":[function(require,module,exports){
 (function (process){
 var _ = require('./util')
-var config = require('./config')
 var Watcher = require('./watcher')
-var textParser = require('./parsers/text')
 var expParser = require('./parsers/expression')
 function noop () {}
 
@@ -4872,32 +5752,44 @@ function noop () {}
  * @param {Node} el
  * @param {Vue} vm
  * @param {Object} descriptor
+ *                 - {String} name
+ *                 - {Object} def
  *                 - {String} expression
- *                 - {String} [arg]
  *                 - {Array<Object>} [filters]
+ *                 - {Boolean} literal
+ *                 - {String} attr
+ *                 - {String} raw
  * @param {Object} def - directive definition object
- * @param {Vue|undefined} host - transclusion host target
+ * @param {Vue} [host] - transclusion host component
+ * @param {Object} [scope] - v-for scope
+ * @param {Fragment} [frag] - owner fragment
  * @constructor
  */
 
-function Directive (name, el, vm, descriptor, def, host) {
-  // public
-  this.name = name
-  this.el = el
+function Directive (descriptor, vm, el, host, scope, frag) {
   this.vm = vm
-  // copy descriptor props
-  this.raw = descriptor.raw
+  this.el = el
+  // copy descriptor properties
+  this.descriptor = descriptor
+  this.name = descriptor.name
   this.expression = descriptor.expression
   this.arg = descriptor.arg
+  this.modifiers = descriptor.modifiers
   this.filters = descriptor.filters
+  this.literal = this.modifiers && this.modifiers.literal
   // private
-  this._descriptor = descriptor
-  this._host = host
   this._locked = false
   this._bound = false
   this._listeners = null
-  // init
-  this._bind(def)
+  // link context
+  this._host = host
+  this._scope = scope
+  this._frag = frag
+  // store directives on node in dev mode
+  if (process.env.NODE_ENV !== 'production' && this.el) {
+    this.el._vue_directives = this.el._vue_directives || []
+    this.el._vue_directives.push(this)
+  }
 }
 
 /**
@@ -4908,27 +5800,42 @@ function Directive (name, el, vm, descriptor, def, host) {
  * @param {Object} def
  */
 
-Directive.prototype._bind = function (def) {
+Directive.prototype._bind = function () {
+  var name = this.name
+  var descriptor = this.descriptor
+
+  // remove attribute
   if (
-    (this.name !== 'cloak' || this.vm._isCompiled) &&
+    (name !== 'cloak' || this.vm._isCompiled) &&
     this.el && this.el.removeAttribute
   ) {
-    this.el.removeAttribute(config.prefix + this.name)
+    var attr = descriptor.attr || ('v-' + name)
+    this.el.removeAttribute(attr)
   }
+
+  // copy def properties
+  var def = descriptor.def
   if (typeof def === 'function') {
     this.update = def
   } else {
     _.extend(this, def)
   }
-  this._watcherExp = this.expression
-  this._checkDynamicLiteral()
+
+  // setup directive params
+  this._setupParams()
+
+  // initial bind
   if (this.bind) {
     this.bind()
   }
-  if (this._watcherExp &&
-      (this.update || this.twoWay) &&
-      (!this.isLiteral || this._isDynamicLiteral) &&
-      !this._checkStatement()) {
+
+  if (this.literal) {
+    this.update && this.update(descriptor.raw)
+  } else if (
+    (this.expression || this.modifiers) &&
+    (this.update || this.twoWay) &&
+    !this._checkStatement()
+  ) {
     // wrapped updater for context
     var dir = this
     if (this.update) {
@@ -4940,24 +5847,30 @@ Directive.prototype._bind = function (def) {
     } else {
       this._update = noop
     }
-    // pre-process hook called before the value is piped
-    // through the filters. used in v-repeat.
     var preProcess = this._preProcess
       ? _.bind(this._preProcess, this)
       : null
+    var postProcess = this._postProcess
+      ? _.bind(this._postProcess, this)
+      : null
     var watcher = this._watcher = new Watcher(
       this.vm,
-      this._watcherExp,
+      this.expression,
       this._update, // callback
       {
         filters: this.filters,
         twoWay: this.twoWay,
         deep: this.deep,
-        preProcess: preProcess
+        preProcess: preProcess,
+        postProcess: postProcess,
+        scope: this._scope
       }
     )
-    if (this._initValue != null) {
-      watcher.set(this._initValue)
+    // v-model with inital inline value need to sync back to
+    // model instead of update to DOM on init. They would
+    // set the afterBind hook to indicate that.
+    if (this.afterBind) {
+      this.afterBind()
     } else if (this.update) {
       this.update(watcher.value)
     }
@@ -4966,22 +5879,62 @@ Directive.prototype._bind = function (def) {
 }
 
 /**
- * check if this is a dynamic literal binding.
- *
- * e.g. v-component="{{currentView}}"
+ * Setup all param attributes, e.g. track-by,
+ * transition-mode, etc...
  */
 
-Directive.prototype._checkDynamicLiteral = function () {
-  var expression = this.expression
-  if (expression && this.isLiteral) {
-    var tokens = textParser.parse(expression)
-    if (tokens) {
-      var exp = textParser.tokensToExp(tokens)
-      this.expression = this.vm.$get(exp)
-      this._watcherExp = exp
-      this._isDynamicLiteral = true
+Directive.prototype._setupParams = function () {
+  if (!this.params) {
+    return
+  }
+  var params = this.params
+  // swap the params array with a fresh object.
+  this.params = Object.create(null)
+  var i = params.length
+  var key, val, mappedKey
+  while (i--) {
+    key = params[i]
+    mappedKey = _.camelize(key)
+    val = _.getBindAttr(this.el, key)
+    if (val != null) {
+      // dynamic
+      this._setupParamWatcher(mappedKey, val)
+    } else {
+      // static
+      val = _.attr(this.el, key)
+      if (val != null) {
+        this.params[mappedKey] = val === '' ? true : val
+      }
     }
   }
+}
+
+/**
+ * Setup a watcher for a dynamic param.
+ *
+ * @param {String} key
+ * @param {String} expression
+ */
+
+Directive.prototype._setupParamWatcher = function (key, expression) {
+  var self = this
+  var called = false
+  var unwatch = (this._scope || this.vm).$watch(expression, function (val, oldVal) {
+    self.params[key] = val
+    // since we are in immediate mode,
+    // only call the param change callbacks if this is not the first update.
+    if (called) {
+      var cb = self.paramWatchers && self.paramWatchers[key]
+      if (cb) {
+        cb.call(self, val, oldVal)
+      }
+    } else {
+      called = true
+    }
+  }, {
+    immediate: true
+  })
+  ;(this._paramUnwatchFns || (this._paramUnwatchFns = [])).push(unwatch)
 }
 
 /**
@@ -4990,7 +5943,7 @@ Directive.prototype._checkDynamicLiteral = function () {
  * we wrap up the expression and use it as the event
  * handler.
  *
- * e.g. v-on="click: a++"
+ * e.g. on-click="a++"
  *
  * @return {Boolean}
  */
@@ -5002,32 +5955,16 @@ Directive.prototype._checkStatement = function () {
     !expParser.isSimplePath(expression)
   ) {
     var fn = expParser.parse(expression).get
-    var vm = this.vm
+    var scope = this._scope || this.vm
     var handler = function () {
-      fn.call(vm, vm)
+      fn.call(scope, scope)
     }
     if (this.filters) {
-      handler = vm._applyFilters(handler, null, this.filters)
+      handler = scope._applyFilters(handler, null, this.filters)
     }
     this.update(handler)
     return true
   }
-}
-
-/**
- * Check for an attribute directive param, e.g. lazy
- *
- * @param {String} name
- * @return {String}
- */
-
-Directive.prototype._checkParam = function (name) {
-  var param = this.el.getAttribute(name)
-  if (param !== null) {
-    this.el.removeAttribute(name)
-    param = this.vm.$interpolate(param)
-  }
-  return param
 }
 
 /**
@@ -5098,113 +6035,225 @@ Directive.prototype._teardown = function () {
       this._watcher.teardown()
     }
     var listeners = this._listeners
+    var i
     if (listeners) {
-      for (var i = 0; i < listeners.length; i++) {
+      i = listeners.length
+      while (i--) {
         _.off(this.el, listeners[i][0], listeners[i][1])
       }
     }
-    this.vm = this.el =
-    this._watcher = this._listeners = null
+    var unwatchFns = this._paramUnwatchFns
+    if (unwatchFns) {
+      i = unwatchFns.length
+      while (i--) {
+        unwatchFns[i]()
+      }
+    }
+    if (process.env.NODE_ENV !== 'production' && this.el) {
+      this.el._vue_directives.$remove(this)
+    }
+    this.vm = this.el = this._watcher = this._listeners = null
   }
 }
 
 module.exports = Directive
 
 }).call(this,require('_process'))
-},{"./config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","./parsers/expression":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/expression.js","./parsers/text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/text.js","./util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","./watcher":"/Users/bill/Sites/vue-starter/node_modules/vue/src/watcher.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/attr.js":[function(require,module,exports){
-// xlink
-var xlinkNS = 'http://www.w3.org/1999/xlink'
-var xlinkRE = /^xlink:/
-var inputProps = {
-  value: 1,
-  checked: 1,
-  selected: 1
-}
+},{"./parsers/expression":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/expression.js","./util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","./watcher":"/Users/bill/Sites/vue-starter/node_modules/vue/src/watcher.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/element/index.js":[function(require,module,exports){
+exports.slot = require('./slot')
+exports.partial = require('./partial')
+
+},{"./partial":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/element/partial.js","./slot":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/element/slot.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/element/partial.js":[function(require,module,exports){
+(function (process){
+var _ = require('../../util')
+var vIf = require('../public/if')
+var FragmentFactory = require('../../fragment/factory')
 
 module.exports = {
 
-  priority: 850,
+  priority: 1750,
 
-  update: function (value) {
-    if (this.arg) {
-      this.setAttr(this.arg, value)
-    } else if (typeof value === 'object') {
-      this.objectHandler(value)
-    }
-  },
+  params: ['name'],
 
-  objectHandler: function (value) {
-    // cache object attrs so that only changed attrs
-    // are actually updated.
-    var cache = this.cache || (this.cache = {})
-    var attr, val
-    for (attr in cache) {
-      if (!(attr in value)) {
-        this.setAttr(attr, null)
-        delete cache[attr]
-      }
-    }
-    for (attr in value) {
-      val = value[attr]
-      if (val !== cache[attr]) {
-        cache[attr] = val
-        this.setAttr(attr, val)
+  // watch changes to name for dynamic partials
+  paramWatchers: {
+    name: function (value) {
+      vIf.remove.call(this)
+      if (value) {
+        this.insert(value)
       }
     }
   },
 
-  setAttr: function (attr, value) {
-    if (inputProps[attr] && attr in this.el) {
-      if (!this.valueRemoved) {
-        this.el.removeAttribute(attr)
-        this.valueRemoved = true
-      }
-      this.el[attr] = value
-    } else if (value != null && value !== false) {
-      if (xlinkRE.test(attr)) {
-        this.el.setAttributeNS(xlinkNS, attr, value)
-      } else {
-        this.el.setAttribute(attr, value)
-      }
-    } else {
-      this.el.removeAttribute(attr)
+  bind: function () {
+    this.anchor = _.createAnchor('v-partial')
+    _.replace(this.el, this.anchor)
+    this.insert(this.params.name)
+  },
+
+  insert: function (id) {
+    var partial = _.resolveAsset(this.vm.$options, 'partials', id)
+    if (process.env.NODE_ENV !== 'production') {
+      _.assertAsset(partial, 'partial', id)
+    }
+    if (partial) {
+      this.factory = new FragmentFactory(this.vm, partial)
+      vIf.insert.call(this)
+    }
+  },
+
+  unbind: function () {
+    if (this.frag) {
+      this.frag.destroy()
     }
   }
 }
 
-},{}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/class.js":[function(require,module,exports){
-var _ = require('../util')
+}).call(this,require('_process'))
+},{"../../fragment/factory":"/Users/bill/Sites/vue-starter/node_modules/vue/src/fragment/factory.js","../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","../public/if":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/if.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/element/slot.js":[function(require,module,exports){
+var _ = require('../../util')
+var templateParser = require('../../parsers/template')
+
+// This is the elementDirective that handles <content>
+// transclusions. It relies on the raw content of an
+// instance being stored as `$options._content` during
+// the transclude phase.
+
+module.exports = {
+
+  priority: 1750,
+
+  params: ['name'],
+
+  bind: function () {
+    var host = this.vm
+    var raw = host.$options._content
+    var content
+    if (!raw) {
+      this.fallback()
+      return
+    }
+    var context = host._context
+    var slotName = this.params.name
+    if (!slotName) {
+      // Default content
+      var self = this
+      var compileDefaultContent = function () {
+        self.compile(
+          extractFragment(raw.childNodes, raw, true),
+          context,
+          host
+        )
+      }
+      if (!host._isCompiled) {
+        // defer until the end of instance compilation,
+        // because the default outlet must wait until all
+        // other possible outlets with selectors have picked
+        // out their contents.
+        host.$once('hook:compiled', compileDefaultContent)
+      } else {
+        compileDefaultContent()
+      }
+    } else {
+      var selector = '[slot="' + slotName + '"]'
+      var nodes = raw.querySelectorAll(selector)
+      if (nodes.length) {
+        content = extractFragment(nodes, raw)
+        if (content.hasChildNodes()) {
+          this.compile(content, context, host)
+        } else {
+          this.fallback()
+        }
+      } else {
+        this.fallback()
+      }
+    }
+  },
+
+  fallback: function () {
+    this.compile(_.extractContent(this.el, true), this.vm)
+  },
+
+  compile: function (content, context, host) {
+    if (content && context) {
+      var scope = host
+        ? host._scope
+        : this._scope
+      this.unlink = context.$compile(
+        content, host, scope, this._frag
+      )
+    }
+    if (content) {
+      _.replace(this.el, content)
+    } else {
+      _.remove(this.el)
+    }
+  },
+
+  unbind: function () {
+    if (this.unlink) {
+      this.unlink()
+    }
+  }
+}
+
+/**
+ * Extract qualified content nodes from a node list.
+ *
+ * @param {NodeList} nodes
+ * @param {Element} parent
+ * @param {Boolean} main
+ * @return {DocumentFragment}
+ */
+
+function extractFragment (nodes, parent, main) {
+  var frag = document.createDocumentFragment()
+  for (var i = 0, l = nodes.length; i < l; i++) {
+    var node = nodes[i]
+    // if this is the main outlet, we want to skip all
+    // previously selected nodes;
+    // otherwise, we want to mark the node as selected.
+    // clone the node so the original raw content remains
+    // intact. this ensures proper re-compilation in cases
+    // where the outlet is inside a conditional block
+    if (main && !node.__v_selected) {
+      append(node)
+    } else if (!main && node.parentNode === parent) {
+      node.__v_selected = true
+      append(node)
+    }
+  }
+  return frag
+
+  function append (node) {
+    if (_.isTemplate(node) &&
+        !node.hasAttribute('v-if') &&
+        !node.hasAttribute('v-for')) {
+      node = templateParser.parse(node)
+    }
+    node = templateParser.clone(node)
+    frag.appendChild(node)
+  }
+}
+
+},{"../../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/class.js":[function(require,module,exports){
+var _ = require('../../util')
 var addClass = _.addClass
 var removeClass = _.removeClass
 
 module.exports = {
 
-  bind: function () {
-    // interpolations like class="{{abc}}" are converted
-    // to v-class, and we need to remove the raw,
-    // uninterpolated className at binding time.
-    var raw = this._descriptor._rawClass
-    if (raw) {
-      this.prevKeys = raw.trim().split(/\s+/)
-    }
-  },
+  deep: true,
 
   update: function (value) {
-    if (this.arg) {
-      // single toggle
-      if (value) {
-        addClass(this.el, this.arg)
-      } else {
-        removeClass(this.el, this.arg)
-      }
+    if (value && typeof value === 'string') {
+      this.handleObject(stringToObject(value))
+    } else if (_.isPlainObject(value)) {
+      this.handleObject(value)
+    } else if (_.isArray(value)) {
+      this.handleArray(value)
     } else {
-      if (value && typeof value === 'string') {
-        this.handleObject(stringToObject(value))
-      } else if (_.isPlainObject(value)) {
-        this.handleObject(value)
-      } else {
-        this.cleanup()
-      }
+      this.cleanup()
     }
   },
 
@@ -5221,12 +6270,22 @@ module.exports = {
     }
   },
 
+  handleArray: function (value) {
+    this.cleanup(value)
+    for (var i = 0, l = value.length; i < l; i++) {
+      if (value[i]) {
+        addClass(this.el, value[i])
+      }
+    }
+    this.prevKeys = value.slice()
+  },
+
   cleanup: function (value) {
     if (this.prevKeys) {
       var i = this.prevKeys.length
       while (i--) {
         var key = this.prevKeys[i]
-        if (!value || !value.hasOwnProperty(key)) {
+        if (key && (!value || !contains(value, key))) {
           removeClass(this.el, key)
         }
       }
@@ -5244,60 +6303,48 @@ function stringToObject (value) {
   return res
 }
 
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/cloak.js":[function(require,module,exports){
-var config = require('../config')
-
-module.exports = {
-  bind: function () {
-    var el = this.el
-    this.vm.$once('hook:compiled', function () {
-      el.removeAttribute(config.prefix + 'cloak')
-    })
-  }
+function contains (value, key) {
+  return _.isArray(value)
+    ? value.indexOf(key) > -1
+    : value.hasOwnProperty(key)
 }
 
-},{"../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/component.js":[function(require,module,exports){
+},{"../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/component.js":[function(require,module,exports){
 (function (process){
-var _ = require('../util')
-var config = require('../config')
-var templateParser = require('../parsers/template')
+var _ = require('../../util')
+var templateParser = require('../../parsers/template')
 
 module.exports = {
 
-  isLiteral: true,
+  priority: 1500,
+
+  params: [
+    'keep-alive',
+    'transition-mode',
+    'inline-template'
+  ],
 
   /**
    * Setup. Two possible usages:
    *
    * - static:
-   *   v-component="comp"
+   *   <comp> or <div v-component="comp">
    *
    * - dynamic:
-   *   v-component="{{currentView}}"
+   *   <component :is="view">
    */
 
   bind: function () {
     if (!this.el.__vue__) {
-      // create a ref anchor
-      this.anchor = _.createAnchor('v-component')
-      _.replace(this.el, this.anchor)
-      // check keep-alive options.
-      // If yes, instead of destroying the active vm when
-      // hiding (v-if) or switching (dynamic literal) it,
-      // we simply remove it from the DOM and save it in a
-      // cache object, with its constructor id as the key.
-      this.keepAlive = this._checkParam('keep-alive') != null
-      // wait for event before insertion
-      this.waitForEvent = this._checkParam('wait-for')
-      // check ref
-      this.refID = this._checkParam(config.prefix + 'ref')
+      // keep-alive cache
+      this.keepAlive = this.params.keepAlive
       if (this.keepAlive) {
         this.cache = {}
       }
       // check inline-template
-      if (this._checkParam('inline-template') !== null) {
+      if (this.params.inlineTemplate) {
         // extract inline template as a DocumentFragment
-        this.template = _.extractContent(this.el, true)
+        this.inlineTemplate = _.extractContent(this.el, true)
       }
       // component resolution related state
       this.pendingComponentCb =
@@ -5305,12 +6352,13 @@ module.exports = {
       // transition related state
       this.pendingRemovals = 0
       this.pendingRemovalCb = null
+      // check dynamic component params
+        // create a ref anchor
+      this.anchor = _.createAnchor('v-component')
+      _.replace(this.el, this.anchor)
       // if static, build right now.
-      if (!this._isDynamicLiteral) {
-        this.resolveComponent(this.expression, _.bind(this.initStatic, this))
-      } else {
-        // check dynamic component params
-        this.transMode = this._checkParam('transition-mode')
+      if (this.literal) {
+        this.setComponent(this.expression)
       }
     } else {
       process.env.NODE_ENV !== 'production' && _.warn(
@@ -5321,37 +6369,14 @@ module.exports = {
   },
 
   /**
-   * Initialize a static component.
-   */
-
-  initStatic: function () {
-    // wait-for
-    var anchor = this.anchor
-    var options
-    var waitFor = this.waitForEvent
-    if (waitFor) {
-      options = {
-        created: function () {
-          this.$once(waitFor, function () {
-            this.$before(anchor)
-          })
-        }
-      }
-    }
-    var child = this.build(options)
-    this.setCurrent(child)
-    if (!this.waitForEvent) {
-      child.$before(anchor)
-    }
-  },
-
-  /**
    * Public update, called by the watcher in the dynamic
-   * literal scenario, e.g. v-component="{{view}}"
+   * literal scenario, e.g. <component :is="view">
    */
 
   update: function (value) {
-    this.setComponent(value)
+    if (!this.literal) {
+      this.setComponent(value)
+    }
   },
 
   /**
@@ -5373,31 +6398,12 @@ module.exports = {
       // just remove current
       this.unbuild(true)
       this.remove(this.childVM, cb)
-      this.unsetCurrent()
+      this.childVM = null
     } else {
-      this.resolveComponent(value, _.bind(function () {
-        this.unbuild(true)
-        var options
-        var self = this
-        var waitFor = this.waitForEvent
-        if (waitFor) {
-          options = {
-            created: function () {
-              this.$once(waitFor, function () {
-                self.waitingFor = null
-                self.transition(this, cb)
-              })
-            }
-          }
-        }
-        var cached = this.getCached()
-        var newComponent = this.build(options)
-        if (!waitFor || cached) {
-          this.transition(newComponent, cb)
-        } else {
-          this.waitingFor = newComponent
-        }
-      }, this))
+      var self = this
+      this.resolveComponent(value, function () {
+        self.mountComponent(cb)
+      })
     }
   },
 
@@ -5409,10 +6415,42 @@ module.exports = {
   resolveComponent: function (id, cb) {
     var self = this
     this.pendingComponentCb = _.cancellable(function (Component) {
+      self.ComponentName = Component.options.name || id
       self.Component = Component
       cb()
     })
     this.vm._resolveComponent(id, this.pendingComponentCb)
+  },
+
+  /**
+   * Create a new instance using the current constructor and
+   * replace the existing instance. This method doesn't care
+   * whether the new component and the old one are actually
+   * the same.
+   *
+   * @param {Function} [cb]
+   */
+
+  mountComponent: function (cb) {
+    // actual mount
+    this.unbuild(true)
+    var self = this
+    var activateHook = this.Component.options.activate
+    var cached = this.getCached()
+    var newComponent = this.build()
+    if (activateHook && !cached) {
+      this.waitingFor = newComponent
+      activateHook.call(newComponent, function () {
+        self.waitingFor = null
+        self.transition(newComponent, cb)
+      })
+    } else {
+      // update ref for kept-alive component
+      if (cached) {
+        newComponent._updateRef()
+      }
+      this.transition(newComponent, cb)
+    }
   },
 
   /**
@@ -5445,23 +6483,52 @@ module.exports = {
     if (this.Component) {
       // default options
       var options = {
+        name: this.ComponentName,
         el: templateParser.clone(this.el),
-        template: this.template,
+        template: this.inlineTemplate,
+        // make sure to add the child with correct parent
+        // if this is a transcluded component, its parent
+        // should be the transclusion host.
+        parent: this._host || this.vm,
         // if no inline-template, then the compiled
         // linker can be cached for better performance.
-        _linkerCachable: !this.template,
+        _linkerCachable: !this.inlineTemplate,
+        _ref: this.descriptor.ref,
         _asComponent: true,
         _isRouterView: this._isRouterView,
-        _context: this.vm
+        // if this is a transcluded component, context
+        // will be the common parent vm of this instance
+        // and its host.
+        _context: this.vm,
+        // if this is inside an inline v-for, the scope
+        // will be the intermediate scope created for this
+        // repeat fragment. this is used for linking props
+        // and container directives.
+        _scope: this._scope,
+        // pass in the owner fragment of this component.
+        // this is necessary so that the fragment can keep
+        // track of its contained components in order to
+        // call attach/detach hooks for them.
+        _frag: this._frag
       }
       // extra options
+      // in 1.0.0 this is used by vue-router only
+      /* istanbul ignore if */
       if (extraOptions) {
         _.extend(options, extraOptions)
       }
-      var parent = this._host || this.vm
-      var child = parent.$addChild(options, this.Component)
+      var child = new this.Component(options)
       if (this.keepAlive) {
         this.cache[this.Component.cid] = child
+      }
+      /* istanbul ignore if */
+      if (process.env.NODE_ENV !== 'production' &&
+          this.el.hasAttribute('transition') &&
+          child._isFragment) {
+        _.warn(
+          'Transitions will not work on a fragment instance. ' +
+          'Template: ' + child.$options.template
+        )
       }
       return child
     }
@@ -5491,6 +6558,10 @@ module.exports = {
     }
     var child = this.childVM
     if (!child || this.keepAlive) {
+      if (child) {
+        // remove ref
+        child._updateRef(true)
+      }
       return
     }
     // the sole purpose of `deferCleanup` is so that we can
@@ -5540,8 +6611,13 @@ module.exports = {
   transition: function (target, cb) {
     var self = this
     var current = this.childVM
-    this.setCurrent(target)
-    switch (self.transMode) {
+    // for devtool inspection
+    if (process.env.NODE_ENV !== 'production') {
+      if (current) current._inactive = true
+      target._inactive = false
+    }
+    this.childVM = target
+    switch (self.params.transitionMode) {
       case 'in-out':
         target.$before(self.anchor, function () {
           self.remove(current, cb)
@@ -5559,32 +6635,6 @@ module.exports = {
   },
 
   /**
-   * Set childVM and parent ref
-   */
-
-  setCurrent: function (child) {
-    this.unsetCurrent()
-    this.childVM = child
-    var refID = child._refID || this.refID
-    if (refID) {
-      this.vm.$[refID] = child
-    }
-  },
-
-  /**
-   * Unset childVM and parent ref
-   */
-
-  unsetCurrent: function () {
-    var child = this.childVM
-    this.childVM = null
-    var refID = (child && child._refID) || this.refID
-    if (refID) {
-      this.vm.$[refID] = null
-    }
-  },
-
-  /**
    * Unbind.
    */
 
@@ -5592,7 +6642,6 @@ module.exports = {
     this.invalidatePending()
     // Do not defer cleanup when unbinding
     this.unbuild()
-    this.unsetCurrent()
     // destroy all keep-alive cached instances
     if (this.cache) {
       for (var key in this.cache) {
@@ -5604,23 +6653,977 @@ module.exports = {
 }
 
 }).call(this,require('_process'))
-},{"../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/el.js":[function(require,module,exports){
+},{"../../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/index.js":[function(require,module,exports){
+exports.style = require('./style')
+exports['class'] = require('./class')
+exports.component = require('./component')
+exports.prop = require('./prop')
+exports.transition = require('./transition')
+
+},{"./class":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/class.js","./component":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/component.js","./prop":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/prop.js","./style":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/style.js","./transition":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/transition.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/prop.js":[function(require,module,exports){
+// NOTE: the prop internal directive is compiled and linked
+// during _initScope(), before the created hook is called.
+// The purpose is to make the initial prop values available
+// inside `created` hooks and `data` functions.
+
+var _ = require('../../util')
+var Watcher = require('../../watcher')
+var bindingModes = require('../../config')._propBindingModes
+
 module.exports = {
 
-  isLiteral: true,
-
   bind: function () {
-    this.vm.$$[this.expression] = this.el
+
+    var child = this.vm
+    var parent = child._context
+    // passed in from compiler directly
+    var prop = this.descriptor.prop
+    var childKey = prop.path
+    var parentKey = prop.parentPath
+    var twoWay = prop.mode === bindingModes.TWO_WAY
+
+    var parentWatcher = this.parentWatcher = new Watcher(
+      parent,
+      parentKey,
+      function (val) {
+        if (_.assertProp(prop, val)) {
+          child[childKey] = val
+        }
+      }, {
+        twoWay: twoWay,
+        filters: prop.filters,
+        // important: props need to be observed on the
+        // v-for scope if present
+        scope: this._scope
+      }
+    )
+
+    // set the child initial value.
+    _.initProp(child, prop, parentWatcher.value)
+
+    // setup two-way binding
+    if (twoWay) {
+      // important: defer the child watcher creation until
+      // the created hook (after data observation)
+      var self = this
+      child.$once('hook:created', function () {
+        self.childWatcher = new Watcher(
+          child,
+          childKey,
+          function (val) {
+            parentWatcher.set(val)
+          }, {
+            // ensure sync upward before parent sync down.
+            // this is necessary in cases e.g. the child
+            // mutates a prop array, then replaces it. (#1683)
+            sync: true
+          }
+        )
+      })
+    }
   },
 
   unbind: function () {
-    delete this.vm.$$[this.expression]
+    this.parentWatcher.teardown()
+    if (this.childWatcher) {
+      this.childWatcher.teardown()
+    }
   }
 }
 
-},{}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/html.js":[function(require,module,exports){
-var _ = require('../util')
-var templateParser = require('../parsers/template')
+},{"../../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","../../watcher":"/Users/bill/Sites/vue-starter/node_modules/vue/src/watcher.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/style.js":[function(require,module,exports){
+var _ = require('../../util')
+var prefixes = ['-webkit-', '-moz-', '-ms-']
+var camelPrefixes = ['Webkit', 'Moz', 'ms']
+var importantRE = /!important;?$/
+var testEl = null
+var propCache = {}
+
+module.exports = {
+
+  deep: true,
+
+  update: function (value) {
+    if (typeof value === 'string') {
+      this.el.style.cssText = value
+    } else if (_.isArray(value)) {
+      this.handleObject(value.reduce(_.extend, {}))
+    } else {
+      this.handleObject(value || {})
+    }
+  },
+
+  handleObject: function (value) {
+    // cache object styles so that only changed props
+    // are actually updated.
+    var cache = this.cache || (this.cache = {})
+    var name, val
+    for (name in cache) {
+      if (!(name in value)) {
+        this.handleSingle(name, null)
+        delete cache[name]
+      }
+    }
+    for (name in value) {
+      val = value[name]
+      if (val !== cache[name]) {
+        cache[name] = val
+        this.handleSingle(name, val)
+      }
+    }
+  },
+
+  handleSingle: function (prop, value) {
+    prop = normalize(prop)
+    if (!prop) return // unsupported prop
+    // cast possible numbers/booleans into strings
+    if (value != null) value += ''
+    if (value) {
+      var isImportant = importantRE.test(value)
+        ? 'important'
+        : ''
+      if (isImportant) {
+        value = value.replace(importantRE, '').trim()
+      }
+      this.el.style.setProperty(prop, value, isImportant)
+    } else {
+      this.el.style.removeProperty(prop)
+    }
+  }
+
+}
+
+/**
+ * Normalize a CSS property name.
+ * - cache result
+ * - auto prefix
+ * - camelCase -> dash-case
+ *
+ * @param {String} prop
+ * @return {String}
+ */
+
+function normalize (prop) {
+  if (propCache[prop]) {
+    return propCache[prop]
+  }
+  var res = prefix(prop)
+  propCache[prop] = propCache[res] = res
+  return res
+}
+
+/**
+ * Auto detect the appropriate prefix for a CSS property.
+ * https://gist.github.com/paulirish/523692
+ *
+ * @param {String} prop
+ * @return {String}
+ */
+
+function prefix (prop) {
+  prop = _.hyphenate(prop)
+  var camel = _.camelize(prop)
+  var upper = camel.charAt(0).toUpperCase() + camel.slice(1)
+  if (!testEl) {
+    testEl = document.createElement('div')
+  }
+  if (camel in testEl.style) {
+    return prop
+  }
+  var i = prefixes.length
+  var prefixed
+  while (i--) {
+    prefixed = camelPrefixes[i] + upper
+    if (prefixed in testEl.style) {
+      return prefixes[i] + prop
+    }
+  }
+}
+
+},{"../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/transition.js":[function(require,module,exports){
+var _ = require('../../util')
+var Transition = require('../../transition/transition')
+
+module.exports = {
+
+  priority: 1100,
+
+  update: function (id, oldId) {
+    var el = this.el
+    // resolve on owner vm
+    var hooks = _.resolveAsset(this.vm.$options, 'transitions', id)
+    id = id || 'v'
+    // apply on closest vm
+    el.__v_trans = new Transition(el, id, hooks, this.el.__vue__ || this.vm)
+    if (oldId) {
+      _.removeClass(el, oldId + '-transition')
+    }
+    _.addClass(el, id + '-transition')
+  }
+}
+
+},{"../../transition/transition":"/Users/bill/Sites/vue-starter/node_modules/vue/src/transition/transition.js","../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/bind.js":[function(require,module,exports){
+(function (process){
+var _ = require('../../util')
+
+// xlink
+var xlinkNS = 'http://www.w3.org/1999/xlink'
+var xlinkRE = /^xlink:/
+
+// these input element attributes should also set their
+// corresponding properties
+var inputProps = {
+  value: 1,
+  checked: 1,
+  selected: 1
+}
+
+// these attributes should set a hidden property for
+// binding v-model to object values
+var modelProps = {
+  value: '_value',
+  'true-value': '_trueValue',
+  'false-value': '_falseValue'
+}
+
+// check for attributes that prohibit interpolations
+var disallowedInterpAttrRE = /^v-|^:|^@|^(is|transition|transition-mode|debounce|track-by|stagger|enter-stagger|leave-stagger)$/
+
+module.exports = {
+
+  priority: 850,
+
+  bind: function () {
+    var attr = this.arg
+    var tag = this.el.tagName
+    // should be deep watch on object mode
+    if (!attr) {
+      this.deep = true
+    }
+    // handle interpolation bindings
+    if (this.descriptor.interp) {
+      // only allow binding on native attributes
+      if (
+        disallowedInterpAttrRE.test(attr) ||
+        (attr === 'name' && (tag === 'PARTIAL' || tag === 'SLOT'))
+      ) {
+        process.env.NODE_ENV !== 'production' && _.warn(
+          attr + '="' + this.descriptor.raw + '": ' +
+          'attribute interpolation is not allowed in Vue.js ' +
+          'directives and special attributes.'
+        )
+        this.el.removeAttribute(attr)
+        this.invalid = true
+      }
+
+      /* istanbul ignore if */
+      if (process.env.NODE_ENV !== 'production') {
+        var raw = attr + '="' + this.descriptor.raw + '": '
+        // warn src
+        if (attr === 'src') {
+          _.warn(
+            raw + 'interpolation in "src" attribute will cause ' +
+            'a 404 request. Use v-bind:src instead.'
+          )
+        }
+
+        // warn style
+        if (attr === 'style') {
+          _.warn(
+            raw + 'interpolation in "style" attribute will cause ' +
+            'the attribute to be discarded in Internet Explorer. ' +
+            'Use v-bind:style instead.'
+          )
+        }
+      }
+    }
+  },
+
+  update: function (value) {
+    if (this.invalid) {
+      return
+    }
+    var attr = this.arg
+    if (this.arg) {
+      this.handleSingle(attr, value)
+    } else {
+      this.handleObject(value || {})
+    }
+  },
+
+  // share object handler with v-bind:class
+  handleObject: require('../internal/style').handleObject,
+
+  handleSingle: function (attr, value) {
+    if (inputProps[attr] && attr in this.el) {
+      this.el[attr] = attr === 'value'
+        ? (value || '') // IE9 will set input.value to "null" for null...
+        : value
+    }
+    // set model props
+    var modelProp = modelProps[attr]
+    if (modelProp) {
+      this.el[modelProp] = value
+      // update v-model if present
+      var model = this.el.__v_model
+      if (model) {
+        model.listener()
+      }
+    }
+    // do not set value attribute for textarea
+    if (attr === 'value' && this.el.tagName === 'TEXTAREA') {
+      this.el.removeAttribute(attr)
+      return
+    }
+    // update attribute
+    if (value != null && value !== false) {
+      if (xlinkRE.test(attr)) {
+        this.el.setAttributeNS(xlinkNS, attr, value)
+      } else {
+        this.el.setAttribute(attr, value)
+      }
+    } else {
+      this.el.removeAttribute(attr)
+    }
+  }
+}
+
+}).call(this,require('_process'))
+},{"../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","../internal/style":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/internal/style.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/cloak.js":[function(require,module,exports){
+module.exports = {
+  bind: function () {
+    var el = this.el
+    this.vm.$once('hook:compiled', function () {
+      el.removeAttribute('v-cloak')
+    })
+  }
+}
+
+},{}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/el.js":[function(require,module,exports){
+var _ = require('../../util')
+
+module.exports = {
+
+  priority: 1500,
+
+  bind: function () {
+    /* istanbul ignore if */
+    if (!this.arg) {
+      return
+    }
+    var id = this.id = _.camelize(this.arg)
+    var refs = (this._scope || this.vm).$els
+    if (refs.hasOwnProperty(id)) {
+      refs[id] = this.el
+    } else {
+      _.defineReactive(refs, id, this.el)
+    }
+  },
+
+  unbind: function () {
+    var refs = (this._scope || this.vm).$els
+    if (refs[this.id] === this.el) {
+      refs[this.id] = null
+    }
+  }
+}
+
+},{"../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/for.js":[function(require,module,exports){
+(function (process){
+var _ = require('../../util')
+var FragmentFactory = require('../../fragment/factory')
+var isObject = _.isObject
+var uid = 0
+
+module.exports = {
+
+  priority: 2000,
+
+  params: [
+    'track-by',
+    'stagger',
+    'enter-stagger',
+    'leave-stagger'
+  ],
+
+  bind: function () {
+    // support "item in items" syntax
+    var inMatch = this.expression.match(/(.*) in (.*)/)
+    if (inMatch) {
+      var itMatch = inMatch[1].match(/\((.*),(.*)\)/)
+      if (itMatch) {
+        this.iterator = itMatch[1].trim()
+        this.alias = itMatch[2].trim()
+      } else {
+        this.alias = inMatch[1].trim()
+      }
+      this.expression = inMatch[2]
+    }
+
+    if (!this.alias) {
+      process.env.NODE_ENV !== 'production' && _.warn(
+        'Alias is required in v-for.'
+      )
+      return
+    }
+
+    // uid as a cache identifier
+    this.id = '__v-for__' + (++uid)
+
+    // check if this is an option list,
+    // so that we know if we need to update the <select>'s
+    // v-model when the option list has changed.
+    // because v-model has a lower priority than v-for,
+    // the v-model is not bound here yet, so we have to
+    // retrive it in the actual updateModel() function.
+    var tag = this.el.tagName
+    this.isOption =
+      (tag === 'OPTION' || tag === 'OPTGROUP') &&
+      this.el.parentNode.tagName === 'SELECT'
+
+    // setup anchor nodes
+    this.start = _.createAnchor('v-for-start')
+    this.end = _.createAnchor('v-for-end')
+    _.replace(this.el, this.end)
+    _.before(this.start, this.end)
+
+    // cache
+    this.cache = Object.create(null)
+
+    // fragment factory
+    this.factory = new FragmentFactory(this.vm, this.el)
+  },
+
+  update: function (data) {
+    this.diff(data)
+    this.updateRef()
+    this.updateModel()
+  },
+
+  /**
+   * Diff, based on new data and old data, determine the
+   * minimum amount of DOM manipulations needed to make the
+   * DOM reflect the new data Array.
+   *
+   * The algorithm diffs the new data Array by storing a
+   * hidden reference to an owner vm instance on previously
+   * seen data. This allows us to achieve O(n) which is
+   * better than a levenshtein distance based algorithm,
+   * which is O(m * n).
+   *
+   * @param {Array} data
+   */
+
+  diff: function (data) {
+    // check if the Array was converted from an Object
+    var item = data[0]
+    var convertedFromObject = this.fromObject =
+      isObject(item) &&
+      item.hasOwnProperty('$key') &&
+      item.hasOwnProperty('$value')
+
+    var trackByKey = this.params.trackBy
+    var oldFrags = this.frags
+    var frags = this.frags = new Array(data.length)
+    var alias = this.alias
+    var iterator = this.iterator
+    var start = this.start
+    var end = this.end
+    var inDoc = _.inDoc(start)
+    var init = !oldFrags
+    var i, l, frag, key, value, primitive
+
+    // First pass, go through the new Array and fill up
+    // the new frags array. If a piece of data has a cached
+    // instance for it, we reuse it. Otherwise build a new
+    // instance.
+    for (i = 0, l = data.length; i < l; i++) {
+      item = data[i]
+      key = convertedFromObject ? item.$key : null
+      value = convertedFromObject ? item.$value : item
+      primitive = !isObject(value)
+      frag = !init && this.getCachedFrag(value, i, key)
+      if (frag) { // reusable fragment
+        frag.reused = true
+        // update $index
+        frag.scope.$index = i
+        // update $key
+        if (key) {
+          frag.scope.$key = key
+        }
+        // update iterator
+        if (iterator) {
+          frag.scope[iterator] = key !== null ? key : i
+        }
+        // update data for track-by, object repeat &
+        // primitive values.
+        if (trackByKey || convertedFromObject || primitive) {
+          frag.scope[alias] = value
+        }
+      } else { // new isntance
+        frag = this.create(value, alias, i, key)
+        frag.fresh = !init
+      }
+      frags[i] = frag
+      if (init) {
+        frag.before(end)
+      }
+    }
+
+    // we're done for the initial render.
+    if (init) {
+      return
+    }
+
+    // Second pass, go through the old fragments and
+    // destroy those who are not reused (and remove them
+    // from cache)
+    var removalIndex = 0
+    var totalRemoved = oldFrags.length - frags.length
+    for (i = 0, l = oldFrags.length; i < l; i++) {
+      frag = oldFrags[i]
+      if (!frag.reused) {
+        this.deleteCachedFrag(frag)
+        this.remove(frag, removalIndex++, totalRemoved, inDoc)
+      }
+    }
+
+    // Final pass, move/insert new fragments into the
+    // right place.
+    var targetPrev, prevEl, currentPrev
+    var insertionIndex = 0
+    for (i = 0, l = frags.length; i < l; i++) {
+      frag = frags[i]
+      // this is the frag that we should be after
+      targetPrev = frags[i - 1]
+      prevEl = targetPrev
+        ? targetPrev.staggerCb
+          ? targetPrev.staggerAnchor
+          : targetPrev.end || targetPrev.node
+        : start
+      if (frag.reused && !frag.staggerCb) {
+        currentPrev = findPrevFrag(frag, start, this.id)
+        if (currentPrev !== targetPrev) {
+          this.move(frag, prevEl)
+        }
+      } else {
+        // new instance, or still in stagger.
+        // insert with updated stagger index.
+        this.insert(frag, insertionIndex++, prevEl, inDoc)
+      }
+      frag.reused = frag.fresh = false
+    }
+  },
+
+  /**
+   * Create a new fragment instance.
+   *
+   * @param {*} value
+   * @param {String} alias
+   * @param {Number} index
+   * @param {String} [key]
+   * @return {Fragment}
+   */
+
+  create: function (value, alias, index, key) {
+    var host = this._host
+    // create iteration scope
+    var parentScope = this._scope || this.vm
+    var scope = Object.create(parentScope)
+    // ref holder for the scope
+    scope.$refs = Object.create(parentScope.$refs)
+    scope.$els = Object.create(parentScope.$els)
+    // make sure point $parent to parent scope
+    scope.$parent = parentScope
+    // for two-way binding on alias
+    scope.$forContext = this
+    // define scope properties
+    _.defineReactive(scope, alias, value)
+    _.defineReactive(scope, '$index', index)
+    if (key) {
+      _.defineReactive(scope, '$key', key)
+    } else if (scope.$key) {
+      // avoid accidental fallback
+      _.define(scope, '$key', null)
+    }
+    if (this.iterator) {
+      _.defineReactive(scope, this.iterator, key !== null ? key : index)
+    }
+    var frag = this.factory.create(host, scope, this._frag)
+    frag.forId = this.id
+    this.cacheFrag(value, frag, index, key)
+    return frag
+  },
+
+  /**
+   * Update the v-ref on owner vm.
+   */
+
+  updateRef: function () {
+    var ref = this.descriptor.ref
+    if (!ref) return
+    var hash = (this._scope || this.vm).$refs
+    var refs
+    if (!this.fromObject) {
+      refs = this.frags.map(findVmFromFrag)
+    } else {
+      refs = {}
+      this.frags.forEach(function (frag) {
+        refs[frag.scope.$key] = findVmFromFrag(frag)
+      })
+    }
+    hash[ref] = refs
+  },
+
+  /**
+   * For option lists, update the containing v-model on
+   * parent <select>.
+   */
+
+  updateModel: function () {
+    if (this.isOption) {
+      var parent = this.start.parentNode
+      var model = parent && parent.__v_model
+      if (model) {
+        model.forceUpdate()
+      }
+    }
+  },
+
+  /**
+   * Insert a fragment. Handles staggering.
+   *
+   * @param {Fragment} frag
+   * @param {Number} index
+   * @param {Node} prevEl
+   * @param {Boolean} inDoc
+   */
+
+  insert: function (frag, index, prevEl, inDoc) {
+    if (frag.staggerCb) {
+      frag.staggerCb.cancel()
+      frag.staggerCb = null
+    }
+    var staggerAmount = this.getStagger(frag, index, null, 'enter')
+    if (inDoc && staggerAmount) {
+      // create an anchor and insert it synchronously,
+      // so that we can resolve the correct order without
+      // worrying about some elements not inserted yet
+      var anchor = frag.staggerAnchor
+      if (!anchor) {
+        anchor = frag.staggerAnchor = _.createAnchor('stagger-anchor')
+        anchor.__vfrag__ = frag
+      }
+      _.after(anchor, prevEl)
+      var op = frag.staggerCb = _.cancellable(function () {
+        frag.staggerCb = null
+        frag.before(anchor)
+        _.remove(anchor)
+      })
+      setTimeout(op, staggerAmount)
+    } else {
+      frag.before(prevEl.nextSibling)
+    }
+  },
+
+  /**
+   * Remove a fragment. Handles staggering.
+   *
+   * @param {Fragment} frag
+   * @param {Number} index
+   * @param {Number} total
+   * @param {Boolean} inDoc
+   */
+
+  remove: function (frag, index, total, inDoc) {
+    if (frag.staggerCb) {
+      frag.staggerCb.cancel()
+      frag.staggerCb = null
+      // it's not possible for the same frag to be removed
+      // twice, so if we have a pending stagger callback,
+      // it means this frag is queued for enter but removed
+      // before its transition started. Since it is already
+      // destroyed, we can just leave it in detached state.
+      return
+    }
+    var staggerAmount = this.getStagger(frag, index, total, 'leave')
+    if (inDoc && staggerAmount) {
+      var op = frag.staggerCb = _.cancellable(function () {
+        frag.staggerCb = null
+        frag.remove()
+      })
+      setTimeout(op, staggerAmount)
+    } else {
+      frag.remove()
+    }
+  },
+
+  /**
+   * Move a fragment to a new position.
+   * Force no transition.
+   *
+   * @param {Fragment} frag
+   * @param {Node} prevEl
+   */
+
+  move: function (frag, prevEl) {
+    frag.before(prevEl.nextSibling, false)
+  },
+
+  /**
+   * Cache a fragment using track-by or the object key.
+   *
+   * @param {*} value
+   * @param {Fragment} frag
+   * @param {Number} index
+   * @param {String} [key]
+   */
+
+  cacheFrag: function (value, frag, index, key) {
+    var trackByKey = this.params.trackBy
+    var cache = this.cache
+    var primitive = !isObject(value)
+    var id
+    if (key || trackByKey || primitive) {
+      id = trackByKey
+        ? trackByKey === '$index'
+          ? index
+          : value[trackByKey]
+        : (key || value)
+      if (!cache[id]) {
+        cache[id] = frag
+      } else if (trackByKey !== '$index') {
+        process.env.NODE_ENV !== 'production' &&
+        this.warnDuplicate(value)
+      }
+    } else {
+      id = this.id
+      if (value.hasOwnProperty(id)) {
+        if (value[id] === null) {
+          value[id] = frag
+        } else {
+          process.env.NODE_ENV !== 'production' &&
+          this.warnDuplicate(value)
+        }
+      } else {
+        _.define(value, id, frag)
+      }
+    }
+    frag.raw = value
+  },
+
+  /**
+   * Get a cached fragment from the value/index/key
+   *
+   * @param {*} value
+   * @param {Number} index
+   * @param {String} key
+   * @return {Fragment}
+   */
+
+  getCachedFrag: function (value, index, key) {
+    var trackByKey = this.params.trackBy
+    var primitive = !isObject(value)
+    var frag
+    if (key || trackByKey || primitive) {
+      var id = trackByKey
+        ? trackByKey === '$index'
+          ? index
+          : value[trackByKey]
+        : (key || value)
+      frag = this.cache[id]
+    } else {
+      frag = value[this.id]
+    }
+    if (frag && (frag.reused || frag.fresh)) {
+      process.env.NODE_ENV !== 'production' &&
+      this.warnDuplicate(value)
+    }
+    return frag
+  },
+
+  /**
+   * Delete a fragment from cache.
+   *
+   * @param {Fragment} frag
+   */
+
+  deleteCachedFrag: function (frag) {
+    var value = frag.raw
+    var trackByKey = this.params.trackBy
+    var scope = frag.scope
+    var index = scope.$index
+    // fix #948: avoid accidentally fall through to
+    // a parent repeater which happens to have $key.
+    var key = scope.hasOwnProperty('$key') && scope.$key
+    var primitive = !isObject(value)
+    if (trackByKey || key || primitive) {
+      var id = trackByKey
+        ? trackByKey === '$index'
+          ? index
+          : value[trackByKey]
+        : (key || value)
+      this.cache[id] = null
+    } else {
+      value[this.id] = null
+      frag.raw = null
+    }
+  },
+
+  /**
+   * Get the stagger amount for an insertion/removal.
+   *
+   * @param {Fragment} frag
+   * @param {Number} index
+   * @param {Number} total
+   * @param {String} type
+   */
+
+  getStagger: function (frag, index, total, type) {
+    type = type + 'Stagger'
+    var trans = frag.node.__v_trans
+    var hooks = trans && trans.hooks
+    var hook = hooks && (hooks[type] || hooks.stagger)
+    return hook
+      ? hook.call(frag, index, total)
+      : index * parseInt(this.params[type] || this.params.stagger, 10)
+  },
+
+  /**
+   * Pre-process the value before piping it through the
+   * filters. This is passed to and called by the watcher.
+   */
+
+  _preProcess: function (value) {
+    // regardless of type, store the un-filtered raw value.
+    this.rawValue = value
+    return value
+  },
+
+  /**
+   * Post-process the value after it has been piped through
+   * the filters. This is passed to and called by the watcher.
+   *
+   * It is necessary for this to be called during the
+   * wathcer's dependency collection phase because we want
+   * the v-for to update when the source Object is mutated.
+   */
+
+  _postProcess: function (value) {
+    if (_.isArray(value)) {
+      return value
+    } else if (_.isPlainObject(value)) {
+      // convert plain object to array.
+      var keys = Object.keys(value)
+      var i = keys.length
+      var res = new Array(i)
+      var key
+      while (i--) {
+        key = keys[i]
+        res[i] = {
+          $key: key,
+          $value: value[key]
+        }
+      }
+      return res
+    } else {
+      if (typeof value === 'number') {
+        value = range(value)
+      }
+      return value || []
+    }
+  },
+
+  unbind: function () {
+    if (this.descriptor.ref) {
+      (this._scope || this.vm).$refs[this.descriptor.ref] = null
+    }
+    if (this.frags) {
+      var i = this.frags.length
+      var frag
+      while (i--) {
+        frag = this.frags[i]
+        this.deleteCachedFrag(frag)
+        frag.destroy()
+      }
+    }
+  }
+}
+
+/**
+ * Helper to find the previous element that is a fragment
+ * anchor. This is necessary because a destroyed frag's
+ * element could still be lingering in the DOM before its
+ * leaving transition finishes, but its inserted flag
+ * should have been set to false so we can skip them.
+ *
+ * If this is a block repeat, we want to make sure we only
+ * return frag that is bound to this v-for. (see #929)
+ *
+ * @param {Fragment} frag
+ * @param {Comment|Text} anchor
+ * @param {String} id
+ * @return {Fragment}
+ */
+
+function findPrevFrag (frag, anchor, id) {
+  var el = frag.node.previousSibling
+  /* istanbul ignore if */
+  if (!el) return
+  frag = el.__vfrag__
+  while (
+    (!frag || frag.forId !== id || !frag.inserted) &&
+    el !== anchor
+  ) {
+    el = el.previousSibling
+    /* istanbul ignore if */
+    if (!el) return
+    frag = el.__vfrag__
+  }
+  return frag
+}
+
+/**
+ * Find a vm from a fragment.
+ *
+ * @param {Fragment} frag
+ * @return {Vue|undefined}
+ */
+
+function findVmFromFrag (frag) {
+  return frag.node.__vue__ || frag.node.nextSibling.__vue__
+}
+
+/**
+ * Create a range array from given number.
+ *
+ * @param {Number} n
+ * @return {Array}
+ */
+
+function range (n) {
+  var i = -1
+  var ret = new Array(n)
+  while (++i < n) {
+    ret[i] = i
+  }
+  return ret
+}
+
+if (process.env.NODE_ENV !== 'production') {
+  module.exports.warnDuplicate = function (value) {
+    _.warn(
+      'Duplicate value found in v-for="' + this.descriptor.raw + '": ' +
+      JSON.stringify(value) + '. Use track-by="$index" if ' +
+      'you are expecting duplicate values.'
+    )
+  }
+}
+
+}).call(this,require('_process'))
+},{"../../fragment/factory":"/Users/bill/Sites/vue-starter/node_modules/vue/src/fragment/factory.js","../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/html.js":[function(require,module,exports){
+var _ = require('../../util')
+var templateParser = require('../../parsers/template')
 
 module.exports = {
 
@@ -5660,41 +7663,28 @@ module.exports = {
   }
 }
 
-},{"../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/if.js":[function(require,module,exports){
+},{"../../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/if.js":[function(require,module,exports){
 (function (process){
-var _ = require('../util')
-var compiler = require('../compiler')
-var templateParser = require('../parsers/template')
-var transition = require('../transition')
-var Cache = require('../cache')
-var cache = new Cache(1000)
+var _ = require('../../util')
+var FragmentFactory = require('../../fragment/factory')
 
 module.exports = {
+
+  priority: 2000,
 
   bind: function () {
     var el = this.el
     if (!el.__vue__) {
-      this.start = _.createAnchor('v-if-start')
-      this.end = _.createAnchor('v-if-end')
-      _.replace(el, this.end)
-      _.before(this.start, this.end)
-      if (_.isTemplate(el)) {
-        this.template = templateParser.parse(el, true)
-      } else {
-        this.template = document.createDocumentFragment()
-        this.template.appendChild(templateParser.clone(el))
+      // check else block
+      var next = el.nextElementSibling
+      if (next && _.attr(next, 'v-else') !== null) {
+        _.remove(next)
+        this.elseFactory = new FragmentFactory(this.vm, next)
       }
-      // compile the nested partial
-      var cacheId = (this.vm.constructor.cid || '') + el.outerHTML
-      this.linker = cache.get(cacheId)
-      if (!this.linker) {
-        this.linker = compiler.compile(
-          this.template,
-          this.vm.$options,
-          true // partial
-        )
-        cache.put(cacheId, this.linker)
-      }
+      // check main block
+      this.anchor = _.createAnchor('v-if')
+      _.replace(el, this.anchor)
+      this.factory = new FragmentFactory(this.vm, el)
     } else {
       process.env.NODE_ENV !== 'production' && _.warn(
         'v-if="' + this.expression + '" cannot be ' +
@@ -5707,161 +7697,135 @@ module.exports = {
   update: function (value) {
     if (this.invalid) return
     if (value) {
-      // avoid duplicate compiles, since update() can be
-      // called with different truthy values
-      if (!this.unlink) {
-        this.link(
-          templateParser.clone(this.template),
-          this.linker
-        )
+      if (!this.frag) {
+        this.insert()
       }
     } else {
-      this.teardown()
+      this.remove()
     }
   },
 
-  link: function (frag, linker) {
-    var vm = this.vm
-    this.unlink = linker(vm, frag, this._host /* important */)
-    transition.blockAppend(frag, this.end, vm)
-    // call attached for all the child components created
-    // during the compilation
-    if (_.inDoc(vm.$el)) {
-      var children = this.getContainedComponents()
-      if (children) children.forEach(callAttach)
+  insert: function () {
+    if (this.elseFrag) {
+      this.elseFrag.remove()
+      this.elseFrag = null
     }
+    this.frag = this.factory.create(this._host, this._scope, this._frag)
+    this.frag.before(this.anchor)
   },
 
-  teardown: function () {
-    if (!this.unlink) return
-    // collect children beforehand
-    var children
-    if (_.inDoc(this.vm.$el)) {
-      children = this.getContainedComponents()
+  remove: function () {
+    if (this.frag) {
+      this.frag.remove()
+      this.frag = null
     }
-    transition.blockRemove(this.start, this.end, this.vm)
-    if (children) children.forEach(callDetach)
-    this.unlink()
-    this.unlink = null
-  },
-
-  getContainedComponents: function () {
-    var vm = this._host || this.vm
-    var start = this.start.nextSibling
-    var end = this.end
-
-    function contains (c) {
-      var cur = start
-      var next
-      while (next !== end) {
-        next = cur.nextSibling
-        if (
-          cur === c.$el ||
-          cur.contains && cur.contains(c.$el)
-        ) {
-          return true
-        }
-        cur = next
-      }
-      return false
+    if (this.elseFactory && !this.elseFrag) {
+      this.elseFrag = this.elseFactory.create(this._host, this._scope, this._frag)
+      this.elseFrag.before(this.anchor)
     }
-
-    return vm.$children.length &&
-      vm.$children.filter(contains)
   },
 
   unbind: function () {
-    if (this.unlink) this.unlink()
-  }
-
-}
-
-function callAttach (child) {
-  if (!child._isAttached) {
-    child._callHook('attached')
-  }
-}
-
-function callDetach (child) {
-  if (child._isAttached) {
-    child._callHook('detached')
+    if (this.frag) {
+      this.frag.destroy()
+    }
   }
 }
 
 }).call(this,require('_process'))
-},{"../cache":"/Users/bill/Sites/vue-starter/node_modules/vue/src/cache.js","../compiler":"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/index.js","../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../transition":"/Users/bill/Sites/vue-starter/node_modules/vue/src/transition/index.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/index.js":[function(require,module,exports){
-// manipulation directives
+},{"../../fragment/factory":"/Users/bill/Sites/vue-starter/node_modules/vue/src/fragment/factory.js","../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/index.js":[function(require,module,exports){
+// text & html
 exports.text = require('./text')
 exports.html = require('./html')
-exports.attr = require('./attr')
-exports.show = require('./show')
-exports['class'] = require('./class')
-exports.el = require('./el')
-exports.ref = require('./ref')
-exports.cloak = require('./cloak')
-exports.style = require('./style')
-exports.transition = require('./transition')
 
-// event listener directives
-exports.on = require('./on')
+// logic control
+exports['for'] = require('./for')
+exports['if'] = require('./if')
+exports.show = require('./show')
+
+// two-way binding
 exports.model = require('./model')
 
-// logic control directives
-exports.repeat = require('./repeat')
-exports['if'] = require('./if')
+// event handling
+exports.on = require('./on')
 
-// internal directives that should not be used directly
-// but we still want to expose them for advanced usage.
-exports._component = require('./component')
-exports._prop = require('./prop')
+// attributes
+exports.bind = require('./bind')
 
-},{"./attr":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/attr.js","./class":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/class.js","./cloak":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/cloak.js","./component":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/component.js","./el":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/el.js","./html":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/html.js","./if":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/if.js","./model":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/model/index.js","./on":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/on.js","./prop":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/prop.js","./ref":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/ref.js","./repeat":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/repeat.js","./show":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/show.js","./style":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/style.js","./text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/text.js","./transition":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/transition.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/model/checkbox.js":[function(require,module,exports){
-var _ = require('../../util')
+// ref & el
+exports.el = require('./el')
+exports.ref = require('./ref')
+
+// cloak
+exports.cloak = require('./cloak')
+
+},{"./bind":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/bind.js","./cloak":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/cloak.js","./el":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/el.js","./for":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/for.js","./html":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/html.js","./if":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/if.js","./model":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/model/index.js","./on":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/on.js","./ref":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/ref.js","./show":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/show.js","./text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/text.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/model/checkbox.js":[function(require,module,exports){
+var _ = require('../../../util')
 
 module.exports = {
 
   bind: function () {
     var self = this
     var el = this.el
-    var trueExp = this._checkParam('true-exp')
-    var falseExp = this._checkParam('false-exp')
 
-    this._matchValue = function (value) {
-      if (trueExp !== null) {
-        return _.looseEqual(value, self.vm.$eval(trueExp))
-      } else {
-        return !!value
-      }
+    this.getValue = function () {
+      return el.hasOwnProperty('_value')
+        ? el._value
+        : self.params.number
+          ? _.toNumber(el.value)
+          : el.value
     }
 
-    function getValue () {
+    function getBooleanValue () {
       var val = el.checked
-      if (val && trueExp !== null) {
-        val = self.vm.$eval(trueExp)
+      if (val && el.hasOwnProperty('_trueValue')) {
+        return el._trueValue
       }
-      if (!val && falseExp !== null) {
-        val = self.vm.$eval(falseExp)
+      if (!val && el.hasOwnProperty('_falseValue')) {
+        return el._falseValue
       }
       return val
     }
 
-    this.on('change', function () {
-      self.set(getValue())
-    })
+    this.listener = function () {
+      var model = self._watcher.value
+      if (_.isArray(model)) {
+        var val = self.getValue()
+        if (el.checked) {
+          if (_.indexOf(model, val) < 0) {
+            model.push(val)
+          }
+        } else {
+          model.$remove(val)
+        }
+      } else {
+        self.set(getBooleanValue())
+      }
+    }
 
+    this.on('change', this.listener)
     if (el.checked) {
-      this._initValue = getValue()
+      this.afterBind = this.listener
     }
   },
 
   update: function (value) {
-    this.el.checked = this._matchValue(value)
+    var el = this.el
+    if (_.isArray(value)) {
+      el.checked = _.indexOf(value, this.getValue()) > -1
+    } else {
+      if (el.hasOwnProperty('_trueValue')) {
+        el.checked = _.looseEqual(value, el._trueValue)
+      } else {
+        el.checked = !!value
+      }
+    }
   }
 }
 
-},{"../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/model/index.js":[function(require,module,exports){
+},{"../../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/model/index.js":[function(require,module,exports){
 (function (process){
-var _ = require('../../util')
+var _ = require('../../../util')
 
 var handlers = {
   text: require('./text'),
@@ -5875,6 +7839,7 @@ module.exports = {
   priority: 800,
   twoWay: true,
   handlers: handlers,
+  params: ['lazy', 'number', 'debounce'],
 
   /**
    * Possible elements:
@@ -5885,7 +7850,6 @@ module.exports = {
    *     - checkbox
    *     - radio
    *     - number
-   *     - TODO: more types may be supplied as a plugin
    */
 
   bind: function () {
@@ -5945,33 +7909,34 @@ module.exports = {
 }
 
 }).call(this,require('_process'))
-},{"../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","./checkbox":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/model/checkbox.js","./radio":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/model/radio.js","./select":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/model/select.js","./text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/model/text.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/model/radio.js":[function(require,module,exports){
-var _ = require('../../util')
+},{"../../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","./checkbox":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/model/checkbox.js","./radio":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/model/radio.js","./select":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/model/select.js","./text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/model/text.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/model/radio.js":[function(require,module,exports){
+var _ = require('../../../util')
 
 module.exports = {
 
   bind: function () {
     var self = this
     var el = this.el
-    var number = this._checkParam('number') != null
-    var expression = this._checkParam('exp')
 
     this.getValue = function () {
+      // value overwrite via v-bind:value
+      if (el.hasOwnProperty('_value')) {
+        return el._value
+      }
       var val = el.value
-      if (number) {
+      if (self.params.number) {
         val = _.toNumber(val)
-      } else if (expression !== null) {
-        val = self.vm.$eval(expression)
       }
       return val
     }
 
-    this.on('change', function () {
+    this.listener = function () {
       self.set(self.getValue())
-    })
+    }
+    this.on('change', this.listener)
 
     if (el.checked) {
-      this._initValue = this.getValue()
+      this.afterBind = this.listener
     }
   },
 
@@ -5980,11 +7945,8 @@ module.exports = {
   }
 }
 
-},{"../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/model/select.js":[function(require,module,exports){
-(function (process){
-var _ = require('../../util')
-var Watcher = require('../../watcher')
-var dirParser = require('../../parsers/directive')
+},{"../../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/model/select.js":[function(require,module,exports){
+var _ = require('../../../util')
 
 module.exports = {
 
@@ -5999,27 +7961,27 @@ module.exports = {
       }
     }
 
-    // check options param
-    var optionsParam = this._checkParam('options')
-    if (optionsParam) {
-      initOptions.call(this, optionsParam)
-    }
-    this.number = this._checkParam('number') != null
-    this.multiple = el.hasAttribute('multiple')
+    // check if this is a multiple select
+    var multiple = this.multiple = el.hasAttribute('multiple')
 
     // attach listener
-    this.on('change', function () {
-      var value = getValue(el, self.multiple)
-      value = self.number
+    this.listener = function () {
+      var value = getValue(el, multiple)
+      value = self.params.number
         ? _.isArray(value)
           ? value.map(_.toNumber)
           : _.toNumber(value)
         : value
       self.set(value)
-    })
+    }
+    this.on('change', this.listener)
 
-    // check initial value (inline selected attribute)
-    checkInitialValue.call(this)
+    // if has initial value, set afterBind
+    var initValue = getValue(el, multiple, true)
+    if ((multiple && initValue.length) ||
+        (!multiple && initValue !== null)) {
+      this.afterBind = this.listener
+    }
 
     // All major browsers except Firefox resets
     // selectedIndex with value -1 to 0 when the element
@@ -6031,12 +7993,6 @@ module.exports = {
   update: function (value) {
     var el = this.el
     el.selectedIndex = -1
-    if (value == null) {
-      if (this.defaultOption) {
-        this.defaultOption.selected = true
-      }
-      return
-    }
     var multi = this.multiple && _.isArray(value)
     var options = el.options
     var i = options.length
@@ -6055,122 +8011,8 @@ module.exports = {
   },
 
   unbind: function () {
+    /* istanbul ignore next */
     this.vm.$off('hook:attached', this.forceUpdate)
-    if (this.optionWatcher) {
-      this.optionWatcher.teardown()
-    }
-  }
-}
-
-/**
- * Initialize the option list from the param.
- *
- * @param {String} expression
- */
-
-function initOptions (expression) {
-  var self = this
-  var el = self.el
-  var defaultOption = self.defaultOption = self.el.options[0]
-  var descriptor = dirParser.parse(expression)[0]
-  function optionUpdateWatcher (value) {
-    if (_.isArray(value)) {
-      // clear old options.
-      // cannot reset innerHTML here because IE family get
-      // confused during compilation.
-      var i = el.options.length
-      while (i--) {
-        var option = el.options[i]
-        if (option !== defaultOption) {
-          var parentNode = option.parentNode
-          if (parentNode === el) {
-            parentNode.removeChild(option)
-          } else {
-            el.removeChild(parentNode)
-            i = el.options.length
-          }
-        }
-      }
-      buildOptions(el, value)
-      self.forceUpdate()
-    } else {
-      process.env.NODE_ENV !== 'production' && _.warn(
-        'Invalid options value for v-model: ' + value
-      )
-    }
-  }
-  this.optionWatcher = new Watcher(
-    this.vm,
-    descriptor.expression,
-    optionUpdateWatcher,
-    {
-      deep: true,
-      filters: descriptor.filters
-    }
-  )
-  // update with initial value
-  optionUpdateWatcher(this.optionWatcher.value)
-}
-
-/**
- * Build up option elements. IE9 doesn't create options
- * when setting innerHTML on <select> elements, so we have
- * to use DOM API here.
- *
- * @param {Element} parent - a <select> or an <optgroup>
- * @param {Array} options
- */
-
-function buildOptions (parent, options) {
-  var op, el
-  for (var i = 0, l = options.length; i < l; i++) {
-    op = options[i]
-    if (!op.options) {
-      el = document.createElement('option')
-      if (typeof op === 'string' || typeof op === 'number') {
-        el.text = el.value = op
-      } else {
-        if (op.value != null && !_.isObject(op.value)) {
-          el.value = op.value
-        }
-        // object values gets serialized when set as value,
-        // so we store the raw value as a different property
-        el._value = op.value
-        el.text = op.text || ''
-        if (op.disabled) {
-          el.disabled = true
-        }
-      }
-    } else {
-      el = document.createElement('optgroup')
-      el.label = op.label
-      buildOptions(el, op.options)
-    }
-    parent.appendChild(el)
-  }
-}
-
-/**
- * Check the initial value for selected options.
- */
-
-function checkInitialValue () {
-  var initValue
-  var options = this.el.options
-  for (var i = 0, l = options.length; i < l; i++) {
-    if (options[i].hasAttribute('selected')) {
-      if (this.multiple) {
-        (initValue || (initValue = []))
-          .push(options[i].value)
-      } else {
-        initValue = options[i].value
-      }
-    }
-  }
-  if (typeof initValue !== 'undefined') {
-    this._initValue = this.number
-      ? _.toNumber(initValue)
-      : initValue
   }
 }
 
@@ -6179,15 +8021,19 @@ function checkInitialValue () {
  *
  * @param {SelectElement} el
  * @param {Boolean} multi
+ * @param {Boolean} init
  * @return {Array|*}
  */
 
-function getValue (el, multi) {
+function getValue (el, multi, init) {
   var res = multi ? [] : null
-  var op, val
+  var op, val, selected
   for (var i = 0, l = el.options.length; i < l; i++) {
     op = el.options[i]
-    if (op.selected) {
+    selected = init
+      ? op.hasAttribute('selected')
+      : op.selected
+    if (selected) {
       val = op.hasOwnProperty('_value')
         ? op._value
         : op.value
@@ -6219,9 +8065,8 @@ function indexOf (arr, val) {
   return -1
 }
 
-}).call(this,require('_process'))
-},{"../../parsers/directive":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/directive.js","../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","../../watcher":"/Users/bill/Sites/vue-starter/node_modules/vue/src/watcher.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/model/text.js":[function(require,module,exports){
-var _ = require('../../util')
+},{"../../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/model/text.js":[function(require,module,exports){
+var _ = require('../../../util')
 
 module.exports = {
 
@@ -6229,14 +8074,9 @@ module.exports = {
     var self = this
     var el = this.el
     var isRange = el.type === 'range'
-
-    // check params
-    // - lazy: update model on "change" instead of "input"
-    var lazy = this._checkParam('lazy') != null
-    // - number: cast value into number when updating model.
-    var number = this._checkParam('number') != null
-    // - debounce: debounce the input listener
-    var debounce = parseInt(this._checkParam('debounce'), 10)
+    var lazy = this.params.lazy
+    var number = this.params.number
+    var debounce = this.params.debounce
 
     // handle composition events.
     //   http://blog.evanyou.me/2014/01/03/composition-event/
@@ -6291,6 +8131,8 @@ module.exports = {
         }
       })
     }
+
+    // apply debounce
     if (debounce) {
       this.listener = _.debounce(this.listener, debounce)
     }
@@ -6335,9 +8177,7 @@ module.exports = {
       el.hasAttribute('value') ||
       (el.tagName === 'TEXTAREA' && el.value.trim())
     ) {
-      this._initValue = number
-        ? _.toNumber(el.value)
-        : el.value
+      this.afterBind = this.listener
     }
   },
 
@@ -6354,9 +8194,51 @@ module.exports = {
   }
 }
 
-},{"../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/on.js":[function(require,module,exports){
+},{"../../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/on.js":[function(require,module,exports){
 (function (process){
-var _ = require('../util')
+var _ = require('../../util')
+
+// keyCode aliases
+var keyCodes = {
+  esc: 27,
+  tab: 9,
+  enter: 13,
+  space: 32,
+  'delete': 46,
+  up: 38,
+  left: 37,
+  right: 39,
+  down: 40
+}
+
+function keyFilter (handler, keys) {
+  var codes = keys.map(function (key) {
+    var code = keyCodes[key]
+    if (!code) {
+      code = parseInt(key, 10)
+    }
+    return code
+  })
+  return function keyHandler (e) {
+    if (codes.indexOf(e.keyCode) > -1) {
+      return handler.call(this, e)
+    }
+  }
+}
+
+function stopFilter (handler) {
+  return function stopHandler (e) {
+    e.stopPropagation()
+    return handler.call(this, e)
+  }
+}
+
+function preventFilter (handler) {
+  return function preventHandler (e) {
+    e.preventDefault()
+    return handler.call(this, e)
+  }
+}
 
 module.exports = {
 
@@ -6378,21 +8260,43 @@ module.exports = {
   },
 
   update: function (handler) {
+    // stub a noop for v-on with no value,
+    // e.g. @mousedown.prevent
+    if (!this.descriptor.raw) {
+      handler = function () {}
+    }
+
     if (typeof handler !== 'function') {
       process.env.NODE_ENV !== 'production' && _.warn(
-        'Directive v-on="' + this.arg + ': ' +
+        'v-on:' + this.arg + '="' +
         this.expression + '" expects a function value, ' +
         'got ' + handler
       )
       return
     }
+
+    // apply modifiers
+    if (this.modifiers.stop) {
+      handler = stopFilter(handler)
+    }
+    if (this.modifiers.prevent) {
+      handler = preventFilter(handler)
+    }
+    // key filter
+    var keys = Object.keys(this.modifiers)
+      .filter(function (key) {
+        return key !== 'stop' && key !== 'prevent'
+      })
+    if (keys.length) {
+      handler = keyFilter(handler, keys)
+    }
+
     this.reset()
-    var vm = this.vm
+    var scope = this._scope || this.vm
     this.handler = function (e) {
-      e.targetVM = vm
-      vm.$event = e
+      scope.$event = e
       var res = handler(e)
-      vm.$event = null
+      scope.$event = null
       return res
     }
     if (this.iframeBind) {
@@ -6417,994 +8321,56 @@ module.exports = {
 }
 
 }).call(this,require('_process'))
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/prop.js":[function(require,module,exports){
-// NOTE: the prop internal directive is compiled and linked
-// during _initScope(), before the created hook is called.
-// The purpose is to make the initial prop values available
-// inside `created` hooks and `data` functions.
-
-var _ = require('../util')
-var Watcher = require('../watcher')
-var bindingModes = require('../config')._propBindingModes
-
-module.exports = {
-
-  bind: function () {
-
-    var child = this.vm
-    var parent = child._context
-    // passed in from compiler directly
-    var prop = this._descriptor
-    var childKey = prop.path
-    var parentKey = prop.parentPath
-
-    this.parentWatcher = new Watcher(
-      parent,
-      parentKey,
-      function (val) {
-        if (_.assertProp(prop, val)) {
-          child[childKey] = val
-        }
-      }, { sync: true }
-    )
-
-    // set the child initial value.
-    var value = this.parentWatcher.value
-    if (childKey === '$data') {
-      child._data = value
-    } else {
-      _.initProp(child, prop, value)
-    }
-
-    // setup two-way binding
-    if (prop.mode === bindingModes.TWO_WAY) {
-      // important: defer the child watcher creation until
-      // the created hook (after data observation)
-      var self = this
-      child.$once('hook:created', function () {
-        self.childWatcher = new Watcher(
-          child,
-          childKey,
-          function (val) {
-            parent.$set(parentKey, val)
-          }, { sync: true }
-        )
-      })
-    }
-  },
-
-  unbind: function () {
-    this.parentWatcher.teardown()
-    if (this.childWatcher) {
-      this.childWatcher.teardown()
-    }
-  }
-}
-
-},{"../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","../watcher":"/Users/bill/Sites/vue-starter/node_modules/vue/src/watcher.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/ref.js":[function(require,module,exports){
+},{"../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/ref.js":[function(require,module,exports){
 (function (process){
-var _ = require('../util')
-
-module.exports = {
-
-  isLiteral: true,
-
-  bind: function () {
-    var vm = this.el.__vue__
-    if (!vm) {
-      process.env.NODE_ENV !== 'production' && _.warn(
-        'v-ref should only be used on a component root element.'
+if (process.env.NODE_ENV !== 'production') {
+  module.exports = {
+    bind: function () {
+      require('../../util').warn(
+        'v-ref:' + this.arg + ' must be used on a child ' +
+        'component. Found on <' + this.el.tagName.toLowerCase() + '>.'
       )
-      return
     }
-    // If we get here, it means this is a `v-ref` on a
-    // child, because parent scope `v-ref` is stripped in
-    // `v-component` already. So we just record our own ref
-    // here - it will overwrite parent ref in `v-component`,
-    // if any.
-    vm._refID = this.expression
   }
 }
 
 }).call(this,require('_process'))
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/repeat.js":[function(require,module,exports){
-(function (process){
-var _ = require('../util')
-var config = require('../config')
-var isObject = _.isObject
-var isPlainObject = _.isPlainObject
-var textParser = require('../parsers/text')
-var expParser = require('../parsers/expression')
-var templateParser = require('../parsers/template')
-var compiler = require('../compiler')
-var uid = 0
-
-// async component resolution states
-var UNRESOLVED = 0
-var PENDING = 1
-var RESOLVED = 2
-var ABORTED = 3
+},{"../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/show.js":[function(require,module,exports){
+var _ = require('../../util')
+var transition = require('../../transition')
 
 module.exports = {
-
-  /**
-   * Setup.
-   */
 
   bind: function () {
-
-    // some helpful tips...
-    /* istanbul ignore if */
-    if (
-      process.env.NODE_ENV !== 'production' &&
-      this.el.tagName === 'OPTION' &&
-      this.el.parentNode && this.el.parentNode.__v_model
-    ) {
-      _.warn(
-        'Don\'t use v-repeat for v-model options; ' +
-        'use the `options` param instead: ' +
-        'http://vuejs.org/guide/forms.html#Dynamic_Select_Options'
-      )
-    }
-
-    // support for item in array syntax
-    var inMatch = this.expression.match(/(.*) in (.*)/)
-    if (inMatch) {
-      this.arg = inMatch[1]
-      this._watcherExp = inMatch[2]
-    }
-    // uid as a cache identifier
-    this.id = '__v_repeat_' + (++uid)
-
-    // setup anchor nodes
-    this.start = _.createAnchor('v-repeat-start')
-    this.end = _.createAnchor('v-repeat-end')
-    _.replace(this.el, this.end)
-    _.before(this.start, this.end)
-
-    // check if this is a block repeat
-    this.template = _.isTemplate(this.el)
-      ? templateParser.parse(this.el, true)
-      : this.el
-
-    // check for trackby param
-    this.idKey = this._checkParam('track-by')
-    // check for transition stagger
-    var stagger = +this._checkParam('stagger')
-    this.enterStagger = +this._checkParam('enter-stagger') || stagger
-    this.leaveStagger = +this._checkParam('leave-stagger') || stagger
-
-    // check for v-ref/v-el
-    this.refID = this._checkParam(config.prefix + 'ref')
-    this.elID = this._checkParam(config.prefix + 'el')
-
-    // check other directives that need to be handled
-    // at v-repeat level
-    this.checkIf()
-    this.checkComponent()
-
-    // create cache object
-    this.cache = Object.create(null)
-  },
-
-  /**
-   * Warn against v-if usage.
-   */
-
-  checkIf: function () {
-    if (_.attr(this.el, 'if') !== null) {
-      process.env.NODE_ENV !== 'production' && _.warn(
-        'Don\'t use v-if with v-repeat. ' +
-        'Use v-show or the "filterBy" filter instead.'
-      )
+    // check else block
+    var next = this.el.nextElementSibling
+    if (next && _.attr(next, 'v-else') !== null) {
+      this.elseEl = next
     }
   },
-
-  /**
-   * Check the component constructor to use for repeated
-   * instances. If static we resolve it now, otherwise it
-   * needs to be resolved at build time with actual data.
-   */
-
-  checkComponent: function () {
-    this.componentState = UNRESOLVED
-    var options = this.vm.$options
-    var id = _.checkComponent(this.el, options)
-    if (!id) {
-      // default constructor
-      this.Component = _.Vue
-      // inline repeats should inherit
-      this.inline = true
-      // important: transclude with no options, just
-      // to ensure block start and block end
-      this.template = compiler.transclude(this.template)
-      var copy = _.extend({}, options)
-      copy._asComponent = false
-      this._linkFn = compiler.compile(this.template, copy)
-    } else {
-      this.Component = null
-      this.asComponent = true
-      // check inline-template
-      if (this._checkParam('inline-template') !== null) {
-        // extract inline template as a DocumentFragment
-        this.inlineTemplate = _.extractContent(this.el, true)
-      }
-      var tokens = textParser.parse(id)
-      if (tokens) {
-        // dynamic component to be resolved later
-        var componentExp = textParser.tokensToExp(tokens)
-        this.componentGetter = expParser.parse(componentExp).get
-      } else {
-        // static
-        this.componentId = id
-        this.pendingData = null
-      }
-    }
-  },
-
-  resolveComponent: function () {
-    this.componentState = PENDING
-    this.vm._resolveComponent(this.componentId, _.bind(function (Component) {
-      if (this.componentState === ABORTED) {
-        return
-      }
-      this.Component = Component
-      this.componentState = RESOLVED
-      this.realUpdate(this.pendingData)
-      this.pendingData = null
-    }, this))
-  },
-
-  /**
-   * Resolve a dynamic component to use for an instance.
-   * The tricky part here is that there could be dynamic
-   * components depending on instance data.
-   *
-   * @param {Object} data
-   * @param {Object} meta
-   * @return {Function}
-   */
-
-  resolveDynamicComponent: function (data, meta) {
-    // create a temporary context object and copy data
-    // and meta properties onto it.
-    // use _.define to avoid accidentally overwriting scope
-    // properties.
-    var context = Object.create(this.vm)
-    var key
-    for (key in data) {
-      _.define(context, key, data[key])
-    }
-    for (key in meta) {
-      _.define(context, key, meta[key])
-    }
-    var id = this.componentGetter.call(context, context)
-    var Component = _.resolveAsset(this.vm.$options, 'components', id)
-    if (process.env.NODE_ENV !== 'production') {
-      _.assertAsset(Component, 'component', id)
-    }
-    if (!Component.options) {
-      process.env.NODE_ENV !== 'production' && _.warn(
-        'Async resolution is not supported for v-repeat ' +
-        '+ dynamic component. (component: ' + id + ')'
-      )
-      return _.Vue
-    }
-    return Component
-  },
-
-  /**
-   * Update.
-   * This is called whenever the Array mutates. If we have
-   * a component, we might need to wait for it to resolve
-   * asynchronously.
-   *
-   * @param {Array|Number|String} data
-   */
-
-  update: function (data) {
-    if (process.env.NODE_ENV !== 'production' && !_.isArray(data)) {
-      _.warn(
-        'v-repeat pre-converts Objects into Arrays, and ' +
-        'v-repeat filters should always return Arrays.'
-      )
-    }
-    if (this.componentId) {
-      var state = this.componentState
-      if (state === UNRESOLVED) {
-        this.pendingData = data
-        // once resolved, it will call realUpdate
-        this.resolveComponent()
-      } else if (state === PENDING) {
-        this.pendingData = data
-      } else if (state === RESOLVED) {
-        this.realUpdate(data)
-      }
-    } else {
-      this.realUpdate(data)
-    }
-  },
-
-  /**
-   * The real update that actually modifies the DOM.
-   *
-   * @param {Array|Number|String} data
-   */
-
-  realUpdate: function (data) {
-    this.vms = this.diff(data, this.vms)
-    // update v-ref
-    if (this.refID) {
-      this.vm.$[this.refID] = this.converted
-        ? toRefObject(this.vms)
-        : this.vms
-    }
-    if (this.elID) {
-      this.vm.$$[this.elID] = this.vms.map(function (vm) {
-        return vm.$el
-      })
-    }
-  },
-
-  /**
-   * Diff, based on new data and old data, determine the
-   * minimum amount of DOM manipulations needed to make the
-   * DOM reflect the new data Array.
-   *
-   * The algorithm diffs the new data Array by storing a
-   * hidden reference to an owner vm instance on previously
-   * seen data. This allows us to achieve O(n) which is
-   * better than a levenshtein distance based algorithm,
-   * which is O(m * n).
-   *
-   * @param {Array} data
-   * @param {Array} oldVms
-   * @return {Array}
-   */
-
-  diff: function (data, oldVms) {
-    var idKey = this.idKey
-    var converted = this.converted
-    var start = this.start
-    var end = this.end
-    var inDoc = _.inDoc(start)
-    var alias = this.arg
-    var init = !oldVms
-    var vms = new Array(data.length)
-    var obj, raw, vm, i, l, primitive
-    // First pass, go through the new Array and fill up
-    // the new vms array. If a piece of data has a cached
-    // instance for it, we reuse it. Otherwise build a new
-    // instance.
-    for (i = 0, l = data.length; i < l; i++) {
-      obj = data[i]
-      raw = converted ? obj.$value : obj
-      primitive = !isObject(raw)
-      vm = !init && this.getVm(raw, i, converted ? obj.$key : null)
-      if (vm) { // reusable instance
-
-        if (process.env.NODE_ENV !== 'production' && vm._reused) {
-          _.warn(
-            'Duplicate objects found in v-repeat="' + this.expression + '": ' +
-            JSON.stringify(raw)
-          )
-        }
-
-        vm._reused = true
-        vm.$index = i // update $index
-        // update data for track-by or object repeat,
-        // since in these two cases the data is replaced
-        // rather than mutated.
-        if (idKey || converted || primitive) {
-          if (alias) {
-            vm[alias] = raw
-          } else if (_.isPlainObject(raw)) {
-            vm.$data = raw
-          } else {
-            vm.$value = raw
-          }
-        }
-      } else { // new instance
-        vm = this.build(obj, i, true)
-        vm._reused = false
-      }
-      vms[i] = vm
-      // insert if this is first run
-      if (init) {
-        vm.$before(end)
-      }
-    }
-    // if this is the first run, we're done.
-    if (init) {
-      return vms
-    }
-    // Second pass, go through the old vm instances and
-    // destroy those who are not reused (and remove them
-    // from cache)
-    var removalIndex = 0
-    var totalRemoved = oldVms.length - vms.length
-    for (i = 0, l = oldVms.length; i < l; i++) {
-      vm = oldVms[i]
-      if (!vm._reused) {
-        this.uncacheVm(vm)
-        vm.$destroy(false, true) // defer cleanup until removal
-        this.remove(vm, removalIndex++, totalRemoved, inDoc)
-      }
-    }
-    // final pass, move/insert new instances into the
-    // right place.
-    var targetPrev, prevEl, currentPrev
-    var insertionIndex = 0
-    for (i = 0, l = vms.length; i < l; i++) {
-      vm = vms[i]
-      // this is the vm that we should be after
-      targetPrev = vms[i - 1]
-      prevEl = targetPrev
-        ? targetPrev._staggerCb
-          ? targetPrev._staggerAnchor
-          : targetPrev._fragmentEnd || targetPrev.$el
-        : start
-      if (vm._reused && !vm._staggerCb) {
-        currentPrev = findPrevVm(vm, start, this.id)
-        if (currentPrev !== targetPrev) {
-          this.move(vm, prevEl)
-        }
-      } else {
-        // new instance, or still in stagger.
-        // insert with updated stagger index.
-        this.insert(vm, insertionIndex++, prevEl, inDoc)
-      }
-      vm._reused = false
-    }
-    return vms
-  },
-
-  /**
-   * Build a new instance and cache it.
-   *
-   * @param {Object} data
-   * @param {Number} index
-   * @param {Boolean} needCache
-   */
-
-  build: function (data, index, needCache) {
-    var meta = { $index: index }
-    if (this.converted) {
-      meta.$key = data.$key
-    }
-    var raw = this.converted ? data.$value : data
-    var alias = this.arg
-    if (alias) {
-      data = {}
-      data[alias] = raw
-    } else if (!isPlainObject(raw)) {
-      // non-object values
-      data = {}
-      meta.$value = raw
-    } else {
-      // default
-      data = raw
-    }
-    // resolve constructor
-    var Component = this.Component || this.resolveDynamicComponent(data, meta)
-    var parent = this._host || this.vm
-    var vm = parent.$addChild({
-      el: templateParser.clone(this.template),
-      data: data,
-      inherit: this.inline,
-      template: this.inlineTemplate,
-      // repeater meta, e.g. $index, $key
-      _meta: meta,
-      // mark this as an inline-repeat instance
-      _repeat: this.inline,
-      // is this a component?
-      _asComponent: this.asComponent,
-      // linker cachable if no inline-template
-      _linkerCachable: !this.inlineTemplate && Component !== _.Vue,
-      // pre-compiled linker for simple repeats
-      _linkFn: this._linkFn,
-      // identifier, shows that this vm belongs to this collection
-      _repeatId: this.id,
-      // transclusion content owner
-      _context: this.vm
-    }, Component)
-    // cache instance
-    if (needCache) {
-      this.cacheVm(raw, vm, index, this.converted ? meta.$key : null)
-    }
-    // sync back changes for two-way bindings of primitive values
-    var dir = this
-    if (this.rawType === 'object' && isPrimitive(raw)) {
-      vm.$watch(alias || '$value', function (val) {
-        if (dir.filters) {
-          process.env.NODE_ENV !== 'production' && _.warn(
-            'You seem to be mutating the $value reference of ' +
-            'a v-repeat instance (likely through v-model) ' +
-            'and filtering the v-repeat at the same time. ' +
-            'This will not work properly with an Array of ' +
-            'primitive values. Please use an Array of ' +
-            'Objects instead.'
-          )
-        }
-        dir._withLock(function () {
-          if (dir.converted) {
-            dir.rawValue[vm.$key] = val
-          } else {
-            dir.rawValue.$set(vm.$index, val)
-          }
-        })
-      })
-    }
-    return vm
-  },
-
-  /**
-   * Unbind, teardown everything
-   */
-
-  unbind: function () {
-    this.componentState = ABORTED
-    if (this.refID) {
-      this.vm.$[this.refID] = null
-    }
-    if (this.vms) {
-      var i = this.vms.length
-      var vm
-      while (i--) {
-        vm = this.vms[i]
-        this.uncacheVm(vm)
-        vm.$destroy()
-      }
-    }
-  },
-
-  /**
-   * Cache a vm instance based on its data.
-   *
-   * If the data is an object, we save the vm's reference on
-   * the data object as a hidden property. Otherwise we
-   * cache them in an object and for each primitive value
-   * there is an array in case there are duplicates.
-   *
-   * @param {Object} data
-   * @param {Vue} vm
-   * @param {Number} index
-   * @param {String} [key]
-   */
-
-  cacheVm: function (data, vm, index, key) {
-    var idKey = this.idKey
-    var cache = this.cache
-    var primitive = !isObject(data)
-    var id
-    if (key || idKey || primitive) {
-      id = idKey
-        ? idKey === '$index'
-          ? index
-          : data[idKey]
-        : (key || index)
-      if (!cache[id]) {
-        cache[id] = vm
-      } else if (!primitive && idKey !== '$index') {
-        process.env.NODE_ENV !== 'production' && _.warn(
-          'Duplicate objects with the same track-by key in v-repeat: ' + id
-        )
-      }
-    } else {
-      id = this.id
-      if (data.hasOwnProperty(id)) {
-        if (data[id] === null) {
-          data[id] = vm
-        } else {
-          process.env.NODE_ENV !== 'production' && _.warn(
-            'Duplicate objects found in v-repeat="' + this.expression + '": ' +
-            JSON.stringify(data)
-          )
-        }
-      } else {
-        _.define(data, id, vm)
-      }
-    }
-    vm._raw = data
-  },
-
-  /**
-   * Try to get a cached instance from a piece of data.
-   *
-   * @param {Object} data
-   * @param {Number} index
-   * @param {String} [key]
-   * @return {Vue|undefined}
-   */
-
-  getVm: function (data, index, key) {
-    var idKey = this.idKey
-    var primitive = !isObject(data)
-    if (key || idKey || primitive) {
-      var id = idKey
-        ? idKey === '$index'
-          ? index
-          : data[idKey]
-        : (key || index)
-      return this.cache[id]
-    } else {
-      return data[this.id]
-    }
-  },
-
-  /**
-   * Delete a cached vm instance.
-   *
-   * @param {Vue} vm
-   */
-
-  uncacheVm: function (vm) {
-    var data = vm._raw
-    var idKey = this.idKey
-    var index = vm.$index
-    // fix #948: avoid accidentally fall through to
-    // a parent repeater which happens to have $key.
-    var key = vm.hasOwnProperty('$key') && vm.$key
-    var primitive = !isObject(data)
-    if (idKey || key || primitive) {
-      var id = idKey
-        ? idKey === '$index'
-          ? index
-          : data[idKey]
-        : (key || index)
-      this.cache[id] = null
-    } else {
-      data[this.id] = null
-      vm._raw = null
-    }
-  },
-
-  /**
-   * Insert an instance.
-   *
-   * @param {Vue} vm
-   * @param {Number} index
-   * @param {Node} prevEl
-   * @param {Boolean} inDoc
-   */
-
-  insert: function (vm, index, prevEl, inDoc) {
-    if (vm._staggerCb) {
-      vm._staggerCb.cancel()
-      vm._staggerCb = null
-    }
-    var staggerAmount = this.getStagger(vm, index, null, 'enter')
-    if (inDoc && staggerAmount) {
-      // create an anchor and insert it synchronously,
-      // so that we can resolve the correct order without
-      // worrying about some elements not inserted yet
-      var anchor = vm._staggerAnchor
-      if (!anchor) {
-        anchor = vm._staggerAnchor = _.createAnchor('stagger-anchor')
-        anchor.__vue__ = vm
-      }
-      _.after(anchor, prevEl)
-      var op = vm._staggerCb = _.cancellable(function () {
-        vm._staggerCb = null
-        vm.$before(anchor)
-        _.remove(anchor)
-      })
-      setTimeout(op, staggerAmount)
-    } else {
-      vm.$after(prevEl)
-    }
-  },
-
-  /**
-   * Move an already inserted instance.
-   *
-   * @param {Vue} vm
-   * @param {Node} prevEl
-   */
-
-  move: function (vm, prevEl) {
-    vm.$after(prevEl, null, false)
-  },
-
-  /**
-   * Remove an instance.
-   *
-   * @param {Vue} vm
-   * @param {Number} index
-   * @param {Boolean} inDoc
-   */
-
-  remove: function (vm, index, total, inDoc) {
-    if (vm._staggerCb) {
-      vm._staggerCb.cancel()
-      vm._staggerCb = null
-      // it's not possible for the same vm to be removed
-      // twice, so if we have a pending stagger callback,
-      // it means this vm is queued for enter but removed
-      // before its transition started. Since it is already
-      // destroyed, we can just leave it in detached state.
-      return
-    }
-    var staggerAmount = this.getStagger(vm, index, total, 'leave')
-    if (inDoc && staggerAmount) {
-      var op = vm._staggerCb = _.cancellable(function () {
-        vm._staggerCb = null
-        remove()
-      })
-      setTimeout(op, staggerAmount)
-    } else {
-      remove()
-    }
-    function remove () {
-      vm.$remove(function () {
-        vm._cleanup()
-      })
-    }
-  },
-
-  /**
-   * Get the stagger amount for an insertion/removal.
-   *
-   * @param {Vue} vm
-   * @param {Number} index
-   * @param {String} type
-   * @param {Number} total
-   */
-
-  getStagger: function (vm, index, total, type) {
-    type = type + 'Stagger'
-    var transition = vm.$el.__v_trans
-    var hooks = transition && transition.hooks
-    var hook = hooks && (hooks[type] || hooks.stagger)
-    return hook
-      ? hook.call(vm, index, total)
-      : index * this[type]
-  },
-
-  /**
-   * Pre-process the value before piping it through the
-   * filters, and convert non-Array objects to arrays.
-   *
-   * This function will be bound to this directive instance
-   * and passed into the watcher.
-   *
-   * @param {*} value
-   * @return {Array}
-   * @private
-   */
-
-  _preProcess: function (value) {
-    // regardless of type, store the un-filtered raw value.
-    this.rawValue = value
-    var type = this.rawType = typeof value
-    if (!isPlainObject(value)) {
-      this.converted = false
-      if (type === 'number') {
-        value = range(value)
-      } else if (type === 'string') {
-        value = _.toArray(value)
-      }
-      return value || []
-    } else {
-      // convert plain object to array.
-      var keys = Object.keys(value)
-      var i = keys.length
-      var res = new Array(i)
-      var key
-      while (i--) {
-        key = keys[i]
-        res[i] = {
-          $key: key,
-          $value: value[key]
-        }
-      }
-      this.converted = true
-      return res
-    }
-  }
-}
-
-/**
- * Helper to find the previous element that is an instance
- * root node. This is necessary because a destroyed vm's
- * element could still be lingering in the DOM before its
- * leaving transition finishes, but its __vue__ reference
- * should have been removed so we can skip them.
- *
- * If this is a block repeat, we want to make sure we only
- * return vm that is bound to this v-repeat. (see #929)
- *
- * @param {Vue} vm
- * @param {Comment|Text} anchor
- * @return {Vue}
- */
-
-function findPrevVm (vm, anchor, id) {
-  var el = vm.$el.previousSibling
-  /* istanbul ignore if */
-  if (!el) return
-  while (
-    (!el.__vue__ || el.__vue__.$options._repeatId !== id) &&
-    el !== anchor
-  ) {
-    el = el.previousSibling
-  }
-  return el.__vue__
-}
-
-/**
- * Create a range array from given number.
- *
- * @param {Number} n
- * @return {Array}
- */
-
-function range (n) {
-  var i = -1
-  var ret = new Array(n)
-  while (++i < n) {
-    ret[i] = i
-  }
-  return ret
-}
-
-/**
- * Convert a vms array to an object ref for v-ref on an
- * Object value.
- *
- * @param {Array} vms
- * @return {Object}
- */
-
-function toRefObject (vms) {
-  var ref = {}
-  for (var i = 0, l = vms.length; i < l; i++) {
-    ref[vms[i].$key] = vms[i]
-  }
-  return ref
-}
-
-/**
- * Check if a value is a primitive one:
- * String, Number, Boolean, null or undefined.
- *
- * @param {*} value
- * @return {Boolean}
- */
-
-function isPrimitive (value) {
-  var type = typeof value
-  return value == null ||
-    type === 'string' ||
-    type === 'number' ||
-    type === 'boolean'
-}
-
-}).call(this,require('_process'))
-},{"../compiler":"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/index.js","../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","../parsers/expression":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/expression.js","../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../parsers/text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/text.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/show.js":[function(require,module,exports){
-var transition = require('../transition')
-
-module.exports = function (value) {
-  var el = this.el
-  transition.apply(el, value ? 1 : -1, function () {
-    el.style.display = value ? '' : 'none'
-  }, this.vm)
-}
-
-},{"../transition":"/Users/bill/Sites/vue-starter/node_modules/vue/src/transition/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/style.js":[function(require,module,exports){
-var _ = require('../util')
-var prefixes = ['-webkit-', '-moz-', '-ms-']
-var camelPrefixes = ['Webkit', 'Moz', 'ms']
-var importantRE = /!important;?$/
-var camelRE = /([a-z])([A-Z])/g
-var testEl = null
-var propCache = {}
-
-module.exports = {
-
-  deep: true,
 
   update: function (value) {
-    if (this.arg) {
-      this.setProp(this.arg, value)
-    } else {
-      if (typeof value === 'object') {
-        this.objectHandler(value)
-      } else {
-        this.el.style.cssText = value
-      }
+    this.apply(this.el, value)
+    if (this.elseEl) {
+      this.apply(this.elseEl, !value)
     }
   },
 
-  objectHandler: function (value) {
-    // cache object styles so that only changed props
-    // are actually updated.
-    var cache = this.cache || (this.cache = {})
-    var prop, val
-    for (prop in cache) {
-      if (!(prop in value)) {
-        this.setProp(prop, null)
-        delete cache[prop]
-      }
+  apply: function (el, value) {
+    function done () {
+      el.style.display = value ? '' : 'none'
     }
-    for (prop in value) {
-      val = value[prop]
-      if (val !== cache[prop]) {
-        cache[prop] = val
-        this.setProp(prop, val)
-      }
-    }
-  },
-
-  setProp: function (prop, value) {
-    prop = normalize(prop)
-    if (!prop) return // unsupported prop
-    // cast possible numbers/booleans into strings
-    if (value != null) value += ''
-    if (value) {
-      var isImportant = importantRE.test(value)
-        ? 'important'
-        : ''
-      if (isImportant) {
-        value = value.replace(importantRE, '').trim()
-      }
-      this.el.style.setProperty(prop, value, isImportant)
+    // do not apply transition if not in doc
+    if (_.inDoc(el)) {
+      transition.apply(el, value ? 1 : -1, done, this.vm)
     } else {
-      this.el.style.removeProperty(prop)
-    }
-  }
-
-}
-
-/**
- * Normalize a CSS property name.
- * - cache result
- * - auto prefix
- * - camelCase -> dash-case
- *
- * @param {String} prop
- * @return {String}
- */
-
-function normalize (prop) {
-  if (propCache[prop]) {
-    return propCache[prop]
-  }
-  var res = prefix(prop)
-  propCache[prop] = propCache[res] = res
-  return res
-}
-
-/**
- * Auto detect the appropriate prefix for a CSS property.
- * https://gist.github.com/paulirish/523692
- *
- * @param {String} prop
- * @return {String}
- */
-
-function prefix (prop) {
-  prop = prop.replace(camelRE, '$1-$2').toLowerCase()
-  var camel = _.camelize(prop)
-  var upper = camel.charAt(0).toUpperCase() + camel.slice(1)
-  if (!testEl) {
-    testEl = document.createElement('div')
-  }
-  if (camel in testEl.style) {
-    return prop
-  }
-  var i = prefixes.length
-  var prefixed
-  while (i--) {
-    prefixed = camelPrefixes[i] + upper
-    if (prefixed in testEl.style) {
-      return prefixes[i] + prop
+      done()
     }
   }
 }
 
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/text.js":[function(require,module,exports){
-var _ = require('../util')
+},{"../../transition":"/Users/bill/Sites/vue-starter/node_modules/vue/src/transition/index.js","../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/text.js":[function(require,module,exports){
+var _ = require('../../util')
 
 module.exports = {
 
@@ -7419,241 +8385,35 @@ module.exports = {
   }
 }
 
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/transition.js":[function(require,module,exports){
-var _ = require('../util')
-var Transition = require('../transition/transition')
-
-module.exports = {
-
-  priority: 1000,
-  isLiteral: true,
-
-  bind: function () {
-    if (!this._isDynamicLiteral) {
-      this.update(this.expression)
-    }
-  },
-
-  update: function (id, oldId) {
-    var el = this.el
-    var vm = this.el.__vue__ || this.vm
-    var hooks = _.resolveAsset(vm.$options, 'transitions', id)
-    id = id || 'v'
-    el.__v_trans = new Transition(el, id, hooks, vm)
-    if (oldId) {
-      _.removeClass(el, oldId + '-transition')
-    }
-    _.addClass(el, id + '-transition')
-  }
-}
-
-},{"../transition/transition":"/Users/bill/Sites/vue-starter/node_modules/vue/src/transition/transition.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/element-directives/content.js":[function(require,module,exports){
-var _ = require('../util')
-var clone = require('../parsers/template').clone
-
-// This is the elementDirective that handles <content>
-// transclusions. It relies on the raw content of an
-// instance being stored as `$options._content` during
-// the transclude phase.
-
-module.exports = {
-
-  bind: function () {
-    var vm = this.vm
-    var host = vm
-    // we need find the content context, which is the
-    // closest non-inline-repeater instance.
-    while (host.$options._repeat) {
-      host = host.$parent
-    }
-    var raw = host.$options._content
-    var content
-    if (!raw) {
-      this.fallback()
-      return
-    }
-    var context = host._context
-    var selector = this._checkParam('select')
-    if (!selector) {
-      // Default content
-      var self = this
-      var compileDefaultContent = function () {
-        self.compile(
-          extractFragment(raw.childNodes, raw, true),
-          context,
-          vm
-        )
-      }
-      if (!host._isCompiled) {
-        // defer until the end of instance compilation,
-        // because the default outlet must wait until all
-        // other possible outlets with selectors have picked
-        // out their contents.
-        host.$once('hook:compiled', compileDefaultContent)
-      } else {
-        compileDefaultContent()
-      }
-    } else {
-      // select content
-      var nodes = raw.querySelectorAll(selector)
-      if (nodes.length) {
-        content = extractFragment(nodes, raw)
-        if (content.hasChildNodes()) {
-          this.compile(content, context, vm)
-        } else {
-          this.fallback()
-        }
-      } else {
-        this.fallback()
-      }
-    }
-  },
-
-  fallback: function () {
-    this.compile(_.extractContent(this.el, true), this.vm)
-  },
-
-  compile: function (content, context, host) {
-    if (content && context) {
-      this.unlink = context.$compile(content, host)
-    }
-    if (content) {
-      _.replace(this.el, content)
-    } else {
-      _.remove(this.el)
-    }
-  },
-
-  unbind: function () {
-    if (this.unlink) {
-      this.unlink()
-    }
-  }
-}
-
-/**
- * Extract qualified content nodes from a node list.
- *
- * @param {NodeList} nodes
- * @param {Element} parent
- * @param {Boolean} main
- * @return {DocumentFragment}
- */
-
-function extractFragment (nodes, parent, main) {
-  var frag = document.createDocumentFragment()
-  for (var i = 0, l = nodes.length; i < l; i++) {
-    var node = nodes[i]
-    // if this is the main outlet, we want to skip all
-    // previously selected nodes;
-    // otherwise, we want to mark the node as selected.
-    // clone the node so the original raw content remains
-    // intact. this ensures proper re-compilation in cases
-    // where the outlet is inside a conditional block
-    if (main && !node.__v_selected) {
-      frag.appendChild(clone(node))
-    } else if (!main && node.parentNode === parent) {
-      node.__v_selected = true
-      frag.appendChild(clone(node))
-    }
-  }
-  return frag
-}
-
-},{"../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/element-directives/index.js":[function(require,module,exports){
-exports.content = require('./content')
-exports.partial = require('./partial')
-
-},{"./content":"/Users/bill/Sites/vue-starter/node_modules/vue/src/element-directives/content.js","./partial":"/Users/bill/Sites/vue-starter/node_modules/vue/src/element-directives/partial.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/element-directives/partial.js":[function(require,module,exports){
-(function (process){
-var _ = require('../util')
-var templateParser = require('../parsers/template')
-var textParser = require('../parsers/text')
-var compiler = require('../compiler')
-var Cache = require('../cache')
-var cache = new Cache(1000)
-
-// v-partial reuses logic from v-if
-var vIf = require('../directives/if')
-
-module.exports = {
-
-  link: vIf.link,
-  teardown: vIf.teardown,
-  getContainedComponents: vIf.getContainedComponents,
-
-  bind: function () {
-    var el = this.el
-    this.start = _.createAnchor('v-partial-start')
-    this.end = _.createAnchor('v-partial-end')
-    _.replace(el, this.end)
-    _.before(this.start, this.end)
-    var id = el.getAttribute('name')
-    var tokens = textParser.parse(id)
-    if (tokens) {
-      // dynamic partial
-      this.setupDynamic(tokens)
-    } else {
-      // static partial
-      this.insert(id)
-    }
-  },
-
-  setupDynamic: function (tokens) {
-    var self = this
-    var exp = textParser.tokensToExp(tokens)
-    this.unwatch = this.vm.$watch(exp, function (value) {
-      self.teardown()
-      self.insert(value)
-    }, {
-      immediate: true,
-      user: false
-    })
-  },
-
-  insert: function (id) {
-    var partial = _.resolveAsset(this.vm.$options, 'partials', id)
-    if (process.env.NODE_ENV !== 'production') {
-      _.assertAsset(partial, 'partial', id)
-    }
-    if (partial) {
-      var frag = templateParser.parse(partial, true)
-      // cache partials based on constructor id.
-      var cacheId = (this.vm.constructor.cid || '') + partial
-      var linker = this.compile(frag, cacheId)
-      // this is provided by v-if
-      this.link(frag, linker)
-    }
-  },
-
-  compile: function (frag, cacheId) {
-    var hit = cache.get(cacheId)
-    if (hit) return hit
-    var linker = compiler.compile(frag, this.vm.$options, true)
-    cache.put(cacheId, linker)
-    return linker
-  },
-
-  unbind: function () {
-    if (this.unlink) this.unlink()
-    if (this.unwatch) this.unwatch()
-  }
-}
-
-}).call(this,require('_process'))
-},{"../cache":"/Users/bill/Sites/vue-starter/node_modules/vue/src/cache.js","../compiler":"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/index.js","../directives/if":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/if.js","../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../parsers/text":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/text.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/filters/array-filters.js":[function(require,module,exports){
+},{"../../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/filters/array-filters.js":[function(require,module,exports){
 var _ = require('../util')
 var Path = require('../parsers/path')
+var toArray = require('../directives/public/for')._postProcess
 
 /**
- * Filter filter for v-repeat
+ * Limit filter for arrays
  *
- * @param {String} searchKey
- * @param {String} [delimiter]
- * @param {String} dataKey
+ * @param {Number} n
+ * @param {Number} offset (Decimal expected)
  */
 
-exports.filterBy = function (arr, search, delimiter /* ...dataKeys */) {
+exports.limitBy = function (arr, n, offset) {
+  offset = offset ? parseInt(offset, 10) : 0
+  return typeof n === 'number'
+    ? arr.slice(offset, offset + n)
+    : arr
+}
+
+/**
+ * Filter filter for arrays
+ *
+ * @param {String} search
+ * @param {String} [delimiter]
+ * @param {String} ...dataKeys
+ */
+
+exports.filterBy = function (arr, search, delimiter) {
+  arr = toArray(arr)
   if (search == null) {
     return arr
   }
@@ -7669,41 +8429,46 @@ exports.filterBy = function (arr, search, delimiter /* ...dataKeys */) {
   var keys = _.toArray(arguments, n).reduce(function (prev, cur) {
     return prev.concat(cur)
   }, [])
-  return arr.filter(function (item) {
-    if (keys.length) {
-      return keys.some(function (key) {
-        return contains(Path.get(item, key), search)
-      })
-    } else {
-      return contains(item, search)
+  var res = []
+  var item, key, val, j
+  for (var i = 0, l = arr.length; i < l; i++) {
+    item = arr[i]
+    val = (item && item.$value) || item
+    j = keys.length
+    if (j) {
+      while (j--) {
+        key = keys[j]
+        if ((key === '$key' && contains(item.$key, search)) ||
+            contains(Path.get(val, key), search)) {
+          res.push(item)
+          break
+        }
+      }
+    } else if (contains(item, search)) {
+      res.push(item)
     }
-  })
+  }
+  return res
 }
 
 /**
- * Filter filter for v-repeat
+ * Filter filter for arrays
  *
  * @param {String} sortKey
  * @param {String} reverse
  */
 
 exports.orderBy = function (arr, sortKey, reverse) {
+  arr = toArray(arr)
   if (!sortKey) {
     return arr
   }
-  var order = 1
-  if (arguments.length > 2) {
-    if (reverse === '-1') {
-      order = -1
-    } else {
-      order = reverse ? -1 : 1
-    }
-  }
+  var order = (reverse && reverse < 0) ? -1 : 1
   // sort on a copy to avoid mutating original array
   return arr.slice().sort(function (a, b) {
-    if (sortKey !== '$key' && sortKey !== '$value') {
-      if (a && '$value' in a) a = a.$value
-      if (b && '$value' in b) b = b.$value
+    if (sortKey !== '$key') {
+      if (_.isObject(a) && '$value' in a) a = a.$value
+      if (_.isObject(b) && '$value' in b) b = b.$value
     }
     a = _.isObject(a) ? Path.get(a, sortKey) : a
     b = _.isObject(b) ? Path.get(b, sortKey) : b
@@ -7740,7 +8505,7 @@ function contains (val, search) {
   }
 }
 
-},{"../parsers/path":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/path.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/filters/index.js":[function(require,module,exports){
+},{"../directives/public/for":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/for.js","../parsers/path":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/path.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/filters/index.js":[function(require,module,exports){
 var _ = require('../util')
 
 /**
@@ -7839,40 +8604,12 @@ exports.pluralize = function (value) {
 }
 
 /**
- * A special filter that takes a handler function,
- * wraps it so it only gets triggered on specific
- * keypresses. v-on only.
+ * Debounce a handler function.
  *
- * @param {String} key
+ * @param {Function} handler
+ * @param {Number} delay = 300
+ * @return {Function}
  */
-
-var keyCodes = {
-  esc: 27,
-  tab: 9,
-  enter: 13,
-  space: 32,
-  'delete': 46,
-  up: 38,
-  left: 37,
-  right: 39,
-  down: 40
-}
-
-exports.key = function (handler, key) {
-  if (!handler) return
-  var code = keyCodes[key]
-  if (!code) {
-    code = parseInt(key, 10)
-  }
-  return function (e) {
-    if (e.keyCode === code) {
-      return handler.call(this, e)
-    }
-  }
-}
-
-// expose keycode hash
-exports.key.keyCodes = keyCodes
 
 exports.debounce = function (handler, delay) {
   if (!handler) return
@@ -7888,212 +8625,254 @@ exports.debounce = function (handler, delay) {
 
 _.extend(exports, require('./array-filters'))
 
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","./array-filters":"/Users/bill/Sites/vue-starter/node_modules/vue/src/filters/array-filters.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/compile.js":[function(require,module,exports){
+},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","./array-filters":"/Users/bill/Sites/vue-starter/node_modules/vue/src/filters/array-filters.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/fragment/factory.js":[function(require,module,exports){
 var _ = require('../util')
-var Directive = require('../directive')
 var compiler = require('../compiler')
+var templateParser = require('../parsers/template')
+var Fragment = require('./fragment')
+var Cache = require('../cache')
+var linkerCache = new Cache(5000)
 
 /**
- * Transclude, compile and link element.
+ * A factory that can be used to create instances of a
+ * fragment. Caches the compiled linker if possible.
  *
- * If a pre-compiled linker is available, that means the
- * passed in element will be pre-transcluded and compiled
- * as well - all we need to do is to call the linker.
- *
- * Otherwise we need to call transclude/compile/link here.
- *
- * @param {Element} el
- * @return {Element}
+ * @param {Vue} vm
+ * @param {Element|String} el
  */
 
-exports._compile = function (el) {
-  var options = this.$options
-  var host = this._host
-  if (options._linkFn) {
-    // pre-transcluded with linker, just use it
-    this._initElement(el)
-    this._unlinkFn = options._linkFn(this, el, host)
+function FragmentFactory (vm, el) {
+  this.vm = vm
+  var template
+  var isString = typeof el === 'string'
+  if (isString || _.isTemplate(el)) {
+    template = templateParser.parse(el, true)
   } else {
-    // transclude and init element
-    // transclude can potentially replace original
-    // so we need to keep reference; this step also injects
-    // the template and caches the original attributes
-    // on the container node and replacer node.
-    var original = el
-    el = compiler.transclude(el, options)
-    this._initElement(el)
-
-    // root is always compiled per-instance, because
-    // container attrs and props can be different every time.
-    var rootLinker = compiler.compileRoot(el, options)
-
-    // compile and link the rest
-    var contentLinkFn
-    var ctor = this.constructor
-    // component compilation can be cached
-    // as long as it's not using inline-template
-    if (options._linkerCachable) {
-      contentLinkFn = ctor.linker
-      if (!contentLinkFn) {
-        contentLinkFn = ctor.linker = compiler.compile(el, options)
-      }
-    }
-
-    // link phase
-    var rootUnlinkFn = rootLinker(this, el)
-    var contentUnlinkFn = contentLinkFn
-      ? contentLinkFn(this, el)
-      : compiler.compile(el, options)(this, el, host)
-
-    // register composite unlink function
-    // to be called during instance destruction
-    this._unlinkFn = function () {
-      rootUnlinkFn()
-      // passing destroying: true to avoid searching and
-      // splicing the directives
-      contentUnlinkFn(true)
-    }
-
-    // finally replace original
-    if (options.replace) {
-      _.replace(original, el)
-    }
+    template = document.createDocumentFragment()
+    template.appendChild(el)
   }
-  return el
-}
-
-/**
- * Initialize instance element. Called in the public
- * $mount() method.
- *
- * @param {Element} el
- */
-
-exports._initElement = function (el) {
-  if (el instanceof DocumentFragment) {
-    this._isFragment = true
-    this.$el = this._fragmentStart = el.firstChild
-    this._fragmentEnd = el.lastChild
-    // set persisted text anchors to empty
-    if (this._fragmentStart.nodeType === 3) {
-      this._fragmentStart.data = this._fragmentEnd.data = ''
+  this.template = template
+  // linker can be cached, but only for components
+  var linker
+  var cid = vm.constructor.cid
+  if (cid > 0) {
+    var cacheId = cid + (isString ? el : el.outerHTML)
+    linker = linkerCache.get(cacheId)
+    if (!linker) {
+      linker = compiler.compile(template, vm.$options, true)
+      linkerCache.put(cacheId, linker)
     }
-    this._blockFragment = el
   } else {
-    this.$el = el
+    linker = compiler.compile(template, vm.$options, true)
   }
-  this.$el.__vue__ = this
-  this._callHook('beforeCompile')
+  this.linker = linker
 }
 
 /**
- * Create and bind a directive to an element.
+ * Create a fragment instance with given host and scope.
  *
- * @param {String} name - directive name
- * @param {Node} node   - target node
- * @param {Object} desc - parsed directive descriptor
- * @param {Object} def  - directive definition object
- * @param {Vue|undefined} host - transclusion host component
+ * @param {Vue} host
+ * @param {Object} scope
+ * @param {Fragment} parentFrag
  */
 
-exports._bindDir = function (name, node, desc, def, host) {
-  this._directives.push(
-    new Directive(name, node, this, desc, def, host)
-  )
+FragmentFactory.prototype.create = function (host, scope, parentFrag) {
+  var frag = templateParser.clone(this.template)
+  return new Fragment(this.linker, this.vm, frag, host, scope, parentFrag)
+}
+
+module.exports = FragmentFactory
+
+},{"../cache":"/Users/bill/Sites/vue-starter/node_modules/vue/src/cache.js","../compiler":"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/index.js","../parsers/template":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/template.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","./fragment":"/Users/bill/Sites/vue-starter/node_modules/vue/src/fragment/fragment.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/fragment/fragment.js":[function(require,module,exports){
+var _ = require('../util')
+var transition = require('../transition')
+
+/**
+ * Abstraction for a partially-compiled fragment.
+ * Can optionally compile content with a child scope.
+ *
+ * @param {Function} linker
+ * @param {Vue} vm
+ * @param {DocumentFragment} frag
+ * @param {Vue} [host]
+ * @param {Object} [scope]
+ */
+
+function Fragment (linker, vm, frag, host, scope, parentFrag) {
+  this.children = []
+  this.childFrags = []
+  this.vm = vm
+  this.scope = scope
+  this.inserted = false
+  this.parentFrag = parentFrag
+  if (parentFrag) {
+    parentFrag.childFrags.push(this)
+  }
+  this.unlink = linker(vm, frag, host, scope, this)
+  var single = this.single = frag.childNodes.length === 1
+  if (single) {
+    this.node = frag.childNodes[0]
+    this.before = singleBefore
+    this.remove = singleRemove
+  } else {
+    this.node = _.createAnchor('fragment-start')
+    this.end = _.createAnchor('fragment-end')
+    this.frag = frag
+    _.prepend(this.node, frag)
+    frag.appendChild(this.end)
+    this.before = multiBefore
+    this.remove = multiRemove
+  }
+  this.node.__vfrag__ = this
 }
 
 /**
- * Teardown an instance, unobserves the data, unbind all the
- * directives, turn off all the event listeners, etc.
+ * Call attach/detach for all components contained within
+ * this fragment. Also do so recursively for all child
+ * fragments.
  *
- * @param {Boolean} remove - whether to remove the DOM node.
- * @param {Boolean} deferCleanup - if true, defer cleanup to
- *                                 be called later
+ * @param {Function} hook
  */
 
-exports._destroy = function (remove, deferCleanup) {
-  if (this._isBeingDestroyed) {
-    return
+Fragment.prototype.callHook = function (hook) {
+  var i, l
+  for (i = 0, l = this.children.length; i < l; i++) {
+    hook(this.children[i])
   }
-  this._callHook('beforeDestroy')
-  this._isBeingDestroyed = true
-  var i
-  // remove self from parent. only necessary
-  // if parent is not being destroyed as well.
-  var parent = this.$parent
-  if (parent && !parent._isBeingDestroyed) {
-    parent.$children.$remove(this)
+  for (i = 0, l = this.childFrags.length; i < l; i++) {
+    this.childFrags[i].callHook(hook)
   }
-  // destroy all children.
-  i = this.$children.length
-  while (i--) {
-    this.$children[i].$destroy()
+}
+
+/**
+ * Destroy the fragment.
+ */
+
+Fragment.prototype.destroy = function () {
+  if (this.parentFrag) {
+    this.parentFrag.childFrags.$remove(this)
   }
-  // teardown props
-  if (this._propsUnlinkFn) {
-    this._propsUnlinkFn()
+  this.unlink()
+}
+
+/**
+ * Insert fragment before target, single node version
+ *
+ * @param {Node} target
+ * @param {Boolean} withTransition
+ */
+
+function singleBefore (target, withTransition) {
+  this.inserted = true
+  var method = withTransition !== false
+    ? transition.before
+    : _.before
+  method(this.node, target, this.vm)
+  if (_.inDoc(this.node)) {
+    this.callHook(attach)
   }
-  // teardown all directives. this also tearsdown all
-  // directive-owned watchers.
-  if (this._unlinkFn) {
-    this._unlinkFn()
-  }
-  i = this._watchers.length
-  while (i--) {
-    this._watchers[i].teardown()
-  }
-  // remove reference to self on $el
-  if (this.$el) {
-    this.$el.__vue__ = null
-  }
-  // remove DOM element
+}
+
+/**
+ * Remove fragment, single node version
+ */
+
+function singleRemove () {
+  this.inserted = false
+  var shouldCallRemove = _.inDoc(this.node)
   var self = this
-  if (remove && this.$el) {
-    this.$remove(function () {
-      self._cleanup()
-    })
-  } else if (!deferCleanup) {
-    this._cleanup()
+  self.callHook(destroyChild)
+  transition.remove(this.node, this.vm, function () {
+    if (shouldCallRemove) {
+      self.callHook(detach)
+    }
+    self.destroy()
+  })
+}
+
+/**
+ * Insert fragment before target, multi-nodes version
+ *
+ * @param {Node} target
+ * @param {Boolean} withTransition
+ */
+
+function multiBefore (target, withTransition) {
+  this.inserted = true
+  var vm = this.vm
+  var method = withTransition !== false
+    ? transition.before
+    : _.before
+  _.mapNodeRange(this.node, this.end, function (node) {
+    method(node, target, vm)
+  })
+  if (_.inDoc(this.node)) {
+    this.callHook(attach)
   }
 }
 
 /**
- * Clean up to ensure garbage collection.
- * This is called after the leave transition if there
- * is any.
+ * Remove fragment, multi-nodes version
  */
 
-exports._cleanup = function () {
-  // remove reference from data ob
-  // frozen object may not have observer.
-  if (this._data.__ob__) {
-    this._data.__ob__.removeVm(this)
-  }
-  // Clean up references to private properties and other
-  // instances. preserve reference to _data so that proxy
-  // accessors still work. The only potential side effect
-  // here is that mutating the instance after it's destroyed
-  // may affect the state of other components that are still
-  // observing the same object, but that seems to be a
-  // reasonable responsibility for the user rather than
-  // always throwing an error on them.
-  this.$el =
-  this.$parent =
-  this.$root =
-  this.$children =
-  this._watchers =
-  this._directives = null
-  // call the last hook...
-  this._isDestroyed = true
-  this._callHook('destroyed')
-  // turn off all instance listeners.
-  this.$off()
+function multiRemove () {
+  this.inserted = false
+  var self = this
+  var shouldCallRemove = _.inDoc(this.node)
+  self.callHook(destroyChild)
+  _.removeNodeRange(this.node, this.end, this.vm, this.frag, function () {
+    if (shouldCallRemove) {
+      self.callHook(detach)
+    }
+    self.destroy()
+  })
 }
 
-},{"../compiler":"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/index.js","../directive":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directive.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/events.js":[function(require,module,exports){
+/**
+ * Call attach hook for a Vue instance.
+ *
+ * @param {Vue} child
+ */
+
+function attach (child) {
+  if (!child._isAttached) {
+    child._callHook('attached')
+  }
+}
+
+/**
+ * Call destroy for all contained instances,
+ * with remove:false and defer:true.
+ * Defer is necessary because we need to
+ * keep the children to call detach hooks
+ * on them.
+ *
+ * @param {Vue} child
+ */
+
+function destroyChild (child) {
+  child.$destroy(false, true)
+}
+
+/**
+ * Call detach hook for a Vue instance.
+ *
+ * @param {Vue} child
+ */
+
+function detach (child) {
+  if (child._isAttached) {
+    child._callHook('detached')
+  }
+}
+
+module.exports = Fragment
+
+},{"../transition":"/Users/bill/Sites/vue-starter/node_modules/vue/src/transition/index.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/events.js":[function(require,module,exports){
 (function (process){
 var _ = require('../util')
 var inDoc = _.inDoc
+var eventRE = /^v-on:|^@/
 
 /**
  * Setup the instance's option events & watchers.
@@ -8103,8 +8882,31 @@ var inDoc = _.inDoc
 
 exports._initEvents = function () {
   var options = this.$options
+  if (options._asComponent) {
+    registerComponentEvents(this, options.el)
+  }
   registerCallbacks(this, '$on', options.events)
   registerCallbacks(this, '$watch', options.watch)
+}
+
+/**
+ * Register v-on events on a child component
+ *
+ * @param {Vue} vm
+ * @param {Element} el
+ */
+
+function registerComponentEvents (vm, el) {
+  var attrs = el.attributes
+  var name, handler
+  for (var i = 0, l = attrs.length; i < l; i++) {
+    name = attrs[i].name
+    if (eventRE.test(name)) {
+      name = name.replace(eventRE, '')
+      handler = (vm._scope || vm._context).$eval(attrs[i].value, true)
+      vm.$on(name.replace(eventRE), handler)
+    }
+  }
 }
 
 /**
@@ -8235,6 +9037,7 @@ exports._callHook = function (hook) {
 }).call(this,require('_process'))
 },{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/init.js":[function(require,module,exports){
 var mergeOptions = require('../util').mergeOptions
+var uid = 0
 
 /**
  * The main init sequence. This is called for every
@@ -8252,14 +9055,18 @@ exports._init = function (options) {
   options = options || {}
 
   this.$el = null
-  this.$parent = options._parent
-  this.$root = options._root || this
+  this.$parent = options.parent
+  this.$root = this.$parent
+    ? this.$parent.$root
+    : this
   this.$children = []
-  this.$ = {}           // child vm references
-  this.$$ = {}          // element references
+  this.$refs = {}       // child vm references
+  this.$els = {}        // element references
   this._watchers = []   // all watchers as an array
   this._directives = [] // all directives
-  this._childCtors = {} // inherit:true constructors
+
+  // a uid
+  this._uid = uid++
 
   // a flag to avoid this being observed
   this._isVue = true
@@ -8267,12 +9074,13 @@ exports._init = function (options) {
   // events bookkeeping
   this._events = {}            // registered callbacks
   this._eventsCount = {}       // for $broadcast optimization
-  this._eventCancelled = false // for event cancellation
+  this._shouldPropagate = false // for event propagation
 
   // fragment instance properties
   this._isFragment = false
-  this._fragmentStart =    // @type {CommentNode}
-  this._fragmentEnd = null // @type {CommentNode}
+  this._fragment =         // @type {DocumentFragment}
+  this._fragmentStart =    // @type {Text|Comment}
+  this._fragmentEnd = null // @type {Text|Comment}
 
   // lifecycle state
   this._isCompiled =
@@ -8282,21 +9090,32 @@ exports._init = function (options) {
   this._isBeingDestroyed = false
   this._unlinkFn = null
 
-  // context: the scope in which the component was used,
-  // and the scope in which props and contents of this
-  // instance should be compiled in.
-  this._context =
-    options._context ||
-    options._parent
+  // context:
+  // if this is a transcluded component, context
+  // will be the common parent vm of this instance
+  // and its host.
+  this._context = options._context || this.$parent
+
+  // scope:
+  // if this is inside an inline v-for, the scope
+  // will be the intermediate scope created for this
+  // repeat fragment. this is used for linking props
+  // and container directives.
+  this._scope = options._scope
+
+  // fragment:
+  // if this instance is compiled inside a Fragment, it
+  // needs to reigster itself as a child of that fragment
+  // for attach/detach to work properly.
+  this._frag = options._frag
+  if (this._frag) {
+    this._frag.children.push(this)
+  }
 
   // push self into parent / transclusion host
   if (this.$parent) {
     this.$parent.$children.push(this)
   }
-
-  // props used in v-repeat diffing
-  this._reused = false
-  this._staggerOp = null
 
   // merge options.
   options = this.$options = mergeOptions(
@@ -8305,12 +9124,18 @@ exports._init = function (options) {
     this
   )
 
+  // set ref
+  this._updateRef()
+
   // initialize data as empty object.
   // it will be filled up in _initScope().
   this._data = {}
 
+  // call init hook
+  this._callHook('init')
+
   // initialize data observation and scope inheritance.
-  this._initScope()
+  this._initState()
 
   // setup event system and option events.
   this._initEvents()
@@ -8324,7 +9149,246 @@ exports._init = function (options) {
   }
 }
 
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/misc.js":[function(require,module,exports){
+},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/lifecycle.js":[function(require,module,exports){
+var _ = require('../util')
+var Directive = require('../directive')
+var compiler = require('../compiler')
+
+/**
+ * Update v-ref for component.
+ *
+ * @param {Boolean} remove
+ */
+
+exports._updateRef = function (remove) {
+  var ref = this.$options._ref
+  if (ref) {
+    var refs = (this._scope || this._context).$refs
+    if (remove) {
+      if (refs[ref] === this) {
+        refs[ref] = null
+      }
+    } else {
+      refs[ref] = this
+    }
+  }
+}
+
+/**
+ * Transclude, compile and link element.
+ *
+ * If a pre-compiled linker is available, that means the
+ * passed in element will be pre-transcluded and compiled
+ * as well - all we need to do is to call the linker.
+ *
+ * Otherwise we need to call transclude/compile/link here.
+ *
+ * @param {Element} el
+ * @return {Element}
+ */
+
+exports._compile = function (el) {
+  var options = this.$options
+
+  // transclude and init element
+  // transclude can potentially replace original
+  // so we need to keep reference; this step also injects
+  // the template and caches the original attributes
+  // on the container node and replacer node.
+  var original = el
+  el = compiler.transclude(el, options)
+  this._initElement(el)
+
+  // root is always compiled per-instance, because
+  // container attrs and props can be different every time.
+  var contextOptions = this._context && this._context.$options
+  var rootLinker = compiler.compileRoot(el, options, contextOptions)
+
+  // compile and link the rest
+  var contentLinkFn
+  var ctor = this.constructor
+  // component compilation can be cached
+  // as long as it's not using inline-template
+  if (options._linkerCachable) {
+    contentLinkFn = ctor.linker
+    if (!contentLinkFn) {
+      contentLinkFn = ctor.linker = compiler.compile(el, options)
+    }
+  }
+
+  // link phase
+  // make sure to link root with prop scope!
+  var rootUnlinkFn = rootLinker(this, el, this._scope)
+  var contentUnlinkFn = contentLinkFn
+    ? contentLinkFn(this, el)
+    : compiler.compile(el, options)(this, el)
+
+  // register composite unlink function
+  // to be called during instance destruction
+  this._unlinkFn = function () {
+    rootUnlinkFn()
+    // passing destroying: true to avoid searching and
+    // splicing the directives
+    contentUnlinkFn(true)
+  }
+
+  // finally replace original
+  if (options.replace) {
+    _.replace(original, el)
+  }
+
+  this._isCompiled = true
+  this._callHook('compiled')
+  return el
+}
+
+/**
+ * Initialize instance element. Called in the public
+ * $mount() method.
+ *
+ * @param {Element} el
+ */
+
+exports._initElement = function (el) {
+  if (el instanceof DocumentFragment) {
+    this._isFragment = true
+    this.$el = this._fragmentStart = el.firstChild
+    this._fragmentEnd = el.lastChild
+    // set persisted text anchors to empty
+    if (this._fragmentStart.nodeType === 3) {
+      this._fragmentStart.data = this._fragmentEnd.data = ''
+    }
+    this._fragment = el
+  } else {
+    this.$el = el
+  }
+  this.$el.__vue__ = this
+  this._callHook('beforeCompile')
+}
+
+/**
+ * Create and bind a directive to an element.
+ *
+ * @param {String} name - directive name
+ * @param {Node} node   - target node
+ * @param {Object} desc - parsed directive descriptor
+ * @param {Object} def  - directive definition object
+ * @param {Vue} [host] - transclusion host component
+ * @param {Object} [scope] - v-for scope
+ * @param {Fragment} [frag] - owner fragment
+ */
+
+exports._bindDir = function (descriptor, node, host, scope, frag) {
+  this._directives.push(
+    new Directive(descriptor, this, node, host, scope, frag)
+  )
+}
+
+/**
+ * Teardown an instance, unobserves the data, unbind all the
+ * directives, turn off all the event listeners, etc.
+ *
+ * @param {Boolean} remove - whether to remove the DOM node.
+ * @param {Boolean} deferCleanup - if true, defer cleanup to
+ *                                 be called later
+ */
+
+exports._destroy = function (remove, deferCleanup) {
+  if (this._isBeingDestroyed) {
+    if (!deferCleanup) {
+      this._cleanup()
+    }
+    return
+  }
+  this._callHook('beforeDestroy')
+  this._isBeingDestroyed = true
+  var i
+  // remove self from parent. only necessary
+  // if parent is not being destroyed as well.
+  var parent = this.$parent
+  if (parent && !parent._isBeingDestroyed) {
+    parent.$children.$remove(this)
+    // unregister ref (remove: true)
+    this._updateRef(true)
+  }
+  // destroy all children.
+  i = this.$children.length
+  while (i--) {
+    this.$children[i].$destroy()
+  }
+  // teardown props
+  if (this._propsUnlinkFn) {
+    this._propsUnlinkFn()
+  }
+  // teardown all directives. this also tearsdown all
+  // directive-owned watchers.
+  if (this._unlinkFn) {
+    this._unlinkFn()
+  }
+  i = this._watchers.length
+  while (i--) {
+    this._watchers[i].teardown()
+  }
+  // remove reference to self on $el
+  if (this.$el) {
+    this.$el.__vue__ = null
+  }
+  // remove DOM element
+  var self = this
+  if (remove && this.$el) {
+    this.$remove(function () {
+      self._cleanup()
+    })
+  } else if (!deferCleanup) {
+    this._cleanup()
+  }
+}
+
+/**
+ * Clean up to ensure garbage collection.
+ * This is called after the leave transition if there
+ * is any.
+ */
+
+exports._cleanup = function () {
+  if (this._isDestroyed) {
+    return
+  }
+  // remove self from owner fragment
+  // do it in cleanup so that we can call $destroy with
+  // defer right when a fragment is about to be removed.
+  if (this._frag) {
+    this._frag.children.$remove(this)
+  }
+  // remove reference from data ob
+  // frozen object may not have observer.
+  if (this._data.__ob__) {
+    this._data.__ob__.removeVm(this)
+  }
+  // Clean up references to private properties and other
+  // instances. preserve reference to _data so that proxy
+  // accessors still work. The only potential side effect
+  // here is that mutating the instance after it's destroyed
+  // may affect the state of other components that are still
+  // observing the same object, but that seems to be a
+  // reasonable responsibility for the user rather than
+  // always throwing an error on them.
+  this.$el =
+  this.$parent =
+  this.$root =
+  this.$children =
+  this._watchers =
+  this._context =
+  this._scope =
+  this._directives = null
+  // call the last hook...
+  this._isDestroyed = true
+  this._callHook('destroyed')
+  // turn off all instance listeners.
+  this.$off()
+}
+
+},{"../compiler":"/Users/bill/Sites/vue-starter/node_modules/vue/src/compiler/index.js","../directive":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directive.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/misc.js":[function(require,module,exports){
 (function (process){
 var _ = require('../util')
 
@@ -8421,7 +9485,7 @@ exports._resolveComponent = function (id, cb) {
 }
 
 }).call(this,require('_process'))
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/scope.js":[function(require,module,exports){
+},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/state.js":[function(require,module,exports){
 (function (process){
 var _ = require('../util')
 var compiler = require('../compiler')
@@ -8437,7 +9501,7 @@ var Watcher = require('../watcher')
  * - meta properties
  */
 
-exports._initScope = function () {
+exports._initState = function () {
   this._initProps()
   this._initMeta()
   this._initMethods()
@@ -8462,9 +9526,8 @@ exports._initProps = function () {
   // make sure to convert string selectors into element now
   el = options.el = _.query(el)
   this._propsUnlinkFn = el && el.nodeType === 1 && props
-    ? compiler.compileAndLinkProps(
-        this, el, props
-      )
+    // props must be linked in proper scope if inside v-for
+    ? compiler.compileAndLinkProps(this, el, props, this._scope)
     : null
 }
 
@@ -8479,11 +9542,16 @@ exports._initData = function () {
   if (optionsData) {
     this._data = optionsData
     for (var prop in propsData) {
-      if (
-        this._props[prop].raw !== null ||
-        !optionsData.hasOwnProperty(prop)
-      ) {
-        optionsData.$set(prop, propsData[prop])
+      if (process.env.NODE_ENV !== 'production' &&
+          optionsData.hasOwnProperty(prop)) {
+        _.warn(
+          'Data field "' + prop + '" is already defined ' +
+          'as a prop. Use prop default value instead.'
+        )
+      }
+      if (this._props[prop].raw !== null ||
+          !optionsData.hasOwnProperty(prop)) {
+        _.set(optionsData, prop, propsData[prop])
       }
     }
   }
@@ -8494,9 +9562,7 @@ exports._initData = function () {
   i = keys.length
   while (i--) {
     key = keys[i]
-    if (!_.isReserved(key)) {
-      this._proxy(key)
-    }
+    this._proxy(key)
   }
   // observe data
   Observer.create(data, this)
@@ -8513,25 +9579,12 @@ exports._setData = function (newData) {
   var oldData = this._data
   this._data = newData
   var keys, key, i
-  // copy props.
-  // this should only happen during a v-repeat of component
-  // that also happens to have compiled props.
-  var props = this.$options.props
-  if (props) {
-    i = props.length
-    while (i--) {
-      key = props[i].name
-      if (key !== '$data' && !newData.hasOwnProperty(key)) {
-        newData.$set(key, oldData[key])
-      }
-    }
-  }
   // unproxy keys not present in new data
   keys = Object.keys(oldData)
   i = keys.length
   while (i--) {
     key = keys[i]
-    if (!_.isReserved(key) && !(key in newData)) {
+    if (!(key in newData)) {
       this._unproxy(key)
     }
   }
@@ -8541,7 +9594,7 @@ exports._setData = function (newData) {
   i = keys.length
   while (i--) {
     key = keys[i]
-    if (!this.hasOwnProperty(key) && !_.isReserved(key)) {
+    if (!this.hasOwnProperty(key)) {
       // new property
       this._proxy(key)
     }
@@ -8559,20 +9612,23 @@ exports._setData = function (newData) {
  */
 
 exports._proxy = function (key) {
-  // need to store ref to self here
-  // because these getter/setters might
-  // be called by child instances!
-  var self = this
-  Object.defineProperty(self, key, {
-    configurable: true,
-    enumerable: true,
-    get: function proxyGetter () {
-      return self._data[key]
-    },
-    set: function proxySetter (val) {
-      self._data[key] = val
-    }
-  })
+  if (!_.isReserved(key)) {
+    // need to store ref to self here
+    // because these getter/setters might
+    // be called by child scopes via
+    // prototype inheritance.
+    var self = this
+    Object.defineProperty(self, key, {
+      configurable: true,
+      enumerable: true,
+      get: function proxyGetter () {
+        return self._data[key]
+      },
+      set: function proxySetter (val) {
+        self._data[key] = val
+      }
+    })
+  }
 }
 
 /**
@@ -8582,7 +9638,9 @@ exports._proxy = function (key) {
  */
 
 exports._unproxy = function (key) {
-  delete this[key]
+  if (!_.isReserved(key)) {
+    delete this[key]
+  }
 }
 
 /**
@@ -8590,17 +9648,8 @@ exports._unproxy = function (key) {
  */
 
 exports._digest = function () {
-  var i = this._watchers.length
-  while (i--) {
+  for (var i = 0, l = this._watchers.length; i < l; i++) {
     this._watchers[i].update(true) // shallow updates
-  }
-  var children = this.$children
-  i = children.length
-  while (i--) {
-    var child = children[i]
-    if (child.$options.inherit) {
-      child._digest()
-    }
   }
 }
 
@@ -8654,8 +9703,8 @@ function makeComputedGetter (getter, owner) {
 
 /**
  * Setup instance methods. Methods must be bound to the
- * instance since they might be called by children
- * inheriting them.
+ * instance since they might be passed down as a prop to
+ * child components.
  */
 
 exports._initMethods = function () {
@@ -8675,35 +9724,9 @@ exports._initMeta = function () {
   var metas = this.$options._meta
   if (metas) {
     for (var key in metas) {
-      this._defineMeta(key, metas[key])
+      _.defineReactive(this, key, metas[key])
     }
   }
-}
-
-/**
- * Define a meta property, e.g $index, $key, $value
- * which only exists on the vm instance but not in $data.
- *
- * @param {String} key
- * @param {*} value
- */
-
-exports._defineMeta = function (key, value) {
-  var dep = new Dep()
-  Object.defineProperty(this, key, {
-    get: function metaGetter () {
-      if (Dep.target) {
-        dep.depend()
-      }
-      return value
-    },
-    set: function metaSetter (val) {
-      if (val !== value) {
-        value = val
-        dep.notify()
-      }
-    }
-  })
 }
 
 }).call(this,require('_process'))
@@ -8738,7 +9761,7 @@ var arrayMethods = Object.create(arrayProto)
     }
     var result = original.apply(this, args)
     var ob = this.__ob__
-    var inserted, removed
+    var inserted
     switch (method) {
       case 'push':
         inserted = args
@@ -8748,17 +9771,11 @@ var arrayMethods = Object.create(arrayProto)
         break
       case 'splice':
         inserted = args.slice(2)
-        removed = result
-        break
-      case 'pop':
-      case 'shift':
-        removed = [result]
         break
     }
     if (inserted) ob.observeArray(inserted)
-    if (removed) ob.unobserveArray(removed)
     // notify change
-    ob.notify()
+    ob.dep.notify()
     return result
   })
 })
@@ -8793,12 +9810,10 @@ _.define(
 _.define(
   arrayProto,
   '$remove',
-  function $remove (index) {
+  function $remove (item) {
     /* istanbul ignore if */
     if (!this.length) return
-    if (typeof index !== 'number') {
-      index = _.indexOf(this, index)
-    }
+    var index = _.indexOf(this, item)
     if (index > -1) {
       return this.splice(index, 1)
     }
@@ -8872,11 +9887,9 @@ module.exports = Dep
 
 },{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/observer/index.js":[function(require,module,exports){
 var _ = require('../util')
-var config = require('../config')
 var Dep = require('./dep')
 var arrayMethods = require('./array')
 var arrayKeys = Object.getOwnPropertyNames(arrayMethods)
-require('./object')
 
 /**
  * Observer class that are attached to each observed
@@ -8893,7 +9906,7 @@ function Observer (value) {
   this.dep = new Dep()
   _.define(value, '__ob__', this)
   if (_.isArray(value)) {
-    var augment = config.proto && _.hasProto
+    var augment = _.hasProto
       ? protoAugment
       : copyAugment
     augment(value, arrayMethods, arrayKeys)
@@ -8917,9 +9930,11 @@ function Observer (value) {
  */
 
 Observer.create = function (value, vm) {
+  if (!value || typeof value !== 'object') {
+    return
+  }
   var ob
   if (
-    value &&
     value.hasOwnProperty('__ob__') &&
     value.__ob__ instanceof Observer
   ) {
@@ -8942,8 +9957,7 @@ Observer.create = function (value, vm) {
 /**
  * Walk through each property and convert them into
  * getter/setters. This method should only be called when
- * value type is Object. Properties prefixed with `$` or `_`
- * and accessor properties are ignored.
+ * value type is Object.
  *
  * @param {Object} obj
  */
@@ -8957,18 +9971,6 @@ Observer.prototype.walk = function (obj) {
 }
 
 /**
- * Try to carete an observer for a child value,
- * and if value is array, link dep to the array.
- *
- * @param {*} val
- * @return {Dep|undefined}
- */
-
-Observer.prototype.observe = function (val) {
-  return Observer.create(val)
-}
-
-/**
  * Observe a list of Array items.
  *
  * @param {Array} items
@@ -8977,42 +9979,7 @@ Observer.prototype.observe = function (val) {
 Observer.prototype.observeArray = function (items) {
   var i = items.length
   while (i--) {
-    var ob = this.observe(items[i])
-    if (ob) {
-      (ob.parents || (ob.parents = [])).push(this)
-    }
-  }
-}
-
-/**
- * Remove self from the parent list of removed objects.
- *
- * @param {Array} items
- */
-
-Observer.prototype.unobserveArray = function (items) {
-  var i = items.length
-  while (i--) {
-    var ob = items[i] && items[i].__ob__
-    if (ob) {
-      ob.parents.$remove(this)
-    }
-  }
-}
-
-/**
- * Notify self dependency, and also parent Array dependency
- * if any.
- */
-
-Observer.prototype.notify = function () {
-  this.dep.notify()
-  var parents = this.parents
-  if (parents) {
-    var i = parents.length
-    while (i--) {
-      parents[i].notify()
-    }
+    Observer.create(items[i])
   }
 }
 
@@ -9025,32 +9992,11 @@ Observer.prototype.notify = function () {
  */
 
 Observer.prototype.convert = function (key, val) {
-  var ob = this
-  var childOb = ob.observe(val)
-  var dep = new Dep()
-  Object.defineProperty(ob.value, key, {
-    enumerable: true,
-    configurable: true,
-    get: function () {
-      if (Dep.target) {
-        dep.depend()
-        if (childOb) {
-          childOb.dep.depend()
-        }
-      }
-      return val
-    },
-    set: function (newVal) {
-      if (newVal === val) return
-      val = newVal
-      childOb = ob.observe(newVal)
-      dep.notify()
-    }
-  })
+  defineReactive(this.value, key, val)
 }
 
 /**
- * Add an owner vm, so that when $add/$delete mutations
+ * Add an owner vm, so that when $set/$delete mutations
  * happen we can notify owner vms to proxy the keys and
  * digest the watchers. This is only called when the object
  * is observed as an instance's root $data.
@@ -9104,97 +10050,53 @@ function copyAugment (target, src, keys) {
   }
 }
 
+/**
+ * Define a reactive property on an Object.
+ *
+ * @param {Object} obj
+ * @param {String} key
+ * @param {*} val
+ */
+
+function defineReactive (obj, key, val) {
+  var dep = new Dep()
+  var childOb = Observer.create(val)
+  Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: true,
+    get: function metaGetter () {
+      if (Dep.target) {
+        dep.depend()
+        if (childOb) {
+          childOb.dep.depend()
+        }
+        if (_.isArray(val)) {
+          for (var e, i = 0, l = val.length; i < l; i++) {
+            e = val[i]
+            e && e.__ob__ && e.__ob__.dep.depend()
+          }
+        }
+      }
+      return val
+    },
+    set: function metaSetter (newVal) {
+      if (newVal === val) return
+      val = newVal
+      childOb = Observer.create(newVal)
+      dep.notify()
+    }
+  })
+}
+
+// Attach to the util object so it can be used elsewhere.
+_.defineReactive = defineReactive
+
 module.exports = Observer
 
-},{"../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","./array":"/Users/bill/Sites/vue-starter/node_modules/vue/src/observer/array.js","./dep":"/Users/bill/Sites/vue-starter/node_modules/vue/src/observer/dep.js","./object":"/Users/bill/Sites/vue-starter/node_modules/vue/src/observer/object.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/observer/object.js":[function(require,module,exports){
-var _ = require('../util')
-var objProto = Object.prototype
-
-/**
- * Add a new property to an observed object
- * and emits corresponding event
- *
- * @param {String} key
- * @param {*} val
- * @public
- */
-
-_.define(
-  objProto,
-  '$add',
-  function $add (key, val) {
-    if (this.hasOwnProperty(key)) return
-    var ob = this.__ob__
-    if (!ob || _.isReserved(key)) {
-      this[key] = val
-      return
-    }
-    ob.convert(key, val)
-    ob.notify()
-    if (ob.vms) {
-      var i = ob.vms.length
-      while (i--) {
-        var vm = ob.vms[i]
-        vm._proxy(key)
-        vm._digest()
-      }
-    }
-  }
-)
-
-/**
- * Set a property on an observed object, calling add to
- * ensure the property is observed.
- *
- * @param {String} key
- * @param {*} val
- * @public
- */
-
-_.define(
-  objProto,
-  '$set',
-  function $set (key, val) {
-    this.$add(key, val)
-    this[key] = val
-  }
-)
-
-/**
- * Deletes a property from an observed object
- * and emits corresponding event
- *
- * @param {String} key
- * @public
- */
-
-_.define(
-  objProto,
-  '$delete',
-  function $delete (key) {
-    if (!this.hasOwnProperty(key)) return
-    delete this[key]
-    var ob = this.__ob__
-    if (!ob || _.isReserved(key)) {
-      return
-    }
-    ob.notify()
-    if (ob.vms) {
-      var i = ob.vms.length
-      while (i--) {
-        var vm = ob.vms[i]
-        vm._unproxy(key)
-        vm._digest()
-      }
-    }
-  }
-)
-
-},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/directive.js":[function(require,module,exports){
+},{"../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","./array":"/Users/bill/Sites/vue-starter/node_modules/vue/src/observer/array.js","./dep":"/Users/bill/Sites/vue-starter/node_modules/vue/src/observer/dep.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/directive.js":[function(require,module,exports){
 var _ = require('../util')
 var Cache = require('../cache')
 var cache = new Cache(1000)
-var argRE = /^[^\{\?]+$|^'[^']*'$|^"[^"]*"$/
 var filterTokenRE = /[^\s'"]+|'[^']*'|"[^"]*"/g
 var reservedArgRE = /^in$|^-?\d+/
 
@@ -9202,35 +10104,9 @@ var reservedArgRE = /^in$|^-?\d+/
  * Parser state
  */
 
-var str
-var c, i, l
-var inSingle
-var inDouble
-var curly
-var square
-var paren
-var begin
-var argIndex
-var dirs
-var dir
-var lastFilterIndex
-var arg
-
-/**
- * Push a directive object into the result Array
- */
-
-function pushDir () {
-  dir.raw = str.slice(begin, i).trim()
-  if (dir.expression === undefined) {
-    dir.expression = str.slice(argIndex, i).trim()
-  } else if (lastFilterIndex !== begin) {
-    pushFilter()
-  }
-  if (i === 0 || dir.expression) {
-    dirs.push(dir)
-  }
-}
+var str, dir
+var c, i, l, lastFilterIndex
+var inSingle, inDouble, curly, square, paren
 
 /**
  * Push a filter to the current directive object
@@ -9261,33 +10137,37 @@ function pushFilter () {
  */
 
 function processFilterArg (arg) {
-  var stripped = reservedArgRE.test(arg)
-    ? arg
-    : _.stripQuotes(arg)
-  var dynamic = stripped === false
-  return {
-    value: dynamic ? arg : stripped,
-    dynamic: dynamic
+  if (reservedArgRE.test(arg)) {
+    return {
+      value: _.toNumber(arg),
+      dynamic: false
+    }
+  } else {
+    var stripped = _.stripQuotes(arg)
+    var dynamic = stripped === arg
+    return {
+      value: dynamic ? arg : stripped,
+      dynamic: dynamic
+    }
   }
 }
 
 /**
- * Parse a directive string into an Array of AST-like
- * objects representing directives.
+ * Parse a directive value and extract the expression
+ * and its filters into a descriptor.
  *
  * Example:
  *
- * "click: a = a + 1 | uppercase" will yield:
+ * "a + 1 | uppercase" will yield:
  * {
- *   arg: 'click',
- *   expression: 'a = a + 1',
+ *   expression: 'a + 1',
  *   filters: [
  *     { name: 'uppercase', args: null }
  *   ]
  * }
  *
  * @param {String} str
- * @return {Array<Object>}
+ * @return {Object}
  */
 
 exports.parse = function (s) {
@@ -9300,11 +10180,9 @@ exports.parse = function (s) {
   // reset parser state
   str = s
   inSingle = inDouble = false
-  curly = square = paren = begin = argIndex = 0
+  curly = square = paren = 0
   lastFilterIndex = 0
-  dirs = []
   dir = {}
-  arg = null
 
   for (i = 0, l = str.length; i < l; i++) {
     c = str.charCodeAt(i)
@@ -9315,37 +10193,14 @@ exports.parse = function (s) {
       // check double quote
       if (c === 0x22) inDouble = !inDouble
     } else if (
-      c === 0x2C && // comma
-      !paren && !curly && !square
-    ) {
-      // reached the end of a directive
-      pushDir()
-      // reset & skip the comma
-      dir = {}
-      begin = argIndex = lastFilterIndex = i + 1
-    } else if (
-      c === 0x3A && // colon
-      !dir.expression &&
-      !dir.arg
-    ) {
-      // argument
-      arg = str.slice(begin, i).trim()
-      // test for valid argument here
-      // since we may have caught stuff like first half of
-      // an object literal or a ternary expression.
-      if (argRE.test(arg)) {
-        argIndex = i + 1
-        dir.arg = _.stripQuotes(arg) || arg
-      }
-    } else if (
       c === 0x7C && // pipe
       str.charCodeAt(i + 1) !== 0x7C &&
       str.charCodeAt(i - 1) !== 0x7C
     ) {
-      if (dir.expression === undefined) {
+      if (dir.expression == null) {
         // first filter, end of expression
         lastFilterIndex = i + 1
-        dir.expression = str.slice(argIndex, i).trim()
+        dir.expression = str.slice(0, i).trim()
       } else {
         // already has filter
         pushFilter()
@@ -9364,12 +10219,14 @@ exports.parse = function (s) {
     }
   }
 
-  if (i === 0 || begin !== i) {
-    pushDir()
+  if (dir.expression == null) {
+    dir.expression = str.slice(0, i).trim()
+  } else if (lastFilterIndex !== 0) {
+    pushFilter()
   }
 
-  cache.put(s, dirs)
-  return dirs
+  cache.put(s, dir)
+  return dir
 }
 
 },{"../cache":"/Users/bill/Sites/vue-starter/node_modules/vue/src/cache.js","../util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/expression.js":[function(require,module,exports){
@@ -9799,7 +10656,6 @@ function getPathCharType (ch) {
 
 /**
  * Parse a string path into an array of segments
- * Todo implement cache
  *
  * @param {String} path
  * @return {Array|undefined}
@@ -9939,6 +10795,22 @@ exports.get = function (obj, path) {
 }
 
 /**
+ * Warn against setting non-existent root path on a vm.
+ */
+
+var warnNonExistent
+if (process.env.NODE_ENV !== 'production') {
+  warnNonExistent = function (path) {
+    _.warn(
+      'You are setting a non-existent path "' + path.raw + '" ' +
+      'on a vm instance. Consider pre-initializing the property ' +
+      'with the "data" option for more reliable reactivity ' +
+      'and better performance.'
+    )
+  }
+}
+
+/**
  * Set on an object from a path
  *
  * @param {Object} obj
@@ -9964,9 +10836,11 @@ exports.set = function (obj, path, val) {
     if (i < l - 1) {
       obj = obj[key]
       if (!_.isObject(obj)) {
-        warnNonExistent(path)
         obj = {}
-        last.$add(key, obj)
+        if (process.env.NODE_ENV !== 'production' && last._isVue) {
+          warnNonExistent(path)
+        }
+        _.set(last, key, obj)
       }
     } else {
       if (_.isArray(obj)) {
@@ -9974,21 +10848,14 @@ exports.set = function (obj, path, val) {
       } else if (key in obj) {
         obj[key] = val
       } else {
-        warnNonExistent(path)
-        obj.$add(key, val)
+        if (process.env.NODE_ENV !== 'production' && obj._isVue) {
+          warnNonExistent(path)
+        }
+        _.set(obj, key, val)
       }
     }
   }
   return true
-}
-
-function warnNonExistent (path) {
-  process.env.NODE_ENV !== 'production' && _.warn(
-    'You are setting a non-existent path "' + path.raw + '" ' +
-    'on a vm instance. Consider pre-initializing the property ' +
-    'with the "data" option for more reliable reactivity ' +
-    'and better performance.'
-  )
 }
 
 }).call(this,require('_process'))
@@ -10287,7 +11154,7 @@ var Cache = require('../cache')
 var config = require('../config')
 var dirParser = require('./directive')
 var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g
-var cache, tagRE, htmlRE, firstChar, lastChar
+var cache, tagRE, htmlRE
 
 /**
  * Escape a string so it can be used in a RegExp
@@ -10300,32 +11167,18 @@ function escapeRegex (str) {
   return str.replace(regexEscapeRE, '\\$&')
 }
 
-/**
- * Compile the interpolation tag regex.
- *
- * @return {RegExp}
- */
-
-function compileRegex () {
-  config._delimitersChanged = false
-  var open = config.delimiters[0]
-  var close = config.delimiters[1]
-  firstChar = open.charAt(0)
-  lastChar = close.charAt(close.length - 1)
-  var firstCharRE = escapeRegex(firstChar)
-  var lastCharRE = escapeRegex(lastChar)
-  var openRE = escapeRegex(open)
-  var closeRE = escapeRegex(close)
+exports.compileRegex = function () {
+  var open = escapeRegex(config.delimiters[0])
+  var close = escapeRegex(config.delimiters[1])
+  var unsafeOpen = escapeRegex(config.unsafeDelimiters[0])
+  var unsafeClose = escapeRegex(config.unsafeDelimiters[1])
   tagRE = new RegExp(
-    firstCharRE + '?' + openRE +
-    '(.+?)' +
-    closeRE + lastCharRE + '?',
+    unsafeOpen + '(.+?)' + unsafeClose + '|' +
+    open + '(.+?)' + close,
     'g'
   )
   htmlRE = new RegExp(
-    '^' + firstCharRE + openRE +
-    '.*' +
-    closeRE + lastCharRE + '$'
+    '^' + unsafeOpen + '.*' + unsafeClose + '$'
   )
   // reset cache
   cache = new Cache(1000)
@@ -10343,8 +11196,8 @@ function compileRegex () {
  */
 
 exports.parse = function (text) {
-  if (config._delimitersChanged) {
-    compileRegex()
+  if (!cache) {
+    exports.compileRegex()
   }
   var hit = cache.get(text)
   if (hit) {
@@ -10356,7 +11209,7 @@ exports.parse = function (text) {
   }
   var tokens = []
   var lastIndex = tagRE.lastIndex = 0
-  var match, index, value, first, oneTime, twoWay
+  var match, index, html, value, first, oneTime
   /* eslint-disable no-cond-assign */
   while (match = tagRE.exec(text)) {
   /* eslint-enable no-cond-assign */
@@ -10368,18 +11221,18 @@ exports.parse = function (text) {
       })
     }
     // tag token
-    first = match[1].charCodeAt(0)
+    html = htmlRE.test(match[0])
+    value = html ? match[1] : match[2]
+    first = value.charCodeAt(0)
     oneTime = first === 42 // *
-    twoWay = first === 64  // @
-    value = oneTime || twoWay
-      ? match[1].slice(1)
-      : match[1]
+    value = oneTime
+      ? value.slice(1)
+      : value
     tokens.push({
       tag: true,
       value: value.trim(),
-      html: htmlRE.test(match[0]),
-      oneTime: oneTime,
-      twoWay: twoWay
+      html: html,
+      oneTime: oneTime
     })
     lastIndex = index + match[0].length
   }
@@ -10398,17 +11251,16 @@ exports.parse = function (text) {
  * into one single expression as '"a " + b + " c"'.
  *
  * @param {Array} tokens
- * @param {Vue} [vm]
  * @return {String}
  */
 
-exports.tokensToExp = function (tokens, vm) {
+exports.tokensToExp = function (tokens) {
   if (tokens.length > 1) {
     return tokens.map(function (token) {
-      return formatToken(token, vm)
+      return formatToken(token)
     }).join('+')
   } else {
-    return formatToken(tokens[0], vm, true)
+    return formatToken(tokens[0], true)
   }
 }
 
@@ -10416,16 +11268,13 @@ exports.tokensToExp = function (tokens, vm) {
  * Format a single token.
  *
  * @param {Object} token
- * @param {Vue} [vm]
  * @param {Boolean} single
  * @return {String}
  */
 
-function formatToken (token, vm, single) {
+function formatToken (token, single) {
   return token.tag
-    ? vm && token.oneTime
-      ? '"' + vm.$eval(token.value) + '"'
-      : inlineFilters(token.value, single)
+    ? inlineFilters(token.value, single)
     : '"' + token.value + '"'
 }
 
@@ -10449,7 +11298,7 @@ function inlineFilters (exp, single) {
       ? exp
       : '(' + exp + ')'
   } else {
-    var dir = dirParser.parse(exp)[0]
+    var dir = dirParser.parse(exp)
     if (!dir.filters) {
       return '(' + exp + ')'
     } else {
@@ -10507,55 +11356,6 @@ exports.remove = function (el, vm, cb) {
   apply(el, -1, function () {
     _.remove(el)
   }, vm, cb)
-}
-
-/**
- * Remove by appending to another parent with transition.
- * This is only used in block operations.
- *
- * @param {Element} el
- * @param {Element} target
- * @param {Vue} vm
- * @param {Function} [cb]
- */
-
-exports.removeThenAppend = function (el, target, vm, cb) {
-  apply(el, -1, function () {
-    target.appendChild(el)
-  }, vm, cb)
-}
-
-/**
- * Append the childNodes of a fragment to target.
- *
- * @param {DocumentFragment} block
- * @param {Node} target
- * @param {Vue} vm
- */
-
-exports.blockAppend = function (block, target, vm) {
-  var nodes = _.toArray(block.childNodes)
-  for (var i = 0, l = nodes.length; i < l; i++) {
-    exports.before(nodes[i], target, vm)
-  }
-}
-
-/**
- * Remove a block of nodes between two edge nodes.
- *
- * @param {Node} start
- * @param {Node} end
- * @param {Vue} vm
- */
-
-exports.blockRemove = function (start, end, vm) {
-  var node = start.nextSibling
-  var next
-  while (node !== end) {
-    next = node.nextSibling
-    exports.remove(node, vm)
-    node = next
-  }
 }
 
 /**
@@ -10642,8 +11442,6 @@ var animDurationProp = _.animationProp + 'Duration'
 var TYPE_TRANSITION = 1
 var TYPE_ANIMATION = 2
 
-var uid = 0
-
 /**
  * A Transition object that encapsulates the state and logic
  * of the transition.
@@ -10655,7 +11453,7 @@ var uid = 0
  */
 
 function Transition (el, id, hooks, vm) {
-  this.id = uid++
+  this.id = id
   this.el = el
   this.enterClass = id + '-enter'
   this.leaveClass = id + '-leave'
@@ -10728,10 +11526,20 @@ p.enter = function (op, cb) {
  */
 
 p.enterNextTick = function () {
+
+  // Important hack:
+  // in Chrome, if a just-entered element is applied the
+  // leave class while its interpolated property still has
+  // a very small value (within one frame), Chrome will
+  // skip the leave transition entirely and not firing the
+  // transtionend event. Therefore we need to protected
+  // against such cases using a one-frame timeout.
   this.justEntered = true
-  _.nextTick(function () {
-    this.justEntered = false
-  }, this)
+  var self = this
+  setTimeout(function () {
+    self.justEntered = false
+  }, 17)
+
   var enterDone = this.enterDone
   var type = this.getCssTransitionType(this.enterClass)
   if (!this.pendingJsCb) {
@@ -10981,9 +11789,11 @@ p.setupCssCb = function (event, cb) {
  */
 
 function isHidden (el) {
-  return el.style.display === 'none' ||
-    el.style.visibility === 'hidden' ||
-    el.hidden
+  return !(
+    el.offsetWidth &&
+    el.offsetHeight &&
+    el.getClientRects().length
+  )
 }
 
 module.exports = Transition
@@ -10998,33 +11808,64 @@ var _ = require('./index')
  *
  * @param {Element} el
  * @param {Object} options
- * @return {String|undefined}
+ * @return {Object|undefined}
  */
 
-exports.commonTagRE = /^(div|p|span|img|a|br|ul|ol|li|h1|h2|h3|h4|h5|code|pre)$/
+exports.commonTagRE = /^(div|p|span|img|a|b|i|br|ul|ol|li|h1|h2|h3|h4|h5|h6|code|pre|table|th|td|tr|form|label|input|select|option|nav|article|section|header|footer)$/
 exports.checkComponent = function (el, options) {
   var tag = el.tagName.toLowerCase()
-  if (tag === 'component') {
-    // dynamic syntax
-    var exp = el.getAttribute('is')
-    el.removeAttribute('is')
-    return exp
-  } else if (
-    !exports.commonTagRE.test(tag) &&
-    _.resolveAsset(options, 'components', tag)
-  ) {
-    return tag
-  /* eslint-disable no-cond-assign */
-  } else if (tag = _.attr(el, 'component')) {
-  /* eslint-enable no-cond-assign */
-    return tag
+  var hasAttrs = el.hasAttributes()
+  if (!exports.commonTagRE.test(tag) && tag !== 'component') {
+    if (_.resolveAsset(options, 'components', tag)) {
+      return { id: tag }
+    } else {
+      var is = hasAttrs && getIsBinding(el)
+      if (is) {
+        return is
+      } else if (process.env.NODE_ENV !== 'production') {
+        if (
+          tag.indexOf('-') > -1 ||
+          (
+            /HTMLUnknownElement/.test(el.toString()) &&
+            // Chrome returns unknown for several HTML5 elements.
+            // https://code.google.com/p/chromium/issues/detail?id=540526
+            !/^(data|time|rtc|rb)$/.test(tag)
+          )
+        ) {
+          _.warn(
+            'Unknown custom element: <' + tag + '> - did you ' +
+            'register the component correctly?'
+          )
+        }
+      }
+    }
+  } else if (hasAttrs) {
+    return getIsBinding(el)
+  }
+}
+
+/**
+ * Get "is" binding from an element.
+ *
+ * @param {Element} el
+ * @return {Object|undefined}
+ */
+
+function getIsBinding (el) {
+  // dynamic syntax
+  var exp = _.attr(el, 'is')
+  if (exp != null) {
+    return { id: exp }
+  } else {
+    exp = _.getBindAttr(el, 'is')
+    if (exp != null) {
+      return { id: exp, dynamic: true }
+    }
   }
 }
 
 /**
  * Set a prop's initial value on a vm and its data object.
- * The vm may have inherit:true so we need to make sure
- * we don't accidentally overwrite parent value.
  *
  * @param {Vue} vm
  * @param {Object} prop
@@ -11034,12 +11875,7 @@ exports.checkComponent = function (el, options) {
 exports.initProp = function (vm, prop, value) {
   if (exports.assertProp(prop, value)) {
     var key = prop.path
-    if (key in vm) {
-      _.define(vm, key, value, true)
-    } else {
-      vm[key] = value
-    }
-    vm._data[key] = value
+    vm[key] = vm._data[key] = value
   }
 }
 
@@ -11160,23 +11996,6 @@ if (process.env.NODE_ENV !== 'production') {
    */
 
   exports.assertAsset = function (val, type, id) {
-    /* istanbul ignore if */
-    if (type === 'directive') {
-      if (id === 'with') {
-        exports.warn(
-          'v-with has been deprecated in ^0.12.0. ' +
-          'Use props instead.'
-        )
-        return
-      }
-      if (id === 'events') {
-        exports.warn(
-          'v-events has been deprecated in ^0.12.0. ' +
-          'Pass down methods as callback props instead.'
-        )
-        return
-      }
-    }
     if (!val) {
       exports.warn('Failed to resolve ' + type + ': ' + id)
     }
@@ -11188,6 +12007,7 @@ if (process.env.NODE_ENV !== 'production') {
 (function (process){
 var _ = require('./index')
 var config = require('../config')
+var transition = require('../transition')
 
 /**
  * Query an element selector if it's not an element already.
@@ -11213,7 +12033,7 @@ exports.query = function (el) {
  * Check if a node is in the document.
  * Note: document.documentElement.contains should work here
  * but always returns false for comment nodes in phantomjs,
- * making unit tests difficult. This is fixed byy doing the
+ * making unit tests difficult. This is fixed by doing the
  * contains() check on the node's parentNode instead of
  * the node itself.
  *
@@ -11230,17 +12050,32 @@ exports.inDoc = function (node) {
 }
 
 /**
- * Extract an attribute from a node.
+ * Get and remove an attribute from a node.
  *
  * @param {Node} node
  * @param {String} attr
  */
 
 exports.attr = function (node, attr) {
-  attr = config.prefix + attr
   var val = node.getAttribute(attr)
   if (val !== null) {
     node.removeAttribute(attr)
+  }
+  return val
+}
+
+/**
+ * Get an attribute with colon or v-bind: prefix.
+ *
+ * @param {Node} node
+ * @param {String} name
+ * @return {String|null}
+ */
+
+exports.getBindAttr = function (node, name) {
+  var val = exports.attr(node, ':' + name)
+  if (val === null) {
+    val = exports.attr(node, 'v-bind:' + name)
   }
   return val
 }
@@ -11370,6 +12205,9 @@ exports.removeClass = function (el, cls) {
     }
     el.setAttribute('class', cur.trim())
   }
+  if (!el.className) {
+    el.removeAttribute('class')
+  }
 }
 
 /**
@@ -11441,8 +12279,8 @@ exports.isTemplate = function (el) {
  * - fragment instance
  * - v-html
  * - v-if
+ * - v-for
  * - component
- * - repeat
  *
  * @param {String} content
  * @param {Boolean} persist - IE trashes empty textNodes on
@@ -11459,8 +12297,79 @@ exports.createAnchor = function (content, persist) {
     : document.createTextNode(persist ? ' ' : '')
 }
 
+/**
+ * Find a component ref attribute that starts with $.
+ *
+ * @param {Element} node
+ * @return {String|undefined}
+ */
+
+var refRE = /^v-ref:/
+exports.findRef = function (node) {
+  if (node.hasAttributes()) {
+    var attrs = node.attributes
+    for (var i = 0, l = attrs.length; i < l; i++) {
+      var name = attrs[i].name
+      if (refRE.test(name)) {
+        node.removeAttribute(name)
+        return _.camelize(name.replace(refRE, ''))
+      }
+    }
+  }
+}
+
+/**
+ * Map a function to a range of nodes .
+ *
+ * @param {Node} node
+ * @param {Node} end
+ * @param {Function} op
+ */
+
+exports.mapNodeRange = function (node, end, op) {
+  var next
+  while (node !== end) {
+    next = node.nextSibling
+    op(node)
+    node = next
+  }
+  op(end)
+}
+
+/**
+ * Remove a range of nodes with transition, store
+ * the nodes in a fragment with correct ordering,
+ * and call callback when done.
+ *
+ * @param {Node} start
+ * @param {Node} end
+ * @param {Vue} vm
+ * @param {DocumentFragment} frag
+ * @param {Function} cb
+ */
+
+exports.removeNodeRange = function (start, end, vm, frag, cb) {
+  var done = false
+  var removed = 0
+  var nodes = []
+  exports.mapNodeRange(start, end, function (node) {
+    if (node === end) done = true
+    nodes.push(node)
+    transition.remove(node, vm, onRemoved)
+  })
+  function onRemoved () {
+    removed++
+    if (done && removed >= nodes.length) {
+      for (var i = 0; i < nodes.length; i++) {
+        frag.appendChild(nodes[i])
+      }
+      cb && cb()
+    }
+  }
+}
+
 }).call(this,require('_process'))
-},{"../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","./index":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/env.js":[function(require,module,exports){
+},{"../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","../transition":"/Users/bill/Sites/vue-starter/node_modules/vue/src/transition/index.js","./index":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/env.js":[function(require,module,exports){
 // can we use __proto__?
 exports.hasProto = '__proto__' in {}
 
@@ -11560,6 +12469,82 @@ extend(exports, require('./debug'))
 
 },{"./component":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/component.js","./debug":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/debug.js","./dom":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/dom.js","./env":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/env.js","./lang":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/lang.js","./options":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/options.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/lang.js":[function(require,module,exports){
 /**
+ * Set a property on an object. Adds the new property and
+ * triggers change notification if the property doesn't
+ * already exist.
+ *
+ * @param {Object} obj
+ * @param {String} key
+ * @param {*} val
+ * @public
+ */
+
+exports.set = function set (obj, key, val) {
+  if (obj.hasOwnProperty(key)) {
+    obj[key] = val
+    return
+  }
+  if (obj._isVue) {
+    set(obj._data, key, val)
+    return
+  }
+  var ob = obj.__ob__
+  if (!ob) {
+    obj[key] = val
+    return
+  }
+  ob.convert(key, val)
+  ob.dep.notify()
+  if (ob.vms) {
+    var i = ob.vms.length
+    while (i--) {
+      var vm = ob.vms[i]
+      vm._proxy(key)
+      vm._digest()
+    }
+  }
+}
+
+/**
+ * Delete a property and trigger change if necessary.
+ *
+ * @param {Object} obj
+ * @param {String} key
+ */
+
+exports.delete = function (obj, key) {
+  if (!obj.hasOwnProperty(key)) {
+    return
+  }
+  delete obj[key]
+  var ob = obj.__ob__
+  if (!ob) {
+    return
+  }
+  ob.dep.notify()
+  if (ob.vms) {
+    var i = ob.vms.length
+    while (i--) {
+      var vm = ob.vms[i]
+      vm._unproxy(key)
+      vm._digest()
+    }
+  }
+}
+
+/**
+ * Check if an expression is a literal value.
+ *
+ * @param {String} exp
+ * @return {Boolean}
+ */
+
+var literalValueRE = /^\s?(true|false|[\d\.]+|'[^']*'|"[^"]*")\s?$/
+exports.isLiteral = function (exp) {
+  return literalValueRE.test(exp)
+}
+
+/**
  * Check if a string starts with $ or _
  *
  * @param {String} str
@@ -11631,7 +12616,7 @@ exports.stripQuotes = function (str) {
   var b = str.charCodeAt(str.length - 1)
   return a === b && (a === 0x22 || a === 0x27)
     ? str.slice(1, -1)
-    : false
+    : str
 }
 
 /**
@@ -11641,8 +12626,9 @@ exports.stripQuotes = function (str) {
  * @return {String}
  */
 
+var camelizeRE = /-(\w)/g
 exports.camelize = function (str) {
-  return str.replace(/-(\w)/g, toUpper)
+  return str.replace(camelizeRE, toUpper)
 }
 
 function toUpper (_, c) {
@@ -11656,9 +12642,10 @@ function toUpper (_, c) {
  * @return {String}
  */
 
+var hyphenateRE = /([a-z\d])([A-Z])/g
 exports.hyphenate = function (str) {
   return str
-    .replace(/([a-z\d])([A-Z])/g, '$1-$2')
+    .replace(hyphenateRE, '$1-$2')
     .toLowerCase()
 }
 
@@ -11724,8 +12711,10 @@ exports.toArray = function (list, start) {
  */
 
 exports.extend = function (to, from) {
-  for (var key in from) {
-    to[key] = from[key]
+  var keys = Object.keys(from)
+  var i = keys.length
+  while (i--) {
+    to[keys[i]] = from[keys[i]]
   }
   return to
 }
@@ -11900,7 +12889,7 @@ function mergeData (to, from) {
     toVal = to[key]
     fromVal = from[key]
     if (!to.hasOwnProperty(key)) {
-      to.$add(key, fromVal)
+      _.set(to, key, fromVal)
     } else if (_.isObject(toVal) && _.isObject(fromVal)) {
       mergeData(toVal, fromVal)
     }
@@ -11982,6 +12971,7 @@ strats.el = function (parentVal, childVal, vm) {
  * Hooks and param attributes are merged as arrays.
  */
 
+strats.init =
 strats.created =
 strats.ready =
 strats.attached =
@@ -11989,8 +12979,7 @@ strats.detached =
 strats.beforeCompile =
 strats.compiled =
 strats.beforeDestroy =
-strats.destroyed =
-strats.props = function (parentVal, childVal) {
+strats.destroyed = function (parentVal, childVal) {
   return childVal
     ? parentVal
       ? parentVal.concat(childVal)
@@ -12061,11 +13050,13 @@ strats.events = function (parentVal, childVal) {
  * Other object hashes.
  */
 
+strats.props =
 strats.methods =
 strats.computed = function (parentVal, childVal) {
   if (!childVal) return parentVal
   if (!parentVal) return childVal
-  var ret = Object.create(parentVal)
+  var ret = Object.create(null)
+  extend(ret, parentVal)
   extend(ret, childVal)
   return ret
 }
@@ -12104,8 +13095,7 @@ function guardComponents (options) {
       }
       def = components[key]
       if (_.isPlainObject(def)) {
-        def.id = def.id || key
-        components[key] = def._Ctor || (def._Ctor = _.Vue.extend(def))
+        components[key] = _.Vue.extend(def)
       }
     }
   }
@@ -12120,21 +13110,22 @@ function guardComponents (options) {
 
 function guardProps (options) {
   var props = options.props
-  if (_.isPlainObject(props)) {
-    options.props = Object.keys(props).map(function (key) {
-      var val = props[key]
-      if (!_.isPlainObject(val)) {
-        val = { type: val }
+  var i
+  if (_.isArray(props)) {
+    options.props = {}
+    i = props.length
+    while (i--) {
+      options.props[props[i]] = null
+    }
+  } else if (_.isPlainObject(props)) {
+    var keys = Object.keys(props)
+    i = keys.length
+    while (i--) {
+      var val = props[keys[i]]
+      if (typeof val === 'function') {
+        props[keys[i]] = { type: val }
       }
-      val.name = key
-      return val
-    })
-  } else if (_.isArray(props)) {
-    options.props = props.map(function (prop) {
-      return typeof prop === 'string'
-        ? { name: prop }
-        : prop
-    })
+    }
   }
 }
 
@@ -12153,10 +13144,12 @@ function guardArrayAssets (assets) {
     var asset
     while (i--) {
       asset = assets[i]
-      var id = asset.id || (asset.options && asset.options.id)
+      var id = typeof asset === 'function'
+        ? ((asset.options && asset.options.name) || asset.id)
+        : (asset.name || asset.id)
       if (!id) {
         process.env.NODE_ENV !== 'production' && _.warn(
-          'Array-syntax assets must provide an id field.'
+          'Array-syntax assets must provide a "name" or "id" field.'
         )
       } else {
         res[id] = asset
@@ -12214,24 +13207,18 @@ exports.mergeOptions = function merge (parent, child, vm) {
  */
 
 exports.resolveAsset = function resolve (options, type, id) {
-  var camelizedId = _.camelize(id)
-  var pascalizedId = camelizedId.charAt(0).toUpperCase() + camelizedId.slice(1)
   var assets = options[type]
-  var asset = assets[id] || assets[camelizedId] || assets[pascalizedId]
-  while (
-    !asset &&
-    options._parent &&
-    (!config.strict || options._repeat)
-  ) {
-    options = (options._context || options._parent).$options
-    assets = options[type]
-    asset = assets[id] || assets[camelizedId] || assets[pascalizedId]
-  }
-  return asset
+  var camelizedId
+  return assets[id] ||
+    // camelCase ID
+    assets[camelizedId = _.camelize(id)] ||
+    // Pascal Case ID
+    assets[camelizedId.charAt(0).toUpperCase() + camelizedId.slice(1)]
 }
 
 }).call(this,require('_process'))
 },{"../config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","./index":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/vue.js":[function(require,module,exports){
+(function (process){
 var _ = require('./util')
 var extend = _.extend
 
@@ -12270,8 +13257,8 @@ extend(Vue, require('./api/global'))
 
 Vue.options = {
   replace: true,
-  directives: require('./directives'),
-  elementDirectives: require('./element-directives'),
+  directives: require('./directives/public'),
+  elementDirectives: require('./directives/element'),
   filters: require('./filters'),
   transitions: {},
   components: {},
@@ -12306,8 +13293,8 @@ Object.defineProperty(p, '$data', {
 
 extend(p, require('./instance/init'))
 extend(p, require('./instance/events'))
-extend(p, require('./instance/scope'))
-extend(p, require('./instance/compile'))
+extend(p, require('./instance/state'))
+extend(p, require('./instance/lifecycle'))
 extend(p, require('./instance/misc'))
 
 /**
@@ -12317,12 +13304,20 @@ extend(p, require('./instance/misc'))
 extend(p, require('./api/data'))
 extend(p, require('./api/dom'))
 extend(p, require('./api/events'))
-extend(p, require('./api/child'))
 extend(p, require('./api/lifecycle'))
 
+Vue.version = '1.0.6'
 module.exports = _.Vue = Vue
 
-},{"./api/child":"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/child.js","./api/data":"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/data.js","./api/dom":"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/dom.js","./api/events":"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/events.js","./api/global":"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/global.js","./api/lifecycle":"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/lifecycle.js","./directives":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/index.js","./element-directives":"/Users/bill/Sites/vue-starter/node_modules/vue/src/element-directives/index.js","./filters":"/Users/bill/Sites/vue-starter/node_modules/vue/src/filters/index.js","./instance/compile":"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/compile.js","./instance/events":"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/events.js","./instance/init":"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/init.js","./instance/misc":"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/misc.js","./instance/scope":"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/scope.js","./util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/watcher.js":[function(require,module,exports){
+/* istanbul ignore if */
+if (process.env.NODE_ENV !== 'production') {
+  if (_.inBrowser && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
+    window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit('init', Vue)
+  }
+}
+
+}).call(this,require('_process'))
+},{"./api/data":"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/data.js","./api/dom":"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/dom.js","./api/events":"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/events.js","./api/global":"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/global.js","./api/lifecycle":"/Users/bill/Sites/vue-starter/node_modules/vue/src/api/lifecycle.js","./directives/element":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/element/index.js","./directives/public":"/Users/bill/Sites/vue-starter/node_modules/vue/src/directives/public/index.js","./filters":"/Users/bill/Sites/vue-starter/node_modules/vue/src/filters/index.js","./instance/events":"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/events.js","./instance/init":"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/init.js","./instance/lifecycle":"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/lifecycle.js","./instance/misc":"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/misc.js","./instance/state":"/Users/bill/Sites/vue-starter/node_modules/vue/src/instance/state.js","./util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vue/src/watcher.js":[function(require,module,exports){
 (function (process){
 var _ = require('./util')
 var config = require('./config')
@@ -12347,6 +13342,7 @@ var uid = 0
  *                 - {Boolean} sync
  *                 - {Boolean} lazy
  *                 - {Function} [preProcess]
+ *                 - {Function} [postProcess]
  * @constructor
  */
 
@@ -12406,10 +13402,10 @@ Watcher.prototype.addDep = function (dep) {
 
 Watcher.prototype.get = function () {
   this.beforeGet()
-  var vm = this.vm
+  var scope = this.scope || this.vm
   var value
   try {
-    value = this.getter.call(vm, vm)
+    value = this.getter.call(scope, scope)
   } catch (e) {
     if (
       process.env.NODE_ENV !== 'production' &&
@@ -12434,7 +13430,10 @@ Watcher.prototype.get = function () {
     value = this.preProcess(value)
   }
   if (this.filters) {
-    value = vm._applyFilters(value, null, this.filters, false)
+    value = scope._applyFilters(value, null, this.filters, false)
+  }
+  if (this.postProcess) {
+    value = this.postProcess(value)
   }
   this.afterGet()
   return value
@@ -12447,13 +13446,13 @@ Watcher.prototype.get = function () {
  */
 
 Watcher.prototype.set = function (value) {
-  var vm = this.vm
+  var scope = this.scope || this.vm
   if (this.filters) {
-    value = vm._applyFilters(
+    value = scope._applyFilters(
       value, this.value, this.filters, true)
   }
   try {
-    this.setter.call(vm, vm, value)
+    this.setter.call(scope, scope, value)
   } catch (e) {
     if (
       process.env.NODE_ENV !== 'production' &&
@@ -12463,6 +13462,34 @@ Watcher.prototype.set = function (value) {
         'Error when evaluating setter "' +
         this.expression + '"', e
       )
+    }
+  }
+  // two-way sync for v-for alias
+  var forContext = scope.$forContext
+  if (process.env.NODE_ENV !== 'production') {
+    if (
+      forContext &&
+      forContext.filters &&
+      (new RegExp(forContext.alias + '\\b')).test(this.expression)
+    ) {
+      _.warn(
+        'It seems you are using two-way binding on ' +
+        'a v-for alias (' + this.expression + '), and the ' +
+        'v-for has filters. This will not work properly. ' +
+        'Either remove the filters or use an array of ' +
+        'objects and bind to object properties instead.'
+      )
+    }
+  }
+  if (
+    forContext &&
+    forContext.alias === this.expression &&
+    !forContext.filters
+  ) {
+    if (scope.$key) { // original is an object
+      forContext.rawValue[scope.$key] = value
+    } else {
+      forContext.rawValue.$set(scope.$index, value)
     }
   }
 }
@@ -12619,26 +13646,45 @@ Watcher.prototype.teardown = function () {
  * getters, so that every nested property inside the object
  * is collected as a "deep" dependency.
  *
- * @param {Object} obj
+ * @param {*} val
  */
 
-function traverse (obj) {
-  var key, val, i
-  for (key in obj) {
-    val = obj[key]
-    if (_.isArray(val)) {
-      i = val.length
-      while (i--) traverse(val[i])
-    } else if (_.isObject(val)) {
-      traverse(val)
-    }
+function traverse (val) {
+  var i, keys
+  if (_.isArray(val)) {
+    i = val.length
+    while (i--) traverse(val[i])
+  } else if (_.isObject(val)) {
+    keys = Object.keys(val)
+    i = keys.length
+    while (i--) traverse(val[keys[i]])
   }
 }
 
 module.exports = Watcher
 
 }).call(this,require('_process'))
-},{"./batcher":"/Users/bill/Sites/vue-starter/node_modules/vue/src/batcher.js","./config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","./observer/dep":"/Users/bill/Sites/vue-starter/node_modules/vue/src/observer/dep.js","./parsers/expression":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/expression.js","./util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js":[function(require,module,exports){
+},{"./batcher":"/Users/bill/Sites/vue-starter/node_modules/vue/src/batcher.js","./config":"/Users/bill/Sites/vue-starter/node_modules/vue/src/config.js","./observer/dep":"/Users/bill/Sites/vue-starter/node_modules/vue/src/observer/dep.js","./parsers/expression":"/Users/bill/Sites/vue-starter/node_modules/vue/src/parsers/expression.js","./util":"/Users/bill/Sites/vue-starter/node_modules/vue/src/util/index.js","_process":"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js"}],"/Users/bill/Sites/vue-starter/node_modules/vueify-insert-css/index.js":[function(require,module,exports){
+var inserted = exports.cache = {}
+
+exports.insert = function (css) {
+  if (inserted[css]) return
+  inserted[css] = true
+
+  var elem = document.createElement('style')
+  elem.setAttribute('type', 'text/css')
+
+  if ('textContent' in elem) {
+    elem.textContent = css
+  } else {
+    elem.styleSheet.cssText = css
+  }
+
+  document.getElementsByTagName('head')[0].appendChild(elem)
+  return elem
+}
+
+},{}],"/Users/bill/Sites/vue-starter/node_modules/watchify/node_modules/browserify/node_modules/process/browser.js":[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -12704,79 +13750,234 @@ process.chdir = function (dir) {
 };
 
 },{}],"/Users/bill/Sites/vue-starter/src/components/about.vue":[function(require,module,exports){
-var __vue_template__ = "<div class=\"page--about\">\n    <h1>About</h1>\n  </div>";
+"use strict";
+
 module.exports = {
-    data: function () {
-      return {}
+  data: function data() {
+    return {};
+  },
+  ready: function ready() {}
+};
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n  <div class=\"page--about\">\n    <h1>About</h1>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt cum inventore assumenda sit sint voluptatibus sed tempore magni porro labore asperiores perferendis accusamus minima, iusto nam quam deleniti, dignissimos, quos?</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore molestiae, debitis repudiandae, repellendus numquam expedita hic similique at quos asperiores natus consequuntur rem quo, amet assumenda a architecto ullam magni?</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt cum inventore assumenda sit sint voluptatibus sed tempore magni porro labore asperiores perferendis accusamus minima, iusto nam quam deleniti, dignissimos, quos?</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore molestiae, debitis repudiandae, repellendus numquam expedita hic similique at quos asperiores natus consequuntur rem quo, amet assumenda a architecto ullam magni?</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt cum inventore assumenda sit sint voluptatibus sed tempore magni porro labore asperiores perferendis accusamus minima, iusto nam quam deleniti, dignissimos, quos?</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore molestiae, debitis repudiandae, repellendus numquam expedita hic similique at quos asperiores natus consequuntur rem quo, amet assumenda a architecto ullam magni?</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt cum inventore assumenda sit sint voluptatibus sed tempore magni porro labore asperiores perferendis accusamus minima, iusto nam quam deleniti, dignissimos, quos?</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore molestiae, debitis repudiandae, repellendus numquam expedita hic similique at quos asperiores natus consequuntur rem quo, amet assumenda a architecto ullam magni?</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt cum inventore assumenda sit sint voluptatibus sed tempore magni porro labore asperiores perferendis accusamus minima, iusto nam quam deleniti, dignissimos, quos?</p>\n    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore molestiae, debitis repudiandae, repellendus numquam expedita hic similique at quos asperiores natus consequuntur rem quo, amet assumenda a architecto ullam magni?</p>\n  </div>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/Users/bill/Sites/vue-starter/src/components/about.vue"
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, module.exports.template)
+  }
+})()}
+},{"vue":"/Users/bill/Sites/vue-starter/node_modules/vue/src/vue.js","vue-hot-reload-api":"/Users/bill/Sites/vue-starter/node_modules/vue-hot-reload-api/index.js"}],"/Users/bill/Sites/vue-starter/src/components/app-footer.vue":[function(require,module,exports){
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n  <footer class=\"footer\">\n    <small>Copyright 2016</small>\n  </footer>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/Users/bill/Sites/vue-starter/src/components/app-footer.vue"
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, module.exports.template)
+  }
+})()}
+},{"vue":"/Users/bill/Sites/vue-starter/node_modules/vue/src/vue.js","vue-hot-reload-api":"/Users/bill/Sites/vue-starter/node_modules/vue-hot-reload-api/index.js"}],"/Users/bill/Sites/vue-starter/src/components/app-header.vue":[function(require,module,exports){
+var __vueify_style__ = require("vueify-insert-css").insert("\n  .header {}\n")
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n  <header class=\"header\">\n    <h1>\n      <a v-link=\"{ name: 'home' }\">App</a>\n    </h1>\n    <ul>\n      <li><a v-link=\"{ name: 'about' }\">About</a></li>\n      <li><a v-link=\"{ name: 'search' }\">Search</a></li>\n      <li><a v-link=\"{ name: 'archives' }\">Archives</a></li>\n    </ul>\n  </header>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/Users/bill/Sites/vue-starter/src/components/app-header.vue"
+  module.hot.dispose(function () {
+    require("vueify-insert-css").cache["\n  .header {}\n"] = false
+    document.head.removeChild(__vueify_style__)
+  })
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, module.exports.template)
+  }
+})()}
+},{"vue":"/Users/bill/Sites/vue-starter/node_modules/vue/src/vue.js","vue-hot-reload-api":"/Users/bill/Sites/vue-starter/node_modules/vue-hot-reload-api/index.js","vueify-insert-css":"/Users/bill/Sites/vue-starter/node_modules/vueify-insert-css/index.js"}],"/Users/bill/Sites/vue-starter/src/components/app.vue":[function(require,module,exports){
+var __vueify_style__ = require("vueify-insert-css").insert("/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\n/* line 9, src/sass/_normalize.scss */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin.\n */\n/* line 19, src/sass/_normalize.scss */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\n/* line 45, src/sass/_normalize.scss */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\n/* line 57, src/sass/_normalize.scss */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\n/* line 67, src/sass/_normalize.scss */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n/* line 78, src/sass/_normalize.scss */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\n/* line 89, src/sass/_normalize.scss */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\n/* line 99, src/sass/_normalize.scss */\na:active,\na:hover {\n  outline: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\n/* line 110, src/sass/_normalize.scss */\nabbr[title] {\n  border-bottom: 1px dotted; }\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\n/* line 119, src/sass/_normalize.scss */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\n * Address styling not present in Safari and Chrome.\n */\n/* line 127, src/sass/_normalize.scss */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\n/* line 136, src/sass/_normalize.scss */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\n/* line 145, src/sass/_normalize.scss */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\n/* line 154, src/sass/_normalize.scss */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\n/* line 163, src/sass/_normalize.scss */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\n/* line 170, src/sass/_normalize.scss */\nsup {\n  top: -0.5em; }\n\n/* line 174, src/sass/_normalize.scss */\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\n/* line 185, src/sass/_normalize.scss */\nimg {\n  border: 0; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\n/* line 193, src/sass/_normalize.scss */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\n/* line 204, src/sass/_normalize.scss */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address differences between Firefox and other browsers.\n */\n/* line 212, src/sass/_normalize.scss */\nhr {\n  box-sizing: content-box;\n  height: 0; }\n\n/**\n * Contain overflow in all browsers.\n */\n/* line 221, src/sass/_normalize.scss */\npre {\n  overflow: auto; }\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\n/* line 232, src/sass/_normalize.scss */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em; }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\n/* line 256, src/sass/_normalize.scss */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n  margin: 0;\n  /* 3 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\n/* line 266, src/sass/_normalize.scss */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\n/* line 278, src/sass/_normalize.scss */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\n/* line 293, src/sass/_normalize.scss */\nbutton,\nhtml input[type=\"button\"], input[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\n/* line 303, src/sass/_normalize.scss */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\n/* line 312, src/sass/_normalize.scss */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\n/* line 322, src/sass/_normalize.scss */\ninput {\n  line-height: normal; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\n/* line 335, src/sass/_normalize.scss */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\n/* line 347, src/sass/_normalize.scss */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\n/* line 356, src/sass/_normalize.scss */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  box-sizing: content-box;\n  /* 2 */ }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\n/* line 368, src/sass/_normalize.scss */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\n/* line 376, src/sass/_normalize.scss */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\n/* line 387, src/sass/_normalize.scss */\nlegend {\n  border: 0;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\n/* line 396, src/sass/_normalize.scss */\ntextarea {\n  overflow: auto; }\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\n/* line 405, src/sass/_normalize.scss */\noptgroup {\n  font-weight: bold; }\n\n/* Tables\n   ========================================================================== */\n/**\n * Remove most spacing between table cells.\n */\n/* line 416, src/sass/_normalize.scss */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n/* line 422, src/sass/_normalize.scss */\ntd,\nth {\n  padding: 0; }\n\n/* line 2, src/sass/_transitions.scss */\n.fade-transition {\n  opacity: 1;\n  transition: opacity 0.15s; }\n\n/* line 6, src/sass/_transitions.scss */\n.fade-enter {\n  opacity: 0; }\n\n/* line 9, src/sass/_transitions.scss */\n.fade-leave {\n  opacity: 0; }\n\n/* line 7, stdin */\n[v-cloak] {\n  display: none; }\n\n/* line 11, stdin */\n:root {\n  box-sizing: border-box;\n  -ms-overflow-style: -ms-autohiding-scrollbar; }\n\n/* line 16, stdin */\n*, ::before, ::after {\n  box-sizing: inherit;\n  position: relative; }\n")
+'use strict';
+
+var throttle = require('lodash.throttle');
+
+module.exports = {
+  components: {
+    appHeader: require('./app-header.vue'),
+    appFooter: require('./app-footer.vue')
+  },
+  ready: function ready() {
+    var body = document.body;
+    var scrollingTimeout = undefined;
+
+    window.addEventListener('scroll', throttle(function () {
+      clearTimeout(scrollingTimeout);
+
+      body.classList.add('scrolling');
+
+      scrollingTimeout = setTimeout(function () {
+        body.classList.remove('scrolling');
+      }, 50);
+    }, 40));
+  }
+};
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n  <div class=\"app\">\n    <app-header></app-header>\n    <main class=\"main\">\n      <router-view class=\"page\" transition=\"fade\" transition-mode=\"out-in\"></router-view>\n    </main>\n    <app-footer></app-footer>\n  </div>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/Users/bill/Sites/vue-starter/src/components/app.vue"
+  module.hot.dispose(function () {
+    require("vueify-insert-css").cache["/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS and IE text size adjust after device orientation change,\n *    without disabling user zoom.\n */\n/* line 9, src/sass/_normalize.scss */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin.\n */\n/* line 19, src/sass/_normalize.scss */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\n/* line 45, src/sass/_normalize.scss */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\n/* line 57, src/sass/_normalize.scss */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\n/* line 67, src/sass/_normalize.scss */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\n */\n/* line 78, src/sass/_normalize.scss */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\n/* line 89, src/sass/_normalize.scss */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability of focused elements when they are also in an\n * active/hover state.\n */\n/* line 99, src/sass/_normalize.scss */\na:active,\na:hover {\n  outline: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\n/* line 110, src/sass/_normalize.scss */\nabbr[title] {\n  border-bottom: 1px dotted; }\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\n/* line 119, src/sass/_normalize.scss */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\n * Address styling not present in Safari and Chrome.\n */\n/* line 127, src/sass/_normalize.scss */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\n/* line 136, src/sass/_normalize.scss */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\n/* line 145, src/sass/_normalize.scss */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\n/* line 154, src/sass/_normalize.scss */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\n/* line 163, src/sass/_normalize.scss */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\n/* line 170, src/sass/_normalize.scss */\nsup {\n  top: -0.5em; }\n\n/* line 174, src/sass/_normalize.scss */\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\n/* line 185, src/sass/_normalize.scss */\nimg {\n  border: 0; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\n/* line 193, src/sass/_normalize.scss */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\n/* line 204, src/sass/_normalize.scss */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address differences between Firefox and other browsers.\n */\n/* line 212, src/sass/_normalize.scss */\nhr {\n  box-sizing: content-box;\n  height: 0; }\n\n/**\n * Contain overflow in all browsers.\n */\n/* line 221, src/sass/_normalize.scss */\npre {\n  overflow: auto; }\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\n/* line 232, src/sass/_normalize.scss */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em; }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\n/* line 256, src/sass/_normalize.scss */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n  margin: 0;\n  /* 3 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\n/* line 266, src/sass/_normalize.scss */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\n/* line 278, src/sass/_normalize.scss */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\n/* line 293, src/sass/_normalize.scss */\nbutton,\nhtml input[type=\"button\"], input[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\n/* line 303, src/sass/_normalize.scss */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\n/* line 312, src/sass/_normalize.scss */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\n/* line 322, src/sass/_normalize.scss */\ninput {\n  line-height: normal; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\n/* line 335, src/sass/_normalize.scss */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\n/* line 347, src/sass/_normalize.scss */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\n */\n/* line 356, src/sass/_normalize.scss */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  box-sizing: content-box;\n  /* 2 */ }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\n/* line 368, src/sass/_normalize.scss */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\n/* line 376, src/sass/_normalize.scss */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\n/* line 387, src/sass/_normalize.scss */\nlegend {\n  border: 0;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\n/* line 396, src/sass/_normalize.scss */\ntextarea {\n  overflow: auto; }\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\n/* line 405, src/sass/_normalize.scss */\noptgroup {\n  font-weight: bold; }\n\n/* Tables\n   ========================================================================== */\n/**\n * Remove most spacing between table cells.\n */\n/* line 416, src/sass/_normalize.scss */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n/* line 422, src/sass/_normalize.scss */\ntd,\nth {\n  padding: 0; }\n\n/* line 2, src/sass/_transitions.scss */\n.fade-transition {\n  opacity: 1;\n  transition: opacity 0.15s; }\n\n/* line 6, src/sass/_transitions.scss */\n.fade-enter {\n  opacity: 0; }\n\n/* line 9, src/sass/_transitions.scss */\n.fade-leave {\n  opacity: 0; }\n\n/* line 7, stdin */\n[v-cloak] {\n  display: none; }\n\n/* line 11, stdin */\n:root {\n  box-sizing: border-box;\n  -ms-overflow-style: -ms-autohiding-scrollbar; }\n\n/* line 16, stdin */\n*, ::before, ::after {\n  box-sizing: inherit;\n  position: relative; }\n"] = false
+    document.head.removeChild(__vueify_style__)
+  })
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, module.exports.template)
+  }
+})()}
+},{"./app-footer.vue":"/Users/bill/Sites/vue-starter/src/components/app-footer.vue","./app-header.vue":"/Users/bill/Sites/vue-starter/src/components/app-header.vue","lodash.throttle":"/Users/bill/Sites/vue-starter/node_modules/lodash.throttle/index.js","vue":"/Users/bill/Sites/vue-starter/node_modules/vue/src/vue.js","vue-hot-reload-api":"/Users/bill/Sites/vue-starter/node_modules/vue-hot-reload-api/index.js","vueify-insert-css":"/Users/bill/Sites/vue-starter/node_modules/vueify-insert-css/index.js"}],"/Users/bill/Sites/vue-starter/src/components/archives.vue":[function(require,module,exports){
+"use strict";
+
+module.exports = {
+  data: function data() {
+    return {};
+  }
+};
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n  <div class=\"page--search\">\n    <h1>Archives</h1>\n  </div>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/Users/bill/Sites/vue-starter/src/components/archives.vue"
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, module.exports.template)
+  }
+})()}
+},{"vue":"/Users/bill/Sites/vue-starter/node_modules/vue/src/vue.js","vue-hot-reload-api":"/Users/bill/Sites/vue-starter/node_modules/vue-hot-reload-api/index.js"}],"/Users/bill/Sites/vue-starter/src/components/article.vue":[function(require,module,exports){
+'use strict';
+
+module.exports = {
+  data: function data() {
+    return {
+      search: ''
+    };
+  }
+};
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n  <div class=\"page--search\">\n    <input class=\"search\" v-model=\"search\" placeholder=\"Search...\">\n  </div>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/Users/bill/Sites/vue-starter/src/components/article.vue"
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, module.exports.template)
+  }
+})()}
+},{"vue":"/Users/bill/Sites/vue-starter/node_modules/vue/src/vue.js","vue-hot-reload-api":"/Users/bill/Sites/vue-starter/node_modules/vue-hot-reload-api/index.js"}],"/Users/bill/Sites/vue-starter/src/components/home.vue":[function(require,module,exports){
+var __vueify_style__ = require("vueify-insert-css").insert("/* line 3, stdin */\n.unselectable {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n")
+'use strict';
+
+module.exports = {
+  data: function data() {
+    return {
+      planet: 'Earth'
+    };
+  }
+};
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n  <div class=\"page--home\">\n    <h1>Hello {{ planet }}</h1>\n  </div>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/Users/bill/Sites/vue-starter/src/components/home.vue"
+  module.hot.dispose(function () {
+    require("vueify-insert-css").cache["/* line 3, stdin */\n.unselectable {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n"] = false
+    document.head.removeChild(__vueify_style__)
+  })
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, module.exports.template)
+  }
+})()}
+},{"vue":"/Users/bill/Sites/vue-starter/node_modules/vue/src/vue.js","vue-hot-reload-api":"/Users/bill/Sites/vue-starter/node_modules/vue-hot-reload-api/index.js","vueify-insert-css":"/Users/bill/Sites/vue-starter/node_modules/vueify-insert-css/index.js"}],"/Users/bill/Sites/vue-starter/src/components/search.vue":[function(require,module,exports){
+var __vueify_style__ = require("vueify-insert-css").insert("/* line 3, stdin */\n.favorite {\n  font-weight: bold; }\n")
+'use strict';
+
+var db = require('../data/bobs-burgers.json');
+
+var episodes = db._embedded.episodes.map(function (episode) {
+  episode.favorite = false;
+  return episode;
+});
+
+module.exports = {
+  route: {
+    data: function data(transition) {
+      transition.next({
+        search: this.$route.query.search
+      });
+    }
+  },
+  data: function data() {
+    return {
+      search: 'Butts',
+      episodes: episodes
+    };
+  },
+  methods: {
+    toggleFavorite: function toggleFavorite(episode, index) {
+      console.log(event.shiftKey, event.metaKey, event);
+      episode.favorite = !episode.favorite;
     },
-    ready: function () {
+    updateLink: function updateLink() {
+      var search = this.search;
+      var route = {
+        name: "search",
+        query: {
+          search: search
+        }
+      };
 
+      this.$route.router.go(route);
     }
   }
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = __vue_template__;
-
-},{}],"/Users/bill/Sites/vue-starter/src/components/app.vue":[function(require,module,exports){
-require("insert-css")("/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */img,legend{border:0}legend,td,th{padding:0}[hidden],[v-cloak],template{display:none}html,mark{color:#000}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,optgroup,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre,textarea{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}table{border-collapse:collapse;border-spacing:0}.fade-transition{opacity:1;-webkit-transition:opacity .5s;transition:opacity .5s}.fade-enter,.fade-leave{opacity:0}*,::after,::before{box-sizing:border-box}html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-family:Roboto,sans-serif;background-color:#fff}h1,h2,h3,h4,h5,h6{font-weight:400}table td,table th{padding:5px}table th{font-weight:700;text-align:left}.app--scrolling{pointer-events:none}");
-var __vue_template__ = "<div class=\"app\">\n    <header class=\"header\">\n      <h1>\n        <a v-link=\"{ name: 'home' }\">App</a>\n      </h1>\n      <ul>\n        <li><a v-link=\"{ name: 'about' }\">About</a></li>\n        <li><a v-link=\"{ name: 'search' }\">Search</a></li>\n        <li><a v-link=\"{ name: 'archives' }\">Archives</a></li>\n      </ul>\n    </header>\n    <main class=\"main\">\n      <router-view class=\"page\" v-transition=\"fade\" v-if=\"!loading\" transition-mode=\"out-in\"></router-view>\n    </main>\n    <footer class=\"footer\"></footer>\n  </div>";
-module.exports = {
-    data: function () {
-      return {}
-    },
-    beforeCompile: function () {},
-    ready: function () {},
-    components: {},
-    directives: {},
-    filters: {},
-    transitions: {},
-    methods: {}
+};
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n  <div class=\"page--search\">\n\n    <h1>Search</h1>\n\n    <ul>\n      <li><a v-link=\"{ name: 'search', query: { 'search': '' }}\">Empty</a></li>\n      <li><a v-link=\"{ name: 'search', query: { 'search': 'Louise' }}\">Louise</a></li>\n      <li><a v-link=\"{ name: 'search', query: { 'search': 'Tina' }}\">Tina</a></li>\n    </ul>\n\n    <input class=\"search\" v-model=\"search\" placeholder=\"Search...\">\n\n    <button @click=\"updateLink\">Update</button>\n\n    <ul>\n      <li v-for=\"episode in episodes | filterBy search in 'name'\" transition=\"fade\" :class=\"{ favorite: episode.favorite }\" @click=\"toggleFavorite(episode, $index)\">\n        {{ episode.name }}\n      </li>\n    </ul>\n\n  </div>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/Users/bill/Sites/vue-starter/src/components/search.vue"
+  module.hot.dispose(function () {
+    require("vueify-insert-css").cache["/* line 3, stdin */\n.favorite {\n  font-weight: bold; }\n"] = false
+    document.head.removeChild(__vueify_style__)
+  })
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, module.exports.template)
   }
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = __vue_template__;
-
-},{"insert-css":"/Users/bill/Sites/vue-starter/node_modules/insert-css/index.js"}],"/Users/bill/Sites/vue-starter/src/components/archives.vue":[function(require,module,exports){
-var __vue_template__ = "<div class=\"page--search\">\n    <h1>Archives</h1>\n  </div>";
-module.exports = {
-    data: function () {
-      return {}
-    }
-  }
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = __vue_template__;
-
-},{}],"/Users/bill/Sites/vue-starter/src/components/article.vue":[function(require,module,exports){
-var __vue_template__ = "<div class=\"page--search\">\n    <input class=\"search\" v-model=\"search\" placeholder=\"Search...\">\n  </div>";
-module.exports = {
-    data: function () {
-      return {
-        search: ''
-      }
-    }
-  }
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = __vue_template__;
-
-},{}],"/Users/bill/Sites/vue-starter/src/components/home.vue":[function(require,module,exports){
-var __vue_template__ = "<div class=\"page--home\">\n    <h1>Home</h1>\n  </div>";
-module.exports = {
-    data: function () {
-      return {}
-    },
-    ready: function () {
-
-    }
-  }
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = __vue_template__;
-
-},{}],"/Users/bill/Sites/vue-starter/src/components/search.vue":[function(require,module,exports){
-var __vue_template__ = "<div class=\"page--search\">\n    <input class=\"search\" v-model=\"search\" placeholder=\"Search...\">\n  </div>";
-module.exports = {
-    data: function () {
-      return {
-        search: 'Butts'
-      }
-    }
-  }
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = __vue_template__;
+})()}
+},{"../data/bobs-burgers.json":"/Users/bill/Sites/vue-starter/src/data/bobs-burgers.json","vue":"/Users/bill/Sites/vue-starter/node_modules/vue/src/vue.js","vue-hot-reload-api":"/Users/bill/Sites/vue-starter/node_modules/vue-hot-reload-api/index.js","vueify-insert-css":"/Users/bill/Sites/vue-starter/node_modules/vueify-insert-css/index.js"}],"/Users/bill/Sites/vue-starter/src/data/bobs-burgers.json":[function(require,module,exports){
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={"id":107,"url":"http://www.tvmaze.com/shows/107/bobs-burgers","name":"Bob's Burgers","type":"Animation","language":"English","genres":["Comedy","Anime"],"status":"Running","runtime":30,"premiered":"2011-01-09","schedule":{"time":"19:30","days":["Sunday"]},"rating":{"average":9.2},"weight":1,"network":{"id":4,"name":"FOX","country":{"name":"United States","code":"US","timezone":"America/New_York"}},"webChannel":null,"externals":{"tvrage":24607,"thetvdb":194031},"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_portrait/0/840.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/0/840.jpg"},"summary":"<p>The series follows BOB who runs Bob's Burgers with the help of his wife and their three kids. Bob has big ideas about burgers, but the rest of the clan falls short on service. Despite the greasy counters and lousy location, the Belchers are determined to make every \"Grand Re-Re-Re-opening\" a success. </p><p>Bob's wife, LINDA, stands by her man and often does so by bursting into song. Their eldest daughter, 13-year-old TINA has a slight obsession with boys and zombies. Middle child GENE is an aspiring musician with a thirst for life. LOUISE is the bunny ears-wearing youngest daughter with an off-kilter sense of humor that makes her somewhat of a liability in the kitchen – and with the public.</p>","updated":1443523763,"_links":{"self":{"href":"http://api.tvmaze.com/shows/107"},"previousepisode":{"href":"http://api.tvmaze.com/episodes/182393"},"nextepisode":{"href":"http://api.tvmaze.com/episodes/236850"}},"_embedded":{"episodes":[{"id":7415,"url":"http://www.tvmaze.com/episodes/7415/bobs-burgers-1x01-human-flesh","name":"Human Flesh","season":1,"number":1,"airdate":"2011-01-09","airtime":"20:30","airstamp":"2011-01-09T20:30:00-05:00","runtime":30,"image":null,"summary":"","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7415"}}},{"id":7416,"url":"http://www.tvmaze.com/episodes/7416/bobs-burgers-1x02-crawl-space","name":"Crawl Space","season":1,"number":2,"airdate":"2011-01-16","airtime":"20:30","airstamp":"2011-01-16T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>When Bob learns that Linda's mother is coming for a visit, he wants nothing to do with it. Linda has been cracking the whip at home, making sure every shelf has been dusted and every bed has been made. When she discovers a leak in the roof, she sends Bob to fix it, but he gets stuck in a wall, leaving Linda and the kids to entertain their guests and run the restaurant.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7416"}}},{"id":7417,"url":"http://www.tvmaze.com/episodes/7417/bobs-burgers-1x03-sacred-cow","name":"Sacred Cow","season":1,"number":3,"airdate":"2011-01-23","airtime":"20:30","airstamp":"2011-01-23T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>When a controversial documentary filmmaker places a live cow outside of the family restaurant to make a statement, Bob is livid when it starts to scare away customers. However, to everyone's surprise, Bob treats the cow like a member of the family.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7417"}}},{"id":7418,"url":"http://www.tvmaze.com/episodes/7418/bobs-burgers-1x04-sexy-dance-fighting","name":"Sexy Dance Fighting","season":1,"number":4,"airdate":"2011-02-13","airtime":"20:30","airstamp":"2011-02-13T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>When Tina develops a crush on the new martial arts instructor in town, she joins the class and ends up shirking her responsibilities at the restaurant. Bob finds out what's going on and decides to take matters into his own hands.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7418"}}},{"id":7419,"url":"http://www.tvmaze.com/episodes/7419/bobs-burgers-1x05-hamburger-dinner-theater","name":"Hamburger Dinner Theater","season":1,"number":5,"airdate":"2011-02-20","airtime":"20:30","airstamp":"2011-02-20T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>Bob reluctantly lets Linda and the kids stage a musical murder mystery dinner theater in the restaurant, but on opening night, an abrupt interruption changes the play's creative direction.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7419"}}},{"id":7420,"url":"http://www.tvmaze.com/episodes/7420/bobs-burgers-1x06-sheesh-cab-bob","name":"Sheesh! Cab, Bob?","season":1,"number":6,"airdate":"2011-03-06","airtime":"20:30","airstamp":"2011-03-06T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>Tina is desperate to get her first kiss at her 13th birthday party. But after Louise breaks the deep fryer, Bob takes a second job as a late-night cab driver to pay for Tina's party. Things keep getting worse for Bob when the parents of Tina's crush refuse to let their son attend the party, and Bob has to do everything in his power to save his daughter's big day.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7420"}}},{"id":7421,"url":"http://www.tvmaze.com/episodes/7421/bobs-burgers-1x07-bed-breakfast","name":"Bed & Breakfast","season":1,"number":7,"airdate":"2011-03-13","airtime":"20:30","airstamp":"2011-03-13T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>With a long weekend approaching, Linda sees an opportunity to capitalize on the tourist traffic by starting a bed and breakfast. But when the reservations are filled by some shady character, Louise plants listening devices all over the house to keep an ear on what's happening.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7421"}}},{"id":7422,"url":"http://www.tvmaze.com/episodes/7422/bobs-burgers-1x08-art-crawl","name":"Art Crawl","season":1,"number":8,"airdate":"2011-03-20","airtime":"20:30","airstamp":"2011-03-20T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>When Linda asks Bob to let her sister hang her paintings in the restaurant for Art Week, Bob finds he's forced to contend with the city's Art Council, a shady troop of intimidating old ladies who control the art exhibited around town. Meanwhile, Louise, Gene and Tina are thrilled by all the attention their own art receives in the restaurant.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7422"}}},{"id":7423,"url":"http://www.tvmaze.com/episodes/7423/bobs-burgers-1x09-spaghetti-western-and-meatballs","name":"Spaghetti Western and Meatballs","season":1,"number":9,"airdate":"2011-03-27","airtime":"20:30","airstamp":"2011-03-27T20:30:00-04:00","runtime":30,"image":null,"summary":"","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7423"}}},{"id":7424,"url":"http://www.tvmaze.com/episodes/7424/bobs-burgers-1x10-burger-war","name":"Burger War","season":1,"number":10,"airdate":"2011-04-10","airtime":"20:30","airstamp":"2011-04-10T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>When Bob's eccentric landlord, Mr. Fischoeder (guest voice Kline), pays the family a visit, he informs Bob that his rival across the street, Jimmy Pesto of Jimmy Pesto's Pizzeria, wants to take over Bob's lease so that he can expand his gift shop. With little time and not enough money, the Belcher family must cook up some business or luck to save the restaurant.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7424"}}},{"id":7425,"url":"http://www.tvmaze.com/episodes/7425/bobs-burgers-1x11-weekend-at-morts","name":"Weekend at Mort's","season":1,"number":11,"airdate":"2011-05-08","airtime":"20:30","airstamp":"2011-05-08T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>Bob and his family are forced to spend the weekend at Mort the Mortician's (guest voice Kindler) while the restaurant is being de-molded. Linda and Bob double date with Mort and a female mortician he meets online (guest voice Sedaris) while Tina babysits Gene and Louise in Mort's crematorium.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7425"}}},{"id":7426,"url":"http://www.tvmaze.com/episodes/7426/bobs-burgers-1x12-lobsterfest","name":"Lobsterfest","season":1,"number":12,"airdate":"2011-05-15","airtime":"20:30","airstamp":"2011-05-15T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>After the town's annual Lobsterfest is cancelled by a storm, Bob defiantly opens his doors for a festive celebration. When he wakes the next morning, Bob finds the restaurant in disarray and that the town has spurned him, but Bob won't let that deter him from further involvement in the celebratory weekend.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7426"}}},{"id":7427,"url":"http://www.tvmaze.com/episodes/7427/bobs-burgers-1x13-torpedo","name":"Torpedo","season":1,"number":13,"airdate":"2011-05-22","airtime":"20:30","airstamp":"2011-05-22T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>Bob's hero, a washed-up baseball player named Torpedo Jones (guest voice Garant), starts pitching for the local minor league team. Torpedo befriends Bob, but the dark underbelly of minor league baseball threatens to corrupt the Belchers.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7427"}}},{"id":7428,"url":"http://www.tvmaze.com/episodes/7428/bobs-burgers-2x01-the-belchies","name":"The Belchies","season":2,"number":1,"airdate":"2012-03-11","airtime":"20:30","airstamp":"2012-03-11T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>The kids hunt for treasure in an abandoned taffy factory and Bob and Linda must find them before the factory's scheduled demolition.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7428"}}},{"id":7429,"url":"http://www.tvmaze.com/episodes/7429/bobs-burgers-2x02-bob-day-afternoon","name":"Bob Day Afternoon","season":2,"number":2,"airdate":"2012-03-18","airtime":"20:30","airstamp":"2012-03-18T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>A bank robber (guest star Hader) holds up a bank across the street from Bob's Burgers. When the robbery goes awry, Bob finds himself at the center of a hostage crisis.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7429"}}},{"id":7430,"url":"http://www.tvmaze.com/episodes/7430/bobs-burgers-2x03-synchronized-swimming","name":"Synchronized Swimming","season":2,"number":3,"airdate":"2012-03-25","airtime":"20:30","airstamp":"2012-03-25T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>The kids con their way out of gym class with a bogus synchronized swimming independent study. Meanwhile, Bob welcomes a new soft serve ice cream machine to the restaurant.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7430"}}},{"id":7431,"url":"http://www.tvmaze.com/episodes/7431/bobs-burgers-2x04-burgerboss","name":"Burgerboss","season":2,"number":4,"airdate":"2012-04-01","airtime":"20:30","airstamp":"2012-04-01T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>Bob becomes obsessed with an old-school burger-flipping video game after Jimmy Pesto gets the high score and writes \"BOB SUX\" on the leader board.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7431"}}},{"id":7432,"url":"http://www.tvmaze.com/episodes/7432/bobs-burgers-2x05-food-truckin","name":"Food Truckin'","season":2,"number":5,"airdate":"2012-04-15","airtime":"20:30","airstamp":"2012-04-15T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>Bob's family persuades him to buy a food truck and compete with the ones stealing his customers right outside the restaurant. When the Belchers bring their food truck to the \"Lolla-Pa-Foods-A-Festival,\" the Belcher kids' mischief causes the foodies and other truck owners to riot against them.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7432"}}},{"id":7433,"url":"http://www.tvmaze.com/episodes/7433/bobs-burgers-2x06-dr-yap","name":"Dr. Yap","season":2,"number":6,"airdate":"2012-04-29","airtime":"20:30","airstamp":"2012-04-29T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>Linda's sister Gayle joins the family ski trip. But before she does so, she picks up a heavily medicated Bob from Dr. Yap, the family dentist. When Bob mistakes Gayle for Linda and kisses her, Gayle falls for Bob. So Bob turns to Dr. Yap for help.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7433"}}},{"id":7434,"url":"http://www.tvmaze.com/episodes/7434/bobs-burgers-2x07-moody-foodie","name":"Moody Foodie","season":2,"number":7,"airdate":"2012-05-06","airtime":"20:30","airstamp":"2012-05-06T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>When the restaurant receives a bad review from a food critic, the Belchers fear that the negative press will keep customers away. When Bob shows up at the critic's house for a redo, his plan quickly spirals out of control when the kids and his fellow restaurant owners show up to support him.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7434"}}},{"id":7435,"url":"http://www.tvmaze.com/episodes/7435/bobs-burgers-2x08-bad-tina","name":"Bad Tina","season":2,"number":8,"airdate":"2012-05-13","airtime":"20:30","airstamp":"2012-05-13T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>Tina starts hanging out with bad girl Tammy (guest star Jenny Slate, \"Saturday Night Live\") in an effort to get closer to Jimmy Junior (H. Jon Benjamin).</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7435"}}},{"id":7436,"url":"http://www.tvmaze.com/episodes/7436/bobs-burgers-2x09-beefsquatch","name":"Beefsquatch","season":2,"number":9,"airdate":"2012-05-20","airtime":"20:30","airstamp":"2012-05-20T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>Bob appears in a cooking segment on a local news morning program, but Gene steals the show when he crashes the set with a sasquatch mask.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7436"}}},{"id":7437,"url":"http://www.tvmaze.com/episodes/7437/bobs-burgers-3x01-ear-sy-rider","name":"Ear-sy Rider","season":3,"number":1,"airdate":"2012-09-30","airtime":"20:30","airstamp":"2012-09-30T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>A biker gang hangs out at Bob's Burgers as they mourn the loss of their beloved leader \"Horny Dave.\" Meanwhile, Louise (Kristen Schaal) has an identity crisis when her bunny ears are stolen and everyone - including the biker gang - rallies around her.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7437"}}},{"id":7438,"url":"http://www.tvmaze.com/episodes/7438/bobs-burgers-3x02-full-bars","name":"Full Bars","season":3,"number":2,"airdate":"2012-10-07","airtime":"20:30","airstamp":"2012-10-07T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>In BOB'S BURGERS' first-ever Halloween-themed episode, the Belcher kids break their Halloween tradition by ditching their usual trick-or-treating route and venturing off to Kingshead Island, a posh neighborhood that is known for distributing full-sized candy bars. Meanwhile, Bob and Linda attend Teddy's annual \"Black and Orange\" party.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7438"}}},{"id":7439,"url":"http://www.tvmaze.com/episodes/7439/bobs-burgers-3x03-bob-fires-the-kids","name":"Bob Fires the Kids","season":3,"number":3,"airdate":"2012-11-04","airtime":"20:30","airstamp":"2012-11-04T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>Bob worries he's depriving his children of their summer vacation by making them work at the restaurant, so he fires them. However, the kids become so bored with their newfound freedom that they secretly get hired by a pair of married hippie farmers (guest voices and real-life spouses Nick Offerman and Megan Mullally), who hire the Belcher kids as \"weed pickers.\" Meanwhile, Bob hires Mickey the bank robber to help out at the restaurant, but soon regrets his decision.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7439"}}},{"id":7440,"url":"http://www.tvmaze.com/episodes/7440/bobs-burgers-3x04-mutiny-on-the-windbreaker","name":"Mutiny on the Windbreaker","season":3,"number":4,"airdate":"2012-11-11","airtime":"20:30","airstamp":"2012-11-11T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>When Bob is invited to be a private chef on a docked cruise ship, he brings the family along to witness his skills outside of the restaurant. However, Bob's big day goes awry when the ship departs with the Belchers on board, and there is no one tending to the restaurant.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7440"}}},{"id":7441,"url":"http://www.tvmaze.com/episodes/7441/bobs-burgers-3x05-an-indecent-thanksgiving-proposal","name":"An Indecent Thanksgiving Proposal","season":3,"number":5,"airdate":"2012-11-18","airtime":"20:30","airstamp":"2012-11-18T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>In the series' first-ever Thanksgiving episode, it's Bob's favorite holiday of all time, and this year he is determined to make it the most memorable Thanksgiving ever. However, the plans change when Mr. Fischoeder (guest star Kevin Kline) needs to hire Bob as his chef, and Linda and the kids as his family to stage the perfect Thanksgiving dinner and make a former flame jealous.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7441"}}},{"id":7442,"url":"http://www.tvmaze.com/episodes/7442/bobs-burgers-3x06-the-deepening","name":"The Deepening","season":3,"number":6,"airdate":"2012-11-25","airtime":"20:30","airstamp":"2012-11-25T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>In an homage to \"Jaws,\" Bob's landlord and pier proprietor Mr. Fischoeder (guest voice Kevin Kline) buys a mechanical shark as a pier attraction, but when it turns wild and starts terrorizing the town, it's up to Bob and the family to stop it.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7442"}}},{"id":7443,"url":"http://www.tvmaze.com/episodes/7443/bobs-burgers-3x07-tina-rannosaurus-wrecks","name":"Tina-Rannosaurus Wrecks","season":3,"number":7,"airdate":"2012-12-02","airtime":"20:30","airstamp":"2012-12-02T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>After Tina accidentally wrecks the car, and gets the whole family involved with a slimy insurance agent (guest voice Bob Odenkirk), she worries that she's a \"jinx\".</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7443"}}},{"id":7444,"url":"http://www.tvmaze.com/episodes/7444/bobs-burgers-3x08-the-unbearable-like-likeness-of-gene","name":"The Unbearable Like-Likeness of Gene","season":3,"number":8,"airdate":"2012-12-09","airtime":"20:30","airstamp":"2012-12-09T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>After Gene gets suckered into dating Courtney (guest voice David Wain), his first girlfriend ever, the entire family wants him to break up with her when they decide she's totally annoying. But when Gene finally musters up the courage to end things, he falters after discovering that Courtney's father (guest voice John Michael Higgins ) writes jingles and could possibly launch his music career.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7444"}}},{"id":7445,"url":"http://www.tvmaze.com/episodes/7445/bobs-burgers-3x09-god-rest-ye-merry-gentle-mannequins","name":"God Rest Ye Merry Gentle-Mannequins","season":3,"number":9,"airdate":"2012-12-16","airtime":"20:30","airstamp":"2012-12-16T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>Bob inherits a storage unit, and the whole family imagines it's filled with treasures. Instead, they find a man named Chet (guest star Zach Galifianakis) living inside. Linda, feeling the holiday spirit, persuades Bob to invite Chet to stay at the restaurant. It's discovered that this stranger, who claims he was once a mannequin, has a gift for intricate and living window displays. With the restaurant decked out in holiday cheer, the Christmas spirit is in the air.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7445"}}},{"id":7446,"url":"http://www.tvmaze.com/episodes/7446/bobs-burgers-3x10-mother-daughter-laser-razor","name":"Mother Daughter Laser Razor","season":3,"number":10,"airdate":"2013-01-06","airtime":"20:30","airstamp":"2013-01-06T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>Linda frets that Louise doesn't like her and, to Louise's chagrin, forces her to attend a Mother-Daughter seminar to beef up their relationship. Meanwhile, with Linda gone, Tina asks Bob to indulge in his feminine side and teach her to shave her legs.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7446"}}},{"id":7447,"url":"http://www.tvmaze.com/episodes/7447/bobs-burgers-3x11-nude-beach","name":"Nude Beach","season":3,"number":11,"airdate":"2013-01-13","airtime":"20:30","airstamp":"2013-01-13T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>Hugo, the loathsome health inspector who torments Bob, quits his job to become a nudist after discovering the town's new nude beach. His replacement, Tommy (guest voice Fred Armisen), seems nice enough until he blackmails the Belchers into letting him perform his terrible music at the restaurant, which drives all the customers away. Unable to tolerate it anymore, Bob decides upon the lesser of two evils and braves the nude beach (and bares.. well, everything else) to find Hugo and bring him back.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7447"}}},{"id":7448,"url":"http://www.tvmaze.com/episodes/7448/bobs-burgers-3x12-broadcast-wagstaff-school-news","name":"Broadcast Wagstaff School News","season":3,"number":12,"airdate":"2013-01-27","airtime":"20:30","airstamp":"2013-01-27T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>There is a \"Mad Pooper\" running wild at the Belcher children's middle school and Tina finds herself on a mission to get to the \"bottom\" of the situation.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7448"}}},{"id":7449,"url":"http://www.tvmaze.com/episodes/7449/bobs-burgers-3x13-my-fuzzy-valentine","name":"My Fuzzy Valentine","season":3,"number":13,"airdate":"2013-02-10","airtime":"20:30","airstamp":"2013-02-10T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>When a heart-shaped pancake simply doesn't cut it, the kids convince Bob to let them skip school in order to help him find a Valentine's Day gift that will \"wow\" Linda. Meanwhile, in the spirit of the romantic holiday, Linda sets up a speed-dating event at the restaurant that doesn't go exactly as planned.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7449"}}},{"id":7450,"url":"http://www.tvmaze.com/episodes/7450/bobs-burgers-3x14-lindapendent-woman","name":"Lindapendent Woman","season":3,"number":14,"airdate":"2013-02-17","airtime":"20:30","airstamp":"2013-02-17T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>Linda thinks Bob doesn't appreciate her and quits the restaurant to work at a grocery store. In her absence, Bob tries - and fails - to run the place on his own and the kids are stuck in the middle of the marital mayhem. Meanwhile, things get romantic for Tina when she meets her potential soul mate while restocking the milk fridge.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7450"}}},{"id":7451,"url":"http://www.tvmaze.com/episodes/7451/bobs-burgers-3x15-ot-the-outside-toilet","name":"O.T. The Outside Toilet","season":3,"number":15,"airdate":"2013-03-03","airtime":"21:30","airstamp":"2013-03-03T21:30:00-05:00","runtime":30,"image":null,"summary":"<p>In an homage to \"E.T. the Extra-Terrestrial,\" Gene finds an expensive talking toilet and befriends it. Together with Louise and Tina, the Belcher kids help the toilet hide from the evil toilet hunter.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7451"}}},{"id":7452,"url":"http://www.tvmaze.com/episodes/7452/bobs-burgers-3x16-topsy","name":"Topsy","season":3,"number":16,"airdate":"2013-03-10","airtime":"21:30","airstamp":"2013-03-10T21:30:00-04:00","runtime":30,"image":null,"summary":"<p>Sparks fly when Louise is determined to take down her Thomas Edison-obsessed science teacher by recreating a famous experiment where Thomas Edison (played by Gene) electrocutes an elephant named Topsy (played by Tina).</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7452"}}},{"id":7453,"url":"http://www.tvmaze.com/episodes/7453/bobs-burgers-3x17-two-for-tina","name":"Two For Tina","season":3,"number":17,"airdate":"2013-03-17","airtime":"21:30","airstamp":"2013-03-17T21:30:00-04:00","runtime":30,"image":null,"summary":"<p>Jimmy Jr. is threatened when Tina starts dating a ballet dancer named Josh and the two boys get into an epic dance-off for her heart.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7453"}}},{"id":7454,"url":"http://www.tvmaze.com/episodes/7454/bobs-burgers-3x18-it-snakes-a-village","name":"It Snakes a Village","season":3,"number":18,"airdate":"2013-03-24","airtime":"20:30","airstamp":"2013-03-24T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>The Belcher family road-trips down to Florida to visit Linda's parents who live in a senior home that - to Linda's complete horror - is full of senior swingers! Plus, to keep themselves entertained, Tina, Gene and Louise go on a hunt for a mysterious python that allegedly ate one of the residents' dogs.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7454"}}},{"id":7455,"url":"http://www.tvmaze.com/episodes/7455/bobs-burgers-3x19-family-fracas","name":"Family Fracas","season":3,"number":19,"airdate":"2013-04-14","airtime":"20:30","airstamp":"2013-04-14T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>After the family car breaks down and ruins their plans for a movie night out, the Belchers find themselves competing on the TV game show \"Family Fracas!\" To the dismay of the program's host, they keep winning and coming back each night - that is until their lucky streak comes to a suspicious end.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7455"}}},{"id":7456,"url":"http://www.tvmaze.com/episodes/7456/bobs-burgers-3x20-the-kids-run-the-restaurant","name":"The Kids Run the Restaurant","season":3,"number":20,"airdate":"2013-04-21","airtime":"20:30","airstamp":"2013-04-21T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>After Bob cuts his finger and faints at the sight of his own blood, Linda brings him to the hospital and leaves the kids home alone. Not ones to waste a golden opportunity, Tina, Gene and Louise transform the basement of the restaurant into a makeshift casino. But they get more than they gamble for when landlord Mr. Fischoeder (guest voice Kevin Kline) stops by and catches them in action.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7456"}}},{"id":7457,"url":"http://www.tvmaze.com/episodes/7457/bobs-burgers-3x21-boyz-4-now","name":"Boyz 4 Now","season":3,"number":21,"airdate":"2013-04-28","airtime":"20:30","airstamp":"2013-04-28T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>While accompanying Tina to a \"Boyz 4 Now\" concert, Louise develops a crush on one of the lead singers, Boo Boo - and is in disbelief that she actually likes a boy! Meanwhile, Gene gets creative - and slightly offensive - in a table-setting competition.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7457"}}},{"id":7458,"url":"http://www.tvmaze.com/episodes/7458/bobs-burgers-3x22-carpe-museum","name":"Carpe Museum","season":3,"number":22,"airdate":"2013-05-05","airtime":"20:30","airstamp":"2013-05-05T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>While acting as a parent chaperone on the school's trip to the museum, Bob has a father-daughter bonding moment with Louise. Meanwhile, Gene and his friends are on a hunt to find exhibits that feature the female anatomy. Also, Tina questions her dorkiness and, on the steps of the museum, Linda lends her unique chanting abilities to striking museum workers.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7458"}}},{"id":7459,"url":"http://www.tvmaze.com/episodes/7459/bobs-burgers-3x23-the-unnatural","name":"The Unnatural","season":3,"number":23,"airdate":"2013-05-12","airtime":"20:30","airstamp":"2013-05-12T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>After Gene loses his confidence at his baseball game, Linda decides to sign him up for baseball camp. The only problem? She needs money to pay for it! Meanwhile, Tina discovers her love for espresso and becomes a caffeine addict.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7459"}}},{"id":7460,"url":"http://www.tvmaze.com/episodes/7460/bobs-burgers-4x01-a-river-runs-through-bob","name":"A River Runs Through Bob","season":4,"number":1,"airdate":"2013-09-29","airtime":"20:30","airstamp":"2013-09-29T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>Bob, Linda and the kids go on a camping adventure and face the perils of nature...and Bob's intestines. Braving wild river rapids, eager squirrels and parent/child separation, the Belchers prove they are worth their mettle.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7460"}}},{"id":7461,"url":"http://www.tvmaze.com/episodes/7461/bobs-burgers-4x02-fort-night","name":"Fort Night","season":4,"number":2,"airdate":"2013-10-06","airtime":"20:30","airstamp":"2013-10-06T20:30:00-04:00","runtime":30,"image":null,"summary":"<p>Tina, Gene and Louise are filled with the Halloween spirit and head out with their friends for a candy-fueled adventure. However, things take a turn for the worse, when the kids build their own fort and find themselves held hostage by Louise's wacko friend, Millie,.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7461"}}},{"id":7462,"url":"http://www.tvmaze.com/episodes/7462/bobs-burgers-4x03-seaplane","name":"Seaplane!","season":4,"number":3,"airdate":"2013-11-03","airtime":"20:30","airstamp":"2013-11-03T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>Linda is bored by Bob's tired attempts at Date Night and decides to sign up for flying lessons. When Bob won't join her, she becomes the target of \"Upskirt Kurt\", the most charming pilot in the air.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7462"}}},{"id":7463,"url":"http://www.tvmaze.com/episodes/7463/bobs-burgers-4x04-my-big-fat-greek-bob","name":"My Big Fat Greek Bob","season":4,"number":4,"airdate":"2013-11-10","airtime":"20:30","airstamp":"2013-11-10T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>Bob scores a temporary gig as a cook at an \"underdog\" frat house and discovers that he fits right in! Hijinks ensue as Bob and the rest of the fraternity brothers find themselves in the middle of a collegiate prank war that involves the house's most famous alumnus, Dr. Yap. Meanwhile, the kids are on a mission to invade the frat house and get in on the action.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7463"}}},{"id":7464,"url":"http://www.tvmaze.com/episodes/7464/bobs-burgers-4x05-turkey-in-a-can","name":"Turkey in a Can","season":4,"number":5,"airdate":"2013-11-24","airtime":"20:30","airstamp":"2013-11-24T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>Determined to have a perfect Thanksgiving, Bob meticulously prepares the family turkey. But, to his horror, he finds that someone then dumps the turkey in the toilet in an act of Thanksgiving sabotage.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7464"}}},{"id":7465,"url":"http://www.tvmaze.com/episodes/7465/bobs-burgers-4x06-purple-rain-union","name":"Purple Rain-Union","season":4,"number":6,"airdate":"2013-12-01","airtime":"20:30","airstamp":"2013-12-01T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>In an attempt to redeem a failed talent show performance from her past, Linda reunites with her former band mates from, the Ta-Ta's, to perform at their high school reunion. At the event, a former female classmate attempts to impress Bob, her high school crush, who, in turn, becomes very self-conscious about the unwanted attention.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7465"}}},{"id":7466,"url":"http://www.tvmaze.com/episodes/7466/bobs-burgers-4x07-bob-and-deliver","name":"Bob and Deliver","season":4,"number":7,"airdate":"2013-12-08","airtime":"20:30","airstamp":"2013-12-08T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>To Tina's delight, Bob becomes the substitute \"Home Ec\" teacher at her school and ends up creating a full-scale restaurant in the classroom. However, her excitement is short-lived as Bob's position causes father/daughter friction. But when Gene and Louise go to work for Bob's \"school\" restaurant, Linda must fend for herself at the family's \"other\" restaurant .</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7466"}}},{"id":7467,"url":"http://www.tvmaze.com/episodes/7467/bobs-burgers-4x08-christmas-in-the-car","name":"Christmas In The Car","season":4,"number":8,"airdate":"2013-12-15","airtime":"20:30","airstamp":"2013-12-15T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>After Linda accidentally kills the family tree, the Belchers must go out on Christmas day to find a new one. But when Bob cuts off a giant candy cane truck, they are forced to outrun the madman driver and spend the entire holiday together in the car. Back at the Belcher home, Bob's friend, Teddy, accidentally gets stuck in the kids' Santa trap.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7467"}}},{"id":7468,"url":"http://www.tvmaze.com/episodes/7468/bobs-burgers-4x09-slumber-party","name":"Slumber Party","season":4,"number":9,"airdate":"2014-01-05","airtime":"20:30","airstamp":"2014-01-05T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>When Bob and Linda leave town for a romantic getaway, they ask Teddy to babysit Tina, Gene and Louise. While the 'rents are away, Teddy is eager to earn the coveted title of \"Uncle Teddy\" and does so by putting Tina's crush in his rightful place after discovering that he was just using her for - gasp - free burgers! Hijinks ensue.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7468"}}},{"id":7469,"url":"http://www.tvmaze.com/episodes/7469/bobs-burgers-4x10-presto-tina-o","name":"Presto Tina-o","season":4,"number":10,"airdate":"2014-01-12","airtime":"20:30","airstamp":"2014-01-12T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>Tina becomes a magician's assistant in order to get closer to Jimmy Jr., while Bob becomes the victim of a magician's \"curse\".</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7469"}}},{"id":7470,"url":"http://www.tvmaze.com/episodes/7470/bobs-burgers-4x11-easy-commercial-easy-gommercial","name":"Easy Commercial, Easy Gommercial","season":4,"number":11,"airdate":"2014-01-26","airtime":"20:30","airstamp":"2014-01-26T20:30:00-05:00","runtime":30,"image":null,"summary":"<p>To compete with fellow \"restaurateur,\" Jimmy Pesto, and his blowout Super Bowl event, Bob is determined to create a Bob's Burgers commercial to air during the \"big game.\" In an effort to outshine Pesto, the Belchers recruit Randy, a documentarian, to assist with the filmmaking and hire on former pro football star Connie Frye to be the celebrity endorser.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7470"}}},{"id":7471,"url":"http://www.tvmaze.com/episodes/7471/bobs-burgers-4x12-the-frond-files","name":"The Frond Files","season":4,"number":12,"airdate":"2014-03-09","airtime":"19:00","airstamp":"2014-03-09T19:00:00-04:00","runtime":30,"image":null,"summary":"<p>Bob and Linda visit school and learn that their kids' essays about their fantasy version of Wagstaff are \"too creative\" and \"offensive.\" Eugene transforms the school into a \"Fart School for the Gifted\" ; Tina, to her delight, depicts a world where she is romanced by countless zombie teenage boys; and Louise creates a school where she takes down a robotic Mr. Frond from the future.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7471"}}},{"id":7472,"url":"http://www.tvmaze.com/episodes/7472/bobs-burgers-4x13-mazel-tina","name":"Mazel Tina","season":4,"number":13,"airdate":"2014-03-16","airtime":"19:00","airstamp":"2014-03-16T19:00:00-04:00","runtime":30,"image":null,"summary":"<p>Tina isn't invited to her classmate Tammy's Bat Mitzvah, but ends up at the party anyway, because Bob and the family were hired to cater. Despite the invite snub, Tina is excited to scope out the Bfos. Things go awry and Louise and Tammy end up missing, so, to her total delight, Tina is left center stage.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7472"}}},{"id":7473,"url":"http://www.tvmaze.com/episodes/7473/bobs-burgers-4x14-uncle-teddy","name":"Uncle Teddy","season":4,"number":14,"airdate":"2014-03-23","airtime":"19:00","airstamp":"2014-03-23T19:00:00-04:00","runtime":30,"image":null,"summary":"<p>When Bob and Linda leave town for a romantic getaway, they ask Teddy to babysit Tina, Gene and Louise. While the 'rents are away, Teddy is eager to earn the coveted title of \"Uncle Teddy\" and does so by putting Tina's crush in his rightful place after discovering that he was just using her for - gasp - free burgers! Hijinks ensue.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7473"}}},{"id":7474,"url":"http://www.tvmaze.com/episodes/7474/bobs-burgers-4x15-the-kids-rob-a-train","name":"The Kids Rob a Train","season":4,"number":15,"airdate":"2014-03-30","airtime":"19:00","airstamp":"2014-03-30T19:00:00-04:00","runtime":30,"image":null,"summary":"<p>The Belchers take a trip on a train and, to their dismay, Louise, Gene and Tina are seated in a separate train car. Never one to follow the rules, Louise ropes the children into helping her on her mission to steal the vast chocolate supply from the restaurant car! Meanwhile, Bob and Linda indulge in some wine tasting and have a \"taste-off\" with a snobby couple.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7474"}}},{"id":7475,"url":"http://www.tvmaze.com/episodes/7475/bobs-burgers-4x16-i-get-psy-chic-out-of-you","name":"I Get Psy-chic Out of You","season":4,"number":16,"airdate":"2014-04-06","airtime":"19:00","airstamp":"2014-04-06T19:00:00-04:00","runtime":30,"image":null,"summary":"<p>After predicting that a telemarketer is calling the restaurant when the phone rings, Linda and the kids believe that she is a psychic. Needless to say her \"predictions\" irk Bob and spell out hilarious happenings.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7475"}}},{"id":7476,"url":"http://www.tvmaze.com/episodes/7476/bobs-burgers-4x17-the-equestranauts","name":"The Equestranauts","season":4,"number":17,"airdate":"2014-04-13","airtime":"19:00","airstamp":"2014-04-13T19:00:00-04:00","runtime":30,"image":null,"summary":"<p>In an homage to the \"Bronies\" subculture, Tina attends her first Equestra-con, a convention based on her favorite animated pony show, \"The Equestranauts.\" To her surprise, she finds that the show's fans are middle-aged men. When a powerful super-fan tricks Tina out of her rare toy pony, it's up to Bob to go undercover to get it back.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7476"}}},{"id":7477,"url":"http://www.tvmaze.com/episodes/7477/bobs-burgers-4x18-ambergris","name":"Ambergris","season":4,"number":18,"airdate":"2014-04-20","airtime":"19:00","airstamp":"2014-04-20T19:00:00-04:00","runtime":30,"image":null,"summary":"<p>Gene, Louise, and Tina discover a seaweed-covered object at the beach that turns out to be a large hunk of Ambergris - an extremely valuable, but illegal, by-product of whale poop that is used in high-end perfumes. But Louise tries to cheat Gene and Tina out of the profit she hopes to make by selling the treasure on the black market. Meanwhile, Bob and Linda deal with their psychologically unstable landlord who is building them a new bathroom.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7477"}}},{"id":7478,"url":"http://www.tvmaze.com/episodes/7478/bobs-burgers-4x19-the-kids-run-away","name":"The Kids Run Away","season":4,"number":19,"airdate":"2014-04-27","airtime":"19:00","airstamp":"2014-04-27T19:00:00-04:00","runtime":30,"image":null,"summary":"<p>Upon learning that she has a cavity and needs a filling, Louise runs away from the dentist's office and seeks refuge at Aunt Gail's. When Louise refuses to go home, Linda sends Tina and Gene to join her and bets her that she won't last the weekend with Aunt Gail's \"craziness\".</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7478"}}},{"id":7479,"url":"http://www.tvmaze.com/episodes/7479/bobs-burgers-4x20-gene-it-on","name":"Gene It On","season":4,"number":20,"airdate":"2014-05-04","airtime":"19:00","airstamp":"2014-05-04T19:00:00-04:00","runtime":30,"image":null,"summary":"<p>Tina decides to try out for the cheerleading squad, but it's actually Gene who gets noticed in the crowd for his spirit and cheering ability. Meanwhile, during her cheer audition, Tina falls and bites her tongue, leaving her unable to speak - and a mischievous Louise steps up to be her translator.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7479"}}},{"id":7480,"url":"http://www.tvmaze.com/episodes/7480/bobs-burgers-4x21-wharf-horse","name":"Wharf Horse","season":4,"number":21,"airdate":"2014-05-11","airtime":"19:00","airstamp":"2014-05-11T19:00:00-04:00","runtime":30,"image":null,"summary":"<p>Motivated by the promise of a new beachside burger joint, Bob conspires with Felix to convince Mr. Fischoeder to sell Wonder Wharf. Meanwhile, Tina protests the destruction of the wharf's carousel by chaining herself to it.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7480"}}},{"id":7481,"url":"http://www.tvmaze.com/episodes/7481/bobs-burgers-4x22-world-wharf-ii-the-wharfening-or-how-bob-savesdestroys-the-town-part-ii","name":"World Wharf II: The Wharfening (or How Bob Saves/Destroys the Town -- Part II)","season":4,"number":22,"airdate":"2014-05-18","airtime":"19:00","airstamp":"2014-05-18T19:00:00-04:00","runtime":30,"image":null,"summary":"<p>It's Linda and the kids to the rescue when Felix takes desperate measures, and puts Bob and Mr. Fischoeder in danger.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7481"}}},{"id":7482,"url":"http://www.tvmaze.com/episodes/7482/bobs-burgers-5x01-work-hard-or-die-trying-girl","name":"Work Hard or Die Trying, Girl","season":5,"number":1,"airdate":"2014-10-05","airtime":"19:30","airstamp":"2014-10-05T19:30:00-04:00","runtime":30,"image":null,"summary":"<p>When Gene's \"Die Hard\"-inspired musical doesn't get picked for the  school's fall performance, he decides to stage an underground show with  the help of Louise. But Wagstaff Middle School families begin to feud  when they learn that Eugene has planned his show on the very same night  as Courtney's school-sanctioned \"Working  Girl\"-inspired musical featuring Tina.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/7482"}}},{"id":15842,"url":"http://www.tvmaze.com/episodes/15842/bobs-burgers-5x02-tina-and-the-real-ghost","name":"Tina and the Real Ghost","season":5,"number":2,"airdate":"2014-11-02","airtime":"19:30","airstamp":"2014-11-02T19:30:00-05:00","runtime":30,"image":null,"summary":"<p>Tina begins an out-of-this-world romance with a ghost that is believed to be living in the Belcher's basement.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/15842"}}},{"id":45308,"url":"http://www.tvmaze.com/episodes/45308/bobs-burgers-5x03-friends-with-burger-fits","name":"Friends With Burger-fits","season":5,"number":3,"airdate":"2014-11-16","airtime":"21:30","airstamp":"2014-11-16T21:30:00-05:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/4/11022.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/4/11022.jpg"},"summary":"<p>Bob becomes Teddy's workout buddy after finding out his burgers contributed to Teddy's bad health. The two enroll in a stuntman boot camp where their friendship is put to the test. Meanwhile, the kids make an ice rink in the freezer, with Linda running their underground ice wrestling league.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/45308"}}},{"id":39983,"url":"http://www.tvmaze.com/episodes/39983/bobs-burgers-5x04-dawn-of-the-peck","name":"Dawn Of The Peck","season":5,"number":4,"airdate":"2014-11-23","airtime":"21:30","airstamp":"2014-11-23T21:30:00-05:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/4/12446.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/4/12446.jpg"},"summary":"<p>While Bob is boycotting the holiday, Linda and the kids spend Thanksgiving at the First Annual Fischoeder Turk-tacular Turkey Town Festival. However, a wild bird attack leads to total mayhem.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/39983"}}},{"id":45309,"url":"http://www.tvmaze.com/episodes/45309/bobs-burgers-5x05-best-burger","name":"Best Burger","season":5,"number":5,"airdate":"2014-11-30","airtime":"21:30","airstamp":"2014-11-30T21:30:00-05:00","runtime":30,"image":null,"summary":"<p>Bob enters a burger-tasting contest, only to discover that his distinguishing ingredient is missing! To help out their dad, the kids go on a mission to find the ever-so-important black garlic.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/45309"}}},{"id":45310,"url":"http://www.tvmaze.com/episodes/45310/bobs-burgers-5x06-father-of-the-bob","name":"Father Of The Bob","season":5,"number":6,"airdate":"2014-12-07","airtime":"21:30","airstamp":"2014-12-07T21:30:00-05:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/5/14566.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/5/14566.jpg"},"summary":"<p>At Bob's father's Christmas party, Bob and \"Big Bob\" rehash an old argument and try to outdo each other in the kitchen. Meanwhile, the kids compete to find the best gift for their dad.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/45310"}}},{"id":45836,"url":"http://www.tvmaze.com/episodes/45836/bobs-burgers-5x07-tina-tailor-soldier-spy","name":"Tina Tailor Soldier Spy","season":5,"number":7,"airdate":"2014-12-14","airtime":"21:30","airstamp":"2014-12-14T21:30:00-05:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/6/16148.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/6/16148.jpg"},"summary":"<p>Tina goes undercover in her old Thundergirls troop to find the mole who is giving away their cookie secrets. Meanwhile, Linda dyes her hair blonde.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/45836"}}},{"id":58251,"url":"http://www.tvmaze.com/episodes/58251/bobs-burgers-5x08-midday-run","name":"Midday Run","season":5,"number":8,"airdate":"2015-01-04","airtime":"21:30","airstamp":"2015-01-04T21:30:00-05:00","runtime":30,"image":null,"summary":"<p>When Tina is up for a big hall monitor promotion, she is determined to do whatever it takes to nab the powerful job. So, she enlists the help of Gene and Louise. Meanwhile, back at the restaurant, Linda gets artsy and begins to decorate the walls with customer artwork...on napkins.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/58251"}}},{"id":92017,"url":"http://www.tvmaze.com/episodes/92017/bobs-burgers-5x09-speakeasy-rider","name":"Speakeasy Rider","season":5,"number":9,"airdate":"2015-01-11","airtime":"21:30","airstamp":"2015-01-11T21:30:00-05:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/7/19033.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/7/19033.jpg"},"summary":"<p>Tina, Gene and Louise are ready to put the pedal to the metal when they join a go-kart league. Meanwhile, back at the restaurant Bob and Teddy partner up to serve Teddy's home-brewed beer on the sly.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/92017"}}},{"id":108511,"url":"http://www.tvmaze.com/episodes/108511/bobs-burgers-5x10-late-afternoon-in-the-garden-of-bob-and-louise","name":"Late Afternoon In The Garden Of Bob And Louise","season":5,"number":10,"airdate":"2015-01-25","airtime":"21:30","airstamp":"2015-01-25T21:30:00-05:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/7/19840.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/7/19840.jpg"},"summary":"<p>In order to become an accepted member of the Community Garden, Bob must make a deal that results in giving Louise's enemy a job at the restaurant. Father and daughter are at odds and a choice must be made.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/108511"}}},{"id":117729,"url":"http://www.tvmaze.com/episodes/117729/bobs-burgers-5x11-cant-buy-me-math","name":"Can't Buy Me Math","season":5,"number":11,"airdate":"2015-02-08","airtime":"21:30","airstamp":"2015-02-08T21:30:00-05:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/8/21349.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/8/21349.jpg"},"summary":"<p>Tina teams up with Darryl to win the Cupid's Couple contest at the school dance. Meanwhile, Linda plans a full week of ambitious Valentine's Day activities for her and Bob.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/117729"}}},{"id":122952,"url":"http://www.tvmaze.com/episodes/122952/bobs-burgers-5x12-the-millie-churian-candidate","name":"The Millie-churian Candidate","season":5,"number":12,"airdate":"2015-02-15","airtime":"21:30","airstamp":"2015-02-15T21:30:00-05:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/8/21762.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/8/21762.jpg"},"summary":"<p>Tina and Louise volunteer to run Jimmy Junior's class president campaign in order to keep Millie from winning, and ruining the school. Meanwhile, Bob becomes obsessed with a knife after talking himself into buying it for $300.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/122952"}}},{"id":128995,"url":"http://www.tvmaze.com/episodes/128995/bobs-burgers-5x13-the-gayle-tales","name":"The Gayle Tales","season":5,"number":13,"airdate":"2015-03-01","airtime":"19:30","airstamp":"2015-03-01T19:30:00-05:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/10/26431.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/10/26431.jpg"},"summary":"<p>Linda's sister, Gayle, arrives at Bob's Burgers in tears because her date for the evening was cancelled and she had theater tickets!!! Desperate to get out of the house after being grounded, the kids compete to be Aunt Gayle's \"date\" for the evening via an essay contest.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/128995"}}},{"id":139702,"url":"http://www.tvmaze.com/episodes/139702/bobs-burgers-5x14-lil-hard-dad","name":"L'il Hard Dad","season":5,"number":14,"airdate":"2015-03-08","airtime":"19:30","airstamp":"2015-03-08T19:30:00-04:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/10/26432.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/10/26432.jpg"},"summary":"<p>Bob becomes obsessed with his new automatic helicopter. When it falls apart for no reason, he enters into a battle with the manufacturer in order to receive a refund. Gene assists Bob in his quest, but things quickly get out of hand and end in a crazy helicopter battle. Meanwhile, Louise and Linda help Tina prepare for her oral book report.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/139702"}}},{"id":141539,"url":"http://www.tvmaze.com/episodes/141539/bobs-burgers-5x15-adventures-in-chinchilla-sitting","name":"Adventures In Chinchilla-sitting","season":5,"number":15,"airdate":"2015-03-15","airtime":"19:30","airstamp":"2015-03-15T19:30:00-04:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/10/26433.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/10/26433.jpg"},"summary":"<p>Bob and Linda head out on the town for a date - but to Linda's dismay, Bob's idea of romance proves \"trivial.\" Meanwhile, a wild chinchilla chase ensues after the school pet that Louis was charged with watching escapes out the front door.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/141539"}}},{"id":142183,"url":"http://www.tvmaze.com/episodes/142183/bobs-burgers-5x16-the-runaway-club","name":"The Runaway Club","season":5,"number":16,"airdate":"2015-03-22","airtime":"19:30","airstamp":"2015-03-22T19:30:00-04:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/10/26434.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/10/26434.jpg"},"summary":"<p>The kids are sentenced to Saturday detention and will do anything it takes to leave early, so they can attend the Cotton Candy Festival. Meanwhile, Bob and Linda believe they are being scammed by a young girl at the restaurant.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/142183"}}},{"id":151672,"url":"http://www.tvmaze.com/episodes/151672/bobs-burgers-5x17-itty-bitty-ditty-committee","name":"Itty Bitty Ditty Committee","season":5,"number":17,"airdate":"2015-04-26","airtime":"19:30","airstamp":"2015-04-26T19:30:00-04:00","runtime":30,"image":null,"summary":"<p>Gene starts a band with Tina, Louise, Rudy, Peter and Daryl, only to be kicked out and left on his own. After declaring that he will never play his Casio again, Tina and Louise join forces to help Gene rediscover his love of music. Meanwhile, Linda deals with a horrible armpit rash that has everyone disgusted! </p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/151672"}}},{"id":151673,"url":"http://www.tvmaze.com/episodes/151673/bobs-burgers-5x18-eat-spray-linda","name":"Eat, Spray, Linda","season":5,"number":18,"airdate":"2015-05-03","airtime":"19:30","airstamp":"2015-05-03T19:30:00-04:00","runtime":30,"image":null,"summary":"<p>It's Linda's birthday and Bob needs more time to plan her birthday surprise. But when he sends her out of the house as a distraction, she goes missing! Mayhem ensues as the Belchers must work together to find Linda.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/151673"}}},{"id":151674,"url":"http://www.tvmaze.com/episodes/151674/bobs-burgers-5x19-housetrap","name":"Housetrap","season":5,"number":19,"airdate":"2015-05-10","airtime":"21:30","airstamp":"2015-05-10T21:30:00-04:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/10/27311.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/10/27311.jpg"},"summary":"<p>In true Belcher fashion, the family gets stuck in a terrible storm while up in Craggy Neck. The storm is the least of their worries, however, when they are forced to take shelter with the mysterious owner of a large beach home.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/151674"}}},{"id":151675,"url":"http://www.tvmaze.com/episodes/151675/bobs-burgers-5x20-hawk-chick","name":"Hawk & Chick","season":5,"number":20,"airdate":"2015-05-17","airtime":"19:30","airstamp":"2015-05-17T19:30:00-04:00","runtime":30,"image":null,"summary":"<p>Bob and Louis are thrilled when they meet Hawk, the star of their favorite samurai vs. monster movie series, and decide to engineer a father-daughter reunion.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/151675"}}},{"id":151676,"url":"http://www.tvmaze.com/episodes/151676/bobs-burgers-5x21-the-oeder-games","name":"The Oeder Games","season":5,"number":21,"airdate":"2015-05-17","airtime":"21:30","airstamp":"2015-05-17T21:30:00-04:00","runtime":30,"image":{"medium":"http://tvmazecdn.com/uploads/images/medium_landscape/11/27669.jpg","original":"http://tvmazecdn.com/uploads/images/original_untouched/11/27669.jpg"},"summary":"<p>With the threat of a rent increase on Ocean Avenue, Bob and the other tenants organize a rent strike only to discover they will have to compete with each other on the grounds of Mr. Fischoeder's estate in order to keep their rents reasonable.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/151676"}}},{"id":182393,"url":"http://www.tvmaze.com/episodes/182393/bobs-burgers-6x01-sliding-bobs","name":"Sliding Bobs","season":6,"number":1,"airdate":"2015-09-27","airtime":"19:30","airstamp":"2015-09-27T19:30:00-04:00","runtime":30,"image":null,"summary":"<p>Bob notices that he has started to lose his hair. In a wave of nostalgia, Linda reminisces about Bob's mustache and how it made her fall for him years ago. Meanwhile, the kids tell their own versions of the story of how their parents met.</p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/182393"}}},{"id":236850,"url":"http://www.tvmaze.com/episodes/236850/bobs-burgers-6x02-the-land-ship","name":"The Land Ship","season":6,"number":2,"airdate":"2015-10-11","airtime":"19:30","airstamp":"2015-10-11T19:30:00-04:00","runtime":30,"image":null,"summary":"<p>The upcoming Land Ship parade could mean increased business for Bob, until he learns that two port-o-potties will be placed in front the restaurant. Meanwhile, Tina learns from her friends that she's boring, so she joins up with Jordan who has been vandalizing the school with graffiti. But when Jordan wants to spray graffiti on the Land Ship, Tina must decide between ruining the parade or disappointing her new crush. </p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/236850"}}},{"id":277903,"url":"http://www.tvmaze.com/episodes/277903/bobs-burgers-6x03-hauntening","name":"Hauntening","season":6,"number":3,"airdate":"2015-10-18","airtime":"21:00","airstamp":"2015-10-18T21:00:00-04:00","runtime":30,"image":null,"summary":"<p>The Belchers are ready for an amazing Halloween! Louise reveals that she has never been scared before and the family sets out to visit a spooky haunted house. When trouble ensues following their visit, the Belchers find themselves in a zany situation more frightening than they bargained for! </p>","_links":{"self":{"href":"http://api.tvmaze.com/episodes/277903"}}}]}}
 
 },{}],"/Users/bill/Sites/vue-starter/src/main.js":[function(require,module,exports){
 var Vue = require('vue');
+
+Vue.config.debug = true;
 
 var VueRouter = require('vue-router');
 Vue.use(VueRouter);
