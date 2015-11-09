@@ -16,21 +16,9 @@ router.map({
     component: require('./components/home.vue'),
     name: 'home'
   },
-  'about': {
-    component: require('./components/about.vue'),
-    name: 'about'
-  },
-  'archives': {
-    component: require('./components/archives.vue'),
-    name: 'archives'
-  },
-  'article/:id': {
-    component: require('./components/article.vue'),
-    name: 'article'
-  },
-  'search': {
-    component: require('./components/search.vue'),
-    name: 'search'
+  'form': {
+    component: require('./components/form.vue'),
+    name: 'form'
   }
 });
 

@@ -1,7 +1,5 @@
 <style lang="scss">
   @import "src/sass/shared/shared";
-
-  @import "src/sass/normalize";
   @import "src/sass/transitions";
 
   [v-cloak] {
@@ -10,46 +8,41 @@
 
   :root {
     box-sizing: border-box;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
   }
 
   *, ::before, ::after {
     box-sizing: inherit;
-    position: relative;
+  }
+
+  html {
+    font-family: $font--sans;
+    background-color: $color--white;
+    color: $color--black;
+  }
+
+  body {
+    margin: 0;
   }
 </style>
 
 <template>
-  <div class="app">
+  <div class="app app--{{ $route.name }}">
     <app-header></app-header>
     <main class="main">
-      <router-view class="page" transition="fade" transition-mode="out-in"></router-view>
+      <router-view transition="fade" transition-mode="out-in"></router-view>
     </main>
     <app-footer></app-footer>
   </div>
 </template>
 
 <script>
-  var throttle = require('lodash.throttle');
+  import appHeader from './app-header.vue';
+  import appFooter from './app-footer.vue';
 
-  module.exports = {
+  export default {
     components: {
-      appHeader: require('./app-header.vue'),
-      appFooter: require('./app-footer.vue')
-    },
-    ready: function () {
-      var body = document.body;
-      var scrollingTimeout = undefined;
-
-      window.addEventListener('scroll', throttle(function () {
-        clearTimeout(scrollingTimeout);
-
-        body.classList.add('scrolling');
-
-        scrollingTimeout = setTimeout(function () {
-          body.classList.remove('scrolling');
-        }, 50);
-      }, 40));
+      appHeader,
+      appFooter
     }
   }
 </script>

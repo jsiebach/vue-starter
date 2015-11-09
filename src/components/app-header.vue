@@ -1,4 +1,5 @@
-<style>
+<style lang="scss">
+  @import "src/sass/shared/shared";
   .header {}
 </style>
 
@@ -8,9 +9,7 @@
       <a v-link="{ name: 'home' }">App</a>
     </h1>
     <ul>
-      <li><a v-link="{ name: 'about' }">About</a></li>
-      <li><a v-link="{ name: 'search' }">Search</a></li>
-      <li><a v-link="{ name: 'archives' }">Archives</a></li>
+      <li><a v-link="{ name: 'form' }">Forms</a></li>
     </ul>
   </header>
 </template>
