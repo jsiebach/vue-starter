@@ -13358,7 +13358,7 @@ exports['default'] = {
   },
   data: function data() {
     return {
-      options: [{ label: 'Smarter', value: 'smarter' }, { label: 'Faster', value: 'fasteer' }, { label: 'Stronger', value: 'stronger' }],
+      options: [{ label: 'Smarter', value: 'smarter' }, { label: 'Faster', value: 'faster' }, { label: 'Stronger', value: 'stronger' }],
       input: 'Hi',
       checkboxes: [],
       radios: '',
@@ -13367,7 +13367,7 @@ exports['default'] = {
   }
 };
 module.exports = exports['default'];
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n  <div>\n    <h1>Forms</h1>\n\n    <fieldset>\n      <legend>Text</legend>\n      <label><input v-model=\"input\" placeholder=\"Search...\"></label>\n    </fieldset>\n\n    <fieldset>\n      <legend>Checkboxes</legend>\n      <ul>\n        <li v-for=\"option in options\">\n          <label>\n            <input type=\"checkbox\" v-model=\"checkboxes\" value=\"{{ option.value }}\">\n            {{ option.label }}\n          </label>\n        </li>\n      </ul>\n    </fieldset>\n\n    <fieldset>\n      <legend>Radios</legend>\n      <ul>\n        <li v-for=\"option in options\">\n          <label>\n            <input type=\"radio\" v-model=\"radios\" value=\"{{ option.value }}\">\n            {{ option.label }}\n          </label>\n        </li>\n      </ul>\n    </fieldset>\n\n    <fieldset>\n      <legend>Select</legend>\n      <select v-model=\"select\">\n        <option v-for=\"option in options\" value=\"{{ option.value }}\">{{ option.label }}</option>\n      </select>\n    </fieldset>\n\n    <pre>{{ $data | json }}</pre>\n  </div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n  <div>\n    <form v-model=\"test\">\n      <h1>Forms</h1>\n      <fieldset>\n        <legend>Text</legend>\n        <label><input v-model=\"input\" placeholder=\"Search...\"></label>\n      </fieldset>\n\n      <fieldset>\n        <legend>Checkboxes</legend>\n        <ul>\n          <li v-for=\"option in options\">\n            <label>\n              <input type=\"checkbox\" v-model=\"checkboxes\" value=\"{{ option.value }}\">\n              {{ option.label }}\n            </label>\n          </li>\n        </ul>\n      </fieldset>\n\n      <fieldset>\n        <legend>Radios</legend>\n        <ul>\n          <li v-for=\"option in options\">\n            <label>\n              <input type=\"radio\" v-model=\"radios\" value=\"{{ option.value }}\">\n              {{ option.label }}\n            </label>\n          </li>\n        </ul>\n      </fieldset>\n\n      <fieldset>\n        <legend>Select</legend>\n        <select v-model=\"select\">\n          <option v-for=\"option in options\" value=\"{{ option.value }}\">{{ option.label }}</option>\n        </select>\n      </fieldset>\n    </form>\n  </div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
