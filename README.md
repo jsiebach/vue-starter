@@ -6,4 +6,7 @@ This is just a quick start for Vue development.
 Run `npm install`.
 
 ## Development
-Run `npm run watch` and get to it.
+Run `npm run dev`.
+
+## Build
+Run `npm run build`. You'll need uglifyjs installed globally.
