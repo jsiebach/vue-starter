@@ -1,28 +1,7 @@
 <style lang="scss">
   @import "src/sass/shared/shared";
   @import "src/sass/transitions";
-
-  [v-cloak] {
-    display: none;
-  }
-
-  :root {
-    box-sizing: border-box;
-  }
-
-  *, ::before, ::after {
-    box-sizing: inherit;
-  }
-
-  html {
-    font-family: $font--sans;
-    background-color: $color--white;
-    color: $color--black;
-  }
-
-  body {
-    margin: 0;
-  }
+  @import "src/sass/base";
 </style>
 
 <template>
