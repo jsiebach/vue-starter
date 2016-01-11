@@ -1,11 +1,12 @@
 <style lang="scss">
-  @import "src/sass/shared/shared";
-  @import "src/sass/transitions";
-  @import "src/sass/base";
+  @import "../sass/shared/shared";
+  @import "../sass/transitions";
+  @import "../sass/sanitize";
+  @import "../sass/base";
 </style>
 
 <template>
-  <div class="app app--{{ $route.name }}">
+  <div :class="['app', 'app--' + $route.name]">
     <app-header></app-header>
     <main class="main">
       <router-view transition="fade" transition-mode="out-in"></router-view>

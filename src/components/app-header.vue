@@ -1,6 +1,11 @@
 <style lang="scss">
-  @import "src/sass/shared/shared";
-  .header {}
+  @import "../sass/shared/shared";
+  .header {
+    background-color: $color--black;
+    a {
+      color: $color--white;
+    }
+  }
 </style>
 
 <template>
@@ -8,8 +13,17 @@
     <h1>
       <a v-link="{ name: 'home' }">App</a>
     </h1>
-    <ul>
-      <li><a v-link="{ name: 'form' }">Forms</a></li>
-    </ul>
+    <navigation></navigation>
   </header>
 </template>
+
+<script>
+  import Navigation from './navigation.vue';
+
+  export default {
+    components: {
+      Navigation
+    }
+  }
+
+</script>

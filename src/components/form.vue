@@ -1,8 +1,5 @@
 <style lang="scss">
-  @import "src/sass/shared/shared";
-  .favorite {
-    font-weight: bold;
-  }
+  @import "../sass/shared/shared";
 </style>
 
 <template>
@@ -11,15 +8,16 @@
       <h1>Forms</h1>
       <fieldset>
         <legend>Text</legend>
-        <label><input v-model="input" placeholder="Search..."></label>
+        <label>
+          <input v-model="input" placeholder="Search...">
+        </label>
       </fieldset>
-
       <fieldset>
         <legend>Checkboxes</legend>
         <ul>
           <li v-for="option in options">
             <label>
-              <input type="checkbox" v-model="checkboxes" value="{{ option.value }}">
+              <input type="checkbox" v-model="checkboxes" :value="option.value">
               {{ option.label }}
             </label>
           </li>
@@ -31,17 +29,18 @@
         <ul>
           <li v-for="option in options">
             <label>
-              <input type="radio" v-model="radios" value="{{ option.value }}">
+              <input type="radio" v-model="radios" :value="option.value">
               {{ option.label }}
             </label>
           </li>
         </ul>
       </fieldset>
-
       <fieldset>
         <legend>Select</legend>
         <select v-model="select">
-          <option v-for="option in options" value="{{ option.value }}">{{ option.label }}</option>
+          <option v-for="option in options" :value="option.value">
+            {{ option.label }}
+          </option>
         </select>
       </fieldset>
     </form>
@@ -50,7 +49,7 @@
 
 <script>
   export default {
-    name: 'form',
+    name: 'Form',
     route: {
       data({ next }) {
         next({
