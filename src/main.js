@@ -21,6 +21,10 @@ router.map({
   'about': {
     component: require('./components/about.vue'),
     name: 'about'
+  },
+  'search': {
+    component: require('./components/search.vue'),
+    name: 'search'
   }
 });
 

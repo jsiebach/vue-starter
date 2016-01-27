@@ -6,8 +6,6 @@
   <div>
     <h1>A quick starter for Vue projects.</h1>
 
-    <p>{{ "I am a test let's see what happens dude." | trim 10 true }}</p>
-
     <button @click="modal.open = !modal.open">Toggle Modal</button>
 
     <modal :open.sync="modal.open" :transition="modal.transition" dismissable>

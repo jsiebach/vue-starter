@@ -1,9 +1,6 @@
 <script>
   export default {
     props: {
-      transition: {
-        type: String
-      },
       open: {
         type: Boolean,
         required: true,
@@ -21,12 +18,40 @@
           this.open = !classList.contains('modal');
         }
       }
+    },
+    attached() {
+      this.closer = (event) => {
+        if (!this.open) return;
+        var classList = event.target.classList;
+        if (this.dismissable) {
+          this.open = !classList.contains('modal');
+        }
+      };
+      document.documentElement.addEventListener('click', this.closer);
+    },
+    detached() {
+      document.documentElement.removeEventListener('click', this.closer);
+    },
+    directives: {
+      esc: {
+        handleEvent(event) {
+          if (event.keyCode === 27) {
+            this.vm.open = false;
+          }
+        },
+        bind() {
+          document.documentElement.addEventListener('keydown', this);
+        },
+        unbind() {
+          document.documentElement.removeEventListener('keydown', this);
+        }
+      }
     }
   }
 </script>
 
 <template>
-  <div class="modal" v-if="open" :transition="transition" @click="close">
+  <div class="modal" v-show="open" role="dialog" :hidden="!open ? '' : false" v-esc>
     <div class="modal-main">
       <header class="modal-header">
         <slot name="header"></slot>
