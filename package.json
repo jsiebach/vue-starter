@@ -4,7 +4,7 @@
   "description": "A boiler plate for Vue projects",
   "scripts": {
     "dev": "watchify -v -t vueify -e src/main.js -o public/js/build.js",
-    "build": "NODE_ENV=production ./node_modules/watchify/node_modules/.bin/browserify -t vueify -e src/main.js | uglifyjs -c warnings=false -m > public/js/build.min.js",
+    "build": "NODE_ENV=production ./node_modules/.bin/browserify -t vueify -e src/main.js | uglifyjs -c warnings=false -m > public/js/build.min.js",
     "sync": "browser-sync start --server public --files public/js/build.js --reload-debounce 500"
   },
   "author": "Bill Criswell",
