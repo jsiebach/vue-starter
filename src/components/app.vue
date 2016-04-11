@@ -3,15 +3,23 @@
   @import "../sass/transitions";
   @import "../sass/sanitize";
   @import "../sass/base";
-</style>
 
+  .main{
+    position:absolute;
+    height:100%;
+    padding-top:60px;
+  }
+</style>
 <template>
   <div :class="['app', 'app--' + $route.name]">
-    <app-header></app-header>
-    <main class="main">
-      <router-view transition="fade" transition-mode="out-in"></router-view>
-    </main>
-    <app-footer></app-footer>
+    <div class="container">
+      <app-header></app-header>
+      <main class="main container">
+        <router-view transition="fade" transition-mode="out-in"></router-view>
+        <app-footer></app-footer>
+      </main>
+
+    </div>
   </div>
 </template>
 

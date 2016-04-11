@@ -1,16 +1,6 @@
-// None of the files included here should output any CSS.
+$icon-font-path : "/fonts/bootstrap/";
+@import "./variables/bootswatch";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/font-awesome/scss/font-awesome";
 
-@import "functions/em";
-@import "functions/unpack";
-@import "functions/image-url";
 
-@import "variables/colors";
-@import "variables/breakpoints";
-@import "variables/fonts";
-
-@import "mixins/clearfix";
-@import "mixins/position";
-@import "mixins/size";
-@import "mixins/triangle";
-@import "mixins/respond-to";
-@import "mixins/placeholder";
